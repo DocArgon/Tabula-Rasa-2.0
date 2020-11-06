@@ -1,5 +1,6 @@
 package com.wat.tabularasa20.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -10,6 +11,7 @@ import com.wat.tabularasa20.R;
 
 public class HomeActivity extends AppCompatActivity {
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
