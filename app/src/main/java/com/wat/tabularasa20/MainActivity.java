@@ -11,14 +11,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Map;
 /*
 import com.microsoft.graph.models.extensions.IGraphServiceClient;
 import com.microsoft.graph.models.extensions.List;
