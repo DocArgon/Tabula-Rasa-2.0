@@ -1,6 +1,11 @@
 package com.wat.tabularasa20;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -47,6 +52,15 @@ public class MainActivity extends AppCompatActivity {
         //IGraphServiceClient graphClient = GraphServiceClient.builder().authenticationProvider( authProvider ).buildClient();
         //List list = graphClient.sites("TabulaRasa20").lists("Klient").buildRequest().get();
 
+        int permission = ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET);
+
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(this, "Nie przyznano uprawnień", Toast.LENGTH_LONG).show();
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.INTERNET},
+                    1234);
+        }
+
         final EditText name = findViewById(R.id.editName);
         final EditText passwd = findViewById(R.id.editPassword);
         Button login = findViewById(R.id.buttonLogin);
@@ -75,5 +89,17 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case 1234: {
+                if (grantResults.length == 0 || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                    finish();
+                } else {
+                }
+            }
+        }
     }
 }
