@@ -16,9 +16,7 @@ import android.widget.Toast;
 import com.wat.tabularasa20.activities.HomeActivity;
 import com.wat.tabularasa20.data.Constants;
 import com.wat.tabularasa20.utilities.Downloader;
-
 import java.util.Timer;
-import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -59,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
                 String strname = name.getText().toString();
                 String strpass = pass.getText().toString();
 
+                // Usunę to, tak na wszelki
+                /*
                 if (strpass.equals("2137")) {
                     iv.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.flan2));
                     new CountDownTimer(100, 50) {
@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }.start();
                 }
+                //*/
 
                 if (!strname.isEmpty() && !strpass.isEmpty()) {
                     String strurl = Constants.WELCOME_URL + strname.substring(strname.length() - 1);
