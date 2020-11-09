@@ -41,7 +41,7 @@
         >
 
         <EditText
-            android:id="@+id/addBookTitle"
+            android:id="@+id/login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -69,7 +69,7 @@
             app:layout_constraintBottom_toTopOf="@+id/addBookYear"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addBookTitle"
+            app:layout_constraintTop_toBottomOf="@+id/login"
             />
 
         <EditText
@@ -121,7 +121,7 @@
             />
 
         <Button
-            android:id="@+id/addBookSendData"
+            android:id="@+id/buttonRegisterAccount"
             android:layout_width="100dp"
             android:layout_height="70dp"
             android:text="Wyślij"
