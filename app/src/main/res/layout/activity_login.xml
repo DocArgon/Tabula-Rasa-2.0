@@ -50,7 +50,7 @@
         >
 
         <EditText
-            android:id="@+id/mainEditTextName"
+            android:id="@+id/addBookTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:autofillHints="Login"
@@ -72,15 +72,15 @@
             android:ems="10"
             android:hint="Hasło"
             android:inputType="textPassword"
-            app:layout_constraintBottom_toTopOf="@+id/mainButtonLogin"
+            app:layout_constraintBottom_toTopOf="@+id/addBookSendData"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mainEditTextName"
+            app:layout_constraintTop_toBottomOf="@+id/addBookTitle"
             />
 
         <Button
-            android:id="@+id/mainButtonLogin"
+            android:id="@+id/addBookSendData"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/login"

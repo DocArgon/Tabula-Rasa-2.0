@@ -3,8 +3,6 @@ package com.wat.tabularasa20;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 
 import android.Manifest;
 import android.content.Intent;
@@ -15,9 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
-import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.wat.tabularasa20.activities.HomeActivity;
 import com.wat.tabularasa20.data.Constants;
 import com.wat.tabularasa20.utilities.Downloader;
@@ -38,9 +34,9 @@ public class MainActivity extends AppCompatActivity {
 		// TODO sprawdzić połączenie internetowe
 
 		final ImageView iv = findViewById(R.id.profilePicture);
-		final EditText name = findViewById(R.id.mainEditTextName);
+		final EditText name = findViewById(R.id.addBookTitle);
 		final EditText pass = findViewById(R.id.mainEditTextPassword);
-		final Button login = findViewById(R.id.mainButtonLogin);
+		final Button login = findViewById(R.id.addBookSendData);
 
 		// Akcja downloadera
 		Downloader downloader = new Downloader();
@@ -76,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 //*/
 
 				if (!strname.isEmpty() && !strpass.isEmpty()) {
-					String strurl = Constants.WELCOME_URL + strname.substringname.length() - 1);
+					String strurl = Constants.WELCOME_URL + strname.substring(name.length() - 1);
 					downloader.execute(strurl);
 				} else {
 					// TODO powiadomienie o wymogu danych logowania
@@ -90,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
 		switch (requestCode) {
 			case 1234: {
 				if (grantResults.length == 0 || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
-					Toast.makeText(this, "Nie przyznano uprawnień", Toast.LENGTH(str_LONG).show();
+					Toast.makeText(this, "Nie przyznano uprawnień", Toast.LENGTH_LONG).show();
 					//finish();
 				}
 			}
