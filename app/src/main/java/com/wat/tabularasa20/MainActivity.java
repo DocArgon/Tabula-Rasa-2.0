@@ -64,10 +64,11 @@ public class MainActivity extends AppCompatActivity {
 
             // TODO przerobić zapytanie
             if (!strname.isEmpty() && !strpass.isEmpty()) {
-                String strurl = Constants.WELCOME_URL + strname.substring(strname.length() - 1);
-                downloader.execute("http://cfbhkldsnmvrtwzx.neverssl.com/online");
+                String strurl = Constants.LOGIN_CHECK_URL + String.format("/?login=\"%s\"&haslo=\"%s\"", strname, strpass);
+                //downloader.execute("http://cfbhkldsnmvrtwzx.neverssl.com/online");
                 //downloader.execute("https://6ztwzizmp2.execute-api.eu-west-1.amazonaws.com/v1");
-                //downloader.execute(strurl);
+                Toast.makeText(MainActivity.this, strurl, Toast.LENGTH_LONG).show();
+				downloader.execute(strurl);
             } else {
                 Snackbar.make(v, getString(R.string.login_fields_empty), Snackbar.LENGTH_LONG).show();
             }
