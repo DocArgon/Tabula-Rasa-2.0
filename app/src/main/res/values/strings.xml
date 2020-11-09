@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">TabulaRasa 2.0</string>
-    <string name="login">Zaloguj</string>
+    <string name="login_text">Zaloguj</string>
+    <string name="permission_not_granted">Nie przyznano uprawnień</string>
+    <string name="login_fields_empty">Pola z danymi logowania nie są uzupełnione</string>
+    <string name="network_not_conn">Brak połączeia sieciowego</string>
+    <string name="password">Hasło</string>
+    <string name="login">Login</string>
+    <string name="access">Uzyskaj dostęp</string>
 </resources>

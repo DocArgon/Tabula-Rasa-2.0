@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
@@ -14,24 +13,22 @@
         android:background="#DDCBCB"
         android:paddingBottom="5dp"
         android:singleLine="false"
-        android:text="Uzyskaj dostęp"
+        android:text="@string/access"
         android:textAlignment="center"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <ImageView
-        android:id="@+id/profilePicture"
+        android:id="@+id/mainApplicationLogo"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:contentDescription="@string/app_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:srcCompat="@android:drawable/btn_star_big_on"
-        />
+        app:srcCompat="@android:drawable/btn_star_big_on"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
@@ -46,23 +43,21 @@
         app:layout_constraintBottom_toTopOf="@+id/mainSpacer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profilePicture"
-        >
+        app:layout_constraintTop_toBottomOf="@+id/mainApplicationLogo">
 
         <EditText
-            android:id="@+id/addBookTitle"
+            android:id="@+id/mainEditTextName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:autofillHints="Login"
             android:ems="10"
-            android:hint="Login"
+            android:hint="@string/login"
             android:inputType="textPersonName"
             app:layout_constraintBottom_toTopOf="@+id/mainEditTextPassword"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <EditText
             android:id="@+id/mainEditTextPassword"
@@ -70,26 +65,24 @@
             android:layout_height="wrap_content"
             android:autofillHints="Password"
             android:ems="10"
-            android:hint="Hasło"
+            android:hint="@string/password"
             android:inputType="textPassword"
-            app:layout_constraintBottom_toTopOf="@+id/addBookSendData"
+            app:layout_constraintBottom_toTopOf="@+id/mainButtonLogin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addBookTitle"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/mainEditTextName"/>
 
         <Button
-            android:id="@+id/addBookSendData"
+            android:id="@+id/mainButtonLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/login"
+            android:text="@string/login_text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mainEditTextPassword"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/mainEditTextPassword"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -99,7 +92,6 @@
         android:layout_height="200dp"
         android:background="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="0dp"
-        />
+        tools:layout_editor_absoluteX="0dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
