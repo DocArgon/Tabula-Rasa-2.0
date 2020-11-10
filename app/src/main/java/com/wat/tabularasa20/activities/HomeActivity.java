@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -40,10 +38,24 @@ public class HomeActivity extends AppCompatActivity {
             finish();
         });
 
+        // Przycisk dodaj książkę
+        final Button addBook = findViewById(R.id.addNewBook);
+        addBook.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, AddBookActivity.class);
+            startActivity(intent);
+        });
+
+        // Przycisk czatu
+        final Button sendMessage = findViewById(R.id.myMessages);
+        sendMessage.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, ChatActivity.class);
+            startActivity(intent);
+        });
+
         // Pobranie informacji o kliencie
         Downloader downloader = new Downloader();
         downloader.setOnResultListener(result -> {
-            result = result.substring(1, result.length() - 1); //result.replace("[", "{").replace("]", "}");
+            result = result.substring(1, result.length() - 1);
             //Toast.makeText(HomeActivity.this, result, Toast.LENGTH_LONG).show();
             JsonObject jsonObject = JsonParser.parseString(result).getAsJsonObject();
             homeTV.setText("Witaj " + jsonObject.get("Imie").getAsString() + " " + jsonObject.get("Nazwisko").getAsString());

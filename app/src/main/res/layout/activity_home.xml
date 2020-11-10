@@ -47,7 +47,9 @@
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toTopOf="parent" />
 
-		<Button
+		<!--
+		TO JEST WYMAGANE, ALE POTEM SIE DOROBI
+		Button
 			android:id="@+id/myMessages"
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
@@ -55,6 +57,18 @@
 			android:layout_marginTop="10dp"
 			android:layout_marginEnd="16dp"
 			android:text="Skrzynka odbiorcza"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/editInfo" / -->
+
+		<Button
+			android:id="@+id/myMessages"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="16dp"
+			android:layout_marginTop="10dp"
+			android:layout_marginEnd="16dp"
+			android:text="Napisz wiadomość"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toBottomOf="@+id/editInfo" />
