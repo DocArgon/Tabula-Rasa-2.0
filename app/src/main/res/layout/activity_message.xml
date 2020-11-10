@@ -8,7 +8,7 @@
 
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/addBookTextViewTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#DDCBCB"
@@ -23,7 +23,7 @@
         />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
+        android:id="@+id/addBookLayoutMain"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="60dp"
@@ -36,7 +36,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/addBookTextViewTitle"
         app:layout_constraintVertical_bias="0.0"
         >
 
@@ -102,14 +102,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Wstecz"
-                app:layout_constraintEnd_toStartOf="@+id/sendMessage"
+                app:layout_constraintEnd_toStartOf="@+id/addBookButtonSendMessage"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 />
 
             <Button
-                android:id="@+id/sendMessage"
+                android:id="@+id/addBookButtonSendMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Wyślij wiadomość"
