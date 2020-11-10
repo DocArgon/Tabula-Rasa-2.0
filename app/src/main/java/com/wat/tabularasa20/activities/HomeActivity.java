@@ -25,7 +25,12 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        Intent incoming_intent = getIntent();
+        final String login_result = incoming_intent.getStringExtra("result");
+
         TextView homeTV = findViewById(R.id.textView2);
+
+        // Przycisk wyloguj
         final Button back = findViewById(R.id.back);
         back.setOnClickListener(v -> {
             // TODO zmienić cofnij na wyloguj
@@ -34,9 +39,6 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         });
-
-        Intent intent = getIntent();
-        final String login_result = intent.getStringExtra("result");
 
         // Pobranie informacji o kliencie
         Downloader downloader = new Downloader();
@@ -47,8 +49,5 @@ public class HomeActivity extends AppCompatActivity {
             homeTV.setText("Witaj " + jsonObject.get("Imie").getAsString() + " " + jsonObject.get("Nazwisko").getAsString());
         });
         downloader.execute(Constants.ACCOUNT_GET_URL + String.format("?id_klienta=%s", login_result));
-
-        //JsonObject jsonObject = JsonParser.parseString("{\"result\": " + login_result + "}").getAsJsonObject();
-        //homeTV.setText("Witaj " + name + "\nserwer odpowiedział: " +  jsonObject.get("result").getAsString());
     }
 }
