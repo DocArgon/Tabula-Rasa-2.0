@@ -2,13 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/peopleListLayoutScreen"
+    android:id="@+id/messageListLayoutScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/registerTextViewTitle"
+        android:id="@+id/messageTextViewTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#DDCBCB"
@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/registerListLayoutMain"
+        android:id="@+id/messageListLayoutMain"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="40dp"
@@ -35,7 +35,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerTextViewTitle"
+        app:layout_constraintTop_toBottomOf="@+id/messageTextViewTitle"
         app:layout_constraintVertical_bias="1.0">
 
         <TextView
@@ -74,10 +74,10 @@
             app:layout_constraintTop_toBottomOf="@+id/messageTextViewUsername" />
 
         <Button
-            android:id="@+id/registerButtonSendForm"
+            android:id="@+id/messageButtonSendForm"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
+            android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:text="@string/send_message"
             app:layout_constraintBottom_toBottomOf="@+id/messageButtonBack"
@@ -90,11 +90,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginEnd="25dp"
+            android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
             android:text="@string/go_back"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/registerButtonSendForm"
+            app:layout_constraintEnd_toStartOf="@+id/messageButtonSendForm"
             app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

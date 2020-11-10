@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/registerTextViewTitle"
+        android:id="@+id/peopleListTextViewTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#DDCBCB"
@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/registerListLayoutMain"
+        android:id="@+id/peopleListListLayoutMain"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="40dp"
@@ -35,10 +35,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerTextViewTitle">
+        app:layout_constraintTop_toBottomOf="@+id/peopleListTextViewTitle">
 
         <EditText
-            android:id="@+id/productListEditTextSearchText"
+            android:id="@+id/peopleListEditTextSearchText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -54,18 +54,18 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/productListTextViewDivider"
+            android:id="@+id/peopleListTextViewDivider"
             android:layout_width="match_parent"
             android:layout_height="5dp"
             android:layout_marginTop="10dp"
             android:background="#000000"
-            app:layout_constraintBottom_toTopOf="@+id/productListRecyclerViewProductList"
+            app:layout_constraintBottom_toTopOf="@+id/peopleListRecyclerViewProductList"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/productListEditTextSearchText" />
+            app:layout_constraintTop_toBottomOf="@+id/peopleListEditTextSearchText" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/productListRecyclerViewProductList"
+            android:id="@+id/peopleListRecyclerViewProductList"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginStart="20dp"
@@ -73,15 +73,15 @@
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="10dp"
             android:background="#FFFFFF"
-            app:layout_constraintBottom_toTopOf="@+id/productListButtonBack"
+            app:layout_constraintBottom_toTopOf="@+id/peopleListButtonBack"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/productListTextViewDivider">
+            app:layout_constraintTop_toBottomOf="@+id/peopleListTextViewDivider">
 
         </androidx.recyclerview.widget.RecyclerView>
 
         <Button
-            android:id="@+id/productListButtonBack"
+            android:id="@+id/peopleListButtonBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"

@@ -8,7 +8,7 @@
 	tools:context=".MainActivity">
 
 	<TextView
-		android:id="@+id/registerTextViewTitle"
+		android:id="@+id/homeTextViewTitle"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:background="#DDCBCB"
@@ -29,10 +29,10 @@
 		android:textSize="22sp"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/registerTextViewTitle" />
+		app:layout_constraintTop_toBottomOf="@+id/homeTextViewTitle" />
 
 	<androidx.constraintlayout.widget.ConstraintLayout
-		android:id="@+id/registerListLayoutMain"
+		android:id="@+id/homeListLayoutMain"
 		android:layout_width="0dp"
 		android:layout_height="0dp"
 		android:layout_marginStart="40dp"
@@ -44,7 +44,7 @@
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/registerTextViewTitle">
+		app:layout_constraintTop_toBottomOf="@+id/homeTextViewTitle">
 
 		<Button
 			android:id="@+id/homeButtonEditInfo"
@@ -145,7 +145,7 @@
 			android:layout_marginStart="10dp"
 			android:layout_marginTop="10dp"
 			android:layout_marginEnd="10dp"
-			android:layout_marginBottom="40dp"
+			android:layout_marginBottom="30dp"
 			android:text="@string/search_book"
 			app:layout_constraintBottom_toTopOf="@+id/homeButtonLogout"
 			app:layout_constraintEnd_toEndOf="parent"
@@ -157,7 +157,7 @@
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
 			android:layout_marginStart="20dp"
-			android:layout_marginEnd="25dp"
+			android:layout_marginEnd="20dp"
 			android:layout_marginBottom="20dp"
 			android:text="@string/logout"
 			app:layout_constraintBottom_toBottomOf="parent"
@@ -168,7 +168,7 @@
 			android:id="@+id/homeButtonClose"
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
-			android:layout_marginStart="25dp"
+			android:layout_marginStart="20dp"
 			android:layout_marginEnd="20dp"
 			android:text="@string/close"
 			app:layout_constraintBottom_toBottomOf="@+id/homeButtonLogout"

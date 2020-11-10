@@ -27,33 +27,10 @@ public class HomeActivity extends AppCompatActivity {
         final String login_result = incoming_intent.getStringExtra("result");
 
         TextView homeTV = findViewById(R.id.homeTextViewWelcome);
-
-        // Przycisk wyloguj
-        final Button back = findViewById(R.id.homeButtonLogout);
-        back.setOnClickListener(v -> {
-            // TODO zmienić cofnij na wyloguj
-            Preferences.saveCredentials(HomeActivity.this, new Preferences.LoginCredentials("", ""));
-            Intent intent = new Intent(HomeActivity.this, MainActivity.class);
-            startActivity(intent);
-            finish();
-        });
-
-        // Przycisk dodaj książkę
         final Button addBook = findViewById(R.id.homeButtonAddNewBook);
-        addBook.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeActivity.this, AddBookActivity.class);
-            startActivity(intent);
-        });
-
-        // Przycisk czatu
         final Button sendMessage = findViewById(R.id.homeButtonMyMessages);
-        sendMessage.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeActivity.this, ChatActivity.class);
-            startActivity(intent);
-        });
-
+        final Button back = findViewById(R.id.homeButtonLogout);
         final Button close = findViewById(R.id.homeButtonClose);
-        close.setOnClickListener(v -> finishAffinity());
 
         // Pobranie informacji o kliencie
         Downloader downloader = new Downloader();
@@ -64,5 +41,29 @@ public class HomeActivity extends AppCompatActivity {
             homeTV.setText("Witaj " + jsonObject.get("Imie").getAsString() + " " + jsonObject.get("Nazwisko").getAsString());
         });
         downloader.execute(Constants.ACCOUNT_GET_URL + String.format("?id_klienta=%s", login_result));
+
+        // Przycisk wyloguj
+        back.setOnClickListener(v -> {
+            // TODO zmienić cofnij na wyloguj
+            Preferences.saveCredentials(HomeActivity.this, new Preferences.LoginCredentials("", ""));
+            Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        });
+
+        // Przycisk dodaj książkę
+        addBook.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, AddBookActivity.class);
+            startActivity(intent);
+        });
+
+        // Przycisk czatu
+        sendMessage.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, ChatActivity.class);
+            startActivity(intent);
+        });
+
+        // przycisk zamknij
+        close.setOnClickListener(v -> finishAffinity());
     }
 }
