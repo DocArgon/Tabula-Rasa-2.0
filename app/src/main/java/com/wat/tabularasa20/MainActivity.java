@@ -11,7 +11,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 import com.google.android.material.snackbar.Snackbar;
 import com.wat.tabularasa20.activities.HomeActivity;
@@ -25,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_main);
 
         int permission = ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET);
         if (permission != PackageManager.PERMISSION_GRANTED) {
@@ -39,17 +38,23 @@ public class MainActivity extends AppCompatActivity {
         // Akcja downloadera
         Downloader downloader = new Downloader();
         downloader.setOnResultListener(result -> {
-            // TODO sprawdzenie czy odpowiedź zezwala na dostęp
+
+            //Toast.makeText(MainActivity.this, "is null " + (result == null), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(MainActivity.this, "\"" + result + "\"", Toast.LENGTH_LONG).show();
+            //*
+            if (Integer.parseInt(result.replaceAll("\"", "")) < 0) {
+                Snackbar.make(findViewById(R.id.loginButtonLogin), "Nieprawidłowy login lub hasło", Snackbar.LENGTH_LONG).show();
+                return;
+            }
+            //*/
 
             Preferences.saveCredentials(MainActivity.this,
                     new Preferences.LoginCredentials(textName.getText(), textPass.getText()));
 
-            //Toast.makeText(MainActivity.this, "is null " + (result == null), Toast.LENGTH_SHORT).show();
-            Toast.makeText(MainActivity.this, "\"" + result + "\"", Toast.LENGTH_LONG).show();
             //*
             Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-            intent.putExtra("name", textName.getText().toString());
-            intent.putExtra("result", result);
+            //intent.putExtra("name", textName.getText().toString());
+            intent.putExtra("result", result.replaceAll("\"", ""));
             startActivity(intent);
             finish(); // Klasy Downloader nie wykorzystywać 2 raz - wymaga reinicjalizacji dlatego kończę aktywność
             //*/

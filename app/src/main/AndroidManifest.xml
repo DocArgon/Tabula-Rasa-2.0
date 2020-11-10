@@ -8,7 +8,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
@@ -17,6 +17,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activities.AddBookActivity" />
+        <activity android:name=".activities.ChatActivity" />
+        <activity android:name=".activities.FavouriteActivity" />
         <activity android:name=".activities.HomeActivity" />
+        <activity android:name=".activities.PeopleListActivity" />
+        <activity android:name=".activities.ProductListActivity" />
+        <activity android:name=".activities.RegisterActivity" />
     </application>
 </manifest>

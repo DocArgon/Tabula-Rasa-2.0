@@ -5,11 +5,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.wat.tabularasa20.MainActivity;
 import com.wat.tabularasa20.R;
+import com.wat.tabularasa20.data.Constants;
+import com.wat.tabularasa20.utilities.Downloader;
 import com.wat.tabularasa20.utilities.Preferences;
 
 public class HomeActivity extends AppCompatActivity {
@@ -22,6 +26,7 @@ public class HomeActivity extends AppCompatActivity {
         TextView homeTV = findViewById(R.id.textView2);
         final Button back = findViewById(R.id.back);
         back.setOnClickListener(v -> {
+            // TODO zmienić cofnij na wyloguj
             Preferences.saveCredentials(HomeActivity.this, new Preferences.LoginCredentials("", ""));
             Intent intent = new Intent(HomeActivity.this, MainActivity.class);
             startActivity(intent);
@@ -29,12 +34,17 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         Intent intent = getIntent();
-        String name = intent.getStringExtra("name");
-        String result = intent.getStringExtra("result");
+        final String login_result = intent.getStringExtra("result");
 
-        // Tak, to nie ma sensu, to tylko test JSON
-        JsonObject jsonObject = JsonParser.parseString("{\"result\": " + result + "}").getAsJsonObject();
+        Downloader downloader = new Downloader();
+        downloader.setOnResultListener(result -> {
+            Toast.makeText(HomeActivity.this, result, Toast.LENGTH_LONG).show();
+            JsonObject jsonObject = JsonParser.parseString(result).getAsJsonObject();
+            homeTV.setText("Witaj " + jsonObject.get("Imie").getAsString() + " " + jsonObject.get("Nazwisko").getAsString());
+        });
+        downloader.execute(Constants.ACCOUNT_GET_URL + String.format("?id_klienta=%s", login_result));
 
-        homeTV.setText("Witaj " + name + "\nserwer odpowiedział: " +  jsonObject.get("result").getAsString());
+        //JsonObject jsonObject = JsonParser.parseString("{\"result\": " + login_result + "}").getAsJsonObject();
+        //homeTV.setText("Witaj " + name + "\nserwer odpowiedział: " +  jsonObject.get("result").getAsString());
     }
 }
