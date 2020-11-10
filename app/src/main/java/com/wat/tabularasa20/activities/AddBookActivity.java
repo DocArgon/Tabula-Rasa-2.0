@@ -14,7 +14,7 @@ public class AddBookActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_book);
 
-        final Button back = findViewById(R.id.back3);
+        final Button back = findViewById(R.id.addBookButtonBack);
         back.setOnClickListener(v -> finish());
     }
 }
