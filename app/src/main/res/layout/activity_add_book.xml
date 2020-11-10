@@ -5,27 +5,25 @@
     android:id="@+id/addBookLayoutScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    >
+    tools:context=".MainActivity" >
 
 
     <TextView
-        android:id="@+id/addBookTextViewTitle"
+        android:id="@+id/allTextViewTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#DDCBCB"
         android:paddingBottom="5dp"
         android:singleLine="false"
-        android:text="Dodaj ksiazkę"
+        android:text="@string/add_book"
         android:textAlignment="center"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/addBookLayoutMain"
+        android:id="@+id/subLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="60dp"
@@ -38,133 +36,121 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addBookTextViewTitle"
-        >
+        app:layout_constraintTop_toBottomOf="@+id/allTextViewTitle">
 
         <EditText
             android:id="@+id/addBookEditTextLogin"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
             android:autofillHints="Login"
             android:background="#FFFFFF"
             android:ems="10"
             android:gravity="top"
-            android:hint="Tytuł"
+            android:hint="@string/title"
             android:inputType="textPersonName"
             app:layout_constraintBottom_toTopOf="@+id/addBookEditTextAuthor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/addBookEditTextAuthor"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:autofillHints="Login"
             android:background="#FFFFFF"
             android:ems="10"
             android:gravity="top"
-            android:hint="Autor"
+            android:hint="@string/author"
             android:inputType="textPersonName"
             app:layout_constraintBottom_toTopOf="@+id/addBookEditTextYear"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addBookEditTextLogin"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/addBookEditTextLogin" />
 
         <EditText
             android:id="@+id/addBookEditTextYear"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:autofillHints="Login"
             android:background="#FFFFFF"
             android:ems="10"
             android:gravity="top"
-            android:hint="Rok wydania"
+            android:hint="@string/publish_year"
             android:inputType="textPersonName"
             app:layout_constraintBottom_toTopOf="@+id/addBookEditTextPublisher"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addBookEditTextAuthor"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/addBookEditTextAuthor" />
 
         <EditText
             android:id="@+id/addBookEditTextPublisher"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:autofillHints="Login"
             android:background="#FFFFFF"
             android:ems="10"
             android:gravity="top"
-            android:hint="Wydawca"
+            android:hint="@string/publisher"
             android:inputType="textPersonName"
             app:layout_constraintBottom_toTopOf="@+id/addBookEditTextAdditionalInfo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addBookEditTextYear"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/addBookEditTextYear" />
 
         <EditText
             android:id="@+id/addBookEditTextAdditionalInfo"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="100dp"
             android:background="#FFFFFF"
             android:gravity="top"
-            android:hint="Dodatkowe informacje"
+            android:hint="@string/additional_info"
             android:inputType="textMultiLine"
             android:lines="5"
+            app:layout_constraintBottom_toTopOf="@+id/addBookButtonBack"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addBookEditTextPublisher"
-            />
+            android:autofillHints="" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/addBookLayoutButtons"
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/addBookButtonBack"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="25dp"
             android:layout_marginBottom="20dp"
+            android:text="@string/go_back"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/addBookButtonSend"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            >
+            app:layout_constraintTop_toBottomOf="@+id/addBookEditTextAdditionalInfo" />
 
-            <Button
-                android:id="@+id/addBookButtonSendMessage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Wyślij"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                />
-
-            <Button
-                android:id="@+id/addBookButtonBack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Wstecz"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/addBookButtonSend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/add"
+            app:layout_constraintBottom_toBottomOf="@+id/addBookButtonBack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/addBookButtonBack"
+            app:layout_constraintTop_toTopOf="@+id/addBookButtonBack" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -6,15 +6,14 @@
 	android:layout_height="match_parent"
 	tools:context=".MainActivity">
 
-
 	<TextView
-		android:id="@+id/addBookTextViewTitle"
+		android:id="@+id/allTextViewTitle"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:background="#DDCBCB"
 		android:paddingBottom="5dp"
 		android:singleLine="false"
-		android:text="Moje ulubione"
+		android:text="@string/favourites"
 		android:textAlignment="center"
 		android:textSize="30sp"
 		android:textStyle="bold"
@@ -23,46 +22,47 @@
 		/>
 
 	<TextView
-		android:id="@+id/searchText"
+		android:id="@+id/favouriteBooksEditTextSearch"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:hint="Wyszukaj"
+		android:hint="@string/search"
 		android:textSize="24sp"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintHorizontal_bias="1.0"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/addBookTextViewTitle"
+		app:layout_constraintTop_toBottomOf="@+id/favouriteTextViewTitle"
 		/>
 
 	<TextView
-		android:id="@+id/lineHorizontal1"
+		android:id="@+id/favouriteBooksSeparator"
 		android:layout_width="match_parent"
 		android:layout_height="5dp"
 		android:background="#000000"
-		android:text="TextView"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintHorizontal_bias="1.0"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/searchText"
-		/>
+		app:layout_constraintTop_toBottomOf="@+id/favouriteBooksEditTextSearch" />
 
 	<androidx.recyclerview.widget.RecyclerView
-		android:id="@+id/peoplelList"
+		android:id="@+id/favouriteBooksListBooks"
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		app:layout_constraintTop_toBottomOf="@+id/lineHorizontal1"
-		tools:layout_editor_absoluteX="182dp"
-		>
+		android:layout_height="0dp"
+		app:layout_constraintBottom_toTopOf="@+id/favouriteBooksButtonBack"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/favouriteBooksSeparator"
+		app:layout_constraintVertical_bias="0.0">
 
 	</androidx.recyclerview.widget.RecyclerView>
 
 	<Button
-		android:id="@+id/back2"
+		android:id="@+id/favouriteBooksButtonBack"
 		android:layout_width="109dp"
 		android:layout_height="68dp"
-		android:text="Wstecz"
+		android:layout_marginStart="20dp"
+		android:layout_marginBottom="20dp"
+		android:text="@string/go_back"
 		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		/>
+		app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

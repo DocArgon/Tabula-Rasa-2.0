@@ -8,7 +8,7 @@
 
 
     <TextView
-        android:id="@+id/addBookTextViewTitle"
+        android:id="@+id/allTextViewTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#DDCBCB"
@@ -23,7 +23,7 @@
         />
 
     <TextView
-        android:id="@+id/searchText"
+        android:id="@+id/favouriteBooksEditTextSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Wyszukaj"
@@ -31,11 +31,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addBookTextViewTitle"
+        app:layout_constraintTop_toBottomOf="@+id/homeTextViewTitle"
         />
 
     <TextView
-        android:id="@+id/lineHorizontal1"
+        android:id="@+id/favouriteBooksSeparator"
         android:layout_width="match_parent"
         android:layout_height="5dp"
         android:background="#000000"
@@ -43,21 +43,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchText"
+        app:layout_constraintTop_toBottomOf="@+id/favouriteBooksEditTextSearch"
         />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/peoplelList"
+        android:id="@+id/favouriteBooksListBooks"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/lineHorizontal1"
-        tools:layout_editor_absoluteX="182dp"
-        >
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/favouriteBooksButtonBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/favouriteBooksSeparator">
 
     </androidx.recyclerview.widget.RecyclerView>
 
     <Button
-        android:id="@+id/back2"
+        android:id="@+id/favouriteBooksButtonBack"
         android:layout_width="109dp"
         android:layout_height="68dp"
         android:text="Wstecz"

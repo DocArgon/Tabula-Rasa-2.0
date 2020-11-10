@@ -6,29 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
     <TextView
-        android:id="@+id/addBookTextViewTitle"
+        android:id="@+id/allTextViewTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#DDCBCB"
         android:paddingBottom="5dp"
         android:singleLine="false"
-        android:text="Utwórz wiadomość"
+        android:text="@string/write_message"
         android:textAlignment="center"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/addBookLayoutMain"
+        android:id="@+id/subLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="60dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="60dp"
-        android:layout_marginEnd="60dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="60dp"
         android:background="#F3EDED"
         android:fadingEdge="horizontal|vertical"
@@ -36,90 +34,76 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addBookTextViewTitle"
-        app:layout_constraintVertical_bias="0.0"
-        >
+        app:layout_constraintTop_toBottomOf="@+id/allTextViewTitle"
+        app:layout_constraintVertical_bias="0.0">
 
         <TextView
-            android:id="@+id/textUsername"
-            android:layout_height="0dp"
+            android:id="@+id/messageTextViewUsername"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp"
             android:layout_marginRight="15dp"
+            android:layout_marginBottom="25dp"
             android:background="#FFFFFF"
-            android:text="Nazwa użytkownika"
+            android:text="@string/username"
             android:textAlignment="center"
             android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/messageText"
+            app:layout_constraintBottom_toTopOf="@+id/messageEditTextMsgBody"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed"
             app:layout_constraintVertical_weight="1"
-            app:layout_goneMarginRight="100dp"
-            />
+            app:layout_goneMarginRight="100dp" />
 
         <EditText
-            android:id="@+id/messageText"
-            android:layout_width="wrap_content"
+            android:id="@+id/messageEditTextMsgBody"
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginBottom="100dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
             android:height="150dp"
             android:background="#FFFFFF"
             android:ems="10"
             android:gravity="start|top"
-            android:hint="Wpisz wiadomość"
+            android:hint="@string/write_message"
             android:inputType="textMultiLine"
-            app:layout_constraintBottom_toTopOf="@+id/messageButtons"
+            app:layout_constraintBottom_toTopOf="@+id/messageButtonBack"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textUsername"
+            app:layout_constraintTop_toBottomOf="@+id/messageTextViewUsername"
             app:layout_constraintVertical_weight="10"
-            />
+            android:autofillHints="" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/messageButtons"
-            android:layout_height="0dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
+        <Button
+            android:id="@+id/messageButtonBack"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="70dp"
+            android:layout_marginEnd="25dp"
             android:layout_marginBottom="15dp"
+            android:text="@string/go_back"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toStartOf="@+id/messageButtonSend"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/messageText"
-            app:layout_constraintVertical_weight="1"
-            >
+            app:layout_constraintTop_toBottomOf="@+id/messageEditTextMsgBody" />
 
-            <Button
-                android:id="@+id/backMessage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Wstecz"
-                app:layout_constraintEnd_toStartOf="@+id/addBookButtonSendMessage"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                />
-
-            <Button
-                android:id="@+id/addBookButtonSendMessage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Wyślij wiadomość"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/backMessage"
-                app:layout_constraintTop_toTopOf="parent"
-                />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/addBookButtonSend"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/send_message"
+            app:layout_constraintBottom_toBottomOf="@+id/messageButtonBack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/messageButtonBack"
+            app:layout_constraintTop_toTopOf="@+id/messageButtonBack" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

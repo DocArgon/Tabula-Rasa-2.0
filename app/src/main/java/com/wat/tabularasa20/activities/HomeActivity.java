@@ -3,7 +3,6 @@ package com.wat.tabularasa20.activities;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,10 +25,10 @@ public class HomeActivity extends AppCompatActivity {
         Intent incoming_intent = getIntent();
         final String login_result = incoming_intent.getStringExtra("result");
 
-        TextView homeTV = findViewById(R.id.textView2);
+        TextView homeTV = findViewById(R.id.homeTextViewWelcome);
 
         // Przycisk wyloguj
-        final Button back = findViewById(R.id.back);
+        final Button back = findViewById(R.id.homeButtonBack);
         back.setOnClickListener(v -> {
             // TODO zmienić cofnij na wyloguj
             Preferences.saveCredentials(HomeActivity.this, new Preferences.LoginCredentials("", ""));
@@ -39,14 +38,14 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         // Przycisk dodaj książkę
-        final Button addBook = findViewById(R.id.addNewBook);
+        final Button addBook = findViewById(R.id.homeButtonAddNew);
         addBook.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, AddBookActivity.class);
             startActivity(intent);
         });
 
         // Przycisk czatu
-        final Button sendMessage = findViewById(R.id.myMessages);
+        final Button sendMessage = findViewById(R.id.homeButtonChat);
         sendMessage.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, ChatActivity.class);
             startActivity(intent);
