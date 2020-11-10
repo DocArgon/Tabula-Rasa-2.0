@@ -26,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /**
+         * Wywołanie sprawdzenia uprawnień
+         */
         int permission = ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET);
         if (permission != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET},1234);
@@ -35,29 +38,21 @@ public class MainActivity extends AppCompatActivity {
         final EditText textPass = findViewById(R.id.loginEditTextPassword);
         final Button buttonLogin = findViewById(R.id.loginButtonLogin);
 
-        // Akcja downloadera
+        // Akcja na koniec działania klasy downloader
         Downloader downloader = new Downloader();
         downloader.setOnResultListener(result -> {
-
-            //Toast.makeText(MainActivity.this, "is null " + (result == null), Toast.LENGTH_SHORT).show();
-            //Toast.makeText(MainActivity.this, "\"" + result + "\"", Toast.LENGTH_LONG).show();
-            //*
             if (Integer.parseInt(result.replaceAll("\"", "")) < 0) {
                 Snackbar.make(findViewById(R.id.loginButtonLogin), "Nieprawidłowy login lub hasło", Snackbar.LENGTH_LONG).show();
                 return;
             }
-            //*/
 
             Preferences.saveCredentials(MainActivity.this,
                     new Preferences.LoginCredentials(textName.getText(), textPass.getText()));
 
-            //*
             Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-            //intent.putExtra("name", textName.getText().toString());
             intent.putExtra("result", result.replaceAll("\"", ""));
             startActivity(intent);
-            finish(); // Klasy Downloader nie wykorzystywać 2 raz - wymaga reinicjalizacji dlatego kończę aktywność
-            //*/
+            finish();
         });
 
         // Akcja przycisku
@@ -77,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
             // TODO przerobić zapytanie
             if (!strname.isEmpty() && !strpass.isEmpty()) {
                 String strurl = Constants.LOGIN_CHECK_URL + String.format("/?login=%s&haslo=%s", strname, strpass);
-                //Toast.makeText(MainActivity.this, strurl, Toast.LENGTH_LONG).show();
                 downloader.execute(strurl);
             } else {
                 Snackbar.make(v, getString(R.string.login_fields_empty), Snackbar.LENGTH_LONG).show();
@@ -93,6 +87,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Metoda odbierająca z systemu informację o przyznaniu uprawnień
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == 1234) {

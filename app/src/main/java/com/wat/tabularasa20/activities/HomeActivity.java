@@ -1,5 +1,6 @@
 package com.wat.tabularasa20.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +19,7 @@ import com.wat.tabularasa20.utilities.Preferences;
 
 public class HomeActivity extends AppCompatActivity {
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,9 +38,11 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = getIntent();
         final String login_result = intent.getStringExtra("result");
 
+        // Pobranie informacji o kliencie
         Downloader downloader = new Downloader();
         downloader.setOnResultListener(result -> {
-            Toast.makeText(HomeActivity.this, result, Toast.LENGTH_LONG).show();
+            result = result.substring(1, result.length() - 1); //result.replace("[", "{").replace("]", "}");
+            //Toast.makeText(HomeActivity.this, result, Toast.LENGTH_LONG).show();
             JsonObject jsonObject = JsonParser.parseString(result).getAsJsonObject();
             homeTV.setText("Witaj " + jsonObject.get("Imie").getAsString() + " " + jsonObject.get("Nazwisko").getAsString());
         });
