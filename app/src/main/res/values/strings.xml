@@ -7,4 +7,26 @@
     <string name="password">Hasło</string>
     <string name="login">Login</string>
     <string name="access">Uzyskaj dostęp</string>
+    <string name="add_book">Dodaj książkę</string>
+    <string name="title">Tytuł</string>
+    <string name="author">Autor</string>
+    <string name="publish_year">Rok wydania</string>
+    <string name="publisher">Wydawca</string>
+    <string name="additional_info">Dodatkowe informacje</string>
+    <string name="go_back">Wstecz</string>
+    <string name="add">Dodaj</string>
+    <string name="write_message">Napisz wiadomość</string>
+    <string name="username">Nazwa użytkownika</string>
+    <string name="send_message">Wyślij wiadomość</string>
+    <string name="favourites">Moje ulubione</string>
+    <string name="search">Wyszukaj</string>
+    <string name="my_account">Moje konto</string>
+    <string name="hello_msg">Witaj</string>
+    <string name="edit_account_data">Edycja danych konta</string>
+    <string name="mailbox">Skrzynka odbiorcza</string>
+    <string name="user_search">Szukaj użytkownika</string>
+    <string name="my_products">Moje udostępnione książki</string>
+    <string name="my_favourites">Moja lista ulubionych</string>
+    <string name="search_book">Szukaj ksiązki</string>
+    <string name="logout">Wyloguj</string>
 </resources>
