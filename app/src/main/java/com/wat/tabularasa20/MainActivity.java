@@ -34,15 +34,15 @@ public class MainActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET},1234);
         }
 
-        final EditText textName = findViewById(R.id.loginEditTextName);
-        final EditText textPass = findViewById(R.id.loginEditTextPassword);
-        final Button buttonLogin = findViewById(R.id.loginButtonLogin);
+        final EditText textName = findViewById(R.id.mainEditTextName);
+        final EditText textPass = findViewById(R.id.mainEditTextPassword);
+        final Button buttonLogin = findViewById(R.id.mainButtonLogin);
 
         // Akcja na koniec działania klasy downloader
         Downloader downloader = new Downloader();
         downloader.setOnResultListener(result -> {
             if (Integer.parseInt(result.replaceAll("\"", "")) < 0) {
-                Snackbar.make(findViewById(R.id.loginButtonLogin), "Nieprawidłowy login lub hasło", Snackbar.LENGTH_LONG).show();
+                Snackbar.make(findViewById(R.id.mainButtonLogin), "Nieprawidłowy login lub hasło", Snackbar.LENGTH_LONG).show();
                 return;
             }
 

@@ -2,13 +2,15 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/favouriteBooksLayoutScreen"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	tools:context=".MainActivity">
+	tools:context=".MainActivity"
+	>
 
 
 	<TextView
-		android:id="@+id/addBookTextViewTitle"
+		android:id="@+id/registerTextViewTitle"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:background="#DDCBCB"
@@ -22,47 +24,75 @@
 		app:layout_constraintTop_toTopOf="parent"
 		/>
 
-	<TextView
-		android:id="@+id/searchText"
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:id="@+id/registerListLayoutMain"
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:hint="Wyszukaj"
-		android:textSize="24sp"
+		android:layout_height="0dp"
+		android:layout_marginStart="60dp"
+		android:layout_marginTop="60dp"
+		android:layout_marginEnd="60dp"
+		android:layout_marginBottom="60dp"
+		android:background="#F3EDED"
+		android:fadingEdge="horizontal|vertical"
+		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintHorizontal_bias="1.0"
+		app:layout_constraintHorizontal_bias="0.0"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/addBookTextViewTitle"
-		/>
-
-	<TextView
-		android:id="@+id/lineHorizontal1"
-		android:layout_width="match_parent"
-		android:layout_height="5dp"
-		android:background="#000000"
-		android:text="TextView"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintHorizontal_bias="1.0"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/searchText"
-		/>
-
-	<androidx.recyclerview.widget.RecyclerView
-		android:id="@+id/peoplelList"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		app:layout_constraintTop_toBottomOf="@+id/lineHorizontal1"
-		tools:layout_editor_absoluteX="182dp"
+		app:layout_constraintTop_toBottomOf="@+id/registerTextViewTitle"
 		>
 
-	</androidx.recyclerview.widget.RecyclerView>
+		<EditText
+			android:id="@+id/favouriteBooksEditTextSearchText"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="20dp"
+			android:layout_marginTop="20dp"
+			android:layout_marginEnd="20dp"
+			android:background="#FFFFFF"
+			android:inputType="textPersonName"
+			android:text="Wyszukaj"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintVertical_chainStyle="packed"
+			/>
 
-	<Button
-		android:id="@+id/back2"
-		android:layout_width="109dp"
-		android:layout_height="68dp"
-		android:text="Wstecz"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		/>
+		<TextView
+			android:id="@+id/productListTextViewDivider"
+			android:layout_width="match_parent"
+			android:layout_height="5dp"
+			android:background="#000000"
+			android:text="TextView"
+			app:layout_constraintBottom_toTopOf="@+id/productListRecyclerViewProductList"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/favouriteBooksEditTextSearchText"
+			/>
+
+		<androidx.recyclerview.widget.RecyclerView
+			android:id="@+id/productListRecyclerViewProductList"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="20dp"
+			android:layout_marginTop="10dp"
+			android:layout_marginEnd="20dp"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/productListTextViewDivider"
+			>
+
+		</androidx.recyclerview.widget.RecyclerView>
+
+		<Button
+			android:id="@+id/productListButtonBack"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="20dp"
+			android:layout_marginBottom="20dp"
+			android:text="Wstecz"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			/>
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

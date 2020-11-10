@@ -10,7 +10,7 @@
 
 
     <TextView
-        android:id="@+id/addBookTextViewTitle"
+        android:id="@+id/registerTextViewTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#DDCBCB"
@@ -25,7 +25,7 @@
         />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/addBookLayoutMain"
+        android:id="@+id/registerListLayoutMain"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="60dp"
@@ -38,11 +38,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addBookTextViewTitle"
+        app:layout_constraintTop_toBottomOf="@+id/registerTextViewTitle"
         >
 
         <EditText
-            android:id="@+id/addBookEditTextLogin"
+            android:id="@+id/registerEditTextLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -77,7 +77,7 @@
             app:layout_constraintBottom_toTopOf="@+id/addBookEditTextYear"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addBookEditTextLogin"
+            app:layout_constraintTop_toBottomOf="@+id/registerEditTextLogin"
             />
 
         <EditText
@@ -148,15 +148,6 @@
             >
 
             <Button
-                android:id="@+id/addBookButtonSendMessage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Wyślij"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                />
-
-            <Button
                 android:id="@+id/addBookButtonBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -164,6 +155,16 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 />
+
+            <Button
+                android:id="@+id/registerButtonSendForm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wyślij"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

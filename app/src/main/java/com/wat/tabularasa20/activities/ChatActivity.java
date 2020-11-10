@@ -13,7 +13,7 @@ public class ChatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
 
-        final Button back = findViewById(R.id.backMessage);
+        final Button back = findViewById(R.id.messageButtonBack);
         back.setOnClickListener(v -> finish());
     }
 }
