@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.widget.Button;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 import com.google.android.material.snackbar.Snackbar;
+import com.wat.tabularasa20.activities.HomeActivity;
 import com.wat.tabularasa20.data.Constants;
 import com.wat.tabularasa20.utilities.Downloader;
 import com.wat.tabularasa20.utilities.Network;
@@ -41,9 +43,9 @@ public class MainActivity extends AppCompatActivity {
             Preferences.saveCredentials(MainActivity.this,
                     new Preferences.LoginCredentials(textName.getText(), textPass.getText()));
 
-            Toast.makeText(MainActivity.this, "is null " + (result == null), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(MainActivity.this, "is null " + (result == null), Toast.LENGTH_SHORT).show();
             Toast.makeText(MainActivity.this, "\"" + result + "\"", Toast.LENGTH_LONG).show();
-            /*
+            //*
             Intent intent = new Intent(MainActivity.this, HomeActivity.class);
             intent.putExtra("name", textName.getText().toString());
             intent.putExtra("result", result);
@@ -64,11 +66,9 @@ public class MainActivity extends AppCompatActivity {
 
             // TODO przerobić zapytanie
             if (!strname.isEmpty() && !strpass.isEmpty()) {
-                String strurl = Constants.LOGIN_CHECK_URL + String.format("/?login=\"%s\"&haslo=\"%s\"", strname, strpass);
-                //downloader.execute("http://cfbhkldsnmvrtwzx.neverssl.com/online");
-                //downloader.execute("https://6ztwzizmp2.execute-api.eu-west-1.amazonaws.com/v1");
-                Toast.makeText(MainActivity.this, strurl, Toast.LENGTH_LONG).show();
-				downloader.execute(strurl);
+                String strurl = Constants.LOGIN_CHECK_URL + String.format("/?login=%s&haslo=%s", strname, strpass);
+                //Toast.makeText(MainActivity.this, strurl, Toast.LENGTH_LONG).show();
+                downloader.execute(strurl);
             } else {
                 Snackbar.make(v, getString(R.string.login_fields_empty), Snackbar.LENGTH_LONG).show();
             }
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         if (credentials != null) {
             textName.setText(credentials.login);
             textPass.setText(credentials.password);
-            buttonLogin.performClick();
+            //buttonLogin.performClick();
         }
     }
 
