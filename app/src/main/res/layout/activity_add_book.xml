@@ -121,7 +121,7 @@
             />
 
         <Button
-            android:id="@+id/buttonRegisterAccount"
+            android:id="@+id/sendMessage"
             android:layout_width="100dp"
             android:layout_height="70dp"
             android:text="Wyślij"

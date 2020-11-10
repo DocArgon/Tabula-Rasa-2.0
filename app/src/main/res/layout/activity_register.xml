@@ -148,7 +148,7 @@
             />
 
         <Button
-            android:id="@+id/buttonRegisterAccount"
+            android:id="@+id/sendMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
