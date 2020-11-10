@@ -5,8 +5,7 @@
 	android:id="@+id/homeLayoutScreen"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	tools:context=".MainActivity"
-	>
+	tools:context=".MainActivity">
 
 	<TextView
 		android:id="@+id/registerTextViewTitle"
@@ -15,53 +14,50 @@
 		android:background="#DDCBCB"
 		android:paddingBottom="5dp"
 		android:singleLine="false"
-		android:text="Moje konto"
+		android:text="@string/my_account"
 		android:textAlignment="center"
 		android:textSize="30sp"
 		android:textStyle="bold"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent"
-		/>
+		app:layout_constraintTop_toTopOf="parent"/>
 
 	<TextView
 		android:id="@+id/homeTextViewWelcome"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:text="Witaj"
+		android:text="@string/hello_msg"
+		android:textSize="22sp"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/registerTextViewTitle"
-		/>
+		app:layout_constraintTop_toBottomOf="@+id/registerTextViewTitle" />
 
 	<androidx.constraintlayout.widget.ConstraintLayout
 		android:id="@+id/registerListLayoutMain"
-		android:layout_width="match_parent"
+		android:layout_width="0dp"
 		android:layout_height="0dp"
-		android:layout_marginStart="60dp"
-		android:layout_marginTop="60dp"
-		android:layout_marginEnd="60dp"
-		android:layout_marginBottom="60dp"
+		android:layout_marginStart="40dp"
+		android:layout_marginTop="40dp"
+		android:layout_marginEnd="40dp"
+		android:layout_marginBottom="40dp"
 		android:background="#F3EDED"
 		android:fadingEdge="horizontal|vertical"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/registerTextViewTitle"
-		>
+		app:layout_constraintTop_toBottomOf="@+id/registerTextViewTitle">
 
 		<Button
 			android:id="@+id/homeButtonEditInfo"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
 			android:layout_marginStart="10dp"
-			android:layout_marginTop="20dp"
+			android:layout_marginTop="15dp"
 			android:layout_marginEnd="10dp"
-			android:text="Edycja danych"
+			android:text="@string/edit_account_data"
 			app:layout_constraintBottom_toTopOf="@+id/homeButtonMyMessages"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toTopOf="parent"
-			/>
+			app:layout_constraintTop_toTopOf="parent" />
 
 		<!--
 		TO JEST WYMAGANE, ALE POTEM SIE DOROBI
@@ -79,97 +75,106 @@
 
 		<Button
 			android:id="@+id/homeButtonMyMessages"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
 			android:layout_marginStart="10dp"
 			android:layout_marginTop="10dp"
 			android:layout_marginEnd="10dp"
-			android:text="Napisz wiadomość"
+			android:text="@string/write_message"
 			app:layout_constraintBottom_toTopOf="@+id/homeButtonStartConversation"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/homeButtonEditInfo"
-			/>
+			app:layout_constraintTop_toBottomOf="@+id/homeButtonEditInfo" />
 
 		<Button
 			android:id="@+id/homeButtonStartConversation"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
 			android:layout_marginStart="10dp"
 			android:layout_marginTop="10dp"
 			android:layout_marginEnd="10dp"
-			android:text="Szukaj użytkownika"
+			android:text="@string/user_search"
 			app:layout_constraintBottom_toTopOf="@+id/homeButtonMySharedBooks"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/homeButtonMyMessages"
-			/>
+			app:layout_constraintTop_toBottomOf="@+id/homeButtonMyMessages" />
 
 		<Button
 			android:id="@+id/homeButtonMySharedBooks"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
 			android:layout_marginStart="10dp"
 			android:layout_marginTop="10dp"
 			android:layout_marginEnd="10dp"
-			android:text="Moje udostępnione książki"
+			android:text="@string/my_products"
 			app:layout_constraintBottom_toTopOf="@+id/homeButtonMyFavouriteBooks"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/homeButtonStartConversation"
-			/>
+			app:layout_constraintTop_toBottomOf="@+id/homeButtonStartConversation" />
 
 		<Button
 			android:id="@+id/homeButtonMyFavouriteBooks"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
 			android:layout_marginStart="10dp"
 			android:layout_marginTop="10dp"
 			android:layout_marginEnd="10dp"
-			android:text="Moja lista ulubionych"
+			android:text="@string/my_favourites"
 			app:layout_constraintBottom_toTopOf="@+id/homeButtonAddNewBook"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/homeButtonMySharedBooks"
-			/>
+			app:layout_constraintTop_toBottomOf="@+id/homeButtonMySharedBooks" />
 
 		<Button
 			android:id="@+id/homeButtonAddNewBook"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
 			android:layout_marginStart="10dp"
 			android:layout_marginTop="10dp"
 			android:layout_marginEnd="10dp"
-			android:text="Dodaj nową książkę"
+			android:text="@string/add_book"
 			app:layout_constraintBottom_toTopOf="@+id/homeButtonSearchForBook"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/homeButtonMyFavouriteBooks"
-			/>
+			app:layout_constraintTop_toBottomOf="@+id/homeButtonMyFavouriteBooks" />
 
 		<Button
 			android:id="@+id/homeButtonSearchForBook"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
 			android:layout_marginStart="10dp"
 			android:layout_marginTop="10dp"
 			android:layout_marginEnd="10dp"
-			android:text="Szukaj ksiązki"
+			android:layout_marginBottom="40dp"
+			android:text="@string/search_book"
+			app:layout_constraintBottom_toTopOf="@+id/homeButtonLogout"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/homeButtonAddNewBook"
-			/>
+			app:layout_constraintTop_toBottomOf="@+id/homeButtonAddNewBook" />
 
 		<Button
 			android:id="@+id/homeButtonLogout"
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
 			android:layout_marginStart="20dp"
+			android:layout_marginEnd="25dp"
 			android:layout_marginBottom="20dp"
-			android:text="Wyloguj"
+			android:text="@string/logout"
 			app:layout_constraintBottom_toBottomOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			/>
+			app:layout_constraintEnd_toStartOf="@+id/homeButtonClose"
+			app:layout_constraintStart_toStartOf="parent" />
+
+		<Button
+			android:id="@+id/homeButtonClose"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="25dp"
+			android:layout_marginEnd="20dp"
+			android:text="@string/close"
+			app:layout_constraintBottom_toBottomOf="@+id/homeButtonLogout"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toEndOf="@+id/homeButtonLogout"
+			app:layout_constraintTop_toTopOf="@+id/homeButtonLogout" />
 
 	</androidx.constraintlayout.widget.ConstraintLayout>
 

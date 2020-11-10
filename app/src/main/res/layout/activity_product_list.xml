@@ -5,9 +5,7 @@
     android:id="@+id/productListLayoutScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    >
-
+    tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/registerTextViewTitle"
@@ -16,29 +14,27 @@
         android:background="#DDCBCB"
         android:paddingBottom="5dp"
         android:singleLine="false"
-        android:text="Tytuły"
+        android:text="@string/title"
         android:textAlignment="center"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/registerListLayoutMain"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="40dp"
         android:background="#F3EDED"
         android:fadingEdge="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerTextViewTitle"
-        >
+        app:layout_constraintTop_toBottomOf="@+id/registerTextViewTitle">
 
         <EditText
             android:id="@+id/productListEditTextSearchText"
@@ -47,49 +43,51 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
+            android:autofillHints=""
             android:background="#FFFFFF"
+            android:hint="@string/name"
             android:inputType="textPersonName"
-            android:text="Name"
+            android:text="@string/name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/productListTextViewDivider"
             android:layout_width="match_parent"
             android:layout_height="5dp"
+            android:layout_marginTop="10dp"
             android:background="#000000"
-            android:text="TextView"
             app:layout_constraintBottom_toTopOf="@+id/productListRecyclerViewProductList"
-            app:layout_constraintTop_toBottomOf="@+id/productListEditTextSearchText"
-            tools:layout_editor_absoluteX="-16dp"
-            />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/productListEditTextSearchText" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/productListRecyclerViewProductList"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
             android:background="#FFFFFF"
+            app:layout_constraintBottom_toTopOf="@+id/productListButtonBack"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/productListTextViewDivider"
-            >
+            app:layout_constraintTop_toBottomOf="@+id/productListTextViewDivider">
 
         </androidx.recyclerview.widget.RecyclerView>
 
         <Button
             android:id="@+id/productListButtonBack"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginBottom="20dp"
-            android:text="Wstecz"
+            android:text="@string/go_back"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            />
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

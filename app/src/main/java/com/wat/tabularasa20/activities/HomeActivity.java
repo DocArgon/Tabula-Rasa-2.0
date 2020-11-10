@@ -3,6 +3,7 @@ package com.wat.tabularasa20.activities;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -50,6 +51,9 @@ public class HomeActivity extends AppCompatActivity {
             Intent intent = new Intent(HomeActivity.this, ChatActivity.class);
             startActivity(intent);
         });
+
+        final Button close = findViewById(R.id.homeButtonClose);
+        close.setOnClickListener(v -> finishAffinity());
 
         // Pobranie informacji o kliencie
         Downloader downloader = new Downloader();

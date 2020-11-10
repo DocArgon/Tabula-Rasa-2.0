@@ -29,4 +29,13 @@
     <string name="my_favourites">Moja lista ulubionych</string>
     <string name="search_book">Szukaj ksiązki</string>
     <string name="logout">Wyloguj</string>
+    <string name="register">Rejestracja</string>
+    <string name="password_again">Powtórz hasło</string>
+    <string name="name">Imię</string>
+    <string name="surename">Nazwisko</string>
+    <string name="phone">Numer telefonu</string>
+    <string name="birthday">Data urodzenia</string>
+    <string name="register_info">Oświadczam, że zapoznałem się z Warunkami funkcjonowania serwisu i je akceptuję</string>
+    <string name="create_account">Załóż konto</string>
+    <string name="close">Zamknij</string>
 </resources>
