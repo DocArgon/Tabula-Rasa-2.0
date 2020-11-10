@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -63,6 +64,10 @@ public class MainActivity extends AppCompatActivity {
                 Snackbar.make(v, getString(R.string.network_not_conn), Snackbar.LENGTH_LONG).show();
                 return;
             }
+            
+            if (downloader.getStatus() == AsyncTask.Status.RUNNING) {
+            	return;
+			}
 
             // TODO przerobić zapytanie
             if (!strname.isEmpty() && !strpass.isEmpty()) {
