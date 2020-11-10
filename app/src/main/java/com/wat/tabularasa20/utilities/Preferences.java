@@ -18,6 +18,8 @@ public class Preferences {
         }
     }
 
+
+
     public static void saveCredentials (Context context, LoginCredentials credentials) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("LoginData", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
