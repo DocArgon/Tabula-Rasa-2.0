@@ -64,8 +64,8 @@ public class MainActivity extends AppCompatActivity {
                 Snackbar.make(v, getString(R.string.network_not_conn), Snackbar.LENGTH_LONG).show();
                 return;
             }
-            
-            if (downloader.getStatus() == AsyncTask.Status.RUNNING) {
+
+            if (downloader.getStatus() == AsyncTask.Status.RUNNING || downloader.getStatus() == AsyncTask.Status.FINISHED) {
             	return;
 			}
 
