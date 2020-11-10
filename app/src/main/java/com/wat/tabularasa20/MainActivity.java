@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         if (credentials != null) {
             textName.setText(credentials.login);
             textPass.setText(credentials.password);
-            //buttonLogin.performClick();
+            buttonLogin.performClick();
         }
     }
 
