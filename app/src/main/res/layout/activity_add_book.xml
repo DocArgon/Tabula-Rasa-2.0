@@ -38,7 +38,7 @@
         app:layout_constraintTop_toBottomOf="@+id/addBookTextViewTitle">
 
         <EditText
-            android:id="@+id/addBookEditTextLogin"
+            android:id="@+id/addBookEditTextTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -72,7 +72,7 @@
             app:layout_constraintBottom_toTopOf="@+id/addBookEditTextYear"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addBookEditTextLogin" />
+            app:layout_constraintTop_toBottomOf="@+id/addBookEditTextTitle" />
 
         <EditText
             android:id="@+id/addBookEditTextYear"
@@ -86,7 +86,7 @@
             android:ems="10"
             android:gravity="top"
             android:hint="@string/publish_year"
-            android:inputType="textPersonName"
+            android:inputType="date"
             app:layout_constraintBottom_toTopOf="@+id/addBookEditTextPublisher"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

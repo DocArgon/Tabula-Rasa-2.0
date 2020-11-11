@@ -36,9 +36,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /**
-         * Wywołanie sprawdzenia uprawnień
-         */
+        //Wywołanie sprawdzenia uprawnień
         int permission = ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET);
         if (permission != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET},1234);
