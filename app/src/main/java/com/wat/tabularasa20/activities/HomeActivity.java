@@ -29,7 +29,7 @@ public class HomeActivity extends AppCompatActivity {
         TextView homeTV = findViewById(R.id.homeTextViewWelcome);
         final Button addBook = findViewById(R.id.homeButtonAddNewBook);
         final Button sendMessage = findViewById(R.id.homeButtonMyMessages);
-        final Button back = findViewById(R.id.homeButtonLogout);
+        final Button logout = findViewById(R.id.homeButtonLogout);
         final Button close = findViewById(R.id.homeButtonClose);
 
         // Pobranie informacji o kliencie
@@ -43,8 +43,7 @@ public class HomeActivity extends AppCompatActivity {
         downloader.execute(Constants.ACCOUNT_GET_URL + String.format("?id_klienta=%s", login_result));
 
         // Przycisk wyloguj
-        back.setOnClickListener(v -> {
-            // TODO zmienić cofnij na wyloguj
+        logout.setOnClickListener(v -> {
             Preferences.saveCredentials(HomeActivity.this, new Preferences.LoginCredentials("", ""));
             Intent intent = new Intent(HomeActivity.this, MainActivity.class);
             startActivity(intent);

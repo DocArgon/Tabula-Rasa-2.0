@@ -33,8 +33,7 @@ public class AddBookActivity extends AppCompatActivity {
         add.setOnClickListener(v -> {
             if (title.getText().toString().isEmpty() || author.getText().toString().isEmpty() ||
                     publisher.getText().toString().isEmpty()) {
-                // TODO przenieść so strings
-                Snackbar.make(v, "Wymagane pola są puste", Snackbar.LENGTH_LONG).show();
+                Snackbar.make(v, getString(R.string.fields_empty), Snackbar.LENGTH_LONG).show();
                 return;
             }
             Gson gson = new Gson();

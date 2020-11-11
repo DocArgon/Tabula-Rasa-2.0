@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 downloader.setOnResultListener(this::login);
                 downloader.execute(strurl);
             } else {
-                Snackbar.make(v, getString(R.string.login_fields_empty), Snackbar.LENGTH_LONG).show();
+                Snackbar.make(v, getString(R.string.fields_empty), Snackbar.LENGTH_LONG).show();
             }
         });
 

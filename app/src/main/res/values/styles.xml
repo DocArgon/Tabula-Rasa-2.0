@@ -1,14 +1,22 @@
 <resources>
+    <!-- Styl wszystkich ekranów aplikacji poza 2 poniższymi -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <!-- Styl ekranu logowania -->
     <style name="AppTheme.Login" parent="Theme.AppCompat.Light.DarkActionBar" />
-    <style name="AppTheme.Splash" parent="@style/Theme.AppCompat.Light.NoActionBar">
+    <!-- Styl ekranu powittalnego -->
+    <style name="AppTheme.Splash" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <!-- Kolorowy zaokrąglony przycisk -->
+    <style name="Tabularasa.Button.Colored" parent="@style/Widget.AppCompat.Button.Colored">
+        <item name="android:background">@drawable/ripple</item>
     </style>
 </resources>
