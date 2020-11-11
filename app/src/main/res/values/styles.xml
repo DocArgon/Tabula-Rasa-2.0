@@ -17,6 +17,6 @@
 
     <!-- Kolorowy zaokrąglony przycisk -->
     <style name="Tabularasa.Button.Colored" parent="@style/Widget.AppCompat.Button.Colored">
-        <item name="android:background">@drawable/ripple</item>
+        <item name="android:background">@drawable/ripple_button</item>
     </style>
 </resources>

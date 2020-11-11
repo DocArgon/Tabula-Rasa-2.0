@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
     <TextView
         android:id="@+id/accessRegisterTextViewTitle"
         android:layout_width="match_parent"
@@ -27,9 +26,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="40dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="20dp"
         android:background="#F3EDED"
         android:fadingEdge="horizontal|vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -37,17 +36,15 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/accessRegisterTextViewTitle"
-        app:layout_constraintVertical_bias="0.0"
-        >
+        app:layout_constraintVertical_bias="0.0">
 
         <EditText
             android:id="@+id/accessRegisterEditTextLogin"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginBottom="0"
             android:autofillHints="Login"
             android:background="#FFFFFF"
             android:ems="10"
@@ -58,35 +55,32 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed"
-            />
+            app:layout_constraintVertical_chainStyle="packed" />
 
         <EditText
             android:id="@+id/accessRegisterEditTextEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginBottom="0"
+            android:autofillHints=""
             android:background="#FFFFFF"
             android:ems="10"
-            android:hint="Adres email"
+            android:hint="@string/email"
             android:inputType="textEmailAddress"
             app:layout_constraintBottom_toTopOf="@+id/accessRegisterEditTextPassword"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/accessRegisterEditTextLogin"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/accessRegisterEditTextLogin" />
 
         <EditText
             android:id="@+id/accessRegisterEditTextPassword"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginBottom="0"
             android:autofillHints="Password"
             android:background="#FFFFFF"
             android:ems="10"
@@ -96,17 +90,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/accessRegisterEditTextEmail"
-            />
+            app:layout_constraintTop_toBottomOf="@id/accessRegisterEditTextEmail" />
 
         <EditText
             android:id="@+id/accessRegisterEditTextPasswordRepeat"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginBottom="0"
             android:autofillHints="Password"
             android:background="#FFFFFF"
             android:ems="10"
@@ -116,17 +108,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/accessRegisterEditTextPassword"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/accessRegisterEditTextPassword" />
 
         <EditText
             android:id="@+id/accessRegisterEditTextFirstName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginBottom="0"
             android:autofillHints=""
             android:background="#FFFFFF"
             android:ems="10"
@@ -136,15 +126,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/accessRegisterEditTextPasswordRepeat"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/accessRegisterEditTextPasswordRepeat" />
 
         <EditText
             android:id="@+id/accessRegisterEditTextLastName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
             android:autofillHints=""
             android:background="#FFFFFF"
@@ -155,17 +144,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/accessRegisterEditTextFirstName"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/accessRegisterEditTextFirstName" />
 
         <EditText
             android:id="@+id/accessRegisterEditTextCity"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginBottom="0"
             android:autofillHints=""
             android:background="#FFFFFF"
             android:ems="10"
@@ -175,17 +162,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/accessRegisterEditTextLastName"
-            />
+            app:layout_constraintTop_toBottomOf="@id/accessRegisterEditTextLastName" />
 
         <EditText
             android:id="@+id/accessRegisterEditTextPhoneNumber"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginBottom="0"
             android:autofillHints=""
             android:background="#FFFFFF"
             android:ems="10"
@@ -195,17 +180,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/accessRegisterEditTextCity"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/accessRegisterEditTextCity" />
 
         <EditText
             android:id="@+id/accessRegisterEditTextBirthDate"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginBottom="0"
             android:autofillHints=""
             android:background="#FFFFFF"
             android:ems="10"
@@ -215,8 +198,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/accessRegisterEditTextPhoneNumber"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/accessRegisterEditTextPhoneNumber" />
 
         <CheckBox
             android:id="@+id/accessRegisterCheckoxTermsOfService"
@@ -229,8 +211,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/accessRegisterEditTextBirthDate"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/accessRegisterEditTextBirthDate" />
 
         <Button
             android:id="@+id/accessRegisterButtonSendForm"
@@ -242,8 +223,7 @@
             android:text="@string/create_account"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            />
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

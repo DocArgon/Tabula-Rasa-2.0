@@ -1,6 +1,5 @@
 package com.wat.tabularasa20.activities;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -16,7 +15,6 @@ import com.wat.tabularasa20.utilities.Preferences;
 
 public class HomeActivity extends AppCompatActivity {
 
-    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +28,7 @@ public class HomeActivity extends AppCompatActivity {
         final Button sendMessage = findViewById(R.id.homeAccountButtonMyMessages);
         final Button logout = findViewById(R.id.homeAccountButtonLogout);
         final Button close = findViewById(R.id.homeAccountButtonClose);
+        final Button searchBook = findViewById(R.id.homeAccountButtonSearchForBook);
 
         // Pobranie informacji o kliencie
         Downloader downloader = new Downloader();
@@ -37,7 +36,7 @@ public class HomeActivity extends AppCompatActivity {
             result = result.substring(1, result.length() - 1);
             //Toast.makeText(HomeActivity.this, result, Toast.LENGTH_LONG).show();
             JsonObject jsonObject = JsonParser.parseString(result).getAsJsonObject();
-            homeTV.setText("Witaj " + jsonObject.get("Imie").getAsString() + " " + jsonObject.get("Nazwisko").getAsString());
+            homeTV.setText(getString(R.string.hello_msg_params,jsonObject.get("Imie").getAsString(), jsonObject.get("Nazwisko").getAsString()));
         });
         downloader.execute(Constants.ACCOUNT_GET_URL + String.format("?id_klienta=%s", login_result));
 
@@ -58,6 +57,12 @@ public class HomeActivity extends AppCompatActivity {
         // Przycisk czatu
         sendMessage.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, ChatActivity.class);
+            startActivity(intent);
+        });
+
+        // Przycisk szukaj książki
+        searchBook.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, ProductListActivity.class);
             startActivity(intent);
         });
 
