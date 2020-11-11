@@ -100,9 +100,6 @@ public class MainActivity extends AppCompatActivity {
             case R.id.access_loginMenuCreateAccount:
                 startActivity(new Intent(MainActivity.this, RegisterActivity.class));
                 return true;
-            case R.id.access_loginMenuAnotherID:
-                Toast.makeText(MainActivity.this, "kliknięto niewiadomo co", Toast.LENGTH_LONG).show();
-                return true;
             case R.id.access_loginMenuCloseApp:
                 finishAffinity();
             default:

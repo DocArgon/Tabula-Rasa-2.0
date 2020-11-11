@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
         android:id="@+id/access_loginMenuCreateAccount"
-        android:title="Utwórz konto" />
-    <item
-        android:id="@+id/access_loginMenuAnotherID"
-        android:title="Jakiś tam wpis" />
+        android:title="@string/create_account" />
     <item
         android:id="@+id/access_loginMenuCloseApp"
-        android:title="Zamknij aplikację" />
+        android:title="@string/close" />
 </menu>
