@@ -18,9 +18,9 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_product_list);
+        setContentView(R.layout.activity_products_browse);
 
-        Button back = findViewById(R.id.productListButtonBack);
+        Button back = findViewById(R.id.messagesBrowseButtonBack);
         back.setOnClickListener(v -> finish());
 
         ArrayList<ProductListAdapter.ProductListDescription> animalNames = new ArrayList<>();
@@ -34,7 +34,7 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
         animalNames.add(new ProductListAdapter.ProductListDescription("Book 8000"));
         animalNames.add(new ProductListAdapter.ProductListDescription("Book over 9000", true));
 
-        RecyclerView recyclerView = findViewById(R.id.productListRecyclerViewProductList);
+        RecyclerView recyclerView = findViewById(R.id.messagesBrowseRecyclerViewMessagesList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new ProductListAdapter(this, animalNames);
         adapter.setClickListener(this);

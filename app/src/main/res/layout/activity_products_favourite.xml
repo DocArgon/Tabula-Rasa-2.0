@@ -2,13 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
-	android:id="@+id/favouriteBooksLayoutScreen"
+	android:id="@+id/productsFavouriteLayoutScreen"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	tools:context=".MainActivity">
 
 	<TextView
-		android:id="@+id/favouriteBooksTextViewTitle"
+		android:id="@+id/productsFavouriteTextViewTitle"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:background="#DDCBCB"
@@ -22,7 +22,7 @@
 		app:layout_constraintTop_toTopOf="parent"/>
 
 	<androidx.constraintlayout.widget.ConstraintLayout
-		android:id="@+id/favouriteBooksListLayoutMain"
+		android:id="@+id/productsFavouriteListLayoutMain"
 		android:layout_width="match_parent"
 		android:layout_height="0dp"
 		android:layout_marginStart="40dp"
@@ -35,10 +35,10 @@
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintHorizontal_bias="0.0"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/favouriteBooksTextViewTitle">
+		app:layout_constraintTop_toBottomOf="@+id/productsFavouriteTextViewTitle">
 
 		<EditText
-			android:id="@+id/favouriteBooksEditTextSearchText"
+			android:id="@+id/productsFavouriteEditTextSearchText"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_marginStart="20dp"
@@ -54,33 +54,33 @@
 			app:layout_constraintVertical_chainStyle="packed" />
 
 		<TextView
-			android:id="@+id/favouriteBooksTextViewDivider"
+			android:id="@+id/productsFavouriteTextViewDivider"
 			android:layout_width="match_parent"
 			android:layout_height="5dp"
 			android:layout_marginTop="10dp"
 			android:background="#000000"
-			app:layout_constraintBottom_toTopOf="@+id/favouriteBooksRecyclerViewProductList"
+			app:layout_constraintBottom_toTopOf="@+id/productsFavouriteRecyclerViewProductList"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/favouriteBooksEditTextSearchText" />
+			app:layout_constraintTop_toBottomOf="@+id/productsFavouriteEditTextSearchText" />
 
 		<androidx.recyclerview.widget.RecyclerView
-			android:id="@+id/favouriteBooksRecyclerViewProductList"
+			android:id="@+id/productsFavouriteRecyclerViewProductList"
 			android:layout_width="0dp"
 			android:layout_height="0dp"
 			android:layout_marginStart="20dp"
 			android:layout_marginTop="10dp"
 			android:layout_marginEnd="20dp"
 			android:layout_marginBottom="10dp"
-			app:layout_constraintBottom_toTopOf="@+id/favouriteBooksButtonBack"
+			app:layout_constraintBottom_toTopOf="@+id/productsFavouriteButtonBack"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/favouriteBooksTextViewDivider">
+			app:layout_constraintTop_toBottomOf="@+id/productsFavouriteTextViewDivider">
 
 		</androidx.recyclerview.widget.RecyclerView>
 
 		<Button
-			android:id="@+id/favouriteBooksButtonBack"
+			android:id="@+id/productsFavouriteButtonBack"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_marginStart="20dp"

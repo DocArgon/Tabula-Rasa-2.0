@@ -2,13 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/addBookLayoutScreen"
+    android:id="@+id/productsAddLayoutScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/addBookTextViewTitle"
+        android:id="@+id/productsAddTextViewTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#DDCBCB"
@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/addBookListLayoutMain"
+        android:id="@+id/productsAddListLayoutMain"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="40dp"
@@ -35,10 +35,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addBookTextViewTitle">
+        app:layout_constraintTop_toBottomOf="@+id/productsAddTextViewTitle">
 
         <EditText
-            android:id="@+id/addBookEditTextTitle"
+            android:id="@+id/productsAddEditTextTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -50,14 +50,14 @@
             android:gravity="top"
             android:hint="@string/title"
             android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/addBookEditTextAuthor"
+            app:layout_constraintBottom_toTopOf="@+id/productsAddEditTextAuthor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
         <EditText
-            android:id="@+id/addBookEditTextAuthor"
+            android:id="@+id/productsAddEditTextAuthor"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -69,13 +69,13 @@
             android:gravity="top"
             android:hint="@string/author"
             android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/addBookEditTextYear"
+            app:layout_constraintBottom_toTopOf="@+id/productsAddEditTextYear"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addBookEditTextTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/productsAddEditTextTitle" />
 
         <EditText
-            android:id="@+id/addBookEditTextYear"
+            android:id="@+id/productsAddEditTextYear"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -87,13 +87,13 @@
             android:gravity="top"
             android:hint="@string/publish_year"
             android:inputType="date"
-            app:layout_constraintBottom_toTopOf="@+id/addBookEditTextPublisher"
+            app:layout_constraintBottom_toTopOf="@+id/productsAddEditTextPublisher"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addBookEditTextAuthor" />
+            app:layout_constraintTop_toBottomOf="@+id/productsAddEditTextAuthor" />
 
         <EditText
-            android:id="@+id/addBookEditTextPublisher"
+            android:id="@+id/productsAddEditTextPublisher"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -105,13 +105,13 @@
             android:gravity="top"
             android:hint="@string/publisher"
             android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/addBookEditTextAdditionalInfo"
+            app:layout_constraintBottom_toTopOf="@+id/productsAddEditTextAdditionalInfo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addBookEditTextYear" />
+            app:layout_constraintTop_toBottomOf="@+id/productsAddEditTextYear" />
 
         <EditText
-            android:id="@+id/addBookEditTextAdditionalInfo"
+            android:id="@+id/productsAddEditTextAdditionalInfo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -124,13 +124,13 @@
             android:hint="@string/additional_info"
             android:inputType="textMultiLine"
             android:lines="5"
-            app:layout_constraintBottom_toTopOf="@+id/addBookButtonBack"
+            app:layout_constraintBottom_toTopOf="@+id/productsAddButtonBack"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addBookEditTextPublisher" />
+            app:layout_constraintTop_toBottomOf="@+id/productsAddEditTextPublisher" />
 
         <Button
-            android:id="@+id/addBookButtonBack"
+            android:id="@+id/productsAddButtonBack"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -138,20 +138,20 @@
             android:layout_marginBottom="20dp"
             android:text="@string/go_back"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/addBookButtonSendForm"
+            app:layout_constraintEnd_toStartOf="@+id/productsAddButtonSendForm"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/addBookButtonSendForm"
+            android:id="@+id/productsAddButtonSendForm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:text="@string/add"
-            app:layout_constraintBottom_toBottomOf="@+id/addBookButtonBack"
+            app:layout_constraintBottom_toBottomOf="@+id/productsAddButtonBack"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/addBookButtonBack"
-            app:layout_constraintTop_toTopOf="@+id/addBookButtonBack" />
+            app:layout_constraintStart_toEndOf="@+id/productsAddButtonBack"
+            app:layout_constraintTop_toTopOf="@+id/productsAddButtonBack" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

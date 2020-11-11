@@ -43,4 +43,6 @@
     <string name="email">Adres email</string>
     <string name="street">Ulica (ew. nr mieszkania)</string>
     <string name="edit">Edytuj</string>
+    <string name="messages_browse_title">Przeglądaj wiadomości</string>
+    <string name="messages_new">Nowa wiadomość</string>
 </resources>

@@ -2,27 +2,28 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/messageListLayoutScreen"
+    android:id="@+id/messagesBrowseLayoutScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/messageTextViewTitle"
+        android:id="@+id/messagesBrowseTextViewTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#DDCBCB"
         android:paddingBottom="5dp"
         android:singleLine="false"
-        android:text="@string/write_message"
+        android:text="@string/messages_browse_title"
         android:textAlignment="center"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/messageListLayoutMain"
+        android:id="@+id/messagesBrowseListLayoutMain"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="40dp"
@@ -33,70 +34,60 @@
         android:fadingEdge="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/messageTextViewTitle"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toBottomOf="@+id/messagesBrowseTextViewTitle">
 
-        <TextView
-            android:id="@+id/messageTextViewUsername"
-            android:layout_width="0dp"
+        <EditText
+            android:id="@+id/messagesBrowseEditTextSearchText"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
+            android:autofillHints=""
             android:background="#FFFFFF"
-            android:text="@string/name"
-            android:textAlignment="center"
-            android:textSize="24sp"
-            android:textStyle="bold"
+            android:hint="@string/title"
+            android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/messageEditTextMessage"
-            android:layout_width="0dp"
+        <TextView
+            android:id="@+id/messagesBrowseTextViewDivider"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_marginTop="10dp"
+            android:background="#000000"
+            app:layout_constraintBottom_toTopOf="@+id/messagesBrowseRecyclerViewMessagesList"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/messagesBrowseEditTextSearchText" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/messagesBrowseRecyclerViewMessagesList"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginBottom="60dp"
-            android:autofillHints=""
+            android:layout_marginBottom="10dp"
             android:background="#FFFFFF"
-            android:gravity="top"
-            android:hint="@string/write_message"
-            android:inputType="textMultiLine"
-            android:lines="15"
-            app:layout_constraintBottom_toTopOf="@+id/messageButtonBack"
+            app:layout_constraintBottom_toTopOf="@+id/messagesBrowseButtonBack"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/messageTextViewUsername" />
+            app:layout_constraintTop_toBottomOf="@+id/messagesBrowseTextViewDivider">
+
+        </androidx.recyclerview.widget.RecyclerView>
 
         <Button
-            android:id="@+id/messageButtonSendForm"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:text="@string/send_message"
-            app:layout_constraintBottom_toBottomOf="@+id/messageButtonBack"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/messageButtonBack"
-            app:layout_constraintTop_toTopOf="@+id/messageButtonBack" />
-
-        <Button
-            android:id="@+id/messageButtonBack"
+            android:id="@+id/messagesBrowseButtonBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
             android:text="@string/go_back"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/messageButtonSendForm"
             app:layout_constraintStart_toStartOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

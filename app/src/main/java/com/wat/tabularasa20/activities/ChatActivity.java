@@ -11,9 +11,9 @@ public class ChatActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_message);
+        setContentView(R.layout.activity_messages_new);
 
-        final Button back = findViewById(R.id.messageButtonBack);
+        final Button back = findViewById(R.id.messagesNewButtonBack);
         back.setOnClickListener(v -> finish());
     }
 }

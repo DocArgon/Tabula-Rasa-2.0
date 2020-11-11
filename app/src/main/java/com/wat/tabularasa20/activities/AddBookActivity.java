@@ -1,7 +1,6 @@
 package com.wat.tabularasa20.activities;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -18,15 +17,15 @@ public class AddBookActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_book);
+        setContentView(R.layout.activity_products_add);
 
-        final Button back = findViewById(R.id.addBookButtonBack);
-        final Button add = findViewById(R.id.addBookButtonSendForm);
-        final EditText title = findViewById(R.id.addBookEditTextTitle);
-        final EditText author = findViewById(R.id.addBookEditTextAuthor);
-        final EditText year = findViewById(R.id.addBookEditTextYear);
-        final EditText publisher = findViewById(R.id.addBookEditTextPublisher);
-        final EditText info = findViewById(R.id.addBookEditTextAdditionalInfo);
+        final Button back = findViewById(R.id.productsAddButtonBack);
+        final Button add = findViewById(R.id.productsAddButtonSendForm);
+        final EditText title = findViewById(R.id.productsAddEditTextTitle);
+        final EditText author = findViewById(R.id.productsAddEditTextAuthor);
+        final EditText year = findViewById(R.id.productsAddEditTextYear);
+        final EditText publisher = findViewById(R.id.productsAddEditTextPublisher);
+        final EditText info = findViewById(R.id.productsAddEditTextAdditionalInfo);
 
         back.setOnClickListener(v -> finish());
 
