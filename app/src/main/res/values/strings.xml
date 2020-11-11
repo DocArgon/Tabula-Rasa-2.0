@@ -41,4 +41,6 @@
     <string name="close">Zamknij</string>
     <string name="city">Miasto</string>
     <string name="email">Adres email</string>
+    <string name="street">Ulica (ew. nr mieszkania)</string>
+    <string name="edit">Edytuj</string>
 </resources>
