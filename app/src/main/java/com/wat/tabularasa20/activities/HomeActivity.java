@@ -3,7 +3,6 @@ package com.wat.tabularasa20.activities;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,16 +20,16 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_home_account);
 
         Intent incoming_intent = getIntent();
         final String login_result = incoming_intent.getStringExtra("result");
 
-        TextView homeTV = findViewById(R.id.homeTextViewWelcome);
-        final Button addBook = findViewById(R.id.homeButtonAddNewBook);
-        final Button sendMessage = findViewById(R.id.homeButtonMyMessages);
-        final Button logout = findViewById(R.id.homeButtonLogout);
-        final Button close = findViewById(R.id.homeButtonClose);
+        TextView homeTV = findViewById(R.id.homeAccountTextViewWelcome);
+        final Button addBook = findViewById(R.id.homeAccountButtonAddNewBook);
+        final Button sendMessage = findViewById(R.id.homeAccountButtonMyMessages);
+        final Button logout = findViewById(R.id.homeAccountButtonLogout);
+        final Button close = findViewById(R.id.homeAccountButtonClose);
 
         // Pobranie informacji o kliencie
         Downloader downloader = new Downloader();

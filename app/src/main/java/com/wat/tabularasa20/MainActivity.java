@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_access_login);
 
         //Wywołanie sprawdzenia uprawnień
         int permission = ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET);
@@ -42,9 +42,9 @@ public class MainActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET},1234);
         }
 
-        textName = findViewById(R.id.mainEditTextName);
-        textPass = findViewById(R.id.mainEditTextPassword);
-        buttonLogin = findViewById(R.id.mainButtonLogin);
+        textName = findViewById(R.id.access_loginEditTextName);
+        textPass = findViewById(R.id.access_loginEditTextPassword);
+        buttonLogin = findViewById(R.id.access_loginButtonLogin);
 
         // Akcja przycisku
         buttonLogin.setOnClickListener(v -> {
@@ -97,13 +97,13 @@ public class MainActivity extends AppCompatActivity {
      */
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.mainMenuCreateAccount:
+            case R.id.access_loginMenuCreateAccount:
                 startActivity(new Intent(MainActivity.this, RegisterActivity.class));
                 return true;
-            case R.id.mainMenuAnotherID:
+            case R.id.access_loginMenuAnotherID:
                 Toast.makeText(MainActivity.this, "kliknięto niewiadomo co", Toast.LENGTH_LONG).show();
                 return true;
-            case R.id.mainMenuCloseApp:
+            case R.id.access_loginMenuCloseApp:
                 finishAffinity();
             default:
                 return super.onOptionsItemSelected(item);
@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void login(String result) {
         if (Integer.parseInt(result.replaceAll("\"", "")) < 0) {
-            Snackbar.make(findViewById(R.id.mainButtonLogin), "Nieprawidłowy login lub hasło", Snackbar.LENGTH_LONG).show();
+            Snackbar.make(findViewById(R.id.access_loginButtonLogin), "Nieprawidłowy login lub hasło", Snackbar.LENGTH_LONG).show();
             return;
         }
 

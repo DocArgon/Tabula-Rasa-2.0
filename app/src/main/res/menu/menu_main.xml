@@ -3,12 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/mainMenuCreateAccount"
+        android:id="@+id/access_loginMenuCreateAccount"
         android:title="Utwórz konto" />
     <item
-        android:id="@+id/mainMenuAnotherID"
+        android:id="@+id/access_loginMenuAnotherID"
         android:title="Jakiś tam wpis" />
     <item
-        android:id="@+id/mainMenuCloseApp"
+        android:id="@+id/access_loginMenuCloseApp"
         android:title="Zamknij aplikację" />
 </menu>
