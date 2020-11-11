@@ -26,6 +26,11 @@ import com.wat.tabularasa20.utilities.Preferences;
 
 public class MainActivity extends AppCompatActivity {
 
+    EditText textName = null;
+    EditText textPass = null;
+    Button buttonLogin = null;
+    Downloader downloader = new Downloader();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,28 +44,9 @@ public class MainActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET},1234);
         }
 
-
-
-        final EditText textName = findViewById(R.id.mainEditTextName);
-        final EditText textPass = findViewById(R.id.mainEditTextPassword);
-        final Button buttonLogin = findViewById(R.id.mainButtonLogin);
-
-        // Akcja na koniec działania klasy downloader
-        Downloader downloader = new Downloader();
-        downloader.setOnResultListener(result -> {
-            if (Integer.parseInt(result.replaceAll("\"", "")) < 0) {
-                Snackbar.make(findViewById(R.id.mainButtonLogin), "Nieprawidłowy login lub hasło", Snackbar.LENGTH_LONG).show();
-                return;
-            }
-
-            Preferences.saveCredentials(MainActivity.this,
-                    new Preferences.LoginCredentials(textName.getText(), textPass.getText()));
-
-            Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-            intent.putExtra("result", result.replaceAll("\"", ""));
-            startActivity(intent);
-            finish();
-        });
+        textName = findViewById(R.id.mainEditTextName);
+        textPass = findViewById(R.id.mainEditTextPassword);
+        buttonLogin = findViewById(R.id.mainButtonLogin);
 
         // Akcja przycisku
         buttonLogin.setOnClickListener(v -> {
@@ -72,13 +58,15 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
 
-            if (downloader.getStatus() == AsyncTask.Status.RUNNING || downloader.getStatus() == AsyncTask.Status.FINISHED) {
+            if (downloader.getStatus() == AsyncTask.Status.RUNNING) {
             	return;
 			}
 
             // TODO przerobić zapytanie na hash
             if (!strname.isEmpty() && !strpass.isEmpty()) {
                 String strurl = Constants.LOGIN_CHECK_URL + String.format("/?login=%s&haslo=%s", strname, strpass);
+                downloader = new Downloader();
+                downloader.setOnResultListener(this::login);
                 downloader.execute(strurl);
             } else {
                 Snackbar.make(v, getString(R.string.login_fields_empty), Snackbar.LENGTH_LONG).show();
@@ -122,6 +110,21 @@ public class MainActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void login(String result) {
+        if (Integer.parseInt(result.replaceAll("\"", "")) < 0) {
+            Snackbar.make(findViewById(R.id.mainButtonLogin), "Nieprawidłowy login lub hasło", Snackbar.LENGTH_LONG).show();
+            return;
+        }
+
+        Preferences.saveCredentials(MainActivity.this,
+                new Preferences.LoginCredentials(textName.getText(), textPass.getText()));
+
+        Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+        intent.putExtra("result", result.replaceAll("\"", ""));
+        startActivity(intent);
+        finish();
     }
 
     /**
