@@ -3,7 +3,6 @@ package com.wat.tabularasa20.utilities;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.Editable;
-import android.widget.EditText;
 
 public class Preferences {
 
