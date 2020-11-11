@@ -25,9 +25,13 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
 
         ArrayList<ProductListAdapter.ProductListDescription> animalNames = new ArrayList<>();
         animalNames.add(new ProductListAdapter.ProductListDescription("Book 1"));
+        animalNames.add(new ProductListAdapter.ProductListDescription("Book 2"));
         animalNames.add(new ProductListAdapter.ProductListDescription("Book 30"));
+        animalNames.add(new ProductListAdapter.ProductListDescription("Book 40"));
         animalNames.add(new ProductListAdapter.ProductListDescription("Book 500"));
+        animalNames.add(new ProductListAdapter.ProductListDescription("Book 600"));
         animalNames.add(new ProductListAdapter.ProductListDescription("Book 7000"));
+        animalNames.add(new ProductListAdapter.ProductListDescription("Book 8000"));
         animalNames.add(new ProductListAdapter.ProductListDescription("Book over 9000", true));
 
         RecyclerView recyclerView = findViewById(R.id.productListRecyclerViewProductList);
