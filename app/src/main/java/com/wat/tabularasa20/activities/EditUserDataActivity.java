@@ -35,7 +35,7 @@ public class EditUserDataActivity extends AppCompatActivity {
 
         Downloader downloader = new Downloader();
         downloader.setOnResultListener(result -> {
-            result = result.substring(1, result.length() - 1);
+            //result = result.substring(1, result.length() - 1);
 
             Preferences.LoginCredentials credentials = Preferences.readCredential(EditUserDataActivity.this);
             assert credentials != null;
@@ -44,15 +44,15 @@ public class EditUserDataActivity extends AppCompatActivity {
             passwd_rep.setText(credentials.password);
 
             JsonObject jsonObject = JsonParser.parseString(result).getAsJsonObject();
-            //email.setText();
+            email.setText(jsonObject.get("e_mail").getAsString());
             name.setText(jsonObject.get("Imie").getAsString());
             lname.setText(jsonObject.get("Nazwisko").getAsString());
             city.setText(jsonObject.get("Miasto").getAsString());
             street.setText(jsonObject.get("Ulica").getAsString());
-            //phone.setText();
-            //bday.setText();
-            //jsonObject.get("Nr domu").getAsString()
-            //jsonObject.get("Plec").getAsString()
+            phone.setText(jsonObject.get("Nr_telefonu").getAsString());
+            bday.setText(jsonObject.get("Data_urodzenia").getAsString());
+            //jsonObject.get("Plec").getAsString() // brak pola tekstowego
+            //jsonObject.get("Nr_karty").getAsString() // brak pola tekstowego
         });
         downloader.execute(Constants.ACCOUNT_GET_URL + String.format("?id_klienta=%s", Preferences.readUID(this)));
 
@@ -65,7 +65,7 @@ public class EditUserDataActivity extends AppCompatActivity {
             }
 
             if (!password.getText().toString().equals(passwd_rep.getText().toString())) {
-                Snackbar.make(v, "Pole hasło i potwierdź hasło mają różne wartości", Snackbar.LENGTH_LONG).show();
+                Snackbar.make(v, getString(R.string.rep_passwd_problem), Snackbar.LENGTH_LONG).show();
                 return;
             }
 
@@ -80,6 +80,8 @@ public class EditUserDataActivity extends AppCompatActivity {
             jsonObject.addProperty("street", street.getText().toString());
             jsonObject.addProperty("phone", phone.getText().toString());
             jsonObject.addProperty("birthday", bday.getText().toString());
+            // plec
+            // nr karty
             String data = gson.toJson(jsonObject);
             Toast.makeText(EditUserDataActivity.this, data, Toast.LENGTH_LONG).show();
         });

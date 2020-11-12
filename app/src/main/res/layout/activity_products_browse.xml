@@ -56,12 +56,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
+            android:contentDescription="@string/app_name"
             app:layout_constraintBottom_toBottomOf="@+id/productsBrowseEditTextSearchText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/productsBrowseEditTextSearchText"
             app:layout_constraintTop_toTopOf="@+id/productsBrowseEditTextSearchText"
-            app:srcCompat="@android:drawable/arrow_down_float"
-            android:contentDescription="@string/app_name" />
+            app:srcCompat="@android:drawable/arrow_down_float" />
 
         <TextView
             android:id="@+id/productsBrowseTextViewDivider"

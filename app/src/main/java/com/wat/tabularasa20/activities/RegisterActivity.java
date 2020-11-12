@@ -42,12 +42,12 @@ public class RegisterActivity extends AppCompatActivity {
             }
 
             if (!password.getText().toString().equals(passwd_rep.getText().toString())) {
-                Snackbar.make(v, "Pole hasło i potwierdź hasło mają różne wartości", Snackbar.LENGTH_LONG).show();
+                Snackbar.make(v, getString(R.string.rep_passwd_problem), Snackbar.LENGTH_LONG).show();
                 return;
             }
 
             if (!confirm.isChecked()) {
-                Snackbar.make(v, "Nie potwierdzono przeczytania warunków korzystania z usługi", Snackbar.LENGTH_LONG).show();
+                Snackbar.make(v, getString(R.string.register_info_not_conf), Snackbar.LENGTH_LONG).show();
                 return;
             }
 

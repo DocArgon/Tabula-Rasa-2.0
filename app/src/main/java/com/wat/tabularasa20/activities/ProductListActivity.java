@@ -35,6 +35,8 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
         back.setOnClickListener(v -> finish());
 
         products = new ArrayList<>();
+
+        // TODO zastąpić danymi z bazy
         products.add(new ProductListAdapter.ProductListDescription("Book 1"));
         products.add(new ProductListAdapter.ProductListDescription("Book 2"));
         products.add(new ProductListAdapter.ProductListDescription("Book 30"));
@@ -43,6 +45,7 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
         products.add(new ProductListAdapter.ProductListDescription("Book 600"));
         products.add(new ProductListAdapter.ProductListDescription("Book 7000"));
         products.add(new ProductListAdapter.ProductListDescription("Book 8000"));
+        products.add(new ProductListAdapter.ProductListDescription("Book 9000"));
         products.add(new ProductListAdapter.ProductListDescription("Book over 9000", true));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

@@ -37,11 +37,13 @@
     <string name="phone">Numer telefonu</string>
     <string name="birthday">Data urodzenia</string>
     <string name="register_info">Oświadczam, że zapoznałem się z Warunkami funkcjonowania serwisu i je akceptuję</string>
+    <string name="register_info_not_conf">Nie potwierdzono przeczytania warunków korzystania z usługi</string>
+    <string name="rep_passwd_problem">Pole hasło i potwierdź hasło mają różne wartości</string>
     <string name="create_account">Załóż konto</string>
     <string name="close">Zamknij</string>
     <string name="city">Miasto</string>
     <string name="email">Adres email</string>
-    <string name="street">Ulica (ew. nr mieszkania)</string>
+    <string name="street">Ulica</string>
     <string name="edit">Edytuj</string>
     <string name="messages_browse_title">Przeglądaj wiadomości</string>
     <string name="messages_new">Nowa wiadomość</string>

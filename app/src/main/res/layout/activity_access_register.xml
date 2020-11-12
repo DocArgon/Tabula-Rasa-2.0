@@ -233,7 +233,7 @@
 
         <Button
             android:id="@+id/accessRegisterButtonSendForm"
-            style="@style/Tabularasa.Button.Colored"
+            style="@style/Tabularasa.Button.Round.Colored"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
