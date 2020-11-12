@@ -9,12 +9,16 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 import com.google.android.material.snackbar.Snackbar;
 import com.wat.tabularasa20.activities.HomeActivity;
+import com.wat.tabularasa20.activities.RegisterActivity;
+import com.wat.tabularasa20.activities.SplashActivity;
 import com.wat.tabularasa20.data.Constants;
 import com.wat.tabularasa20.utilities.Downloader;
 import com.wat.tabularasa20.utilities.Network;
@@ -22,38 +26,25 @@ import com.wat.tabularasa20.utilities.Preferences;
 
 public class MainActivity extends AppCompatActivity {
 
+    EditText textName = null;
+    EditText textPass = null;
+    Button buttonLogin = null;
+    Downloader downloader = new Downloader();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_access_login);
 
+        //Wywołanie sprawdzenia uprawnień
         int permission = ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET);
         if (permission != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET},1234);
         }
 
-        final EditText textName = findViewById(R.id.loginEditTextName);
-        final EditText textPass = findViewById(R.id.loginEditTextPassword);
-        final Button buttonLogin = findViewById(R.id.loginButtonLogin);
-
-        // Akcja downloadera
-        Downloader downloader = new Downloader();
-        downloader.setOnResultListener(result -> {
-            // TODO sprawdzenie czy odpowiedź zezwala na dostęp
-
-            Preferences.saveCredentials(MainActivity.this,
-                    new Preferences.LoginCredentials(textName.getText(), textPass.getText()));
-
-            //Toast.makeText(MainActivity.this, "is null " + (result == null), Toast.LENGTH_SHORT).show();
-            Toast.makeText(MainActivity.this, "\"" + result + "\"", Toast.LENGTH_LONG).show();
-            //*
-            Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-            intent.putExtra("name", textName.getText().toString());
-            intent.putExtra("result", result);
-            startActivity(intent);
-            finish(); // Klasy Downloader nie wykorzystywać 2 raz - wymaga reinicjalizacji dlatego kończę aktywność
-            //*/
-        });
+        textName = findViewById(R.id.access_loginEditTextName);
+        textPass = findViewById(R.id.access_loginEditTextPassword);
+        buttonLogin = findViewById(R.id.access_loginButtonLogin);
 
         // Akcja przycisku
         buttonLogin.setOnClickListener(v -> {
@@ -65,17 +56,18 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
 
-            if (downloader.getStatus() == AsyncTask.Status.RUNNING || downloader.getStatus() == AsyncTask.Status.FINISHED) {
+            if (downloader.getStatus() == AsyncTask.Status.RUNNING) {
             	return;
 			}
 
-            // TODO przerobić zapytanie
+            // TODO przerobić zapytanie na hash
             if (!strname.isEmpty() && !strpass.isEmpty()) {
                 String strurl = Constants.LOGIN_CHECK_URL + String.format("/?login=%s&haslo=%s", strname, strpass);
-                //Toast.makeText(MainActivity.this, strurl, Toast.LENGTH_LONG).show();
+                downloader = new Downloader();
+                downloader.setOnResultListener(this::login);
                 downloader.execute(strurl);
             } else {
-                Snackbar.make(v, getString(R.string.login_fields_empty), Snackbar.LENGTH_LONG).show();
+                Snackbar.make(v, getString(R.string.fields_empty), Snackbar.LENGTH_LONG).show();
             }
         });
 
@@ -86,8 +78,53 @@ public class MainActivity extends AppCompatActivity {
             textPass.setText(credentials.password);
             buttonLogin.performClick();
         }
+
+        // Przykrycie ekranu logowanie gdy użytkownik ma zapisane dane logowania
+        startActivity(new Intent(this, SplashActivity.class));
     }
 
+    /**
+     * Utworzenie menu
+     */
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    /**
+     * Sprawdzenie która opcja z menu została wskazana
+     */
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.access_loginMenuCreateAccount:
+                startActivity(new Intent(MainActivity.this, RegisterActivity.class));
+                return true;
+            case R.id.access_loginMenuCloseApp:
+                finishAffinity();
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void login(String result) {
+        if (Integer.parseInt(result.replaceAll("\"", "")) < 0) {
+            Snackbar.make(findViewById(R.id.access_loginButtonLogin), "Nieprawidłowy login lub hasło", Snackbar.LENGTH_LONG).show();
+            return;
+        }
+
+        Preferences.saveCredentials(MainActivity.this,
+                new Preferences.LoginCredentials(textName.getText(), textPass.getText()));
+
+        Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+        intent.putExtra("result", result.replaceAll("\"", ""));
+        startActivity(intent);
+        finish();
+    }
+
+    /**
+     * Metoda odbierająca z systemu informację o przyznaniu uprawnień
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == 1234) {

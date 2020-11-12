@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/homeAccountLayoutScreen"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".MainActivity">
+
+	<TextView
+		android:id="@+id/homeAccountTextViewTitle"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="#DDCBCB"
+		android:paddingBottom="5dp"
+		android:singleLine="false"
+		android:text="@string/my_account"
+		android:textAlignment="center"
+		android:textSize="30sp"
+		android:textStyle="bold"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"/>
+
+	<TextView
+		android:id="@+id/homeAccountTextViewWelcome"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="@string/hello_msg"
+		android:textColor="#FFFFFF"
+		android:textSize="22sp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/homeAccountTextViewTitle" />
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:id="@+id/homeAccountListLayoutMain"
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		android:layout_marginStart="40dp"
+		android:layout_marginTop="40dp"
+		android:layout_marginEnd="40dp"
+		android:layout_marginBottom="40dp"
+		android:background="#F3EDED"
+		android:fadingEdge="horizontal|vertical"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/homeAccountTextViewTitle">
+
+		<Button
+			android:id="@+id/homeAccountButtonEditInfo"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
+			android:layout_marginStart="10dp"
+			android:layout_marginTop="10dp"
+			android:layout_marginEnd="10dp"
+			android:text="@string/edit_account_data"
+			app:layout_constraintBottom_toTopOf="@+id/homeAccountButtonMyMessages"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+
+		<!--
+		TO JEST WYMAGANE, ALE POTEM SIE DOROBI
+		Button
+			android:id="@+id/myMessages"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="16dp"
+			android:layout_marginTop="10dp"
+			android:layout_marginEnd="16dp"
+			android:text="Skrzynka odbiorcza"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/editInfo" / -->
+
+		<Button
+			android:id="@+id/homeAccountButtonMyMessages"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
+			android:layout_marginStart="10dp"
+			android:layout_marginTop="5dp"
+			android:layout_marginEnd="10dp"
+			android:text="@string/write_message"
+			app:layout_constraintBottom_toTopOf="@+id/homeAccountButtonStartConversation"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/homeAccountButtonEditInfo" />
+
+		<Button
+			android:id="@+id/homeAccountButtonStartConversation"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
+			android:layout_marginStart="10dp"
+			android:layout_marginTop="5dp"
+			android:layout_marginEnd="10dp"
+			android:text="@string/user_search"
+			app:layout_constraintBottom_toTopOf="@+id/homeAccountButtonMySharedBooks"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/homeAccountButtonMyMessages" />
+
+		<Button
+			android:id="@+id/homeAccountButtonMySharedBooks"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
+			android:layout_marginStart="10dp"
+			android:layout_marginTop="5dp"
+			android:layout_marginEnd="10dp"
+			android:text="@string/my_products"
+			app:layout_constraintBottom_toTopOf="@+id/homeAccountButtonMyFavouriteBooks"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/homeAccountButtonStartConversation" />
+
+		<Button
+			android:id="@+id/homeAccountButtonMyFavouriteBooks"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
+			android:layout_marginStart="10dp"
+			android:layout_marginTop="5dp"
+			android:layout_marginEnd="10dp"
+			android:text="@string/my_favourites"
+			app:layout_constraintBottom_toTopOf="@+id/homeAccountButtonAddNewBook"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/homeAccountButtonMySharedBooks" />
+
+		<Button
+			android:id="@+id/homeAccountButtonAddNewBook"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
+			android:layout_marginStart="10dp"
+			android:layout_marginTop="5dp"
+			android:layout_marginEnd="10dp"
+			android:text="@string/add_book"
+			app:layout_constraintBottom_toTopOf="@+id/homeAccountButtonSearchForBook"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/homeAccountButtonMyFavouriteBooks" />
+
+		<Button
+			android:id="@+id/homeAccountButtonSearchForBook"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
+			android:layout_marginStart="10dp"
+			android:layout_marginTop="5dp"
+			android:layout_marginEnd="10dp"
+			android:layout_marginBottom="30dp"
+			android:text="@string/search_book"
+			app:layout_constraintBottom_toTopOf="@+id/homeAccountButtonLogout"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/homeAccountButtonAddNewBook" />
+
+		<Button
+			android:id="@+id/homeAccountButtonLogout"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="20dp"
+			android:layout_marginEnd="20dp"
+			android:layout_marginBottom="10dp"
+			android:text="@string/logout"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toStartOf="@+id/homeAccountButtonClose"
+			app:layout_constraintStart_toStartOf="parent" />
+
+		<Button
+			android:id="@+id/homeAccountButtonClose"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="20dp"
+			android:layout_marginEnd="20dp"
+			android:text="@string/close"
+			app:layout_constraintBottom_toBottomOf="@+id/homeAccountButtonLogout"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toEndOf="@+id/homeAccountButtonLogout"
+			app:layout_constraintTop_toTopOf="@+id/homeAccountButtonLogout" />
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
