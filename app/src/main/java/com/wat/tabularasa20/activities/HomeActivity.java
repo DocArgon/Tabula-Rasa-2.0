@@ -26,9 +26,11 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home_account);
 
         Intent incoming_intent = getIntent();
-        final String login_result = incoming_intent.getStringExtra("result");
+        Preferences.saveUID(this, incoming_intent.getStringExtra("result"));
+
 
         TextView homeTV = findViewById(R.id.homeAccountTextViewWelcome);
+        final Button editAccount = findViewById(R.id.homeAccountButtonEditInfo);
         final Button addBook = findViewById(R.id.homeAccountButtonAddNewBook);
         final Button sendMessage = findViewById(R.id.homeAccountButtonMyMessages);
         final Button logout = findViewById(R.id.homeAccountButtonLogout);
@@ -42,21 +44,13 @@ public class HomeActivity extends AppCompatActivity {
 
         ResideMenuItem itemHome     = new ResideMenuItem(this, R.mipmap.ic_launcher,     "Home");
         ResideMenuItem itemProfile  = new ResideMenuItem(this, R.mipmap.ic_launcher,  "Profile");
-        ResideMenuItem itemCalendar = new ResideMenuItem(this, R.mipmap.ic_launcher, "Calendar");
+        ResideMenuItem itemCalendar = new ResideMenuItem(this, R.mipmap.ic_launcher,     "Chat");
         ResideMenuItem itemSettings = new ResideMenuItem(this, R.mipmap.ic_launcher, "Settings");
 
-        itemHome.setOnClickListener(v -> {
-            Toast.makeText(HomeActivity.this, "1", Toast.LENGTH_SHORT).show();
-        });
-        itemProfile.setOnClickListener(v -> {
-            Toast.makeText(HomeActivity.this, "2", Toast.LENGTH_SHORT).show();
-        });
-        itemCalendar.setOnClickListener(v -> {
-            Toast.makeText(HomeActivity.this, "3", Toast.LENGTH_SHORT).show();
-        });
-        itemSettings.setOnClickListener(v -> {
-            Toast.makeText(HomeActivity.this, "4", Toast.LENGTH_SHORT).show();
-        });
+        itemHome.setOnClickListener(v -> Toast.makeText(HomeActivity.this, "1", Toast.LENGTH_SHORT).show());
+        itemProfile.setOnClickListener(v -> Toast.makeText(HomeActivity.this, "2", Toast.LENGTH_SHORT).show());
+        itemCalendar.setOnClickListener(v -> Toast.makeText(HomeActivity.this, "3", Toast.LENGTH_SHORT).show());
+        itemSettings.setOnClickListener(v -> Toast.makeText(HomeActivity.this, "4", Toast.LENGTH_SHORT).show());
 
         resideMenu.addMenuItem(itemHome,     ResideMenu.DIRECTION_LEFT);
         resideMenu.addMenuItem(itemProfile,  ResideMenu.DIRECTION_LEFT);
@@ -72,7 +66,8 @@ public class HomeActivity extends AppCompatActivity {
             JsonObject jsonObject = JsonParser.parseString(result).getAsJsonObject();
             homeTV.setText(getString(R.string.hello_msg_params,jsonObject.get("Imie").getAsString(), jsonObject.get("Nazwisko").getAsString()));
         });
-        downloader.execute(Constants.ACCOUNT_GET_URL + String.format("?id_klienta=%s", login_result));
+        downloader.execute(Constants.ACCOUNT_GET_URL + String.format("?id_klienta=%s", Preferences.readUID(this)));
+
 
         // Przycisk wyloguj
         logout.setOnClickListener(v -> {
@@ -80,6 +75,12 @@ public class HomeActivity extends AppCompatActivity {
             Intent intent = new Intent(HomeActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
+        });
+
+        // Edycja danych konta
+        editAccount.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, EditUserDataActivity.class);
+            startActivity(intent);
         });
 
         // Przycisk dodaj książkę

@@ -2,36 +2,32 @@ package com.wat.tabularasa20.activities;
 
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.wat.tabularasa20.R;
 
-public class RegisterActivity extends AppCompatActivity {
+public class EditUserDataActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_access_register);
+        setContentView(R.layout.activity_access_edit);
 
-        Button edit = findViewById(R.id.accessRegisterButtonSendForm);
-        CheckBox confirm = findViewById(R.id.accessRegisterCheckoxTermsOfService);
-        final EditText login = findViewById(R.id.accessRegisterEditTextLogin);
-        final EditText email = findViewById(R.id.accessRegisterEditTextEmail);
-        final EditText password = findViewById(R.id.accessRegisterEditTextPassword);
-        final EditText passwd_rep = findViewById(R.id.accessRegisterEditTextPasswordRepeat);
-        final EditText name = findViewById(R.id.accessRegisterEditTextFirstName);
-        final EditText lname = findViewById(R.id.accessRegisterEditTextLastName);
-        final EditText city = findViewById(R.id.accessRegisterEditTextCity);
-        final EditText street = findViewById(R.id.accessRegisterEditTextStreet);
-        final EditText phone = findViewById(R.id.accessRegisterEditTextPhoneNumber);
-        final EditText bday = findViewById(R.id.accessRegisterEditTextBirthDate);
+        Button edit = findViewById(R.id.accessEditButtonSendForm);
+        final EditText login = findViewById(R.id.accessEditEditTextLogin);
+        final EditText email = findViewById(R.id.accessEditEditTextEmail);
+        final EditText password = findViewById(R.id.accessEditEditTextPassword);
+        final EditText passwd_rep = findViewById(R.id.accessEditEditTextPasswordRepeat);
+        final EditText name = findViewById(R.id.accessEditEditTextFirstName);
+        final EditText lname = findViewById(R.id.accessEditEditTextLastName);
+        final EditText city = findViewById(R.id.accessEditEditTextCity);
+        final EditText street = findViewById(R.id.accessEditEditTextStreet);
+        final EditText phone = findViewById(R.id.accessEditEditTextPhoneNumber);
+        final EditText bday = findViewById(R.id.accessEditEditTextBirthDate);
 
         edit.setOnClickListener(v -> {
             if (login.getText().toString().isEmpty() || password.getText().toString().isEmpty() ||
@@ -43,11 +39,6 @@ public class RegisterActivity extends AppCompatActivity {
 
             if (!password.getText().toString().equals(passwd_rep.getText().toString())) {
                 Snackbar.make(v, "Pole hasło i potwierdź hasło mają różne wartości", Snackbar.LENGTH_LONG).show();
-                return;
-            }
-
-            if (!confirm.isChecked()) {
-                Snackbar.make(v, "Nie potwierdzono przeczytania warunków korzystania z usługi", Snackbar.LENGTH_LONG).show();
                 return;
             }
 
@@ -63,7 +54,7 @@ public class RegisterActivity extends AppCompatActivity {
             jsonObject.addProperty("phone", phone.getText().toString());
             jsonObject.addProperty("birthday", bday.getText().toString());
             String data = gson.toJson(jsonObject);
-            Toast.makeText(RegisterActivity.this, data, Toast.LENGTH_LONG).show();
+            Toast.makeText(EditUserDataActivity.this, data, Toast.LENGTH_LONG).show();
         });
     }
 }
