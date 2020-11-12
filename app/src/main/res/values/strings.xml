@@ -22,7 +22,7 @@
     <string name="search">Wyszukaj</string>
     <string name="my_account">Moje konto</string>
     <string name="hello_msg">Witaj</string>
-    <string name="hello_msg_params">Witaj %1$s %2$s</string>
+    <string name="hello_msg_params">Witaj %1$s</string>
     <string name="edit_account_data">Edycja danych konta</string>
     <string name="mailbox">Skrzynka odbiorcza</string>
     <string name="user_search">Szukaj użytkownika</string>

@@ -47,7 +47,7 @@ public class EditUserDataActivity extends AppCompatActivity {
             //email.setText();
             name.setText(jsonObject.get("Imie").getAsString());
             lname.setText(jsonObject.get("Nazwisko").getAsString());
-            city.setText(jsonObject.get("Misto").getAsString());
+            city.setText(jsonObject.get("Miasto").getAsString());
             street.setText(jsonObject.get("Ulica").getAsString());
             //phone.setText();
             //bday.setText();

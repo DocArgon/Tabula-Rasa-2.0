@@ -24,10 +24,10 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_account);
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
 
         Intent incoming_intent = getIntent();
         Preferences.saveUID(this, incoming_intent.getStringExtra("result"));
-
 
         TextView homeTV = findViewById(R.id.homeAccountTextViewWelcome);
         final Button editAccount = findViewById(R.id.homeAccountButtonEditInfo);
@@ -37,15 +37,14 @@ public class HomeActivity extends AppCompatActivity {
         final Button close = findViewById(R.id.homeAccountButtonClose);
         final Button searchBook = findViewById(R.id.homeAccountButtonSearchForBook);
 
-
         ResideMenu resideMenu = new ResideMenu(this);
         resideMenu.setBackground(R.drawable.menu_bg);
         resideMenu.attachToActivity(this);
 
-        ResideMenuItem itemHome     = new ResideMenuItem(this, R.mipmap.ic_launcher,     "Home");
-        ResideMenuItem itemProfile  = new ResideMenuItem(this, R.mipmap.ic_launcher,  "Profile");
-        ResideMenuItem itemCalendar = new ResideMenuItem(this, R.mipmap.ic_launcher,     "Chat");
-        ResideMenuItem itemSettings = new ResideMenuItem(this, R.mipmap.ic_launcher, "Settings");
+        ResideMenuItem itemHome     = new ResideMenuItem(this, android.R.drawable.ic_media_play, "Home");
+        ResideMenuItem itemProfile  = new ResideMenuItem(this, android.R.drawable.ic_media_play, "Profile");
+        ResideMenuItem itemCalendar = new ResideMenuItem(this, android.R.drawable.ic_media_play, "Chat");
+        ResideMenuItem itemSettings = new ResideMenuItem(this, android.R.drawable.ic_media_play, "Settings");
 
         itemHome.setOnClickListener(v -> Toast.makeText(HomeActivity.this, "1", Toast.LENGTH_SHORT).show());
         itemProfile.setOnClickListener(v -> Toast.makeText(HomeActivity.this, "2", Toast.LENGTH_SHORT).show());
@@ -57,14 +56,13 @@ public class HomeActivity extends AppCompatActivity {
         resideMenu.addMenuItem(itemCalendar, ResideMenu.DIRECTION_RIGHT);
         resideMenu.addMenuItem(itemSettings, ResideMenu.DIRECTION_RIGHT);
 
-
         // Pobranie informacji o kliencie
         Downloader downloader = new Downloader();
         downloader.setOnResultListener(result -> {
             result = result.substring(1, result.length() - 1);
             //Toast.makeText(HomeActivity.this, result, Toast.LENGTH_LONG).show();
             JsonObject jsonObject = JsonParser.parseString(result).getAsJsonObject();
-            homeTV.setText(getString(R.string.hello_msg_params,jsonObject.get("Imie").getAsString(), jsonObject.get("Nazwisko").getAsString()));
+            homeTV.setText(getString(R.string.hello_msg_params, jsonObject.get("Imie").getAsString()));
         });
         downloader.execute(Constants.ACCOUNT_GET_URL + String.format("?id_klienta=%s", Preferences.readUID(this)));
 
