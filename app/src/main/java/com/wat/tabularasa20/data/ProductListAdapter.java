@@ -5,16 +5,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.wat.tabularasa20.R;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.ViewHolder> implements Filterable {
+public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.ViewHolder> {
 
     public interface ItemClickListener {
         void onItemClick(View view, int position);
@@ -34,17 +35,16 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     }
 
     private ArrayList<ProductListDescription> data;
-    private ArrayList<ProductListDescription> dataFiltered;
     private LayoutInflater inflater;
     private ItemClickListener itemClickListener;
 
     public ProductListAdapter(Context context, ArrayList<ProductListDescription> data) {
         this.inflater = LayoutInflater.from(context);
         this.data = data;
-        this.dataFiltered = data;
     }
 
     @Override
+    @NonNull
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.recyclerview_product_list, parent, false);
         return new ViewHolder(view);
@@ -59,11 +59,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         holder.favouriteCheckbox.setOnCheckedChangeListener((v, isChecked) -> data.get(position).favourite = isChecked);
     }
 
-    @Override
-    public int getItemCount() {
-        return data.size();
-    }
-
+    // Klasa widoku elementu listy
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView descriptionTextView;
         CheckBox favouriteCheckbox;
@@ -75,48 +71,44 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
             itemView.setOnClickListener(this);
         }
 
+        // Akcja elementu listy
         @Override
         public void onClick(View view) {
             if (itemClickListener != null) itemClickListener.onItemClick(view, getAdapterPosition());
         }
     }
 
+    // Getter elementu listy
     public ProductListDescription getItem(int id) {
         return data.get(id);
     }
 
+    // Getter długości listy
+    @Override
+    public int getItemCount() {
+        return data.size();
+    }
+
+    // Ustawienie listenera elementu listy
     public void setClickListener(ItemClickListener itemClickListener) {
         this.itemClickListener = itemClickListener;
     }
 
-    //*
-    @Override
-    public Filter getFilter() {
-        return new Filter() {
-            @Override
-            protected FilterResults performFiltering(CharSequence charSequence) {
-                String charString = charSequence.toString();
-                List<ProductListDescription> filteredList = new ArrayList<>();
-
-                if (!charString.isEmpty()) {
-                    for (ProductListDescription row : data) {
-                        if (row.desctiption.toLowerCase().contains(charString.toLowerCase())) {
-                            filteredList.add(row);
-                        }
-                    }
-                }
-
-                FilterResults filterResults = new FilterResults();
-                filterResults.values = filteredList;
-                return filterResults;
-            }
-
-            @Override
-            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-                dataFiltered = (ArrayList<ProductListDescription>) filterResults.values;
-                notifyDataSetChanged();
-            }
-        };
+    // Filtrowanie
+    public static ArrayList<ProductListDescription> filter (String descrFilter, List<ProductListDescription> data) {
+        List<ProductListDescription> filtered = new ArrayList<>(data);
+        Predicate<ProductListDescription> predicate = product -> product.desctiption.contains(descrFilter);
+        return (ArrayList<ProductListDescription>) filtered.stream().filter(predicate).collect(Collectors.toList());
     }
-    //*/
+
+    // Sortowanie
+    public enum SortOrder { ASC, DESC }
+    public static ArrayList<ProductListDescription> sort (SortOrder sortOrder, List<ProductListDescription> data) {
+        ArrayList<ProductListDescription> sorted = new ArrayList<>(data);
+        sorted.sort((lhs, rhs) -> lhs.desctiption.compareTo(rhs.desctiption));
+        if (sortOrder == SortOrder.DESC)
+            Collections.reverse(sorted);
+        return sorted;
+
+    }
 }

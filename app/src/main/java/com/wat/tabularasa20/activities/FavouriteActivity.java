@@ -2,7 +2,6 @@ package com.wat.tabularasa20.activities;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.wat.tabularasa20.R;
 
 public class FavouriteActivity extends AppCompatActivity {

@@ -38,18 +38,30 @@
 
         <EditText
             android:id="@+id/productsBrowseEditTextSearchText"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="10dp"
             android:autofillHints=""
             android:background="#FFFFFF"
             android:hint="@string/title"
             android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/productsBrowseImageButtonSort"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/productsBrowseImageButtonSort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/productsBrowseEditTextSearchText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/productsBrowseEditTextSearchText"
+            app:layout_constraintTop_toTopOf="@+id/productsBrowseEditTextSearchText"
+            app:srcCompat="@android:drawable/arrow_down_float"
+            android:contentDescription="@string/app_name" />
 
         <TextView
             android:id="@+id/productsBrowseTextViewDivider"
@@ -87,6 +99,7 @@
             android:text="@string/go_back"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
