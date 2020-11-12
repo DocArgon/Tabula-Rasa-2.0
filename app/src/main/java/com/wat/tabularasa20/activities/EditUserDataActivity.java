@@ -33,10 +33,9 @@ public class EditUserDataActivity extends AppCompatActivity {
         final EditText phone = findViewById(R.id.accessEditEditTextPhoneNumber);
         final EditText bday = findViewById(R.id.accessEditEditTextBirthDate);
 
+        // Pobranie informacji o użytkowniku
         Downloader downloader = new Downloader();
         downloader.setOnResultListener(result -> {
-            //result = result.substring(1, result.length() - 1);
-
             Preferences.LoginCredentials credentials = Preferences.readCredential(EditUserDataActivity.this);
             assert credentials != null;
             login.setText(credentials.login);

@@ -1,5 +1,6 @@
 package com.wat.tabularasa20.activities;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -11,9 +12,19 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.wat.tabularasa20.R;
+import com.wat.tabularasa20.data.Constants;
 import com.wat.tabularasa20.data.ProductListAdapter;
+import com.wat.tabularasa20.utilities.Downloader;
+import com.wat.tabularasa20.utilities.Preferences;
+
 import java.util.ArrayList;
+import java.util.function.Consumer;
 
 public class ProductListActivity extends AppCompatActivity implements ProductListAdapter.ItemClickListener, TextWatcher, View.OnClickListener {
 
@@ -22,6 +33,7 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
     ProductListAdapter.SortOrder sortOrder = ProductListAdapter.SortOrder.ASC;
     ArrayList<ProductListAdapter.ProductListDescription> products = null;
 
+    @SuppressLint("DefaultLocale")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +49,39 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
         products = new ArrayList<>();
 
         // TODO zastąpić danymi z bazy
+
+        // Pobranie informacji o kliencie
+        Downloader productDownloader = new Downloader();
+        productDownloader.setOnResultListener(resultProducts -> {
+            //Toast.makeText(ProductListActivity.this, result, Toast.LENGTH_LONG).show();
+            JsonObject productsJsonObject = JsonParser.parseString(resultProducts).getAsJsonObject();
+            String body = productsJsonObject.get("body").getAsString();
+            JsonArray productsJsonArray = JsonParser.parseString(body).getAsJsonArray();
+
+            Downloader favouriteDownloader = new Downloader();
+            favouriteDownloader.setOnResultListener(resultFavourites -> {
+                JsonArray favouritesJsonArray = JsonParser.parseString(resultFavourites).getAsJsonArray();
+
+                productsJsonArray.forEach(productJsonElement -> {
+                    boolean contains = false;
+                    for (int i = 0; i < favouritesJsonArray.size(); i++) {
+                        if (productJsonElement.getAsJsonObject().get("Tytul").getAsString().equals(favouritesJsonArray.get(i).getAsJsonObject().get("Tytul").getAsString())) {
+                            contains = true;
+                            break;
+                        }
+                    }
+                    products.add(new ProductListAdapter.ProductListDescription(productJsonElement.getAsJsonObject().get("Tytul").getAsString(), contains));
+                });
+
+                adapter = new ProductListAdapter(ProductListActivity.this, products);
+                adapter.setClickListener(ProductListActivity.this);
+                recyclerView.setAdapter(adapter);
+            });
+            favouriteDownloader.execute(Constants.FAVOURITES_URL + String.format("?Id_klienta=%d", Preferences.readUID(ProductListActivity.this)));
+        });
+        productDownloader.execute(Constants.BOOKS_GET_URL);
+
+        /*
         products.add(new ProductListAdapter.ProductListDescription("Book 1"));
         products.add(new ProductListAdapter.ProductListDescription("Book 2"));
         products.add(new ProductListAdapter.ProductListDescription("Book 30"));
@@ -47,6 +92,7 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
         products.add(new ProductListAdapter.ProductListDescription("Book 8000"));
         products.add(new ProductListAdapter.ProductListDescription("Book 9000"));
         products.add(new ProductListAdapter.ProductListDescription("Book over 9000", true));
+        //*/
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new ProductListAdapter(this, products);

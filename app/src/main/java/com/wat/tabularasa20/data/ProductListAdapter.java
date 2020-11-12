@@ -97,7 +97,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     // Filtrowanie
     public static ArrayList<ProductListDescription> filter (String descrFilter, List<ProductListDescription> data) {
         List<ProductListDescription> filtered = new ArrayList<>(data);
-        Predicate<ProductListDescription> predicate = product -> product.desctiption.contains(descrFilter);
+        Predicate<ProductListDescription> predicate = product -> product.desctiption.toLowerCase().contains(descrFilter.toLowerCase());
         return (ArrayList<ProductListDescription>) filtered.stream().filter(predicate).collect(Collectors.toList());
     }
 

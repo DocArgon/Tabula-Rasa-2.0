@@ -59,13 +59,11 @@ public class HomeActivity extends AppCompatActivity {
         // Pobranie informacji o kliencie
         Downloader downloader = new Downloader();
         downloader.setOnResultListener(result -> {
-            //result = result.substring(1, result.length() - 1);
             //Toast.makeText(HomeActivity.this, result, Toast.LENGTH_LONG).show();
             JsonObject jsonObject = JsonParser.parseString(result).getAsJsonObject();
             homeTV.setText(getString(R.string.hello_msg_params, jsonObject.get("Imie").getAsString()));
         });
         downloader.execute(Constants.ACCOUNT_GET_URL + String.format("?id_klienta=%s", Preferences.readUID(this)));
-
 
         // Przycisk wyloguj
         logout.setOnClickListener(v -> {
