@@ -2,13 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/messagesBrowseLayoutScreen"
+    android:id="@+id/productsBrowseLayoutScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/messagesBrowseTextViewTitle"
+        android:id="@+id/productsBrowseTextViewTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#DDCBCB"
@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/messagesBrowseListLayoutMain"
+        android:id="@+id/productsBrowseListLayoutMain"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="40dp"
@@ -34,36 +34,48 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/messagesBrowseTextViewTitle">
+        app:layout_constraintTop_toBottomOf="@+id/productsBrowseTextViewTitle">
 
         <EditText
-            android:id="@+id/messagesBrowseEditTextSearchText"
-            android:layout_width="match_parent"
+            android:id="@+id/productsBrowseEditTextSearchText"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="10dp"
             android:autofillHints=""
             android:background="#FFFFFF"
             android:hint="@string/title"
             android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/productsBrowseImageButtonSort"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageButton
+            android:id="@+id/productsBrowseImageButtonSort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:contentDescription="@string/app_name"
+            app:layout_constraintBottom_toBottomOf="@+id/productsBrowseEditTextSearchText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/productsBrowseEditTextSearchText"
+            app:layout_constraintTop_toTopOf="@+id/productsBrowseEditTextSearchText"
+            app:srcCompat="@android:drawable/arrow_down_float" />
+
         <TextView
-            android:id="@+id/messagesBrowseTextViewDivider"
+            android:id="@+id/productsBrowseTextViewDivider"
             android:layout_width="match_parent"
             android:layout_height="5dp"
             android:layout_marginTop="10dp"
             android:background="#000000"
-            app:layout_constraintBottom_toTopOf="@+id/messagesBrowseRecyclerViewMessagesList"
+            app:layout_constraintBottom_toTopOf="@+id/productsBrowseRecyclerViewMessagesList"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/messagesBrowseEditTextSearchText" />
+            app:layout_constraintTop_toBottomOf="@+id/productsBrowseEditTextSearchText" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/messagesBrowseRecyclerViewMessagesList"
+            android:id="@+id/productsBrowseRecyclerViewMessagesList"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginStart="20dp"
@@ -71,15 +83,15 @@
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="10dp"
             android:background="#FFFFFF"
-            app:layout_constraintBottom_toTopOf="@+id/messagesBrowseButtonBack"
+            app:layout_constraintBottom_toTopOf="@+id/productsBrowseButtonBack"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/messagesBrowseTextViewDivider">
+            app:layout_constraintTop_toBottomOf="@+id/productsBrowseTextViewDivider">
 
         </androidx.recyclerview.widget.RecyclerView>
 
         <Button
-            android:id="@+id/messagesBrowseButtonBack"
+            android:id="@+id/productsBrowseButtonBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -87,6 +99,7 @@
             android:text="@string/go_back"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

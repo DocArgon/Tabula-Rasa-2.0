@@ -35,4 +35,20 @@ public class Preferences {
             return null;
         return new LoginCredentials(login, pass);
     }
+
+    public static void saveUID (Context context, String uid) {
+        saveUID(context, Integer.parseInt(uid));
+    }
+
+    public static void saveUID (Context context, int uid) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("UserID", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("uid", uid);
+        editor.apply();
+    }
+
+    public static int readUID (Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("UserID", Context.MODE_PRIVATE);
+        return sharedPreferences.getInt("uid", -1);
+    }
 }

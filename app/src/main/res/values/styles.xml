@@ -16,7 +16,11 @@
     </style>
 
     <!-- Kolorowy zaokrąglony przycisk -->
-    <style name="Tabularasa.Button.Colored" parent="@style/Widget.AppCompat.Button.Colored">
+    <style name="Tabularasa.Button.Round.Colored" parent="@style/Widget.AppCompat.Button.Colored">
         <item name="android:background">@drawable/ripple_button</item>
+    </style>
+    <!-- Kolorowy normalny przycisk -->
+    <style name="Tabularasa.Button.Normal.Colored" parent="@style/Widget.AppCompat.Button.Colored">
+        <item name="android:background">@color/colorAccent</item>
     </style>
 </resources>

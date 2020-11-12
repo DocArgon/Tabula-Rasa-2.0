@@ -2,6 +2,7 @@ package com.wat.tabularasa20.activities;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import com.mattkula.secrettextview.SecretTextView;
 import com.wat.tabularasa20.R;
@@ -12,11 +13,16 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        final SecretTextView secretTextView = findViewById(R.id.splashTextViewHello);
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+
+        SecretTextView secretTextView = findViewById(R.id.splashTextViewHello);
+        int interval = 1200;
+
         secretTextView.setIsVisible(false);
-        secretTextView.setDuration(1000);
+        secretTextView.setDuration(interval);
         secretTextView.setText(getString(R.string.hello_msg));
-        new CountDownTimer(2100, 1000) {
+
+        new CountDownTimer(2 * interval + 100, interval) {
             @Override
             public void onTick(long millisUntilFinished) {
                 secretTextView.toggle();
