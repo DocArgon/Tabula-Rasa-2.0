@@ -32,7 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/access_loginTextViewTitle"
-        app:srcCompat="@drawable/ic_launcher" />
+        app:srcCompat="@drawable/ic_launcher_sxhdpi" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/access_loginListLayoutMain"
