@@ -8,7 +8,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.wat.tabularasa20.R;
+import com.wat.tabularasa20.data.Constants;
+import com.wat.tabularasa20.utilities.Downloader;
+import com.wat.tabularasa20.utilities.Preferences;
 
 public class EditUserDataActivity extends AppCompatActivity {
 
@@ -28,6 +32,29 @@ public class EditUserDataActivity extends AppCompatActivity {
         final EditText street = findViewById(R.id.accessEditEditTextStreet);
         final EditText phone = findViewById(R.id.accessEditEditTextPhoneNumber);
         final EditText bday = findViewById(R.id.accessEditEditTextBirthDate);
+
+        Downloader downloader = new Downloader();
+        downloader.setOnResultListener(result -> {
+            result = result.substring(1, result.length() - 1);
+
+            Preferences.LoginCredentials credentials = Preferences.readCredential(EditUserDataActivity.this);
+            assert credentials != null;
+            login.setText(credentials.login);
+            password.setText(credentials.password);
+            passwd_rep.setText(credentials.password);
+
+            JsonObject jsonObject = JsonParser.parseString(result).getAsJsonObject();
+            //email.setText();
+            name.setText(jsonObject.get("Imie").getAsString());
+            lname.setText(jsonObject.get("Nazwisko").getAsString());
+            city.setText(jsonObject.get("Misto").getAsString());
+            street.setText(jsonObject.get("Ulica").getAsString());
+            //phone.setText();
+            //bday.setText();
+            //jsonObject.get("Nr domu").getAsString()
+            //jsonObject.get("Plec").getAsString()
+        });
+        downloader.execute(Constants.ACCOUNT_GET_URL + String.format("?id_klienta=%s", Preferences.readUID(this)));
 
         edit.setOnClickListener(v -> {
             if (login.getText().toString().isEmpty() || password.getText().toString().isEmpty() ||
