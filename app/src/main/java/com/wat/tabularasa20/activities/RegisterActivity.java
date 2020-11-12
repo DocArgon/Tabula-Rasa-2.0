@@ -5,13 +5,13 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.wat.tabularasa20.R;
+import com.wat.tabularasa20.data.Constants;
+import com.wat.tabularasa20.utilities.Uploader;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -63,7 +63,19 @@ public class RegisterActivity extends AppCompatActivity {
             jsonObject.addProperty("phone", phone.getText().toString());
             jsonObject.addProperty("birthday", bday.getText().toString());
             String data = gson.toJson(jsonObject);
-            Toast.makeText(RegisterActivity.this, data, Toast.LENGTH_LONG).show();
+
+            Uploader uploader = new Uploader();
+            uploader.setOnResultListener(new Uploader.UploadActions() {
+                @Override
+                public void getResult(String result) {
+                    Toast.makeText(RegisterActivity.this, "Echo " + result, Toast.LENGTH_LONG).show();
+                }
+                @Override
+                public void getError(String error) {
+                    Toast.makeText(RegisterActivity.this, error, Toast.LENGTH_LONG).show();
+                }
+            });
+            uploader.execute(this, Constants.REGISTER_URL, data);
         });
     }
 }

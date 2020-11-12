@@ -50,7 +50,7 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
 
         // TODO zastąpić danymi z bazy
 
-        // Pobranie informacji o kliencie
+        // Pobranie informacji o wszystkich kasiążkach
         Downloader productDownloader = new Downloader();
         productDownloader.setOnResultListener(resultProducts -> {
             //Toast.makeText(ProductListActivity.this, result, Toast.LENGTH_LONG).show();
@@ -58,6 +58,7 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
             String body = productsJsonObject.get("body").getAsString();
             JsonArray productsJsonArray = JsonParser.parseString(body).getAsJsonArray();
 
+            // Pobranie informacji o ulubionych
             Downloader favouriteDownloader = new Downloader();
             favouriteDownloader.setOnResultListener(resultFavourites -> {
                 JsonArray favouritesJsonArray = JsonParser.parseString(resultFavourites).getAsJsonArray();

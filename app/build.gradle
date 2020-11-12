@@ -26,6 +26,9 @@ android {
         targetCompatibility = 1.8
     }
 
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+    }
 }
 
 dependencies {
@@ -45,6 +48,7 @@ dependencies {
     implementation 'com.amazonaws:aws-android-sdk-mobile-client:2.19.1'
     implementation 'com.amazonaws:aws-android-sdk-s3:2.19.1'
     //implementation 'com.amazonaws:aws-java-sdk-dynamodb:1.11.896'
+    implementation 'com.android.volley:volley:1.1.1'
     testImplementation 'junit:junit:4.13.1'
     implementation 'com.specyci:residemenu:1.6'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
