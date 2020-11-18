@@ -7,17 +7,19 @@
 	android:layout_height="match_parent"
 	tools:context=".MainActivity">
 
+	<!-- android:background="#DDCBCB" -->
 	<TextView
 		android:id="@+id/homeAccountTextViewTitle"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:background="#DDCBCB"
+		android:background="@drawable/title_bar"
 		android:paddingBottom="5dp"
 		android:singleLine="false"
 		android:text="@string/my_account"
 		android:textAlignment="center"
 		android:textSize="30sp"
 		android:textStyle="bold"
+		android:textColor="#E0E0E0"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent"/>
 
@@ -26,7 +28,7 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="@string/hello_msg"
-		android:textColor="#FFFFFF"
+		android:textColor="#E0E0E0"
 		android:textSize="22sp"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
@@ -143,7 +145,7 @@
 		<Button
 			android:id="@+id/homeAccountButtonLogout"
 			android:layout_width="0dp"
-			android:layout_height="wrap_content"
+			android:layout_height="35dp"
 			android:layout_marginStart="20dp"
 			android:layout_marginEnd="20dp"
 			android:layout_marginBottom="10dp"
@@ -155,7 +157,7 @@
 		<Button
 			android:id="@+id/homeAccountButtonClose"
 			android:layout_width="0dp"
-			android:layout_height="wrap_content"
+			android:layout_height="0dp"
 			android:layout_marginStart="20dp"
 			android:layout_marginEnd="20dp"
 			android:text="@string/close"
@@ -165,5 +167,21 @@
 			app:layout_constraintTop_toTopOf="@+id/homeAccountButtonLogout" />
 
 	</androidx.constraintlayout.widget.ConstraintLayout>
+
+	<com.google.android.material.floatingactionbutton.FloatingActionButton
+		android:id="@+id/homeAccountFloatingButtonClose"
+		android:layout_width="80dp"
+		android:layout_height="80dp"
+		android:layout_marginStart="20dp"
+		android:layout_marginBottom="20dp"
+		android:clickable="true"
+		android:focusable="true"
+		android:scaleType="fitXY"
+		android:src="@android:drawable/ic_lock_power_off"
+		app:backgroundTint="#FF5722"
+		app:fabCustomSize="80dp"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:maxImageSize="60dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

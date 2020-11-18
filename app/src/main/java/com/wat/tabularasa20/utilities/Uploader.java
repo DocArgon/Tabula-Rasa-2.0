@@ -8,6 +8,9 @@ import com.android.volley.toolbox.Volley;
 import com.wat.tabularasa20.data.Constants;
 import org.json.JSONObject;
 
+/**
+ * Klasa pozwalająca wysłać JSON na serwer
+ */
 public class Uploader {
 
     public interface UploadActions {

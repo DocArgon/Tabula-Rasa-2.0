@@ -12,9 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.wat.tabularasa20.R;
@@ -22,9 +20,7 @@ import com.wat.tabularasa20.data.Constants;
 import com.wat.tabularasa20.data.ProductListAdapter;
 import com.wat.tabularasa20.utilities.Downloader;
 import com.wat.tabularasa20.utilities.Preferences;
-
 import java.util.ArrayList;
-import java.util.function.Consumer;
 
 public class ProductListActivity extends AppCompatActivity implements ProductListAdapter.ItemClickListener, TextWatcher, View.OnClickListener {
 
@@ -47,8 +43,6 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
         back.setOnClickListener(v -> finish());
 
         products = new ArrayList<>();
-
-        // TODO zastąpić danymi z bazy
 
         // Pobranie informacji o wszystkich kasiążkach
         Downloader productDownloader = new Downloader();
@@ -81,19 +75,6 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
             favouriteDownloader.execute(Constants.FAVOURITES_URL + String.format("?Id_klienta=%d", Preferences.readUID(ProductListActivity.this)));
         });
         productDownloader.execute(Constants.BOOKS_GET_URL);
-
-        /*
-        products.add(new ProductListAdapter.ProductListDescription("Book 1"));
-        products.add(new ProductListAdapter.ProductListDescription("Book 2"));
-        products.add(new ProductListAdapter.ProductListDescription("Book 30"));
-        products.add(new ProductListAdapter.ProductListDescription("Book 40"));
-        products.add(new ProductListAdapter.ProductListDescription("Book 500"));
-        products.add(new ProductListAdapter.ProductListDescription("Book 600"));
-        products.add(new ProductListAdapter.ProductListDescription("Book 7000"));
-        products.add(new ProductListAdapter.ProductListDescription("Book 8000"));
-        products.add(new ProductListAdapter.ProductListDescription("Book 9000"));
-        products.add(new ProductListAdapter.ProductListDescription("Book over 9000", true));
-        //*/
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new ProductListAdapter(this, products);

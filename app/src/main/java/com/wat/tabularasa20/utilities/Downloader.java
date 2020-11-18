@@ -6,8 +6,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
-import android.util.Base64;
 
+/**
+ * Klasa pozwalająca pobrać dokument tekstowy z internetu
+ */
 public class Downloader extends AsyncTask<Object, Void, String> {
 
     public interface DownloadActions {
@@ -22,6 +24,7 @@ public class Downloader extends AsyncTask<Object, Void, String> {
     }
 
     /**
+     * Motoda wykonywana gdy na obiekcie klasy zostanie wykonane <code>execute()</code>
      * @param params adres URL strony : String
      */
     @Override

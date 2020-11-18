@@ -8,6 +8,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.special.ResideMenu.ResideMenu;
@@ -24,7 +26,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_account);
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE);
 
         Intent incoming_intent = getIntent();
         Preferences.saveUID(this, incoming_intent.getStringExtra("result"));
@@ -36,6 +38,7 @@ public class HomeActivity extends AppCompatActivity {
         final Button logout = findViewById(R.id.homeAccountButtonLogout);
         final Button close = findViewById(R.id.homeAccountButtonClose);
         final Button searchBook = findViewById(R.id.homeAccountButtonSearchForBook);
+        final FloatingActionButton fab = findViewById(R.id.homeAccountFloatingButtonClose);
 
         ResideMenu resideMenu = new ResideMenu(this);
         resideMenu.setBackground(R.drawable.menu_bg);
@@ -46,8 +49,8 @@ public class HomeActivity extends AppCompatActivity {
         ResideMenuItem itemCalendar = new ResideMenuItem(this, android.R.drawable.ic_media_play, "Chat");
         ResideMenuItem itemSettings = new ResideMenuItem(this, android.R.drawable.ic_media_play, "Settings");
 
-        itemHome.setOnClickListener(v -> Toast.makeText(HomeActivity.this, "1", Toast.LENGTH_SHORT).show());
-        itemProfile.setOnClickListener(v -> Toast.makeText(HomeActivity.this, "2", Toast.LENGTH_SHORT).show());
+        itemHome.setOnClickListener(v     -> Toast.makeText(HomeActivity.this, "1", Toast.LENGTH_SHORT).show());
+        itemProfile.setOnClickListener(v  -> Toast.makeText(HomeActivity.this, "2", Toast.LENGTH_SHORT).show());
         itemCalendar.setOnClickListener(v -> Toast.makeText(HomeActivity.this, "3", Toast.LENGTH_SHORT).show());
         itemSettings.setOnClickListener(v -> Toast.makeText(HomeActivity.this, "4", Toast.LENGTH_SHORT).show());
 
@@ -99,5 +102,6 @@ public class HomeActivity extends AppCompatActivity {
 
         // przycisk zamknij
         close.setOnClickListener(v -> finishAffinity());
+        fab.setOnClickListener(v   -> finishAffinity());
     }
 }
