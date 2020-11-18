@@ -4,11 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -16,7 +15,6 @@ import com.special.ResideMenu.ResideMenu;
 import com.special.ResideMenu.ResideMenuItem;
 import com.wat.tabularasa20.MainActivity;
 import com.wat.tabularasa20.R;
-import com.wat.tabularasa20.data.Constants;
 import com.wat.tabularasa20.utilities.Downloader;
 import com.wat.tabularasa20.utilities.Preferences;
 
@@ -44,20 +42,19 @@ public class HomeActivity extends AppCompatActivity {
         resideMenu.setBackground(R.drawable.menu_bg);
         resideMenu.attachToActivity(this);
 
-        ResideMenuItem itemHome     = new ResideMenuItem(this, android.R.drawable.ic_media_play, "Home");
-        ResideMenuItem itemProfile  = new ResideMenuItem(this, android.R.drawable.ic_media_play, "Profile");
-        ResideMenuItem itemCalendar = new ResideMenuItem(this, android.R.drawable.ic_media_play, "Chat");
-        ResideMenuItem itemSettings = new ResideMenuItem(this, android.R.drawable.ic_media_play, "Settings");
+        ResideMenuItem itemSearchBook  = new ResideMenuItem(this, android.R.drawable.ic_menu_search, "Szukaj produktu");
+        ResideMenuItem itemEditProfile = new ResideMenuItem(this, android.R.drawable.ic_menu_edit, "Edytuj profil");
+        ResideMenuItem itemOpenChats   = new ResideMenuItem(this, android.R.drawable.stat_notify_chat, "Konwersacje");
+        ResideMenuItem itemSettings    = new ResideMenuItem(this, android.R.drawable.ic_menu_preferences, "Ustawienia");
 
-        itemHome.setOnClickListener(v     -> Toast.makeText(HomeActivity.this, "1", Toast.LENGTH_SHORT).show());
-        itemProfile.setOnClickListener(v  -> Toast.makeText(HomeActivity.this, "2", Toast.LENGTH_SHORT).show());
-        itemCalendar.setOnClickListener(v -> Toast.makeText(HomeActivity.this, "3", Toast.LENGTH_SHORT).show());
-        itemSettings.setOnClickListener(v -> Toast.makeText(HomeActivity.this, "4", Toast.LENGTH_SHORT).show());
+        resideMenu.addMenuItem(itemSearchBook,  ResideMenu.DIRECTION_LEFT);
+        resideMenu.addMenuItem(itemOpenChats,   ResideMenu.DIRECTION_LEFT);
+        resideMenu.addMenuItem(itemEditProfile, ResideMenu.DIRECTION_RIGHT);
+        resideMenu.addMenuItem(itemSettings,    ResideMenu.DIRECTION_RIGHT);
 
-        resideMenu.addMenuItem(itemHome,     ResideMenu.DIRECTION_LEFT);
-        resideMenu.addMenuItem(itemProfile,  ResideMenu.DIRECTION_LEFT);
-        resideMenu.addMenuItem(itemCalendar, ResideMenu.DIRECTION_RIGHT);
-        resideMenu.addMenuItem(itemSettings, ResideMenu.DIRECTION_RIGHT);
+        //ScrollView svl = findViewById(com.special.ResideMenu.R.id.sv_left_menu);
+        //ScrollView svr = findViewById(com.special.ResideMenu.R.id.sv_right_menu);
+        //Toast.makeText(HomeActivity.this, svr.getLayoutParams().width, Toast.LENGTH_LONG).show();
 
         // Pobranie informacji o kliencie
         Downloader downloader = new Downloader();
@@ -66,7 +63,17 @@ public class HomeActivity extends AppCompatActivity {
             JsonObject jsonObject = JsonParser.parseString(result).getAsJsonObject();
             homeTV.setText(getString(R.string.hello_msg_params, jsonObject.get("Imie").getAsString()));
         });
-        downloader.execute(Constants.ACCOUNT_GET_URL + String.format("?id_klienta=%s", Preferences.readUID(this)));
+        //downloader.execute(Constants.ACCOUNT_GET_URL + String.format("?id_klienta=%s", Preferences.readUID(this)));
+
+
+        itemSearchBook.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, ProductListActivity.class);
+            startActivity(intent);
+        });
+
+        itemEditProfile.setOnClickListener(v -> Toast.makeText(HomeActivity.this, "2", Toast.LENGTH_SHORT).show());
+        itemOpenChats.setOnClickListener(v -> Toast.makeText(HomeActivity.this, "3", Toast.LENGTH_SHORT).show());
+        itemSettings.setOnClickListener(v -> Toast.makeText(HomeActivity.this, "4", Toast.LENGTH_SHORT).show());
 
         // Przycisk wyloguj
         logout.setOnClickListener(v -> {
