@@ -5,7 +5,6 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.wat.tabularasa20.data.Constants;
 import org.json.JSONObject;
 
 /**
@@ -24,10 +23,15 @@ public class Uploader {
         this.onResultListener = onResultListener;
     }
 
-    public void execute(Context contexr, String url, String data) {
+    /**
+     * Główna metoda pozwalająca wysłać JSON na wskazany adres sieciowy
+     * @param url adres na który dane mają być wysłane
+     * @param data dane do wysłania
+     */
+    public void execute(Context context, String url, String data) {
         try {
-            RequestQueue queue = Volley.newRequestQueue(contexr);
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, Constants.REGISTER_URL, new JSONObject(data),
+            RequestQueue queue = Volley.newRequestQueue(context);
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(data),
                 response -> {
                     if (onResultListener != null)
                         onResultListener.getResult(response.toString());

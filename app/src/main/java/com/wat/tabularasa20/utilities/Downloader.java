@@ -24,8 +24,8 @@ public class Downloader extends AsyncTask<Object, Void, String> {
     }
 
     /**
-     * Motoda wykonywana gdy na obiekcie klasy zostanie wykonane <code>execute()</code>
-     * @param params adres URL strony : String
+     * Motoda wykonywana gdy na obiekcie klasy zostanie wykonane <code>execute(String url)</code>
+     * @param params adres URL strony jako <code>String</code>
      */
     @Override
     protected String doInBackground (Object... params) {
@@ -50,12 +50,20 @@ public class Downloader extends AsyncTask<Object, Void, String> {
         return null;
     }
 
+    /**
+     * Metoda wywołująca listener na zakończenie pobierania
+     * @param str
+     */
     @Override
     protected void onPostExecute (String str) {
         if (onResultListener != null)
             onResultListener.getResult(str);
     }
 
+    /**
+     * Getter ostatniej odpowiedzi
+     * @return ostatnia odpowiedź jako <code>String</code>
+     */
     public String getResponse () {
         return response;
     }

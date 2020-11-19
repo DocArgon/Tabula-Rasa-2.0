@@ -24,6 +24,9 @@ import com.wat.tabularasa20.utilities.Downloader;
 import com.wat.tabularasa20.utilities.Network;
 import com.wat.tabularasa20.utilities.Preferences;
 
+/**
+ * Główna aktywność aplikacji
+ */
 public class MainActivity extends AppCompatActivity {
 
     EditText textName = null;
@@ -36,12 +39,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_access_login);
 
-        //Wywołanie sprawdzenia uprawnień
+        // Wywołanie sprawdzenia uprawnień
         int permission = ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET);
         if (permission != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET},1234);
         }
 
+        // Uzyskanie dostępu do obiektów graficznych
         textName = findViewById(R.id.access_loginEditTextName);
         textPass = findViewById(R.id.access_loginEditTextPassword);
         buttonLogin = findViewById(R.id.access_loginButtonLogin);
@@ -51,15 +55,18 @@ public class MainActivity extends AppCompatActivity {
             String strname = textName.getText().toString();
             String strpass = textPass.getText().toString();
 
+            // Sprawdzenie czy urządzenie jest przyłączone do internetu
             if (!Network.isDeviceConnected(MainActivity.this)) {
                 Snackbar.make(v, getString(R.string.network_not_conn), Snackbar.LENGTH_LONG).show();
                 return;
             }
 
+            // Sprawdzenie czy nie wykonywane jest właśnie zapytanie do bazy danych
             if (downloader.getStatus() == AsyncTask.Status.RUNNING) {
             	return;
 			}
 
+            // Wysłanie zapytania czy dane logowania są poprawne
             // TODO przerobić zapytanie na hash
             if (!strname.isEmpty() && !strpass.isEmpty()) {
                 String strurl = Constants.LOGIN_CHECK_URL + String.format("/?login=%s&haslo=%s", strname, strpass);
@@ -79,7 +86,8 @@ public class MainActivity extends AppCompatActivity {
             buttonLogin.performClick();
         }
 
-        // Przykrycie ekranu logowanie gdy użytkownik ma zapisane dane logowania
+        // Pokazanie ekranu powitalnego -
+        // przykrycie ekranu logowanie gdy użytkownik ma zapisane dane logowania
         startActivity(new Intent(this, SplashActivity.class));
     }
 
@@ -107,6 +115,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Metoda sprawdzająca odpowiedź z bazy danych i przehodząca do ekranu domoweho użytkownika
+     * @param result odpowiedź z bazy danych
+     */
     private void login(String result) {
         if (Integer.parseInt(result.replaceAll("\"", "")) < 0) {
             Snackbar.make(findViewById(R.id.access_loginButtonLogin), "Nieprawidłowy login lub hasło", Snackbar.LENGTH_LONG).show();
