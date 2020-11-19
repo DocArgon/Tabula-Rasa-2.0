@@ -47,4 +47,6 @@
     <string name="edit">Edytuj</string>
     <string name="messages_browse_title">Przeglądaj wiadomości</string>
     <string name="messages_new">Nowa wiadomość</string>
+    <string name="conversations">Konwersacje</string>
+    <string name="settinds">Ustawienia</string>
 </resources>

@@ -21,19 +21,6 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         void onItemClick(View view, int position);
     }
 
-    public static class ProductListDescription {
-        public String desctiption;
-        public boolean favourite;
-        public ProductListDescription (String desctiption) {
-            this.desctiption = desctiption;
-            this.favourite = false;
-        }
-        public ProductListDescription (String desctiption, boolean favoutite) {
-            this.desctiption = desctiption;
-            this.favourite = favoutite;
-        }
-    }
-
     private ArrayList<ProductListDescription> data;
     private LayoutInflater inflater;
     private ItemClickListener itemClickListener;

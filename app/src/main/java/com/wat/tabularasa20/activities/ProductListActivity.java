@@ -18,6 +18,7 @@ import com.google.gson.JsonParser;
 import com.wat.tabularasa20.R;
 import com.wat.tabularasa20.data.Constants;
 import com.wat.tabularasa20.data.ProductListAdapter;
+import com.wat.tabularasa20.data.ProductListDescription;
 import com.wat.tabularasa20.utilities.Downloader;
 import com.wat.tabularasa20.utilities.Preferences;
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
     ProductListAdapter adapter = null;
     RecyclerView recyclerView = null;
     ProductListAdapter.SortOrder sortOrder = ProductListAdapter.SortOrder.ASC;
-    ArrayList<ProductListAdapter.ProductListDescription> products = null;
+    ArrayList<ProductListDescription> products = null;
 
     @SuppressLint("DefaultLocale")
     @Override
@@ -38,7 +39,7 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
         Button back = findViewById(R.id.productsBrowseButtonBack);
         EditText filter = findViewById(R.id.productsBrowseEditTextSearchText);
         ImageButton sort = findViewById(R.id.productsBrowseImageButtonSort);
-        recyclerView = findViewById(R.id.productsBrowseRecyclerViewMessagesList);
+        recyclerView = findViewById(R.id.productsBrowseRecyclerViewProductsList);
 
         back.setOnClickListener(v -> finish());
 
@@ -65,7 +66,7 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
                             break;
                         }
                     }
-                    products.add(new ProductListAdapter.ProductListDescription(productJsonElement.getAsJsonObject().get("Tytul").getAsString(), contains));
+                    products.add(new ProductListDescription(productJsonElement.getAsJsonObject().get("Tytul").getAsString(), contains));
                 });
 
                 adapter = new ProductListAdapter(ProductListActivity.this, products);
@@ -110,7 +111,7 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
         sortOrder = sortOrder == ProductListAdapter.SortOrder.ASC ? ProductListAdapter.SortOrder.DESC : ProductListAdapter.SortOrder.ASC;
         ((ImageButton)view).setImageResource(
             sortOrder == ProductListAdapter.SortOrder.ASC ? android.R.drawable.arrow_down_float : android.R.drawable.arrow_up_float);
-        ArrayList<ProductListAdapter.ProductListDescription> filtered = new ArrayList<>(); // tylko obecnie pokazane elementy
+        ArrayList<ProductListDescription> filtered = new ArrayList<>(); // tylko obecnie pokazane elementy
         for (int i = 0; i < adapter.getItemCount(); i++)
             filtered.add(adapter.getItem(i));
         adapter = new ProductListAdapter(this, ProductListAdapter.sort(sortOrder, filtered));
