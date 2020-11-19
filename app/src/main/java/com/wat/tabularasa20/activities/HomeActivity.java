@@ -18,6 +18,9 @@ import com.wat.tabularasa20.data.Constants;
 import com.wat.tabularasa20.utilities.Downloader;
 import com.wat.tabularasa20.utilities.Preferences;
 
+/**
+ * Aktywność ekranu głównego aplikacji
+ */
 public class HomeActivity extends AppCompatActivity {
 
     @Override
