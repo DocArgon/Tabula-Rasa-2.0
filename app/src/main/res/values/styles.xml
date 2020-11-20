@@ -4,10 +4,11 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowAnimationStyle">@style/AppAnimations</item>
     </style>
     <!-- Styl ekranu logowania -->
     <style name="AppTheme.Login" parent="Theme.AppCompat.Light.DarkActionBar" />
-    <!-- Styl ekranu powittalnego -->
+    <!-- Styl ekranu powitalnego -->
     <style name="AppTheme.Splash" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>
@@ -22,5 +23,13 @@
     <!-- Kolorowy normalny przycisk -->
     <style name="Tabularasa.Button.Normal.Colored" parent="@style/Widget.AppCompat.Button.Colored">
         <item name="android:background">@color/colorAccent</item>
+    </style>
+
+    <!-- Definicja animacji przejść między widokami -->
+    <style name="AppAnimations" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_up</item>
+        <item name="android:activityOpenExitAnimation">@anim/slide_down</item>
+        <item name="android:activityCloseEnterAnimation">@anim/slide_up</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_down</item>
     </style>
 </resources>

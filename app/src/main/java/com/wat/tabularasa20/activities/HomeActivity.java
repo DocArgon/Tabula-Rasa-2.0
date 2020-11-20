@@ -128,7 +128,7 @@ public class HomeActivity extends AppCompatActivity {
 
         // przycisk zamknij
         // TODO usunąć statyczny, zoztawić pływający
-        close.setOnClickListener(v -> finishAffinity());
-        fab.setOnClickListener(v   -> finishAffinity());
+        close.setOnClickListener(v -> finishAndRemoveTask());
+        fab.setOnClickListener(v   -> finishAndRemoveTask());
     }
 }
