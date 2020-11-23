@@ -4,14 +4,15 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.wat.tabularasa20.R;
 
+/**
+ * Aktywność dodawania nowej książki
+ */
 public class AddBookActivity extends AppCompatActivity {
 
     @Override
@@ -19,22 +20,27 @@ public class AddBookActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products_add);
 
-        final Button back = findViewById(R.id.productsDetailsButtonBack);
-        final Button add = findViewById(R.id.productsDetailsButtonSendForm);
-        final EditText title = findViewById(R.id.productsDetailsEditTextTitle);
-        final EditText author = findViewById(R.id.productsDetailsEditTextAuthor);
-        final EditText year = findViewById(R.id.productsDetailsEditTextYear);
-        final EditText publisher = findViewById(R.id.productsDetailsEditTextPublisher);
-        final EditText info = findViewById(R.id.productsDetailsEditTextAdditionalInfo);
+        // Uzyskanie dostępu do elementów graficznych
+        Button back = findViewById(R.id.productsAddButtonBack);
+        Button add = findViewById(R.id.productsAddButtonSendForm);
+        EditText title = findViewById(R.id.productsAddEditTextTitle);
+        EditText author = findViewById(R.id.productsAddEditTextAuthor);
+        EditText year = findViewById(R.id.productsAddEditTextYear);
+        EditText publisher = findViewById(R.id.productsAddEditTextPublisher);
+        EditText info = findViewById(R.id.productsAddEditTextAdditionalInfo);
 
         back.setOnClickListener(v -> finish());
 
+        // Akcja przycisku dodaj
         add.setOnClickListener(v -> {
+            // Sprawdzenie czy nie są puste wymagane pola
             if (title.getText().toString().isEmpty() || author.getText().toString().isEmpty() ||
                     publisher.getText().toString().isEmpty()) {
                 Snackbar.make(v, getString(R.string.fields_empty), Snackbar.LENGTH_LONG).show();
                 return;
             }
+
+            // Utworzenie dokumentu JSON
             Gson gson = new Gson();
             JsonObject jsonObject = new JsonObject();
             jsonObject.addProperty("title", title.getText().toString());
@@ -42,6 +48,7 @@ public class AddBookActivity extends AppCompatActivity {
             jsonObject.addProperty("year", year.getText().toString());
             jsonObject.addProperty("publisher", publisher.getText().toString());
             jsonObject.addProperty("description", info.getText().toString());
+
             String data = gson.toJson(jsonObject);
             Toast.makeText(AddBookActivity.this, data, Toast.LENGTH_LONG).show();
         });

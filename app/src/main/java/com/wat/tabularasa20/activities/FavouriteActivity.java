@@ -21,6 +21,9 @@ import com.wat.tabularasa20.utilities.Downloader;
 import com.wat.tabularasa20.utilities.Preferences;
 import java.util.ArrayList;
 
+/**
+ * Aktywność listy ulubionuch
+ */
 public class FavouriteActivity extends AppCompatActivity implements ProductListAdapter.ItemClickListener, TextWatcher {
 
     ProductListAdapter adapter = null;
@@ -45,9 +48,8 @@ public class FavouriteActivity extends AppCompatActivity implements ProductListA
         Downloader favouriteDownloader = new Downloader();
         favouriteDownloader.setOnResultListener(resultFavourites -> {
             JsonArray favouritesJsonArray = JsonParser.parseString(resultFavourites).getAsJsonArray();
-
-            //for (int i = 0; i < favouritesJsonArray.size(); i++) {
-            favouritesJsonArray.forEach(productJsonElement -> products.add(new ProductListDescription(productJsonElement.getAsJsonObject().get("Tytul").getAsString(), true)) );
+            favouritesJsonArray.forEach(productJsonElement -> products.add(
+                    new ProductListDescription(productJsonElement.getAsJsonObject().get("Tytul").getAsString(), true)) );
 
             adapter = new ProductListAdapter(FavouriteActivity.this, products);
             adapter.setClickListener(FavouriteActivity.this);
@@ -63,21 +65,24 @@ public class FavouriteActivity extends AppCompatActivity implements ProductListA
         recyclerView.setAdapter(adapter);
     }
 
-    // Akcja elementu listy
+    /**
+     * Akcja elementu listy
+     */
     @Override
     public void onItemClick(View view, int position) {
         Toast.makeText(this, "Dotknięto " + adapter.getItem(position).desctiption + ", ulubiony " + adapter.getItem(position).favourite, Toast.LENGTH_SHORT).show();
     }
 
-    // Akcja pola filtrowania
-    @Override
-    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
-    @Override
-    public void afterTextChanged(Editable editable) {}
+    /**
+     * Akcja pola filtrowania
+     */
     @Override
     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
         adapter = new ProductListAdapter(this, ProductListAdapter.filter(charSequence.toString(), products));
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
     }
+
+    @Override public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+    @Override public void afterTextChanged(Editable editable) {}
 }

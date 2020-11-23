@@ -23,6 +23,9 @@ import com.wat.tabularasa20.utilities.Downloader;
 import com.wat.tabularasa20.utilities.Preferences;
 import java.util.ArrayList;
 
+/**
+ * Aktywność listy produktów
+ */
 public class ProductListActivity extends AppCompatActivity implements ProductListAdapter.ItemClickListener, TextWatcher, View.OnClickListener {
 
     ProductListAdapter adapter = null;
@@ -30,12 +33,16 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
     ProductListAdapter.SortOrder sortOrder = ProductListAdapter.SortOrder.ASC;
     ArrayList<ProductListDescription> products = null;
 
+    /**
+     * Fłówna metoda klasy
+     */
     @SuppressLint("DefaultLocale")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products_browse);
 
+        // Uzyskanie dostępu do elementów graficznych
         Button back = findViewById(R.id.productsBrowseButtonBack);
         EditText filter = findViewById(R.id.productsBrowseEditTextSearchText);
         ImageButton sort = findViewById(R.id.productsBrowseImageButtonSort);
@@ -48,6 +55,7 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
         // Pobranie informacji o wszystkich kasiążkach
         Downloader productDownloader = new Downloader();
         productDownloader.setOnResultListener(resultProducts -> {
+            // Utworzenie obiektu JSON z danych pobranych z internetu
             //Toast.makeText(ProductListActivity.this, result, Toast.LENGTH_LONG).show();
             JsonObject productsJsonObject = JsonParser.parseString(resultProducts).getAsJsonObject();
             String body = productsJsonObject.get("body").getAsString();
@@ -58,6 +66,7 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
             favouriteDownloader.setOnResultListener(resultFavourites -> {
                 JsonArray favouritesJsonArray = JsonParser.parseString(resultFavourites).getAsJsonArray();
 
+                // przejście po wszystkich produktach ze sprawdzeniem czy ulubiony
                 productsJsonArray.forEach(productJsonElement -> {
                     boolean contains = false;
                     for (int i = 0; i < favouritesJsonArray.size(); i++) {
@@ -67,11 +76,15 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
                         }
                     }
                     products.add(new ProductListDescription(productJsonElement.getAsJsonObject().get("Tytul").getAsString(), contains));
+
+                    adapter = new ProductListAdapter(ProductListActivity.this, products);
+                    adapter.setClickListener(ProductListActivity.this);
+                    recyclerView.setAdapter(adapter);
                 });
 
-                adapter = new ProductListAdapter(ProductListActivity.this, products);
-                adapter.setClickListener(ProductListActivity.this);
-                recyclerView.setAdapter(adapter);
+                //adapter = new ProductListAdapter(ProductListActivity.this, products);
+                //adapter.setClickListener(ProductListActivity.this);
+                //recyclerView.setAdapter(adapter);
             });
             favouriteDownloader.execute(Constants.FAVOURITES_URL + String.format("?Id_klienta=%d", Preferences.readUID(ProductListActivity.this)));
         });
@@ -86,17 +99,17 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
         sort.setOnClickListener(this);
     }
 
-    // Akcja elementu listy
+    /**
+     * Akcja elementu listy
+     */
     @Override
     public void onItemClick(View view, int position) {
         Toast.makeText(this, "Dotknięto " + adapter.getItem(position).desctiption + ", ulubiony " + adapter.getItem(position).favourite, Toast.LENGTH_SHORT).show();
     }
 
-    // Akcja pola filtrowania
-    @Override
-    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
-    @Override
-    public void afterTextChanged(Editable editable) {}
+    /**
+     * Akcja pola filtrowania
+     */
     @Override
     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
         adapter = new ProductListAdapter(this,
@@ -105,7 +118,9 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
         recyclerView.setAdapter(adapter);
     }
 
-    // Akcja rzycisku sortowania
+    /**
+     * Akcja przycisku sortowania
+     */
     @Override
     public void onClick(View view) {
         sortOrder = sortOrder == ProductListAdapter.SortOrder.ASC ? ProductListAdapter.SortOrder.DESC : ProductListAdapter.SortOrder.ASC;
@@ -118,4 +133,7 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
     }
+
+    @Override public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+    @Override public void afterTextChanged(Editable editable) {}
 }

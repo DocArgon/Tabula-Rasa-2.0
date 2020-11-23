@@ -13,6 +13,9 @@ import com.wat.tabularasa20.R;
 import com.wat.tabularasa20.data.Constants;
 import com.wat.tabularasa20.utilities.Uploader;
 
+/**
+ * Aktywność rejestracji nowego użytkownika
+ */
 public class RegisterActivity extends AppCompatActivity {
 
     @Override
@@ -20,20 +23,23 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_access_register);
 
+        // Uzyskanie dostępu do graficznych elementów widoku
         Button edit = findViewById(R.id.accessRegisterButtonSendForm);
         CheckBox confirm = findViewById(R.id.accessRegisterCheckoxTermsOfService);
-        final EditText login = findViewById(R.id.accessRegisterEditTextLogin);
-        final EditText email = findViewById(R.id.accessRegisterEditTextEmail);
-        final EditText password = findViewById(R.id.accessRegisterEditTextPassword);
-        final EditText passwd_rep = findViewById(R.id.accessRegisterEditTextPasswordRepeat);
-        final EditText name = findViewById(R.id.accessRegisterEditTextFirstName);
-        final EditText lname = findViewById(R.id.accessRegisterEditTextLastName);
-        final EditText city = findViewById(R.id.accessRegisterEditTextCity);
-        final EditText street = findViewById(R.id.accessRegisterEditTextStreet);
-        final EditText phone = findViewById(R.id.accessRegisterEditTextPhoneNumber);
-        final EditText bday = findViewById(R.id.accessRegisterEditTextBirthDate);
+        EditText login = findViewById(R.id.accessRegisterEditTextLogin);
+        EditText email = findViewById(R.id.accessRegisterEditTextEmail);
+        EditText password = findViewById(R.id.accessRegisterEditTextPassword);
+        EditText passwd_rep = findViewById(R.id.accessRegisterEditTextPasswordRepeat);
+        EditText name = findViewById(R.id.accessRegisterEditTextFirstName);
+        EditText lname = findViewById(R.id.accessRegisterEditTextLastName);
+        EditText city = findViewById(R.id.accessRegisterEditTextCity);
+        EditText street = findViewById(R.id.accessRegisterEditTextStreet);
+        EditText phone = findViewById(R.id.accessRegisterEditTextPhoneNumber);
+        EditText bday = findViewById(R.id.accessRegisterEditTextBirthDate);
 
+        // Akcja przycisku edycji danych
         edit.setOnClickListener(v -> {
+            // Sprawdzenie dzy pola danych nie są puste
             if (login.getText().toString().isEmpty() || password.getText().toString().isEmpty() ||
                     passwd_rep.getText().toString().isEmpty() || name.getText().toString().isEmpty() ||
                     city.getText().toString().isEmpty() || bday.getText().toString().isEmpty()) {
@@ -41,16 +47,19 @@ public class RegisterActivity extends AppCompatActivity {
                 return;
             }
 
+            // Sprawdzenie czy pierwsze i powtórzone hasło są identyczne
             if (!password.getText().toString().equals(passwd_rep.getText().toString())) {
                 Snackbar.make(v, getString(R.string.rep_passwd_problem), Snackbar.LENGTH_LONG).show();
                 return;
             }
 
+            // Sprawdzenie czy zaakceptowano warunki korzystania z aplikacji
             if (!confirm.isChecked()) {
                 Snackbar.make(v, getString(R.string.register_info_not_conf), Snackbar.LENGTH_LONG).show();
                 return;
             }
 
+            // Utworzenie dokumentu JSON
             Gson gson = new Gson();
             JsonObject jsonObject = new JsonObject();
             jsonObject.addProperty("login", login.getText().toString());
@@ -64,6 +73,7 @@ public class RegisterActivity extends AppCompatActivity {
             jsonObject.addProperty("birthday", bday.getText().toString());
             String data = gson.toJson(jsonObject);
 
+            // Wysłanie dznych do BD
             Uploader uploader = new Uploader();
             uploader.setOnResultListener(new Uploader.UploadActions() {
                 @Override

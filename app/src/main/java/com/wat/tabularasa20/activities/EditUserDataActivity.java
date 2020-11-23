@@ -14,6 +14,9 @@ import com.wat.tabularasa20.data.Constants;
 import com.wat.tabularasa20.utilities.Downloader;
 import com.wat.tabularasa20.utilities.Preferences;
 
+/**
+ * Aktywność modyfikacji danych użytkownika
+ */
 public class EditUserDataActivity extends AppCompatActivity {
 
     @Override
@@ -55,7 +58,9 @@ public class EditUserDataActivity extends AppCompatActivity {
         });
         downloader.execute(Constants.ACCOUNT_GET_URL + String.format("?id_klienta=%s", Preferences.readUID(this)));
 
+        // Akcja przycisku m,odyfikacji
         edit.setOnClickListener(v -> {
+            // Sprawdzenie czy pola nie są puste
             if (login.getText().toString().isEmpty() || password.getText().toString().isEmpty() ||
                     passwd_rep.getText().toString().isEmpty() || name.getText().toString().isEmpty() ||
                     city.getText().toString().isEmpty() || bday.getText().toString().isEmpty()) {
@@ -63,11 +68,13 @@ public class EditUserDataActivity extends AppCompatActivity {
                 return;
             }
 
+            // Sprawdzenie czy pierwsze i powtórzone hasło jest takie samo
             if (!password.getText().toString().equals(passwd_rep.getText().toString())) {
                 Snackbar.make(v, getString(R.string.rep_passwd_problem), Snackbar.LENGTH_LONG).show();
                 return;
             }
 
+            // Utworzenie obiektu JSON
             Gson gson = new Gson();
             JsonObject jsonObject = new JsonObject();
             jsonObject.addProperty("login", login.getText().toString());
