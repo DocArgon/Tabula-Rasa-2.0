@@ -39,83 +39,11 @@
         app:layout_constraintVertical_bias="0.0">
 
         <EditText
-            android:id="@+id/creditCardEditTextLogin"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:autofillHints="Login"
-            android:background="#FFFFFF"
-            android:ems="10"
-            android:hint="@string/login"
-            android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@id/creditCardEditTextEmail"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
-
-        <EditText
-            android:id="@+id/creditCardEditTextEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
-            android:autofillHints=""
-            android:background="#FFFFFF"
-            android:ems="10"
-            android:hint="@string/email"
-            android:inputType="textEmailAddress"
-            app:layout_constraintBottom_toTopOf="@+id/creditCardEditTextPassword"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/creditCardEditTextLogin" />
-
-        <EditText
-            android:id="@+id/creditCardEditTextPassword"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
-            android:autofillHints="Password"
-            android:background="#FFFFFF"
-            android:ems="10"
-            android:hint="@string/password"
-            android:inputType="textPassword"
-            app:layout_constraintBottom_toTopOf="@+id/creditCardEditTextPasswordRepeat"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/creditCardEditTextEmail" />
-
-        <EditText
-            android:id="@+id/creditCardEditTextPasswordRepeat"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
-            android:autofillHints="Password"
-            android:background="#FFFFFF"
-            android:ems="10"
-            android:hint="@string/password_again"
-            android:inputType="textPassword"
-            app:layout_constraintBottom_toTopOf="@+id/creditCardEditTextFirstName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/creditCardEditTextPassword" />
-
-        <EditText
             android:id="@+id/creditCardEditTextFirstName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             android:autofillHints=""
             android:background="#FFFFFF"
@@ -126,7 +54,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/creditCardEditTextPasswordRepeat" />
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
         <EditText
             android:id="@+id/creditCardEditTextLastName"
@@ -140,65 +69,12 @@
             android:ems="10"
             android:hint="@string/surename"
             android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/accessEditSpinnerSex"
+            app:layout_constraintBottom_toTopOf="@+id/creditCardEditTextCardNumber"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/creditCardEditTextFirstName"
             />
-
-        <Spinner
-            android:id="@+id/accessEditSpinnerSex"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="10dp"
-            android:background="@color/cardview_light_background"
-            android:backgroundTint="#FFFFFF"
-            app:layout_constraintBottom_toTopOf="@+id/accessEditEditTextCity"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/creditCardEditTextLastName"
-            />
-
-        <EditText
-            android:id="@+id/accessEditEditTextCity"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:autofillHints=""
-            android:background="#FFFFFF"
-            android:ems="10"
-            android:hint="@string/city"
-            android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@id/accessEditEditTextStreet"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/accessEditSpinnerSex"
-            />
-
-        <EditText
-            android:id="@+id/accessEditEditTextStreet"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
-            android:autofillHints=""
-            android:background="#FFFFFF"
-            android:ems="10"
-            android:hint="@string/street"
-            android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@id/creditCardEditTextCardNumber"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/accessEditEditTextCity" />
 
         <EditText
             android:id="@+id/creditCardEditTextCardNumber"
@@ -210,13 +86,33 @@
             android:autofillHints=""
             android:background="#FFFFFF"
             android:ems="10"
-            android:hint="@string/phone"
+            android:hint="@string/credt_card_number"
+            android:inputType="numberSigned"
+            app:layout_constraintBottom_toTopOf="@+id/creditCardEditTextCcvCode"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/creditCardEditTextLastName"
+            />
+
+        <EditText
+            android:id="@+id/creditCardEditTextCcvCode"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:autofillHints=""
+            android:background="#FFFFFF"
+            android:ems="10"
+            android:hint="@string/ccv_code"
             android:inputType="phone"
             app:layout_constraintBottom_toTopOf="@+id/creditCardEditTextExpirationDate"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/accessEditEditTextStreet" />
+            app:layout_constraintTop_toBottomOf="@id/creditCardEditTextCardNumber"
+            />
 
         <EditText
             android:id="@+id/creditCardEditTextExpirationDate"
@@ -228,12 +124,14 @@
             android:autofillHints=""
             android:background="#FFFFFF"
             android:ems="10"
-            android:hint="@string/birthday"
+            android:hint="@string/expiration_date"
             android:inputType="date"
+            app:layout_constraintBottom_toTopOf="@+id/creditCardButtonUpdateSend"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/creditCardEditTextCardNumber" />
+            app:layout_constraintTop_toBottomOf="@+id/creditCardEditTextCcvCode"
+            />
 
         <Button
             android:id="@+id/creditCardButtonUpdateSend"
@@ -241,13 +139,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="30dp"
-            android:layout_marginBottom="20dp"
             android:text="@string/premium_card_button"
-            app:layout_constraintBottom_toTopOf="@+id/creditCardButtonBack"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/creditCardEditTextExpirationDate"
             />
 
         <Button
@@ -258,10 +156,11 @@
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="20dp"
-            android:text="@string/edit"
+            android:text="@string/go_back"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -24,17 +24,17 @@ public class EditUserDataActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_access_edit);
 
-        Button edit = findViewById(R.id.accessEditButtonSendForm);
-        final EditText login = findViewById(R.id.accessEditEditTextLogin);
-        final EditText email = findViewById(R.id.accessEditEditTextEmail);
-        final EditText password = findViewById(R.id.accessEditEditTextPassword);
-        final EditText passwd_rep = findViewById(R.id.accessEditEditTextPasswordRepeat);
-        final EditText name = findViewById(R.id.accessEditEditTextFirstName);
-        final EditText lname = findViewById(R.id.accessEditEditTextLastName);
+        Button edit = findViewById(R.id.creditCardButtonBack);
+        final EditText login = findViewById(R.id.creditCardEditTextLogin);
+        final EditText email = findViewById(R.id.creditCardEditTextEmail);
+        final EditText password = findViewById(R.id.creditCardEditTextPassword);
+        final EditText passwd_rep = findViewById(R.id.creditCardEditTextPasswordRepeat);
+        final EditText name = findViewById(R.id.creditCardEditTextFirstName);
+        final EditText lname = findViewById(R.id.creditCardEditTextLastName);
         final EditText city = findViewById(R.id.accessEditEditTextCity);
         final EditText street = findViewById(R.id.accessEditEditTextStreet);
-        final EditText phone = findViewById(R.id.accessEditEditTextPhoneNumber);
-        final EditText bday = findViewById(R.id.accessEditEditTextBirthDate);
+        final EditText phone = findViewById(R.id.creditCardEditTextCardNumber);
+        final EditText bday = findViewById(R.id.creditCardEditTextExpirationDate);
 
         // Pobranie informacji o użytkowniku
         Downloader downloader = new Downloader();
