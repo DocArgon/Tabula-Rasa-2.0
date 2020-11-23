@@ -13,7 +13,7 @@ public interface ApiClient {
     /**
      * @return Empty
      */
-    @com.amazonaws.mobileconnectors.apigateway.annotation.Operation(path = "/hello-world", method = "GET")
+    @com.amazonaws.mobileconnectors.apigateway.annotation.Operation(path = "/rejestracja", method = "GET")
     Constants helloWorldGet();
 
 }

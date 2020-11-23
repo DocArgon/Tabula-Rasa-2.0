@@ -14,12 +14,13 @@
 		android:background="#DDCBCB"
 		android:paddingBottom="5dp"
 		android:singleLine="false"
-		android:text="@string/my_favourites"
+		android:text="@string/my_shared_title"
 		android:textAlignment="center"
 		android:textSize="30sp"
 		android:textStyle="bold"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent"/>
+		app:layout_constraintTop_toTopOf="parent"
+		/>
 
 	<androidx.constraintlayout.widget.ConstraintLayout
 		android:id="@+id/productsMySharedListLayoutMain"

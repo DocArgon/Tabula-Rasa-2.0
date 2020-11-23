@@ -14,6 +14,9 @@ import com.wat.tabularasa20.data.Constants;
 import com.wat.tabularasa20.utilities.Downloader;
 import com.wat.tabularasa20.utilities.Preferences;
 
+/**
+ * Aktywność modyfikacji danych użytkownika
+ */
 public class EditUserDataActivity extends AppCompatActivity {
 
     @Override
@@ -21,17 +24,17 @@ public class EditUserDataActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_access_edit);
 
-        Button edit = findViewById(R.id.accessEditButtonSendForm);
-        final EditText login = findViewById(R.id.accessEditEditTextLogin);
-        final EditText email = findViewById(R.id.accessEditEditTextEmail);
-        final EditText password = findViewById(R.id.accessEditEditTextPassword);
-        final EditText passwd_rep = findViewById(R.id.accessEditEditTextPasswordRepeat);
-        final EditText name = findViewById(R.id.accessEditEditTextFirstName);
-        final EditText lname = findViewById(R.id.accessEditEditTextLastName);
+        Button edit = findViewById(R.id.creditCardButtonBack);
+        final EditText login = findViewById(R.id.creditCardEditTextLogin);
+        final EditText email = findViewById(R.id.creditCardEditTextEmail);
+        final EditText password = findViewById(R.id.creditCardEditTextPassword);
+        final EditText passwd_rep = findViewById(R.id.creditCardEditTextPasswordRepeat);
+        final EditText name = findViewById(R.id.creditCardEditTextFirstName);
+        final EditText lname = findViewById(R.id.creditCardEditTextLastName);
         final EditText city = findViewById(R.id.accessEditEditTextCity);
         final EditText street = findViewById(R.id.accessEditEditTextStreet);
-        final EditText phone = findViewById(R.id.accessEditEditTextPhoneNumber);
-        final EditText bday = findViewById(R.id.accessEditEditTextBirthDate);
+        final EditText phone = findViewById(R.id.creditCardEditTextCardNumber);
+        final EditText bday = findViewById(R.id.creditCardEditTextExpirationDate);
 
         // Pobranie informacji o użytkowniku
         Downloader downloader = new Downloader();
@@ -55,7 +58,9 @@ public class EditUserDataActivity extends AppCompatActivity {
         });
         downloader.execute(Constants.ACCOUNT_GET_URL + String.format("?id_klienta=%s", Preferences.readUID(this)));
 
+        // Akcja przycisku m,odyfikacji
         edit.setOnClickListener(v -> {
+            // Sprawdzenie czy pola nie są puste
             if (login.getText().toString().isEmpty() || password.getText().toString().isEmpty() ||
                     passwd_rep.getText().toString().isEmpty() || name.getText().toString().isEmpty() ||
                     city.getText().toString().isEmpty() || bday.getText().toString().isEmpty()) {
@@ -63,11 +68,13 @@ public class EditUserDataActivity extends AppCompatActivity {
                 return;
             }
 
+            // Sprawdzenie czy pierwsze i powtórzone hasło jest takie samo
             if (!password.getText().toString().equals(passwd_rep.getText().toString())) {
                 Snackbar.make(v, getString(R.string.rep_passwd_problem), Snackbar.LENGTH_LONG).show();
                 return;
             }
 
+            // Utworzenie obiektu JSON
             Gson gson = new Gson();
             JsonObject jsonObject = new JsonObject();
             jsonObject.addProperty("login", login.getText().toString());

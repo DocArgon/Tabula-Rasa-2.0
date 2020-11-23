@@ -2,10 +2,12 @@ package com.wat.tabularasa20.activities;
 
 import android.os.Bundle;
 import android.widget.Button;
-
 import androidx.appcompat.app.AppCompatActivity;
 import com.wat.tabularasa20.R;
 
+/**
+ * Aktywność pisania nowej wiadomości
+ */
 public class ChatActivity extends AppCompatActivity {
 
     @Override

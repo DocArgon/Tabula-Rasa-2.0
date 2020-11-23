@@ -7,6 +7,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.mattkula.secrettextview.SecretTextView;
 import com.wat.tabularasa20.R;
 
+/**
+ * Aktywność pokazująca ekran powitalny
+ */
 public class SplashActivity extends AppCompatActivity {
 
     @Override
