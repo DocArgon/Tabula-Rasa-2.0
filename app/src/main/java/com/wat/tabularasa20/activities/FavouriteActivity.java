@@ -33,9 +33,9 @@ public class FavouriteActivity extends AppCompatActivity implements ProductListA
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products_favourite);
 
-        Button back = findViewById(R.id.productsFavouriteButtonBack);
-        EditText filter = findViewById(R.id.productsFavouriteEditTextSearchText);
-        recyclerView = findViewById(R.id.productsFavouriteRecyclerViewProductList);
+        Button back = findViewById(R.id.productsMySharedButtonBack);
+        EditText filter = findViewById(R.id.productsMySharedEditTextSearchText);
+        recyclerView = findViewById(R.id.productsMySharedRecyclerViewProductList);
 
         back.setOnClickListener(v -> finish());
 

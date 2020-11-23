@@ -19,13 +19,13 @@ public class AddBookActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products_add);
 
-        final Button back = findViewById(R.id.productsAddButtonBack);
-        final Button add = findViewById(R.id.productsAddButtonSendForm);
-        final EditText title = findViewById(R.id.productsAddEditTextTitle);
-        final EditText author = findViewById(R.id.productsAddEditTextAuthor);
-        final EditText year = findViewById(R.id.productsAddEditTextYear);
-        final EditText publisher = findViewById(R.id.productsAddEditTextPublisher);
-        final EditText info = findViewById(R.id.productsAddEditTextAdditionalInfo);
+        final Button back = findViewById(R.id.productsDetailsButtonBack);
+        final Button add = findViewById(R.id.productsDetailsButtonSendForm);
+        final EditText title = findViewById(R.id.productsDetailsEditTextTitle);
+        final EditText author = findViewById(R.id.productsDetailsEditTextAuthor);
+        final EditText year = findViewById(R.id.productsDetailsEditTextYear);
+        final EditText publisher = findViewById(R.id.productsDetailsEditTextPublisher);
+        final EditText info = findViewById(R.id.productsDetailsEditTextAdditionalInfo);
 
         back.setOnClickListener(v -> finish());
 

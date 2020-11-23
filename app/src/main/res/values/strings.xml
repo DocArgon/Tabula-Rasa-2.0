@@ -49,4 +49,7 @@
     <string name="messages_new">Nowa wiadomość</string>
     <string name="conversations">Konwersacje</string>
     <string name="settinds">Ustawienia</string>
+    <string name="my_shared_title">Moje udostępnione</string>
+    <string name="product_detail_title">Sczegóły produktu</string>
+
 </resources>

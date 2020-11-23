@@ -140,11 +140,28 @@
             android:ems="10"
             android:hint="@string/surename"
             android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/accessRegisterEditTextCity"
+            app:layout_constraintBottom_toTopOf="@+id/accessRegisterSpinnerSex"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/accessRegisterEditTextFirstName" />
+            app:layout_constraintTop_toBottomOf="@+id/accessRegisterEditTextFirstName"
+            />
+
+        <Spinner
+            android:id="@+id/accessRegisterSpinnerSex"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:background="@color/cardview_light_background"
+            android:backgroundTint="#FFFFFF"
+            app:layout_constraintBottom_toTopOf="@id/accessRegisterEditTextCity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/accessRegisterEditTextLastName"
+            />
 
         <EditText
             android:id="@+id/accessRegisterEditTextCity"
@@ -162,7 +179,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/accessRegisterEditTextLastName" />
+            app:layout_constraintTop_toBottomOf="@id/accessRegisterSpinnerSex"
+            />
 
         <EditText
             android:id="@+id/accessRegisterEditTextStreet"
