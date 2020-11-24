@@ -44,9 +44,11 @@ public class MySharedActivity extends AppCompatActivity implements ProductListAd
         // Pobranie informacji o udostępnionych
         Downloader sharedDownloader = new Downloader();
         sharedDownloader.setOnResultListener(result -> {
+            assert result != null;
             JsonArray favouritesJsonArray = JsonParser.parseString(result).getAsJsonArray();
-            favouritesJsonArray.forEach(productJsonElement -> products.add(
-                    new ProductListDescription(productJsonElement.getAsJsonObject().get("Tytul").getAsString(), ProductListDescription.FavouriteStare.HIDDEN)) );
+            favouritesJsonArray.forEach(productJsonElement -> products.add(new ProductListDescription(
+                    productJsonElement.getAsJsonObject().get("Tytul").getAsString(),
+                    ProductListDescription.FavouriteStare.HIDDEN)) );
 
             adapter = new ProductListAdapter(MySharedActivity.this, products);
             adapter.setRowClickListener(MySharedActivity.this);

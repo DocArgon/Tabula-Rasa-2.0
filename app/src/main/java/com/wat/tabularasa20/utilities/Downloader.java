@@ -1,6 +1,7 @@
 package com.wat.tabularasa20.utilities;
 
 import android.os.AsyncTask;
+import androidx.annotation.Nullable;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -13,7 +14,7 @@ import java.net.URLConnection;
 public class Downloader extends AsyncTask<Object, Void, String> {
 
     public interface DownloadActions {
-        void getResult(String result);
+        void getResult(@Nullable String result);
     }
 
     private DownloadActions onResultListener = null;
@@ -52,7 +53,6 @@ public class Downloader extends AsyncTask<Object, Void, String> {
 
     /**
      * Metoda wywołująca listener na zakończenie pobierania
-     * @param str
      */
     @Override
     protected void onPostExecute (String str) {
@@ -64,6 +64,7 @@ public class Downloader extends AsyncTask<Object, Void, String> {
      * Getter ostatniej odpowiedzi
      * @return ostatnia odpowiedź jako <code>String</code>
      */
+    @Nullable
     public String getResponse () {
         return response;
     }

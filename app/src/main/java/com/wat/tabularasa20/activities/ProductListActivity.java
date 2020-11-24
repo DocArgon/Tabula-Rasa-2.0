@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.google.gson.JsonPrimitive;
 import com.wat.tabularasa20.R;
 import com.wat.tabularasa20.data.Constants;
 import com.wat.tabularasa20.data.ProductListAdapter;
@@ -60,6 +59,7 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
         productDownloader.setOnResultListener(resultProducts -> {
             // Utworzenie obiektu JSON z danych pobranych z internetu
             //Toast.makeText(ProductListActivity.this, result, Toast.LENGTH_LONG).show();
+            assert resultProducts != null;
             JsonObject productsJsonObject = JsonParser.parseString(resultProducts).getAsJsonObject();
             String body = productsJsonObject.get("body").getAsString();
             JsonArray productsJsonArray = JsonParser.parseString(body).getAsJsonArray();
@@ -67,6 +67,7 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
             // Pobranie informacji o ulubionych
             Downloader favouriteDownloader = new Downloader();
             favouriteDownloader.setOnResultListener(resultFavourites -> {
+                assert resultFavourites != null;
                 JsonArray favouritesJsonArray = JsonParser.parseString(resultFavourites).getAsJsonArray();
 
                 // przejście po wszystkich produktach ze sprawdzeniem czy ulubiony
@@ -75,6 +76,11 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
                     products.add(new ProductListDescription(
                             productJsonElement.getAsJsonObject().get("Tytul").getAsString(),
                             contains ? ProductListDescription.FavouriteStare.ON : ProductListDescription.FavouriteStare.OFF));
+
+                    Downloader detailsDownloader = new Downloader();
+                    detailsDownloader.setOnResultListener(result -> {
+                        // TODO przypisać do obiektu listy
+                    });
                 });
 
                 adapter = new ProductListAdapter(ProductListActivity.this, products);
