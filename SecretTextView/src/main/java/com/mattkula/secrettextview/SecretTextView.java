@@ -9,7 +9,7 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 
 /**
- * @hide
+ * Created by matt on 5/27/14.
  */
 public class SecretTextView extends TextView {
     private String mTextString;

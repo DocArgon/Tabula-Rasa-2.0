@@ -2,13 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/access_loginLayoutScreen"
+    android:id="@+id/accessLoginLayoutScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/access_loginTextViewTitle"
+        android:id="@+id/accessLoginTextViewTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#DDCBCB"
@@ -23,19 +23,19 @@
         />
 
     <ImageView
-        android:id="@+id/access_loginImageViewAppLogo"
+        android:id="@+id/accessLoginImageViewAppLogo"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="40dp"
         android:contentDescription="@string/app_name"
-        app:layout_constraintBottom_toTopOf="@+id/access_loginListLayoutMain"
+        app:layout_constraintBottom_toTopOf="@+id/accessLoginListLayoutMain"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/access_loginTextViewTitle"
+        app:layout_constraintTop_toBottomOf="@+id/accessLoginTextViewTitle"
         app:srcCompat="@drawable/ic_launcher_sxhdpi" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/access_loginListLayoutMain"
+        android:id="@+id/accessLoginListLayoutMain"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="40dp"
@@ -47,10 +47,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/access_loginImageViewAppLogo">
+        app:layout_constraintTop_toBottomOf="@+id/accessLoginImageViewAppLogo">
 
         <EditText
-            android:id="@+id/access_loginEditTextName"
+            android:id="@+id/accessLoginEditTextName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
@@ -60,14 +60,14 @@
             android:ems="10"
             android:hint="@string/login"
             android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/access_loginEditTextPassword"
+            app:layout_constraintBottom_toTopOf="@+id/accessLoginEditTextPassword"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/access_loginEditTextPassword"
+            android:id="@+id/accessLoginEditTextPassword"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
@@ -78,14 +78,14 @@
             android:ems="10"
             android:hint="@string/password"
             android:inputType="textPassword"
-            app:layout_constraintBottom_toTopOf="@+id/access_loginButtonLogin"
+            app:layout_constraintBottom_toTopOf="@+id/accessLoginButtonLogin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/access_loginEditTextName" />
+            app:layout_constraintTop_toBottomOf="@+id/accessLoginEditTextName" />
 
         <Button
-            android:id="@+id/access_loginButtonLogin"
+            android:id="@+id/accessLoginButtonLogin"
             style="@style/Tabularasa.Button.Round.Colored"
             android:layout_width="0dp"
             android:layout_height="60dp"
@@ -98,7 +98,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/access_loginEditTextPassword" />
+            app:layout_constraintTop_toBottomOf="@+id/accessLoginEditTextPassword" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

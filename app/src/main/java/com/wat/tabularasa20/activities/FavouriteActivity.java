@@ -24,7 +24,7 @@ import java.util.ArrayList;
 /**
  * Aktywność listy ulubionuch
  */
-public class FavouriteActivity extends AppCompatActivity implements ProductListAdapter.ItemClickListener, TextWatcher {
+public class FavouriteActivity extends AppCompatActivity implements ProductListAdapter.RowClickListener, TextWatcher {
 
     ProductListAdapter adapter = null;
     RecyclerView recyclerView = null;
@@ -52,7 +52,7 @@ public class FavouriteActivity extends AppCompatActivity implements ProductListA
                     new ProductListDescription(productJsonElement.getAsJsonObject().get("Tytul").getAsString(), true)) );
 
             adapter = new ProductListAdapter(FavouriteActivity.this, products);
-            adapter.setClickListener(FavouriteActivity.this);
+            adapter.setRowClickListener(FavouriteActivity.this);
             recyclerView.setAdapter(adapter);
         });
         favouriteDownloader.execute(Constants.FAVOURITES_URL + String.format("?Id_klienta=%d", Preferences.readUID(FavouriteActivity.this)));
@@ -61,7 +61,7 @@ public class FavouriteActivity extends AppCompatActivity implements ProductListA
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new ProductListAdapter(this, products);
-        adapter.setClickListener(this);
+        adapter.setRowClickListener(this);
         recyclerView.setAdapter(adapter);
     }
 
@@ -69,8 +69,8 @@ public class FavouriteActivity extends AppCompatActivity implements ProductListA
      * Akcja elementu listy
      */
     @Override
-    public void onItemClick(View view, int position) {
-        Toast.makeText(this, "Dotknięto " + adapter.getItem(position).desctiption + ", ulubiony " + adapter.getItem(position).favourite, Toast.LENGTH_SHORT).show();
+    public void onRowClick(View view, int position) {
+        Toast.makeText(this, "Dotknięto " + adapter.getItem(position).name + ", ulubiony " + adapter.getItem(position).favourite, Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -79,7 +79,7 @@ public class FavouriteActivity extends AppCompatActivity implements ProductListA
     @Override
     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
         adapter = new ProductListAdapter(this, ProductListAdapter.filter(charSequence.toString(), products));
-        adapter.setClickListener(this);
+        adapter.setRowClickListener(this);
         recyclerView.setAdapter(adapter);
     }
 

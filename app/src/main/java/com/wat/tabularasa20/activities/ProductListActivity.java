@@ -1,6 +1,7 @@
 package com.wat.tabularasa20.activities;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -25,8 +26,9 @@ import java.util.ArrayList;
 
 /**
  * Aktywność listy produktów
+ * doczytać https://bignerdranch.github.io/expandable-recycler-view/
  */
-public class ProductListActivity extends AppCompatActivity implements ProductListAdapter.ItemClickListener, TextWatcher, View.OnClickListener {
+public class ProductListActivity extends AppCompatActivity implements ProductListAdapter.RowClickListener, TextWatcher, View.OnClickListener, ProductListAdapter.FavouriteChangeListener {
 
     ProductListAdapter adapter = null;
     RecyclerView recyclerView = null;
@@ -78,7 +80,7 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
                     products.add(new ProductListDescription(productJsonElement.getAsJsonObject().get("Tytul").getAsString(), contains));
 
                     adapter = new ProductListAdapter(ProductListActivity.this, products);
-                    adapter.setClickListener(ProductListActivity.this);
+                    adapter.setRowClickListener(ProductListActivity.this);
                     recyclerView.setAdapter(adapter);
                 });
 
@@ -92,7 +94,8 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new ProductListAdapter(this, products);
-        adapter.setClickListener(this);
+        adapter.setRowClickListener(this);
+        adapter.setFavouriteChangeListener(this);
         recyclerView.setAdapter(adapter);
 
         filter.addTextChangedListener(this);
@@ -103,9 +106,21 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
      * Akcja elementu listy
      */
     @Override
-    public void onItemClick(View view, int position) {
-        Toast.makeText(this, "Dotknięto " + adapter.getItem(position).desctiption + ", ulubiony " + adapter.getItem(position).favourite, Toast.LENGTH_SHORT).show();
+    public void onRowClick(View view, int position) {
+        Toast.makeText(this, "Dotknięto " + adapter.getItem(position).name + ", ulubiony " + adapter.getItem(position).favourite, Toast.LENGTH_SHORT).show();
+        Intent spec = new Intent(ProductListActivity.this, ProductDetailsActivity.class);
+        spec.putExtra("name", adapter.getItem(position).name);
+        startActivity(spec);
     }
+
+    /**
+     * Akcja przycisku ulubionych
+     */
+    @Override
+    public void onFavouriteChange(View v, boolean isChecked, int position) {
+        Toast.makeText(this, "Dotknięto * przy " + adapter.getItem(position).name + ", ulubiony " + isChecked, Toast.LENGTH_SHORT).show();
+    }
+
 
     /**
      * Akcja pola filtrowania
@@ -114,7 +129,7 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
         adapter = new ProductListAdapter(this,
             ProductListAdapter.filter(charSequence.toString(), ProductListAdapter.sort(sortOrder, products)));
-        adapter.setClickListener(this);
+        adapter.setRowClickListener(this);
         recyclerView.setAdapter(adapter);
     }
 
@@ -130,7 +145,7 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
         for (int i = 0; i < adapter.getItemCount(); i++)
             filtered.add(adapter.getItem(i));
         adapter = new ProductListAdapter(this, ProductListAdapter.sort(sortOrder, filtered));
-        adapter.setClickListener(this);
+        adapter.setRowClickListener(this);
         recyclerView.setAdapter(adapter);
     }
 

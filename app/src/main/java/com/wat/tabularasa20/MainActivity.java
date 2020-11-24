@@ -46,9 +46,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Uzyskanie dostępu do obiektów graficznych
-        textName = findViewById(R.id.access_loginEditTextName);
-        textPass = findViewById(R.id.access_loginEditTextPassword);
-        buttonLogin = findViewById(R.id.access_loginButtonLogin);
+        textName = findViewById(R.id.accessLoginEditTextName);
+        textPass = findViewById(R.id.accessLoginEditTextPassword);
+        buttonLogin = findViewById(R.id.accessLoginButtonLogin);
 
         // Akcja przycisku
         buttonLogin.setOnClickListener(v -> {
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_main, menu);
+        inflater.inflate(R.menu.menu_login, menu);
         return true;
     }
 
@@ -105,10 +105,10 @@ public class MainActivity extends AppCompatActivity {
      */
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.access_loginMenuCreateAccount:
+            case R.id.accessLoginMenuCreateAccount:
                 startActivity(new Intent(MainActivity.this, RegisterActivity.class));
                 return true;
-            case R.id.access_loginMenuCloseApp:
+            case R.id.accessLoginMenuCloseApp:
                 finishAffinity();
             default:
                 return super.onOptionsItemSelected(item);
@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private void login(String result) {
         if (Integer.parseInt(result.replaceAll("\"", "")) < 0) {
-            Snackbar.make(findViewById(R.id.access_loginButtonLogin), "Nieprawidłowy login lub hasło", Snackbar.LENGTH_LONG).show();
+            Snackbar.make(findViewById(R.id.accessLoginButtonLogin), "Nieprawidłowy login lub hasło", Snackbar.LENGTH_LONG).show();
             return;
         }
 

@@ -26,7 +26,7 @@
     <string name="edit_account_data">Edycja danych konta</string>
     <string name="mailbox">Skrzynka odbiorcza</string>
     <string name="user_search">Szukaj użytkownika</string>
-    <string name="my_products">Moje udostępnione książki</string>
+    <string name="my_products">Moje udostępnione</string>
     <string name="my_favourites">Moja lista ulubionych</string>
     <string name="search_book">Szukaj ksiązki</string>
     <string name="logout">Wyloguj</string>
@@ -55,6 +55,6 @@
     <string name="credt_card_number">Nr karty kredytowej</string>
     <string name="ccv_code">Kod CCV</string>
     <string name="expiration_date">Data ważności</string>
-
-
+    <string name="edit_credit_card_title">Dane karty kredytowej</string>
+    <string name="chat_with">Rozmowa z %1$s</string>
 </resources>

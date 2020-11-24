@@ -24,9 +24,11 @@
         </activity>
         <activity android:name=".activities.AddBookActivity" />
         <activity android:name=".activities.ChatActivity" />
+        <activity android:name=".activities.CreditCardActivity" />
         <activity android:name=".activities.EditUserDataActivity" />
         <activity android:name=".activities.FavouriteActivity" />
         <activity android:name=".activities.HomeActivity" />
+        <activity android:name=".activities.ProductDetailsActivity" />
         <activity android:name=".activities.ProductListActivity" />
         <activity android:name=".activities.RegisterActivity" />
         <activity

@@ -14,12 +14,14 @@
         android:background="#DDCBCB"
         android:paddingBottom="5dp"
         android:singleLine="false"
-        android:text="@string/edit_account_data"
+        android:text="@string/edit_credit_card_title"
         android:textAlignment="center"
         android:textSize="30sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/creditCardListLayoutMain"

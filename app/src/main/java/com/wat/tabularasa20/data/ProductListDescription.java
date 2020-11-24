@@ -2,22 +2,34 @@ package com.wat.tabularasa20.data;
 
 public class ProductListDescription {
 
-    public String desctiption;
+    public String name;
+    public String description;
     public boolean favourite;
-
-    /**
-     * Przaciążony konstruktor
-     */
-    public ProductListDescription (String desctiption) {
-        this.desctiption = desctiption;
-        this.favourite = false;
-    }
 
     /**
      * Konstruktor struktury przechowującej opis książki
      */
-    public ProductListDescription (String desctiption, boolean favoutite) {
-        this.desctiption = desctiption;
+    public ProductListDescription (String name, boolean favoutite, String description) {
+        this.name = name;
         this.favourite = favoutite;
+        this.description = description;
+    }
+
+    /**
+     * Przaciążony konstruktor
+     */
+    public ProductListDescription (String name, boolean favoutite) {
+        this.name = name;
+        this.favourite = favoutite;
+        this.description = null;
+    }
+
+    /**
+     * Przaciążony konstruktor
+     */
+    public ProductListDescription (String name) {
+        this.name = name;
+        this.favourite = false;
+        this.description = null;
     }
 }

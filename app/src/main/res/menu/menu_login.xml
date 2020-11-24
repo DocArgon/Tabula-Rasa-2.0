@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/access_loginMenuCreateAccount"
+        android:id="@+id/accessLoginMenuCreateAccount"
         android:title="@string/create_account" />
     <item
-        android:id="@+id/access_loginMenuCloseApp"
+        android:id="@+id/accessLoginMenuCloseApp"
         android:title="@string/close" />
 </menu>

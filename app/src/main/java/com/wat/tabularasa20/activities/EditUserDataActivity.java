@@ -1,6 +1,8 @@
 package com.wat.tabularasa20.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -9,6 +11,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.wat.tabularasa20.MainActivity;
 import com.wat.tabularasa20.R;
 import com.wat.tabularasa20.data.Constants;
 import com.wat.tabularasa20.utilities.Downloader;
@@ -24,17 +27,18 @@ public class EditUserDataActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_access_edit);
 
-        Button edit = findViewById(R.id.creditCardButtonBack);
-        final EditText login = findViewById(R.id.creditCardEditTextLogin);
-        final EditText email = findViewById(R.id.creditCardEditTextEmail);
-        final EditText password = findViewById(R.id.creditCardEditTextPassword);
-        final EditText passwd_rep = findViewById(R.id.creditCardEditTextPasswordRepeat);
-        final EditText name = findViewById(R.id.creditCardEditTextFirstName);
-        final EditText lname = findViewById(R.id.creditCardEditTextLastName);
-        final EditText city = findViewById(R.id.accessEditEditTextCity);
-        final EditText street = findViewById(R.id.accessEditEditTextStreet);
-        final EditText phone = findViewById(R.id.creditCardEditTextCardNumber);
-        final EditText bday = findViewById(R.id.creditCardEditTextExpirationDate);
+        Button edit = findViewById(R.id.accessEditButtonBack);
+        Button card = findViewById(R.id.accessEditButtonUpdateSend);
+        EditText login = findViewById(R.id.accessEditEditTextLogin);
+        EditText email = findViewById(R.id.accessEditEditTextEmail);
+        EditText password = findViewById(R.id.accessEditEditTextPassword);
+        EditText passwd_rep = findViewById(R.id.accessEditEditTextPasswordRepeat);
+        EditText name = findViewById(R.id.accessEditEditTextFirstName);
+        EditText lname = findViewById(R.id.accessEditEditTextLastName);
+        EditText city = findViewById(R.id.accessEditEditTextCity);
+        EditText street = findViewById(R.id.accessEditEditTextStreet);
+        EditText phone = findViewById(R.id.accessEditEditTextCardNumber);
+        EditText bday = findViewById(R.id.accessEditEditTextExpirationDate);
 
         // Pobranie informacji o użytkowniku
         Downloader downloader = new Downloader();
@@ -58,7 +62,10 @@ public class EditUserDataActivity extends AppCompatActivity {
         });
         downloader.execute(Constants.ACCOUNT_GET_URL + String.format("?id_klienta=%s", Preferences.readUID(this)));
 
-        // Akcja przycisku m,odyfikacji
+        // akcja przycisku konta premium
+        card.setOnClickListener(view -> startActivity(new Intent(EditUserDataActivity.this, CreditCardActivity.class)));
+
+        // Akcja przycisku modyfikacji
         edit.setOnClickListener(v -> {
             // Sprawdzenie czy pola nie są puste
             if (login.getText().toString().isEmpty() || password.getText().toString().isEmpty() ||
