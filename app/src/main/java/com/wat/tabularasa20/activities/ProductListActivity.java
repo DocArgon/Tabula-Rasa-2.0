@@ -1,6 +1,7 @@
 package com.wat.tabularasa20.activities;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -25,6 +26,7 @@ import java.util.ArrayList;
 
 /**
  * Aktywność listy produktów
+ * doczytać https://bignerdranch.github.io/expandable-recycler-view/
  */
 public class ProductListActivity extends AppCompatActivity implements ProductListAdapter.ItemClickListener, TextWatcher, View.OnClickListener {
 
@@ -105,6 +107,9 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
     @Override
     public void onItemClick(View view, int position) {
         Toast.makeText(this, "Dotknięto " + adapter.getItem(position).desctiption + ", ulubiony " + adapter.getItem(position).favourite, Toast.LENGTH_SHORT).show();
+        Intent spec = new Intent(ProductListActivity.this, ProductDetailsActivity.class);
+        spec.putExtra("name", adapter.getItem(position).desctiption);
+        startActivity(spec);
     }
 
     /**
