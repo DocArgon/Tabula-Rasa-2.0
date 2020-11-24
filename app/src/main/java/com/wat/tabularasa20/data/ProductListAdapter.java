@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,13 +18,18 @@ import java.util.stream.Collectors;
 
 public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.ViewHolder> {
 
-    public interface ItemClickListener {
-        void onItemClick(View view, int position);
+    public interface RowClickListener {
+        void onRowClick(View view, int position);
+    }
+
+    public interface FavouriteChangeListener {
+        void onFavouriteChange(View v, boolean isChecked, int position);
     }
 
     private ArrayList<ProductListDescription> data;
     private LayoutInflater inflater;
-    private ItemClickListener itemClickListener;
+    private RowClickListener rowClickListener = null;
+    private FavouriteChangeListener favouriteChangeListener = null;
 
     /**
      * Kierunek sortowania
@@ -54,25 +60,32 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
      */
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        String description = data.get(position).desctiption;
+        String description = data.get(position).name;
         boolean favourite = data.get(position).favourite;
         holder.descriptionTextView.setText(description);
         holder.favouriteCheckbox.setChecked(favourite);
-        holder.favouriteCheckbox.setOnCheckedChangeListener((v, isChecked) -> data.get(position).favourite = isChecked);
+        /*
+        holder.favouriteCheckbox.setOnCheckedChangeListener((v, isChecked) -> {
+            if (favouriteChangeListener != null) favouriteChangeListener.onFavouriteChange(v, isChecked, position);
+        }); //data.get(position).favourite = isChecked
+        //*/
     }
 
     /**
      * Klasa obsługi widoku elementu listy
-      */
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+     */
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
         TextView descriptionTextView;
         CheckBox favouriteCheckbox;
 
         ViewHolder(View itemView) {
             super(itemView);
-            descriptionTextView = itemView.findViewById(R.id.recyclerviewProductListTextViewDescription);
+            descriptionTextView = itemView.findViewById(R.id.recyclerviewProductListTextViewName);
             favouriteCheckbox = itemView.findViewById(R.id.recyclerviewProductListChceckboxFavourite);
             itemView.setOnClickListener(this);
+            favouriteCheckbox.setOnCheckedChangeListener(this);
+            // to jest poprawne miejsce ustawienia listenera, ale nie działa
+            // przeniesiono do
         }
 
         /**
@@ -80,7 +93,15 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
          */
         @Override
         public void onClick(View view) {
-            if (itemClickListener != null) itemClickListener.onItemClick(view, getAdapterPosition());
+            if (rowClickListener != null) rowClickListener.onRowClick(view, getAdapterPosition());
+        }
+
+        /**
+         * Akcja przycisku ulubionych
+         */
+        @Override
+        public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+            if (favouriteChangeListener != null) favouriteChangeListener.onFavouriteChange(compoundButton, b, getAdapterPosition());
         }
     }
 
@@ -104,9 +125,17 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     /**
      * Metoda ustawiająca listener elementu listy
      */
-    public void setClickListener(ItemClickListener itemClickListener) {
-        this.itemClickListener = itemClickListener;
+    public void setRowClickListener(RowClickListener itemClickListener) {
+        this.rowClickListener = itemClickListener;
     }
+
+    /**
+     * Metoda ustawiająca listener przycisku ulubionych
+     */
+    public void setFavouriteChangeListener(FavouriteChangeListener favouriteChangeListener) {
+        this.favouriteChangeListener = favouriteChangeListener;
+    }
+
 
     /**
      * Metoda filtrująca listę przoduktów
@@ -116,7 +145,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
      */
     public static ArrayList<ProductListDescription> filter (String descrFilter, List<ProductListDescription> data) {
         List<ProductListDescription> filtered = new ArrayList<>(data);
-        Predicate<ProductListDescription> predicate = product -> product.desctiption.toLowerCase().contains(descrFilter.toLowerCase());
+        Predicate<ProductListDescription> predicate = product -> product.name.toLowerCase().contains(descrFilter.toLowerCase());
         return (ArrayList<ProductListDescription>) filtered.stream().filter(predicate).collect(Collectors.toList());
     }
 
@@ -128,7 +157,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
      */
     public static ArrayList<ProductListDescription> sort (SortOrder sortOrder, List<ProductListDescription> data) {
         ArrayList<ProductListDescription> sorted = new ArrayList<>(data);
-        sorted.sort((lhs, rhs) -> lhs.desctiption.compareTo(rhs.desctiption));
+        sorted.sort((lhs, rhs) -> lhs.name.compareTo(rhs.name));
         if (sortOrder == SortOrder.DESC)
             Collections.reverse(sorted);
         return sorted;
