@@ -55,6 +55,4 @@
     <string name="credt_card_number">Nr karty kredytowej</string>
     <string name="ccv_code">Kod CCV</string>
     <string name="expiration_date">Data ważności</string>
-
-
 </resources>

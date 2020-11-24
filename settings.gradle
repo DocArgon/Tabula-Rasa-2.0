@@ -1,2 +1,3 @@
+include ':SecretTextView'
 rootProject.name='TabulaRasa 2.0'
 include ':app'
