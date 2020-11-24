@@ -4,12 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.mattkula.secrettextview.SecretTextView;
 import com.special.ResideMenu.ResideMenu;
 import com.special.ResideMenu.ResideMenuItem;
 import com.wat.tabularasa20.MainActivity;
@@ -32,17 +32,17 @@ public class HomeActivity extends AppCompatActivity {
         Intent incoming_intent = getIntent();
         Preferences.saveUID(this, incoming_intent.getStringExtra("result"));
 
-        TextView homeTV = findViewById(R.id.homeAccountTextViewWelcome);
-        final Button editAccount = findViewById(R.id.homeAccountButtonEditInfo);
-        //final Button sharedBooks = findViewById();
-        final Button favourites = findViewById(R.id.homeAccountButtonMyFavouriteBooks);
-        final Button addBook = findViewById(R.id.homeAccountButtonAddNewBook);
-        final Button sendMessage = findViewById(R.id.homeAccountButtonMyMessages);
-        final Button searchBook = findViewById(R.id.homeAccountButtonSearchForBook);
+        SecretTextView welcome = findViewById(R.id.homeAccountTextViewWelcome);
+        Button editAccount = findViewById(R.id.homeAccountButtonEditInfo);
+        Button sharedBooks = findViewById(R.id.homeAccountButtonMySharedBooks);
+        Button favourites = findViewById(R.id.homeAccountButtonMyFavouriteBooks);
+        Button addBook = findViewById(R.id.homeAccountButtonAddNewBook);
+        Button sendMessage = findViewById(R.id.homeAccountButtonMyMessages);
+        Button searchBook = findViewById(R.id.homeAccountButtonSearchForBook);
 
-        final Button logout = findViewById(R.id.homeAccountButtonLogout);
-        final Button close = findViewById(R.id.homeAccountButtonClose);
-        final FloatingActionButton fab = findViewById(R.id.homeAccountFloatingButtonClose);
+        Button logout = findViewById(R.id.homeAccountButtonLogout);
+        Button close = findViewById(R.id.homeAccountButtonClose);
+        FloatingActionButton fab = findViewById(R.id.homeAccountFloatingButtonClose);
 
         ResideMenu resideMenu = new ResideMenu(this);
         resideMenu.setBackground(R.drawable.menu_bg);
@@ -67,7 +67,10 @@ public class HomeActivity extends AppCompatActivity {
         downloader.setOnResultListener(result -> {
             //Toast.makeText(HomeActivity.this, result, Toast.LENGTH_LONG).show();
             JsonObject jsonObject = JsonParser.parseString(result).getAsJsonObject();
-            homeTV.setText(getString(R.string.hello_msg_params, jsonObject.get("Imie").getAsString()));
+            welcome.setIsVisible(false);
+            welcome.setDuration(3500);
+            welcome.setText(getString(R.string.hello_msg_params, jsonObject.get("Imie").getAsString()));
+            welcome.show();
         });
         downloader.execute(Constants.ACCOUNT_GET_URL + String.format("?id_klienta=%s", Preferences.readUID(this)));
 
@@ -98,6 +101,11 @@ public class HomeActivity extends AppCompatActivity {
         // Edycja danych konta
         editAccount.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, EditUserDataActivity.class);
+            startActivity(intent);
+        });
+
+        sharedBooks.setOnClickListener(view -> {
+            Intent intent = new Intent(HomeActivity.this, MySharedActivity.class);
             startActivity(intent);
         });
 
