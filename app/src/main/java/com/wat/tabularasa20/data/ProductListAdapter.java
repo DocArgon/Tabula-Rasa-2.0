@@ -8,6 +8,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.appcompat.view.menu.MenuView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.wat.tabularasa20.R;
 import java.util.ArrayList;
@@ -38,7 +39,6 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
 
     /**
      * Konstruktor klasy
-     * @param data
      */
     public ProductListAdapter(Context context, ArrayList<ProductListDescription> data) {
         this.inflater = LayoutInflater.from(context);
@@ -60,49 +60,65 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
      */
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        String description = data.get(position).name;
-        boolean favourite = data.get(position).favourite;
+        String name = data.get(position).name;
+        ProductListDescription.FavouriteStare favourite = data.get(position).favourite;
+        String description = data.get(position).description;
+
+        holder.nameTextView.setText(name);
+        switch (favourite) {
+            case ON:
+                holder.favouriteCheckbox.setChecked(true);
+                break;
+            case OFF:
+                holder.favouriteCheckbox.setChecked(false);
+                break;
+            case HIDDEN:
+                holder.favouriteCheckbox.setVisibility(View.GONE);
+        }
         holder.descriptionTextView.setText(description);
-        holder.favouriteCheckbox.setChecked(favourite);
-        /*
-        holder.favouriteCheckbox.setOnCheckedChangeListener((v, isChecked) -> {
-            if (favouriteChangeListener != null) favouriteChangeListener.onFavouriteChange(v, isChecked, position);
-        }); //data.get(position).favourite = isChecked
-        //*/
     }
 
     /**
      * Klasa obsługi widoku elementu listy
      */
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
-        TextView descriptionTextView;
+        TextView nameTextView;
         CheckBox favouriteCheckbox;
+        TextView descriptionTextView;
+        View itemView;
 
         ViewHolder(View itemView) {
             super(itemView);
-            descriptionTextView = itemView.findViewById(R.id.recyclerviewProductListTextViewName);
+            this.itemView = itemView;
+            nameTextView = itemView.findViewById(R.id.recyclerviewProductListTextViewName);
             favouriteCheckbox = itemView.findViewById(R.id.recyclerviewProductListChceckboxFavourite);
+            descriptionTextView = itemView.findViewById(R.id.recyclerviewProductListTextViewDescription);
             itemView.setOnClickListener(this);
-            favouriteCheckbox.setOnCheckedChangeListener(this);
-            // to jest poprawne miejsce ustawienia listenera, ale nie działa
-            // przeniesiono do
+            //favouriteCheckbox.setOnCheckedChangeListener(this);
+            favouriteCheckbox.setOnClickListener(this);
         }
 
         /**
-         * Akcja elementu listy
+         * Akcja elementu listy i przycisku dodawania do ulubionych
          */
         @Override
         public void onClick(View view) {
-            if (rowClickListener != null) rowClickListener.onRowClick(view, getAdapterPosition());
+            if (rowClickListener != null && view.getId() == itemView.getId())
+                rowClickListener.onRowClick(view, getAdapterPosition());
+            if (favouriteChangeListener != null && view.getId() == favouriteCheckbox.getId())
+                favouriteChangeListener.onFavouriteChange(view, ((CheckBox)view).isChecked(), getAdapterPosition());
         }
 
         /**
          * Akcja przycisku ulubionych
+         * nieużywane ale zostanie gdyby była potrzeba wrócić do tej metody
          */
+        //*
         @Override
         public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
             if (favouriteChangeListener != null) favouriteChangeListener.onFavouriteChange(compoundButton, b, getAdapterPosition());
         }
+        //*/
     }
 
     /**

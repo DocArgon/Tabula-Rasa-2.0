@@ -20,6 +20,9 @@ public final class Constants {
     //   przyjmuje JSON
     public static final String REGISTER_URL    = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/rejestracja";
 
+    //   ?
+    public static final String DETAILS_URL    = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/agzemplarze";
+
     // adres z kąd pobrano tło
     private static final String BG_URL         = "https://unsplash.com/photos/5LOhydOtTKU";
 

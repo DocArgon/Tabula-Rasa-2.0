@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.google.gson.JsonPrimitive;
 import com.wat.tabularasa20.R;
 import com.wat.tabularasa20.data.Constants;
 import com.wat.tabularasa20.data.ProductListAdapter;
@@ -70,14 +71,10 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
 
                 // przejście po wszystkich produktach ze sprawdzeniem czy ulubiony
                 productsJsonArray.forEach(productJsonElement -> {
-                    boolean contains = false;
-                    for (int i = 0; i < favouritesJsonArray.size(); i++) {
-                        if (productJsonElement.getAsJsonObject().get("Tytul").getAsString().equals(favouritesJsonArray.get(i).getAsJsonObject().get("Tytul").getAsString())) {
-                            contains = true;
-                            break;
-                        }
-                    }
-                    products.add(new ProductListDescription(productJsonElement.getAsJsonObject().get("Tytul").getAsString(), contains));
+                    boolean contains = favouritesJsonArray.contains(productJsonElement);
+                    products.add(new ProductListDescription(
+                            productJsonElement.getAsJsonObject().get("Tytul").getAsString(),
+                            contains ? ProductListDescription.FavouriteStare.ON : ProductListDescription.FavouriteStare.OFF));
                 });
 
                 adapter = new ProductListAdapter(ProductListActivity.this, products);

@@ -2,14 +2,19 @@ package com.wat.tabularasa20.data;
 
 public class ProductListDescription {
 
+    /**
+     * Możliwy stan przycisku ulubionych
+     */
+    public enum FavouriteStare { ON, OFF, HIDDEN }
+
     public String name;
     public String description;
-    public boolean favourite;
+    public FavouriteStare favourite;
 
     /**
      * Konstruktor struktury przechowującej opis książki
      */
-    public ProductListDescription (String name, boolean favoutite, String description) {
+    public ProductListDescription (String name, FavouriteStare favoutite, String description) {
         this.name = name;
         this.favourite = favoutite;
         this.description = description;
@@ -18,10 +23,10 @@ public class ProductListDescription {
     /**
      * Przaciążony konstruktor
      */
-    public ProductListDescription (String name, boolean favoutite) {
+    public ProductListDescription (String name, FavouriteStare favoutite) {
         this.name = name;
         this.favourite = favoutite;
-        this.description = null;
+        this.description = "";
     }
 
     /**
@@ -29,7 +34,7 @@ public class ProductListDescription {
      */
     public ProductListDescription (String name) {
         this.name = name;
-        this.favourite = false;
-        this.description = null;
+        this.favourite = FavouriteStare.OFF;
+        this.description = "";
     }
 }
