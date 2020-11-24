@@ -78,25 +78,18 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
                         }
                     }
                     products.add(new ProductListDescription(productJsonElement.getAsJsonObject().get("Tytul").getAsString(), contains));
-
-                    adapter = new ProductListAdapter(ProductListActivity.this, products);
-                    adapter.setRowClickListener(ProductListActivity.this);
-                    recyclerView.setAdapter(adapter);
                 });
 
-                //adapter = new ProductListAdapter(ProductListActivity.this, products);
-                //adapter.setClickListener(ProductListActivity.this);
-                //recyclerView.setAdapter(adapter);
+                adapter = new ProductListAdapter(ProductListActivity.this, products);
+                adapter.setRowClickListener(this);
+                adapter.setFavouriteChangeListener(this);
+                recyclerView.setAdapter(adapter);
             });
             favouriteDownloader.execute(Constants.FAVOURITES_URL + String.format("?Id_klienta=%d", Preferences.readUID(ProductListActivity.this)));
         });
         productDownloader.execute(Constants.BOOKS_GET_URL);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new ProductListAdapter(this, products);
-        adapter.setRowClickListener(this);
-        adapter.setFavouriteChangeListener(this);
-        recyclerView.setAdapter(adapter);
 
         filter.addTextChangedListener(this);
         sort.setOnClickListener(this);
