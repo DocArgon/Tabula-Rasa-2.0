@@ -35,10 +35,8 @@
         android:fadingEdge="horizontal|vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/accessEditTextViewTitle"
-        app:layout_constraintVertical_bias="0.0"
         >
 
         <EditText
@@ -247,32 +245,44 @@
             />
 
         <Button
-            android:id="@+id/accessEditButtonUpdateSend"
+            android:id="@+id/accessEditButtonGoCreditCard"
             style="@style/Tabularasa.Button.Round.Colored"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
-            android:layout_marginBottom="20dp"
             android:text="@string/premium_card_button"
-            app:layout_constraintBottom_toTopOf="@+id/accessEditButtonBack"
+            app:layout_constraintBottom_toTopOf="@+id/accessEditButtonSaveChanges"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             />
 
         <Button
-            android:id="@+id/accessEditButtonBack"
+            android:id="@+id/accessEditButtonSaveChanges"
             style="@style/Tabularasa.Button.Round.Colored"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
-            android:layout_marginBottom="20dp"
-            android:text="@string/edit"
+            android:text="@string/save_changes"
+            app:layout_constraintBottom_toTopOf="@+id/accessEditButtonGoBack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/accessEditButtonGoCreditCard"
+            />
+
+        <Button
+            android:id="@+id/accessEditButtonGoBack"
+            style="@style/Tabularasa.Button.Round.Colored"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:text="@string/go_back"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/accessEditButtonSaveChanges"
             />
 
         <!-- ToggleButton

@@ -25,8 +25,8 @@ public class EditUserDataActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_access_edit);
 
-        Button edit = findViewById(R.id.accessEditButtonBack);
-        Button card = findViewById(R.id.accessEditButtonUpdateSend);
+        Button edit = findViewById(R.id.accessEditButtonSaveChanges);
+        Button card = findViewById(R.id.accessEditButtonGoCreditCard);
         EditText login = findViewById(R.id.accessEditEditTextLogin);
         EditText email = findViewById(R.id.accessEditEditTextEmail);
         EditText password = findViewById(R.id.accessEditEditTextPassword);
