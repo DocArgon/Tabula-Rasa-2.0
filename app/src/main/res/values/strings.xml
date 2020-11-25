@@ -61,6 +61,7 @@
     <string name="cover_content_description">Okładka książki</string>
     <string name="exchange_section1_title">To oddajesz</string>
     <string name="exchange_section2_title">To dostajesz</string>
+    <string name="exchange_confirm_exchange">Potwierdź</string>
 
 
 </resources>
