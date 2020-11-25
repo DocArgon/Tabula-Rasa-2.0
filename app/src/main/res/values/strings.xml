@@ -57,4 +57,10 @@
     <string name="expiration_date">Data ważności</string>
     <string name="edit_credit_card_title">Dane karty kredytowej</string>
     <string name="chat_with">Rozmowa z %1$s</string>
+    <string name="exchange_details_title">Szczegóły wymiany</string>
+    <string name="cover_content_description">Okładka książki</string>
+    <string name="exchange_section1_title">To oddajesz</string>
+    <string name="exchange_section2_title">To dostajesz</string>
+
+
 </resources>
