@@ -5,7 +5,8 @@
     android:id="@+id/accessEditLayoutScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    >
 
     <TextView
         android:id="@+id/accessEditTextViewTitle"
@@ -19,7 +20,8 @@
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/accessEditListLayoutMain"
@@ -36,7 +38,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/accessEditTextViewTitle"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.0"
+        >
 
         <EditText
             android:id="@+id/accessEditEditTextLogin"
@@ -55,7 +58,8 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
+            app:layout_constraintVertical_chainStyle="packed"
+            />
 
         <EditText
             android:id="@+id/accessEditEditTextEmail"
@@ -72,7 +76,8 @@
             app:layout_constraintBottom_toTopOf="@+id/accessEditEditTextPassword"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/accessEditEditTextLogin" />
+            app:layout_constraintTop_toBottomOf="@+id/accessEditEditTextLogin"
+            />
 
         <EditText
             android:id="@+id/accessEditEditTextPassword"
@@ -90,7 +95,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/accessEditEditTextEmail" />
+            app:layout_constraintTop_toBottomOf="@id/accessEditEditTextEmail"
+            />
 
         <EditText
             android:id="@+id/accessEditEditTextPasswordRepeat"
@@ -108,7 +114,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/accessEditEditTextPassword" />
+            app:layout_constraintTop_toBottomOf="@+id/accessEditEditTextPassword"
+            />
 
         <EditText
             android:id="@+id/accessEditEditTextFirstName"
@@ -126,7 +133,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/accessEditEditTextPasswordRepeat" />
+            app:layout_constraintTop_toBottomOf="@+id/accessEditEditTextPasswordRepeat"
+            />
 
         <EditText
             android:id="@+id/accessEditEditTextLastName"
@@ -198,7 +206,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/accessEditEditTextCity" />
+            app:layout_constraintTop_toBottomOf="@id/accessEditEditTextCity"
+            />
 
         <EditText
             android:id="@+id/accessEditEditTextCardNumber"
@@ -216,7 +225,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/accessEditEditTextStreet" />
+            app:layout_constraintTop_toBottomOf="@+id/accessEditEditTextStreet"
+            />
 
         <EditText
             android:id="@+id/accessEditEditTextExpirationDate"
@@ -233,7 +243,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/accessEditEditTextCardNumber" />
+            app:layout_constraintTop_toBottomOf="@+id/accessEditEditTextCardNumber"
+            />
 
         <Button
             android:id="@+id/accessEditButtonUpdateSend"
@@ -261,7 +272,8 @@
             android:text="@string/edit"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            />
 
         <!-- ToggleButton
             android:id="@+id/switch1"

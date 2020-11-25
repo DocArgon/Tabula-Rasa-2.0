@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <TextView
         android:id="@+id/productsAddTextViewTitle"
         android:layout_width="match_parent"
@@ -131,6 +132,7 @@
 
         <Button
             android:id="@+id/productsAddButtonBack"
+            style="@style/Tabularasa.Button.Round.Colored"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -143,6 +145,7 @@
 
         <Button
             android:id="@+id/productsAddButtonSendForm"
+            style="@style/Tabularasa.Button.Round.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"

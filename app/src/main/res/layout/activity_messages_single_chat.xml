@@ -66,6 +66,7 @@
 
             <Button
                 android:id="@+id/messagesSingleChatButtonMessageNew"
+                style="@style/Tabularasa.Button.Round.Colored"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
@@ -75,6 +76,7 @@
 
             <Button
                 android:id="@+id/messagesSingleChatButtonBack"
+                style="@style/Tabularasa.Button.Round.Colored"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/go_back"

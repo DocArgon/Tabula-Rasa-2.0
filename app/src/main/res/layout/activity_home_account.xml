@@ -51,6 +51,7 @@
 
 		<Button
 			android:id="@+id/homeAccountButtonEditInfo"
+			style="@style/Tabularasa.Button.Round.Colored"
 			android:layout_width="0dp"
 			android:layout_height="0dp"
 			android:layout_marginStart="10dp"
@@ -78,6 +79,7 @@
 
 		<Button
 			android:id="@+id/homeAccountButtonMyMessages"
+			style="@style/Tabularasa.Button.Round.Colored"
 			android:layout_width="0dp"
 			android:layout_height="0dp"
 			android:layout_marginStart="10dp"
@@ -91,6 +93,7 @@
 
 		<Button
 			android:id="@+id/homeAccountButtonMySharedBooks"
+			style="@style/Tabularasa.Button.Round.Colored"
 			android:layout_width="0dp"
 			android:layout_height="0dp"
 			android:layout_marginStart="10dp"
@@ -104,6 +107,7 @@
 
 		<Button
 			android:id="@+id/homeAccountButtonMyFavouriteBooks"
+			style="@style/Tabularasa.Button.Round.Colored"
 			android:layout_width="0dp"
 			android:layout_height="0dp"
 			android:layout_marginStart="10dp"
@@ -117,6 +121,7 @@
 
 		<Button
 			android:id="@+id/homeAccountButtonAddNewBook"
+			style="@style/Tabularasa.Button.Round.Colored"
 			android:layout_width="0dp"
 			android:layout_height="0dp"
 			android:layout_marginStart="10dp"
@@ -130,6 +135,7 @@
 
 		<Button
 			android:id="@+id/homeAccountButtonSearchForBook"
+			style="@style/Tabularasa.Button.Round.Colored"
 			android:layout_width="0dp"
 			android:layout_height="0dp"
 			android:layout_marginStart="10dp"
@@ -144,6 +150,7 @@
 
 		<Button
 			android:id="@+id/homeAccountButtonLogout"
+			style="@style/Tabularasa.Button.Round.Colored"
 			android:layout_width="0dp"
 			android:layout_height="35dp"
 			android:layout_marginStart="20dp"
