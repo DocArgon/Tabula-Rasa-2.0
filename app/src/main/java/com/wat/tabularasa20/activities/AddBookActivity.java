@@ -10,6 +10,8 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.wat.tabularasa20.R;
+import com.wat.tabularasa20.data.Constants;
+import com.wat.tabularasa20.utilities.Uploader;
 
 /**
  * Aktywność dodawania nowej książki
@@ -49,9 +51,21 @@ public class AddBookActivity extends AppCompatActivity {
             jsonObject.addProperty("year", year.getText().toString());
             jsonObject.addProperty("publisher", publisher.getText().toString());
             jsonObject.addProperty("description", info.getText().toString());
-
             String data = gson.toJson(jsonObject);
-            Toast.makeText(AddBookActivity.this, data, Toast.LENGTH_LONG).show();
+
+            // Wysłanie danych do BD
+            Uploader uploader = new Uploader();
+            uploader.setOnResultListener(new Uploader.UploadActions() {
+                @Override
+                public void getResult(String result) {
+                    Toast.makeText(AddBookActivity.this, "Echo " + result, Toast.LENGTH_LONG).show();
+                }
+                @Override
+                public void getError(String error) {
+                    Toast.makeText(AddBookActivity.this, error, Toast.LENGTH_LONG).show();
+                }
+            });
+            uploader.execute(this, Constants.BOOK_ADD_URL, data);
         });
     }
 }

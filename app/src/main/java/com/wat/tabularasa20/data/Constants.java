@@ -14,6 +14,9 @@ public final class Constants {
     //   wszystkie
     public static final String BOOKS_GET_URL   = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/ksiazki";
 
+    //  przyjmuje JSON
+    public static final String BOOK_ADD_URL    = "";
+
     // ?id_klienta=1
     public static final String FAVOURITES_URL  = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/ulubione";
 

@@ -8,6 +8,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -44,13 +45,17 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
         setContentView(R.layout.activity_products_browse);
 
         // Uzyskanie dostępu do elementów graficznych
+        ImageView photo = findViewById(R.id.productDetailsImageViewCover);
         ImageButton back = findViewById(R.id.productsBrowseButtonBack);
-        // TODO ImageView
         EditText filter = findViewById(R.id.productsBrowseEditTextSearchText);
         ImageButton sort = findViewById(R.id.productsBrowseImageButtonSort);
         recyclerView = findViewById(R.id.productsBrowseRecyclerViewProductsList);
 
         back.setOnClickListener(v -> finish());
+
+        photo.setOnClickListener(view -> {
+            // TODO wczytać obraz
+        });
 
         products = new ArrayList<>();
 

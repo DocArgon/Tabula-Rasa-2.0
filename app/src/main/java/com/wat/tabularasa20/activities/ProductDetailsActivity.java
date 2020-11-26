@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,6 +28,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         Intent inp = getIntent();
         int id = inp.getIntExtra("book_id", ProductListDescription.DEFAULT_PRODUCY_ID);
 
+        ImageView photo = findViewById(R.id.productsDetailsImageViewCover);
         ImageButton back = findViewById(R.id.productsDetailsButtonBack);
         Button contact = findViewById(R.id.productsDetailsButtonSendForm);
         TextView title = findViewById(R.id.productsDetailsTextViewTitle);
