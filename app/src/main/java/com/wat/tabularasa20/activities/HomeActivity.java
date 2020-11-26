@@ -27,7 +27,6 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_account);
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE);
 
         Intent incoming_intent = getIntent();
         Preferences.saveUID(this, incoming_intent.getStringExtra("result"));
@@ -66,6 +65,7 @@ public class HomeActivity extends AppCompatActivity {
         Downloader downloader = new Downloader();
         downloader.setOnResultListener(result -> {
             //Toast.makeText(HomeActivity.this, result, Toast.LENGTH_LONG).show();
+            assert result != null;
             JsonObject jsonObject = JsonParser.parseString(result).getAsJsonObject();
             welcome.setIsVisible(false);
             welcome.setDuration(3500);
@@ -138,5 +138,11 @@ public class HomeActivity extends AppCompatActivity {
         // TODO usunąć statyczny, zoztawić pływający
         close.setOnClickListener(v -> finishAndRemoveTask());
         fab.setOnClickListener(v   -> finishAndRemoveTask());
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE);
     }
 }
