@@ -1,9 +1,16 @@
 package com.wat.tabularasa20.activities;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Base64;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.snackbar.Snackbar;
@@ -13,10 +20,17 @@ import com.wat.tabularasa20.R;
 import com.wat.tabularasa20.data.Constants;
 import com.wat.tabularasa20.utilities.Uploader;
 
+import java.io.ByteArrayOutputStream;
+import java.util.Date;
+
 /**
  * Aktywność dodawania nowej książki
  */
-public class AddBookActivity extends AppCompatActivity {
+public class ProductAddActivity extends AppCompatActivity {
+
+    private final int CAMERA_REQUEST = 1002;
+    Bitmap bitmap = null;
+    ImageView photo = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +39,7 @@ public class AddBookActivity extends AppCompatActivity {
 
         // Uzyskanie dostępu do elementów graficznych
         ImageButton back = findViewById(R.id.productsAddButtonBack);
+        photo = findViewById(R.id.productsAddImageViewCover);
         Button add = findViewById(R.id.productsAddButtonSendForm);
         EditText title = findViewById(R.id.productsAddEditTextTitle);
         EditText author = findViewById(R.id.productsAddEditTextAuthor);
@@ -33,6 +48,12 @@ public class AddBookActivity extends AppCompatActivity {
         EditText info = findViewById(R.id.productsAddEditTextAdditionalInfo);
 
         back.setOnClickListener(v -> finish());
+
+        photo.setOnClickListener(view -> {
+            Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            cameraIntent.putExtra(new Date().toString().replace(" ", "_"), true);
+            startActivityForResult(cameraIntent, CAMERA_REQUEST);
+        });
 
         // Akcja przycisku dodaj
         add.setOnClickListener(v -> {
@@ -51,6 +72,15 @@ public class AddBookActivity extends AppCompatActivity {
             jsonObject.addProperty("year", year.getText().toString());
             jsonObject.addProperty("publisher", publisher.getText().toString());
             jsonObject.addProperty("description", info.getText().toString());
+            if (bitmap != null) {
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+                byte[] imageBytes = baos.toByteArray();
+                String imageString = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+                jsonObject.addProperty("picture", imageString);
+            } else {
+                jsonObject.addProperty("picture", "");
+            }
             String data = gson.toJson(jsonObject);
 
             // Wysłanie danych do BD
@@ -58,14 +88,23 @@ public class AddBookActivity extends AppCompatActivity {
             uploader.setOnResultListener(new Uploader.UploadActions() {
                 @Override
                 public void getResult(String result) {
-                    Toast.makeText(AddBookActivity.this, "Echo " + result, Toast.LENGTH_LONG).show();
+                    Toast.makeText(ProductAddActivity.this, "Echo " + result, Toast.LENGTH_LONG).show();
                 }
                 @Override
                 public void getError(String error) {
-                    Toast.makeText(AddBookActivity.this, error, Toast.LENGTH_LONG).show();
+                    Toast.makeText(ProductAddActivity.this, error, Toast.LENGTH_LONG).show();
                 }
             });
             uploader.execute(this, Constants.BOOK_ADD_URL, data);
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {
+            bitmap = (Bitmap) data.getExtras().get("data");
+            photo.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
+        }
     }
 }

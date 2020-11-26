@@ -40,7 +40,7 @@
         app:layout_constraintTop_toBottomOf="@+id/productsAddTextViewTitle">
 
         <ImageView
-            android:id="@+id/productDetailsImageViewCover"
+            android:id="@+id/productsAddImageViewCover"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="30dp"
@@ -70,7 +70,7 @@
             app:layout_constraintBottom_toTopOf="@+id/productsAddEditTextAuthor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/productDetailsImageViewCover"
+            app:layout_constraintTop_toBottomOf="@id/productsAddImageViewCover"
             app:layout_constraintVertical_chainStyle="packed"
             />
 
