@@ -45,17 +45,12 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
         setContentView(R.layout.activity_products_browse);
 
         // Uzyskanie dostępu do elementów graficznych
-        ImageView photo = findViewById(R.id.productDetailsImageViewCover);
         ImageButton back = findViewById(R.id.productsBrowseButtonBack);
         EditText filter = findViewById(R.id.productsBrowseEditTextSearchText);
         ImageButton sort = findViewById(R.id.productsBrowseImageButtonSort);
         recyclerView = findViewById(R.id.productsBrowseRecyclerViewProductsList);
 
         back.setOnClickListener(v -> finish());
-
-        photo.setOnClickListener(view -> {
-            // TODO wczytać obraz
-        });
 
         products = new ArrayList<>();
 
@@ -111,6 +106,9 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
     @Override
     public void onRowClick(View view, int position) {
         //Toast.makeText(this, "Dotknięto " + adapter.getItem(position).name + ", ulubiony " + adapter.getItem(position).favourite, Toast.LENGTH_SHORT).show();
+
+        // TODO Przejść do wikoku wszystkich instancji zamiast detali
+
         Intent i = new Intent(ProductListActivity.this, ProductDetailsActivity.class);
         i.putExtra("book_id", adapter.getItem(position).productID);
         startActivity(i);

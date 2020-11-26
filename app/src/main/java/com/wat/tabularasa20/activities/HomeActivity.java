@@ -111,7 +111,7 @@ public class HomeActivity extends AppCompatActivity {
 
         // Przycisk dodaj książkę
         addBook.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeActivity.this, AddBookActivity.class);
+            Intent intent = new Intent(HomeActivity.this, ProductAddActivity.class);
             startActivity(intent);
         });
 

@@ -24,7 +24,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.AddBookActivity" />
+        <activity android:name=".activities.ProductAddActivity" />
         <activity android:name=".activities.ChatActivity" />
         <activity android:name=".activities.CreditCardActivity" />
         <activity android:name=".activities.EditUserDataActivity" />

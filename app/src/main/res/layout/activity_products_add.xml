@@ -41,8 +41,8 @@
 
         <ImageView
             android:id="@+id/productDetailsImageViewCover"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="30dp"
@@ -52,8 +52,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/add_photo"
-            />
+            app:srcCompat="@drawable/add_photo" />
 
         <EditText
             android:id="@+id/productsAddEditTextTitle"
@@ -124,29 +123,10 @@
             android:gravity="top"
             android:hint="@string/publisher"
             android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/productsAddEditTextGenre"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/productsAddEditTextYear" />
-
-        <EditText
-            android:id="@+id/productsAddEditTextGenre"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="20dp"
-            android:autofillHints="Login"
-            android:background="#FFFFFF"
-            android:ems="10"
-            android:gravity="top"
-            android:hint="@string/genre"
-            android:inputType="textPersonName"
             app:layout_constraintBottom_toTopOf="@+id/productsAddEditTextAdditionalInfo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/productsAddEditTextPublisher"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/productsAddEditTextYear" />
 
         <EditText
             android:id="@+id/productsAddEditTextAdditionalInfo"
@@ -165,8 +145,7 @@
             app:layout_constraintBottom_toTopOf="@+id/productsAddButtonBack"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/productsAddEditTextGenre"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/productsAddEditTextPublisher" />
 
         <ImageButton
             android:id="@+id/productsAddButtonBack"
