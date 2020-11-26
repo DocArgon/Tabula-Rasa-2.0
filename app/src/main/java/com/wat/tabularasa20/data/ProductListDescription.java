@@ -7,6 +7,12 @@ public class ProductListDescription {
      */
     public enum FavouriteStare { ON, OFF, HIDDEN }
 
+    /**
+     * Domyślna wartość identyfikatora produktu
+     */
+    public static final int DEFAULT_PRODUCY_ID = -1;
+
+    public int productID;
     public String name;
     public String description;
     public FavouriteStare favourite;
@@ -14,8 +20,9 @@ public class ProductListDescription {
     /**
      * Konstruktor struktury przechowującej opis książki
      */
-    public ProductListDescription (String name, FavouriteStare favoutite, String description) {
+    public ProductListDescription (String name, int productID, FavouriteStare favoutite, String description) {
         this.name = name;
+        this.productID = productID;
         this.favourite = favoutite;
         this.description = description;
     }
@@ -23,9 +30,22 @@ public class ProductListDescription {
     /**
      * Przaciążony konstruktor
      */
-    public ProductListDescription (String name, FavouriteStare favoutite) {
+    public ProductListDescription (String name, int productID, FavouriteStare favoutite) {
         this.name = name;
+        this.productID = productID;
+
         this.favourite = favoutite;
+        this.description = "";
+    }
+
+    /**
+     * Przaciążony konstruktor
+     */
+    public ProductListDescription (String name, int productID) {
+        this.name = name;
+        this.productID = productID;
+
+        this.favourite = FavouriteStare.HIDDEN;
         this.description = "";
     }
 
@@ -34,7 +54,9 @@ public class ProductListDescription {
      */
     public ProductListDescription (String name) {
         this.name = name;
-        this.favourite = FavouriteStare.OFF;
+
+        this.productID = DEFAULT_PRODUCY_ID;
+        this.favourite = FavouriteStare.HIDDEN;
         this.description = "";
     }
 }

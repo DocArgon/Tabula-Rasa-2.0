@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -49,6 +48,7 @@ public class MySharedActivity extends AppCompatActivity implements ProductListAd
             JsonArray favouritesJsonArray = JsonParser.parseString(result).getAsJsonArray();
             favouritesJsonArray.forEach(productJsonElement -> products.add(new ProductListDescription(
                     productJsonElement.getAsJsonObject().get("Tytul").getAsString(),
+                    productJsonElement.getAsJsonObject().get("Id_ksiazki").getAsInt(),
                     ProductListDescription.FavouriteStare.HIDDEN)) );
 
             adapter = new ProductListAdapter(MySharedActivity.this, products);
