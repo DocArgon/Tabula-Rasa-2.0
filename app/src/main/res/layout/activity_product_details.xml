@@ -119,10 +119,28 @@
             android:ems="10"
             android:gravity="top"
             android:hint="@string/publisher"
-            app:layout_constraintBottom_toTopOf="@+id/productsDetailsTextViewAdditionalInfo"
+            app:layout_constraintBottom_toTopOf="@+id/productsDetailsTextViewGenre"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/productsDetailsTextViewYear" />
+
+        <TextView
+            android:id="@+id/productsDetailsTextViewGenre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="20dp"
+            android:autofillHints="Login"
+            android:background="#FFFFFF"
+            android:ems="10"
+            android:gravity="top"
+            android:hint="@string/genre"
+            app:layout_constraintBottom_toTopOf="@+id/productsDetailsTextViewAdditionalInfo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/productsDetailsTextViewPublisher"
+            />
 
         <TextView
             android:id="@+id/productsDetailsTextViewAdditionalInfo"
@@ -140,7 +158,7 @@
             app:layout_constraintBottom_toTopOf="@+id/productsDetailsButtonBack"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/productsDetailsTextViewPublisher" />
+            app:layout_constraintTop_toBottomOf="@+id/productsDetailsTextViewGenre" />
 
         <ImageButton
             android:id="@+id/productsDetailsButtonBack"
