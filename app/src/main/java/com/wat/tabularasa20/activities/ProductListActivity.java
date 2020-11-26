@@ -45,7 +45,7 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
         setContentView(R.layout.activity_products_browse);
 
         // Uzyskanie dostępu do elementów graficznych
-        Button back = findViewById(R.id.productsBrowseButtonBack);
+        ImageButton back = findViewById(R.id.productsBrowseButtonBack);
         EditText filter = findViewById(R.id.productsBrowseEditTextSearchText);
         ImageButton sort = findViewById(R.id.productsBrowseImageButtonSort);
         recyclerView = findViewById(R.id.productsBrowseRecyclerViewProductsList);

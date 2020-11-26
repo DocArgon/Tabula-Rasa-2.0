@@ -3,6 +3,7 @@ package com.wat.tabularasa20.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.wat.tabularasa20.R;
@@ -21,7 +22,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         if (name != null && !name.isEmpty())
             nameText.setText(name);
 
-        Button back = findViewById(R.id.productsDetailsButtonBack);
+        ImageButton back = findViewById(R.id.productsDetailsButtonBack);
 
         back.setOnClickListener(view -> finish());
 

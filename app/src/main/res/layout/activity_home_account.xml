@@ -17,11 +17,11 @@
 		android:singleLine="false"
 		android:text="@string/my_account"
 		android:textAlignment="center"
+		android:textColor="#E0E0E0"
 		android:textSize="30sp"
 		android:textStyle="bold"
-		android:textColor="#E0E0E0"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent"/>
+		app:layout_constraintTop_toTopOf="parent" />
 
 	<com.mattkula.secrettextview.SecretTextView
 		android:id="@+id/homeAccountTextViewWelcome"
@@ -51,11 +51,11 @@
 
 		<Button
 			android:id="@+id/homeAccountButtonEditInfo"
-			style="@style/Tabularasa.Button.Round.Colored"
+			style="@style/Tabularasa.Button.Normal.Colored"
 			android:layout_width="0dp"
 			android:layout_height="0dp"
 			android:layout_marginStart="10dp"
-			android:layout_marginTop="10dp"
+			android:layout_marginTop="15dp"
 			android:layout_marginEnd="10dp"
 			android:text="@string/edit_account_data"
 			app:layout_constraintBottom_toTopOf="@+id/homeAccountButtonMyMessages"
@@ -79,11 +79,11 @@
 
 		<Button
 			android:id="@+id/homeAccountButtonMyMessages"
-			style="@style/Tabularasa.Button.Round.Colored"
+			style="@style/Tabularasa.Button.Normal.Colored"
 			android:layout_width="0dp"
 			android:layout_height="0dp"
 			android:layout_marginStart="10dp"
-			android:layout_marginTop="5dp"
+			android:layout_marginTop="10dp"
 			android:layout_marginEnd="10dp"
 			android:text="@string/write_message"
 			app:layout_constraintBottom_toTopOf="@+id/homeAccountButtonMySharedBooks"
@@ -93,11 +93,11 @@
 
 		<Button
 			android:id="@+id/homeAccountButtonMySharedBooks"
-			style="@style/Tabularasa.Button.Round.Colored"
+			style="@style/Tabularasa.Button.Normal.Colored"
 			android:layout_width="0dp"
 			android:layout_height="0dp"
 			android:layout_marginStart="10dp"
-			android:layout_marginTop="5dp"
+			android:layout_marginTop="10dp"
 			android:layout_marginEnd="10dp"
 			android:text="@string/my_products"
 			app:layout_constraintBottom_toTopOf="@+id/homeAccountButtonMyFavouriteBooks"
@@ -107,11 +107,11 @@
 
 		<Button
 			android:id="@+id/homeAccountButtonMyFavouriteBooks"
-			style="@style/Tabularasa.Button.Round.Colored"
+			style="@style/Tabularasa.Button.Normal.Colored"
 			android:layout_width="0dp"
 			android:layout_height="0dp"
 			android:layout_marginStart="10dp"
-			android:layout_marginTop="5dp"
+			android:layout_marginTop="10dp"
 			android:layout_marginEnd="10dp"
 			android:text="@string/my_favourites"
 			app:layout_constraintBottom_toTopOf="@+id/homeAccountButtonAddNewBook"
@@ -121,11 +121,11 @@
 
 		<Button
 			android:id="@+id/homeAccountButtonAddNewBook"
-			style="@style/Tabularasa.Button.Round.Colored"
+			style="@style/Tabularasa.Button.Normal.Colored"
 			android:layout_width="0dp"
 			android:layout_height="0dp"
 			android:layout_marginStart="10dp"
-			android:layout_marginTop="5dp"
+			android:layout_marginTop="10dp"
 			android:layout_marginEnd="10dp"
 			android:text="@string/add_book"
 			app:layout_constraintBottom_toTopOf="@+id/homeAccountButtonSearchForBook"
@@ -135,11 +135,11 @@
 
 		<Button
 			android:id="@+id/homeAccountButtonSearchForBook"
-			style="@style/Tabularasa.Button.Round.Colored"
+			style="@style/Tabularasa.Button.Normal.Colored"
 			android:layout_width="0dp"
 			android:layout_height="0dp"
 			android:layout_marginStart="10dp"
-			android:layout_marginTop="5dp"
+			android:layout_marginTop="10dp"
 			android:layout_marginEnd="10dp"
 			android:layout_marginBottom="30dp"
 			android:text="@string/search_book"
@@ -152,7 +152,7 @@
 			android:id="@+id/homeAccountButtonLogout"
 			style="@style/Tabularasa.Button.Round.Colored"
 			android:layout_width="0dp"
-			android:layout_height="35dp"
+			android:layout_height="30dp"
 			android:layout_marginStart="20dp"
 			android:layout_marginEnd="20dp"
 			android:layout_marginBottom="10dp"
@@ -182,6 +182,7 @@
 		android:layout_marginStart="7dp"
 		android:layout_marginBottom="15dp"
 		android:clickable="true"
+		android:contentDescription="@string/app_name"
 		android:focusable="true"
 		android:scaleType="fitXY"
 		android:src="@android:drawable/ic_lock_power_off"
@@ -189,7 +190,6 @@
 		app:fabCustomSize="85dp"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:maxImageSize="60dp"
-		android:contentDescription="@string/app_name" />
+		app:maxImageSize="60dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,6 +7,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -33,7 +34,7 @@ public class MySharedActivity extends AppCompatActivity implements ProductListAd
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products_my_shared);
 
-        Button back = findViewById(R.id.productsMySharedButtonBack);
+        ImageButton back = findViewById(R.id.productsMySharedButtonBack);
         EditText filter = findViewById(R.id.productsMySharedEditTextSearchText);
         recyclerView = findViewById(R.id.productsMySharedRecyclerViewProductList);
 

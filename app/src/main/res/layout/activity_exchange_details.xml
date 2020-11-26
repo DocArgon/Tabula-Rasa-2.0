@@ -5,6 +5,7 @@
     android:id="@+id/messagesBrowseLayoutScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/activities_bg"
     tools:context=".MainActivity">
 
     <TextView
@@ -19,8 +20,7 @@
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/messagesBrowseListLayoutMain"
@@ -35,16 +35,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/messagesBrowseTextViewTitle"
-        >
+        app:layout_constraintTop_toBottomOf="@+id/messagesBrowseTextViewTitle">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/exchangeDetailsConstraintLayoutBook1"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@id/exchangeDetailsTextViewDivider"
-            app:layout_constraintTop_toTopOf="parent"
-            >
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/exchangeDetailsTextViewSection1Title"
@@ -54,8 +52,7 @@
                 app:layout_constraintBottom_toTopOf="@id/messagesBrowseTextViewDivider"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/messagesBrowseTextViewDivider"
@@ -63,16 +60,14 @@
                 android:layout_height="4dp"
                 android:background="#000000"
                 app:layout_constraintBottom_toTopOf="@id/exchangeDetailsConstraintLayoutBook1Details"
-                app:layout_constraintTop_toBottomOf="@id/exchangeDetailsTextViewSection1Title"
-                />
+                app:layout_constraintTop_toBottomOf="@id/exchangeDetailsTextViewSection1Title" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/exchangeDetailsConstraintLayoutBook1Details"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/messagesBrowseTextViewDivider"
-                >
+                app:layout_constraintTop_toBottomOf="@id/messagesBrowseTextViewDivider">
 
                 <ImageView
                     android:id="@+id/exchangeDetailsCoverPhoto1"
@@ -89,8 +84,7 @@
                     app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_launcher_sxhdpi"
-                    />
+                    app:srcCompat="@drawable/ic_launcher_sxhdpi" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/exchangeDetailsConstraintLayoutBook1DetailsText"
@@ -100,8 +94,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/exchangeDetailsCoverPhoto1"
-                    app:layout_constraintTop_toTopOf="parent"
-                    >
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
                         android:id="@+id/exchangeDetailsTextViewTitle1"
@@ -110,12 +103,11 @@
                         android:layout_marginStart="5dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginEnd="5dp"
-                        android:text="Tytuł"
+                        android:text="@string/title"
                         app:layout_constraintBottom_toTopOf="@+id/exchangeDetailsTextViewAuthor1"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/exchangeDetailsTextViewAuthor1"
@@ -124,12 +116,11 @@
                         android:layout_marginStart="5dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginEnd="5dp"
-                        android:text="Autor"
+                        android:text="@string/author"
                         app:layout_constraintBottom_toTopOf="@+id/exchangeDetailsTextViewYear1"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/exchangeDetailsTextViewTitle1"
-                        />
+                        app:layout_constraintTop_toBottomOf="@+id/exchangeDetailsTextViewTitle1" />
 
                     <TextView
                         android:id="@+id/exchangeDetailsTextViewYear1"
@@ -138,11 +129,10 @@
                         android:layout_marginStart="5dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginEnd="5dp"
-                        android:text="Rok"
+                        android:text="@string/publish_year"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/exchangeDetailsTextViewAuthor1"
-                        />
+                        app:layout_constraintTop_toBottomOf="@+id/exchangeDetailsTextViewAuthor1" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -157,16 +147,14 @@
             app:layout_constraintBottom_toTopOf="@id/exchangeDetailsConstraintLayoutBook2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/exchangeDetailsConstraintLayoutBook1"
-            />
+            app:layout_constraintTop_toBottomOf="@id/exchangeDetailsConstraintLayoutBook1" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/exchangeDetailsConstraintLayoutBook2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@+id/messagesBrowseButtonBack"
-            app:layout_constraintTop_toBottomOf="@id/exchangeDetailsTextViewDivider"
-            >
+            app:layout_constraintTop_toBottomOf="@id/exchangeDetailsTextViewDivider">
 
             <TextView
                 android:id="@+id/exchangeDetailsTextViewSection2Title"
@@ -176,8 +164,7 @@
                 app:layout_constraintBottom_toBottomOf="@id/exchangeDetailsTextViewDivider2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/exchangeDetailsTextViewDivider2"
@@ -185,16 +172,14 @@
                 android:layout_height="4dp"
                 android:background="#000000"
                 app:layout_constraintBottom_toTopOf="@id/exchangeDetailsConstraintLayoutBook2Details"
-                app:layout_constraintTop_toBottomOf="@id/exchangeDetailsTextViewSection2Title"
-                />
+                app:layout_constraintTop_toBottomOf="@id/exchangeDetailsTextViewSection2Title" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/exchangeDetailsConstraintLayoutBook2Details"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/exchangeDetailsTextViewDivider2"
-                >
+                app:layout_constraintTop_toBottomOf="@id/exchangeDetailsTextViewDivider2">
 
                 <ImageView
                     android:id="@+id/exchangeDetailsCoverPhoto2"
@@ -211,8 +196,7 @@
                     app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_launcher_sxhdpi"
-                    />
+                    app:srcCompat="@drawable/ic_launcher_sxhdpi" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/exchangeDetailsConstraintLayoutBook2DetailsText"
@@ -222,8 +206,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/exchangeDetailsCoverPhoto2"
-                    app:layout_constraintTop_toTopOf="parent"
-                    >
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
                         android:id="@+id/exchangeDetailsTextViewTitle2"
@@ -232,12 +215,11 @@
                         android:layout_marginStart="5dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginEnd="5dp"
-                        android:text="Tytuł"
+                        android:text="@string/title"
                         app:layout_constraintBottom_toTopOf="@+id/exchangeDetailsTextViewAuthor2"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/exchangeDetailsTextViewAuthor2"
@@ -246,12 +228,11 @@
                         android:layout_marginStart="5dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginEnd="5dp"
-                        android:text="Autor"
+                        android:text="@string/author"
                         app:layout_constraintBottom_toTopOf="@+id/exchangeDetailsTextViewYear2"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/exchangeDetailsTextViewTitle2"
-                        />
+                        app:layout_constraintTop_toBottomOf="@+id/exchangeDetailsTextViewTitle2" />
 
                     <TextView
                         android:id="@+id/exchangeDetailsTextViewYear2"
@@ -260,28 +241,28 @@
                         android:layout_marginStart="5dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginEnd="5dp"
-                        android:text="Rok"
+                        android:text="@string/publish_year"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/exchangeDetailsTextViewAuthor2"
-                        />
+                        app:layout_constraintTop_toBottomOf="@+id/exchangeDetailsTextViewAuthor2" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <Button
+        <ImageButton
             android:id="@+id/messagesBrowseButtonBack"
-            style="@style/Tabularasa.Button.Round.Colored"
+            style="@style/Tabularasa.Button.Normal.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginBottom="20dp"
+            android:src="@drawable/abc_vector_test"
             android:text="@string/go_back"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            />
+            android:contentDescription="@string/app_name" />
 
         <Button
             android:id="@+id/messagesBrowseButtonConfirmExchange"
@@ -292,8 +273,7 @@
             android:layout_marginBottom="20dp"
             android:text="@string/exchange_confirm_exchange"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            />
+            app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

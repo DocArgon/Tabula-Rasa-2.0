@@ -3,6 +3,7 @@ package com.wat.tabularasa20.activities;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.snackbar.Snackbar;
@@ -21,7 +22,7 @@ public class AddBookActivity extends AppCompatActivity {
         setContentView(R.layout.activity_products_add);
 
         // Uzyskanie dostępu do elementów graficznych
-        Button back = findViewById(R.id.productsAddButtonBack);
+        ImageButton back = findViewById(R.id.productsAddButtonBack);
         Button add = findViewById(R.id.productsAddButtonSendForm);
         EditText title = findViewById(R.id.productsAddEditTextTitle);
         EditText author = findViewById(R.id.productsAddEditTextAuthor);

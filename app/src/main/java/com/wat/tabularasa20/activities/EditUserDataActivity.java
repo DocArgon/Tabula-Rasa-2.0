@@ -2,8 +2,10 @@ package com.wat.tabularasa20.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.snackbar.Snackbar;
@@ -27,6 +29,7 @@ public class EditUserDataActivity extends AppCompatActivity {
 
         Button edit = findViewById(R.id.accessEditButtonSaveChanges);
         Button card = findViewById(R.id.accessEditButtonGoCreditCard);
+        ImageButton back = findViewById(R.id.accessEditButtonGoBack);
         EditText login = findViewById(R.id.accessEditEditTextLogin);
         EditText email = findViewById(R.id.accessEditEditTextEmail);
         EditText password = findViewById(R.id.accessEditEditTextPassword);
@@ -59,6 +62,9 @@ public class EditUserDataActivity extends AppCompatActivity {
             //jsonObject.get("Plec").getAsString() // brak pola tekstowego
         });
         downloader.execute(Constants.ACCOUNT_GET_URL + String.format("?id_klienta=%s", Preferences.readUID(this)));
+
+        // akcja przycisku cofnij
+        back.setOnClickListener(view -> finish());
 
         // akcja przycisku konta premium
         card.setOnClickListener(view -> startActivity(new Intent(EditUserDataActivity.this, CreditCardActivity.class)));
