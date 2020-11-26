@@ -39,7 +39,7 @@ public class ProductAddActivity extends AppCompatActivity {
 
         // Uzyskanie dostępu do elementów graficznych
         ImageButton back = findViewById(R.id.productsAddButtonBack);
-        photo = findViewById(R.id.productsAddImageViewCover);
+        photo = findViewById(R.id.productDetailsImageViewCover);
         Button add = findViewById(R.id.productsAddButtonSendForm);
         EditText title = findViewById(R.id.productsAddEditTextTitle);
         EditText author = findViewById(R.id.productsAddEditTextAuthor);
