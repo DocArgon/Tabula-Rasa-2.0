@@ -39,6 +39,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/productsAddTextViewTitle">
 
+        <ImageView
+            android:id="@+id/productDetailsImageViewCover"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/cover_content_description"
+            app:layout_constraintBottom_toTopOf="@id/productsAddEditTextTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars"
+            />
+
         <EditText
             android:id="@+id/productsAddEditTextTitle"
             android:layout_width="0dp"
@@ -55,8 +67,9 @@
             app:layout_constraintBottom_toTopOf="@+id/productsAddEditTextAuthor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
+            app:layout_constraintTop_toBottomOf="@id/productDetailsImageViewCover"
+            app:layout_constraintVertical_chainStyle="packed"
+            />
 
         <EditText
             android:id="@+id/productsAddEditTextAuthor"

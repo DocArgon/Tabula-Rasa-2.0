@@ -39,12 +39,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/productsDetailsTextViewActivityTitle">
 
+        <ImageView
+            android:id="@+id/productsDetailsImageViewCover"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:contentDescription="@string/cover_content_description"
+            app:layout_constraintBottom_toTopOf="@id/productsDetailsTextViewTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars"
+            />
+
         <TextView
             android:id="@+id/productsDetailsTextViewTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:layout_marginRight="20dp"
             android:autofillHints="Login"
             android:background="#FFFFFF"
@@ -54,8 +67,9 @@
             app:layout_constraintBottom_toTopOf="@+id/productsDetailsTextViewAuthor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
+            app:layout_constraintTop_toBottomOf="@id/productsDetailsImageViewCover"
+            app:layout_constraintVertical_chainStyle="packed"
+            />
 
         <TextView
             android:id="@+id/productsDetailsTextViewAuthor"
