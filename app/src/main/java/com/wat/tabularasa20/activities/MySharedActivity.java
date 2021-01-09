@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -33,7 +33,7 @@ public class MySharedActivity extends AppCompatActivity implements ProductListAd
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products_my_shared);
 
-        Button back = findViewById(R.id.productsMySharedButtonBack);
+        ImageButton back = findViewById(R.id.productsMySharedButtonBack);
         EditText filter = findViewById(R.id.productsMySharedEditTextSearchText);
         recyclerView = findViewById(R.id.productsMySharedRecyclerViewProductList);
 
@@ -44,9 +44,12 @@ public class MySharedActivity extends AppCompatActivity implements ProductListAd
         // Pobranie informacji o udostępnionych
         Downloader sharedDownloader = new Downloader();
         sharedDownloader.setOnResultListener(result -> {
+            assert result != null;
             JsonArray favouritesJsonArray = JsonParser.parseString(result).getAsJsonArray();
-            favouritesJsonArray.forEach(productJsonElement -> products.add(
-                    new ProductListDescription(productJsonElement.getAsJsonObject().get("Tytul").getAsString(), ProductListDescription.FavouriteStare.HIDDEN)) );
+            favouritesJsonArray.forEach(productJsonElement -> products.add(new ProductListDescription(
+                    productJsonElement.getAsJsonObject().get("Tytul").getAsString(),
+                    productJsonElement.getAsJsonObject().get("Id_ksiazki").getAsInt(),
+                    ProductListDescription.FavouriteStare.HIDDEN)) );
 
             adapter = new ProductListAdapter(MySharedActivity.this, products);
             adapter.setRowClickListener(MySharedActivity.this);

@@ -5,7 +5,9 @@
     android:id="@+id/productsAddLayoutScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/activities_bg"
     tools:context=".MainActivity">
+
 
     <TextView
         android:id="@+id/productsAddTextViewTitle"
@@ -19,7 +21,7 @@
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/productsAddListLayoutMain"
@@ -37,6 +39,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/productsAddTextViewTitle">
 
+        <ImageView
+            android:id="@+id/productDetailsImageViewCover"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="30dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/cover_content_description"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toTopOf="@id/productsAddEditTextTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/add_photo" />
+
         <EditText
             android:id="@+id/productsAddEditTextTitle"
             android:layout_width="0dp"
@@ -53,8 +71,9 @@
             app:layout_constraintBottom_toTopOf="@+id/productsAddEditTextAuthor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
+            app:layout_constraintTop_toBottomOf="@id/productDetailsImageViewCover"
+            app:layout_constraintVertical_chainStyle="packed"
+            />
 
         <EditText
             android:id="@+id/productsAddEditTextAuthor"
@@ -105,10 +124,29 @@
             android:gravity="top"
             android:hint="@string/publisher"
             android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/productsAddEditTextAdditionalInfo"
+            app:layout_constraintBottom_toTopOf="@+id/productsAddEditTextGenre"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/productsAddEditTextYear" />
+
+        <EditText
+            android:id="@+id/productsAddEditTextGenre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="20dp"
+            android:autofillHints="Login"
+            android:background="#FFFFFF"
+            android:ems="10"
+            android:gravity="top"
+            android:hint="@string/genre"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/productsAddEditTextAdditionalInfo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/productsAddEditTextPublisher"
+            />
 
         <EditText
             android:id="@+id/productsAddEditTextAdditionalInfo"
@@ -127,15 +165,18 @@
             app:layout_constraintBottom_toTopOf="@+id/productsAddButtonBack"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/productsAddEditTextPublisher" />
+            app:layout_constraintTop_toBottomOf="@+id/productsAddEditTextGenre" />
 
-        <Button
+        <ImageButton
             android:id="@+id/productsAddButtonBack"
-            android:layout_width="0dp"
+            style="@style/Tabularasa.Button.Normal.Colored"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/abc_vector_test"
             android:text="@string/go_back"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/productsAddButtonSendForm"
@@ -143,6 +184,7 @@
 
         <Button
             android:id="@+id/productsAddButtonSendForm"
+            style="@style/Tabularasa.Button.Round.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"

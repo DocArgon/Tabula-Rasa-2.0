@@ -38,7 +38,7 @@ public class Uploader {
                 },
                 error -> {
                     if (onResultListener != null)
-                        onResultListener.getError(error.toString());
+                        onResultListener.getError(error.getMessage());
                 });
             queue.add(jsonObjectRequest);
             queue.start();

@@ -40,9 +40,13 @@ public class RegisterActivity extends AppCompatActivity {
         // Akcja przycisku edycji danych
         edit.setOnClickListener(v -> {
             // Sprawdzenie dzy pola danych nie są puste
-            if (login.getText().toString().isEmpty() || password.getText().toString().isEmpty() ||
-                    passwd_rep.getText().toString().isEmpty() || name.getText().toString().isEmpty() ||
-                    city.getText().toString().isEmpty() || bday.getText().toString().isEmpty()) {
+            if (login.getText().toString().isEmpty() ||
+                    password.getText().toString().isEmpty() ||
+                    passwd_rep.getText().toString().isEmpty() ||
+                    name.getText().toString().isEmpty() ||
+                    lname.getText().toString().isEmpty() ||
+                    city.getText().toString().isEmpty() ||
+                    bday.getText().toString().isEmpty()) {
                 Snackbar.make(v, getString(R.string.fields_empty), Snackbar.LENGTH_LONG).show();
                 return;
             }
@@ -73,7 +77,9 @@ public class RegisterActivity extends AppCompatActivity {
             jsonObject.addProperty("birthday", bday.getText().toString());
             String data = gson.toJson(jsonObject);
 
-            // Wysłanie dznych do BD
+            System.out.println(data);
+
+            // Wysłanie danych do BD
             Uploader uploader = new Uploader();
             uploader.setOnResultListener(new Uploader.UploadActions() {
                 @Override

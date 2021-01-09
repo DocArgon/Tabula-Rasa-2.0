@@ -6,9 +6,9 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.google.gson.JsonPrimitive;
 import com.wat.tabularasa20.R;
 import com.wat.tabularasa20.data.Constants;
 import com.wat.tabularasa20.data.ProductListAdapter;
@@ -46,7 +45,7 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
         setContentView(R.layout.activity_products_browse);
 
         // Uzyskanie dostępu do elementów graficznych
-        Button back = findViewById(R.id.productsBrowseButtonBack);
+        ImageButton back = findViewById(R.id.productsBrowseButtonBack);
         EditText filter = findViewById(R.id.productsBrowseEditTextSearchText);
         ImageButton sort = findViewById(R.id.productsBrowseImageButtonSort);
         recyclerView = findViewById(R.id.productsBrowseRecyclerViewProductsList);
@@ -59,7 +58,8 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
         Downloader productDownloader = new Downloader();
         productDownloader.setOnResultListener(resultProducts -> {
             // Utworzenie obiektu JSON z danych pobranych z internetu
-            //Toast.makeText(ProductListActivity.this, result, Toast.LENGTH_LONG).show();
+            assert resultProducts != null;
+            //Toast.makeText(ProductListActivity.this, resultProducts, Toast.LENGTH_LONG).show();
             JsonObject productsJsonObject = JsonParser.parseString(resultProducts).getAsJsonObject();
             String body = productsJsonObject.get("body").getAsString();
             JsonArray productsJsonArray = JsonParser.parseString(body).getAsJsonArray();
@@ -67,6 +67,7 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
             // Pobranie informacji o ulubionych
             Downloader favouriteDownloader = new Downloader();
             favouriteDownloader.setOnResultListener(resultFavourites -> {
+                assert resultFavourites != null;
                 JsonArray favouritesJsonArray = JsonParser.parseString(resultFavourites).getAsJsonArray();
 
                 // przejście po wszystkich produktach ze sprawdzeniem czy ulubiony
@@ -74,7 +75,14 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
                     boolean contains = favouritesJsonArray.contains(productJsonElement);
                     products.add(new ProductListDescription(
                             productJsonElement.getAsJsonObject().get("Tytul").getAsString(),
+                            productJsonElement.getAsJsonObject().get("Id_ksiazki").getAsInt(),
                             contains ? ProductListDescription.FavouriteStare.ON : ProductListDescription.FavouriteStare.OFF));
+
+                    Downloader detailsDownloader = new Downloader();
+                    detailsDownloader.setOnResultListener(result -> {
+                        // TODO przekazać do podaktywności
+                    });
+                    //detailsDownloader.execute();
                 });
 
                 adapter = new ProductListAdapter(ProductListActivity.this, products);
@@ -97,10 +105,13 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
      */
     @Override
     public void onRowClick(View view, int position) {
-        Toast.makeText(this, "Dotknięto " + adapter.getItem(position).name + ", ulubiony " + adapter.getItem(position).favourite, Toast.LENGTH_SHORT).show();
-        Intent spec = new Intent(ProductListActivity.this, ProductDetailsActivity.class);
-        spec.putExtra("name", adapter.getItem(position).name);
-        startActivity(spec);
+        //Toast.makeText(this, "Dotknięto " + adapter.getItem(position).name + ", ulubiony " + adapter.getItem(position).favourite, Toast.LENGTH_SHORT).show();
+
+        // TODO Przejść do wikoku wszystkich instancji zamiast detali
+
+        Intent i = new Intent(ProductListActivity.this, ProductDetailsActivity.class);
+        i.putExtra("book_id", adapter.getItem(position).productID);
+        startActivity(i);
     }
 
     /**

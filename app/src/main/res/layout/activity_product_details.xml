@@ -5,6 +5,7 @@
     android:id="@+id/productsDetailsLayoutScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/activities_bg"
     tools:context=".MainActivity">
 
     <TextView
@@ -20,8 +21,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/productsDetailsListLayoutMain"
@@ -39,12 +39,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/productsDetailsTextViewActivityTitle">
 
+        <ImageView
+            android:id="@+id/productsDetailsImageViewCover"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="30dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/cover_content_description"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toTopOf="@id/productsDetailsTextViewTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/missing_photo" />
+
         <TextView
             android:id="@+id/productsDetailsTextViewTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:layout_marginRight="20dp"
             android:autofillHints="Login"
             android:background="#FFFFFF"
@@ -54,8 +70,9 @@
             app:layout_constraintBottom_toTopOf="@+id/productsDetailsTextViewAuthor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
+            app:layout_constraintTop_toBottomOf="@id/productsDetailsImageViewCover"
+            app:layout_constraintVertical_chainStyle="packed"
+            />
 
         <TextView
             android:id="@+id/productsDetailsTextViewAuthor"
@@ -103,10 +120,28 @@
             android:ems="10"
             android:gravity="top"
             android:hint="@string/publisher"
-            app:layout_constraintBottom_toTopOf="@+id/productsDetailsTextViewAdditionalInfo"
+            app:layout_constraintBottom_toTopOf="@+id/productsDetailsTextViewGenre"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/productsDetailsTextViewYear" />
+
+        <TextView
+            android:id="@+id/productsDetailsTextViewGenre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="20dp"
+            android:autofillHints="Login"
+            android:background="#FFFFFF"
+            android:ems="10"
+            android:gravity="top"
+            android:hint="@string/genre"
+            app:layout_constraintBottom_toTopOf="@+id/productsDetailsTextViewAdditionalInfo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/productsDetailsTextViewPublisher"
+            />
 
         <TextView
             android:id="@+id/productsDetailsTextViewAdditionalInfo"
@@ -124,15 +159,18 @@
             app:layout_constraintBottom_toTopOf="@+id/productsDetailsButtonBack"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/productsDetailsTextViewPublisher" />
+            app:layout_constraintTop_toBottomOf="@+id/productsDetailsTextViewGenre" />
 
-        <Button
+        <ImageButton
             android:id="@+id/productsDetailsButtonBack"
-            android:layout_width="0dp"
+            style="@style/Tabularasa.Button.Normal.Colored"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/abc_vector_test"
             android:text="@string/go_back"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/productsDetailsButtonSendForm"
@@ -140,11 +178,12 @@
 
         <Button
             android:id="@+id/productsDetailsButtonSendForm"
-            android:layout_width="wrap_content"
+            style="@style/Tabularasa.Button.Round.Colored"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:text="@string/add"
+            android:text="@string/contact_with_owner"
             app:layout_constraintBottom_toBottomOf="@+id/productsDetailsButtonBack"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/productsDetailsButtonBack"

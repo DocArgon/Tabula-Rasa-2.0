@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -36,7 +36,7 @@ public class FavouriteActivity extends AppCompatActivity implements ProductListA
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products_favourite);
 
-        Button back = findViewById(R.id.productsFavouriteButtonBack);
+        ImageButton back = findViewById(R.id.productsFavouriteButtonBack);
         EditText filter = findViewById(R.id.productsFavouriteEditTextSearchText);
         recyclerView = findViewById(R.id.productsFavouriteRecyclerViewProductList);
 
@@ -50,6 +50,7 @@ public class FavouriteActivity extends AppCompatActivity implements ProductListA
             JsonArray favouritesJsonArray = JsonParser.parseString(resultFavourites).getAsJsonArray();
             favouritesJsonArray.forEach(productJsonElement -> products.add(new ProductListDescription(
                     productJsonElement.getAsJsonObject().get("Tytul").getAsString(),
+                    productJsonElement.getAsJsonObject().get("Id_ksiazki").getAsInt(),
                     ProductListDescription.FavouriteStare.ON))); // Zawsze zapalona
 
             adapter = new ProductListAdapter(FavouriteActivity.this, products);
