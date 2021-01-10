@@ -50,7 +50,6 @@ public class Downloader extends AsyncTask<Object, Void, String> {
             return sb.toString();
         } catch (Exception ignore) {
             System.out.println(ignore);
-            //return ignore.toString();
         }
         return null;
     }
