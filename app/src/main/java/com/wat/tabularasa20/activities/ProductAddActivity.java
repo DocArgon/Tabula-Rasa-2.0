@@ -3,10 +3,8 @@ package com.wat.tabularasa20.activities;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.util.Base64;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -18,10 +16,9 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.wat.tabularasa20.R;
 import com.wat.tabularasa20.data.Constants;
+import com.wat.tabularasa20.utilities.MathUtil;
+import com.wat.tabularasa20.utilities.Preferences;
 import com.wat.tabularasa20.utilities.Uploader;
-
-import java.io.ByteArrayOutputStream;
-import java.util.Date;
 
 /**
  * Aktywność dodawania nowej książki
@@ -29,6 +26,7 @@ import java.util.Date;
 public class ProductAddActivity extends AppCompatActivity {
 
     private final int CAMERA_REQUEST = 1002;
+    private final int GALLERY_REQUEST = 1003;
     Bitmap bitmap = null;
     ImageView photo = null;
 
@@ -45,14 +43,20 @@ public class ProductAddActivity extends AppCompatActivity {
         EditText author = findViewById(R.id.productsAddEditTextAuthor);
         EditText year = findViewById(R.id.productsAddEditTextYear);
         EditText publisher = findViewById(R.id.productsAddEditTextPublisher);
+        EditText genre = findViewById(R.id.productsAddEditTextGenre);
         EditText info = findViewById(R.id.productsAddEditTextAdditionalInfo);
 
         back.setOnClickListener(v -> finish());
 
         photo.setOnClickListener(view -> {
+            /*
             Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             cameraIntent.putExtra(new Date().toString().replace(" ", "_"), true);
             startActivityForResult(cameraIntent, CAMERA_REQUEST);
+            //*/
+            Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+            intent.setType("image/*");
+            startActivityForResult(Intent.createChooser(intent, "Wybierz zdjęcie"), GALLERY_REQUEST);
         });
 
         // Akcja przycisku dodaj
@@ -69,17 +73,15 @@ public class ProductAddActivity extends AppCompatActivity {
             JsonObject jsonObject = new JsonObject();
             jsonObject.addProperty("title", title.getText().toString());
             jsonObject.addProperty("author", author.getText().toString());
+            jsonObject.addProperty("genre", genre.getText().toString());
             jsonObject.addProperty("year", year.getText().toString());
             jsonObject.addProperty("publisher", publisher.getText().toString());
+            jsonObject.addProperty("id_konta", Preferences.readAccountID(this));
             jsonObject.addProperty("description", info.getText().toString());
             if (bitmap != null) {
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
-                byte[] imageBytes = baos.toByteArray();
-                String imageString = Base64.encodeToString(imageBytes, Base64.DEFAULT);
-                jsonObject.addProperty("picture", imageString);
+                jsonObject.addProperty("photo", MathUtil.toBase64(bitmap));
             } else {
-                jsonObject.addProperty("picture", "");
+                jsonObject.addProperty("photo", "");
             }
             String data = gson.toJson(jsonObject);
 
@@ -105,6 +107,12 @@ public class ProductAddActivity extends AppCompatActivity {
         if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {
             bitmap = (Bitmap) data.getExtras().get("data");
             photo.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
+        }
+        if (requestCode == GALLERY_REQUEST && resultCode == RESULT_OK) {
+            Uri uri = data.getData();
+            photo.setImageURI(uri);
+            BitmapDrawable drawable = (BitmapDrawable) photo.getDrawable();
+            bitmap = drawable.getBitmap();
         }
     }
 }

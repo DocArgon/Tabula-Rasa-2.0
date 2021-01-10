@@ -8,12 +8,11 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.wat.tabularasa20.R;
 import com.wat.tabularasa20.data.Constants;
@@ -21,7 +20,7 @@ import com.wat.tabularasa20.data.ProductListAdapter;
 import com.wat.tabularasa20.data.ProductListDescription;
 import com.wat.tabularasa20.utilities.Downloader;
 import com.wat.tabularasa20.utilities.Network;
-import com.wat.tabularasa20.utilities.Preferences;
+
 import java.util.ArrayList;
 
 public class ProductListCopyActivity extends AppCompatActivity implements ProductListAdapter.RowClickListener, TextWatcher, View.OnClickListener {
@@ -67,40 +66,26 @@ public class ProductListCopyActivity extends AppCompatActivity implements Produc
                 //JsonArray productsJsonArray = JsonParser.parseString(body).getAsJsonArray();
                 JsonArray productsJsonArray = JsonParser.parseString(resultProducts).getAsJsonArray();
 
-                // Pobranie informacji o ulubionych
-                Downloader favouriteDownloader = new Downloader();
-                favouriteDownloader.setOnResultListener(resultFavourites -> {
-                    assert resultFavourites != null;
-                    resultFavourites = Network.repairJson(resultFavourites);
-                    if (resultFavourites.equals("-1"))
-                        resultFavourites = "[]";
-                    JsonArray favouritesJsonArray = JsonParser.parseString(resultFavourites).getAsJsonArray();
-
-                    // przejście po wszystkich produktach ze sprawdzeniem czy ulubiony
-                    productsJsonArray.forEach(productJsonElement -> {
-                        boolean contains = favouritesJsonArray.contains(productJsonElement);
-                        products.add(new ProductListDescription(
-                                productJsonElement.getAsJsonObject().get("Tytul").getAsString(),
-                                productJsonElement.getAsJsonObject().get("Id_ksiazki").getAsInt(),
-                                ProductListDescription.FavouriteStare.HIDDEN));
-
-                        Downloader detailsDownloader = new Downloader();
-                        detailsDownloader.setOnResultListener(result -> {
-                            // TODO przekazać do podaktywności
-                        });
-                        //detailsDownloader.execute();
-                    });
-
-                    adapter = new ProductListAdapter(ProductListCopyActivity.this, products);
-                    adapter.setRowClickListener(this);
-                    recyclerView.setAdapter(adapter);
+                productsJsonArray.forEach(productJsonElement -> {
+                    products.add(new ProductListDescription(
+                            "Tytuł wydania", //productJsonElement.getAsJsonObject().get("Tytul").getAsString(),
+                            1, //productJsonElement.getAsJsonObject().get("Id_ksiazki").getAsInt(),
+                            ProductListDescription.FavouriteStare.HIDDEN,
+                            "Opcjonalny opis",
+                            productJsonElement.getAsJsonObject().get("login").getAsString(), // -> Nick
+                            productJsonElement.getAsJsonObject().get("miasto").getAsString(),
+                            "autor" //productJsonElement.getAsJsonObject().get("author").getAsString()
+                    ));
                 });
-                favouriteDownloader.execute(Constants.DETAILS_URL + String.format("?id_ksiazki=%d", -1));
+
+                adapter = new ProductListAdapter(ProductListCopyActivity.this, products);
+                adapter.setRowClickListener(this);
+                recyclerView.setAdapter(adapter);
             } catch (Exception e) {
                 System.out.println(e);
             }
         });
-        productDownloader.execute(Constants.DETAILS_URL + String.format("?id_ksiazki=%d", id));
+        productDownloader.execute(Constants.COPIES_URL + String.format("?id_ksiazki=%d", id));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

@@ -62,7 +62,7 @@ public class EditUserDataActivity extends AppCompatActivity {
             bday.setText(jsonObject.get("Data_urodzenia").getAsString());
             //jsonObject.get("Plec").getAsString() // brak pola tekstowego
         });
-        downloader.execute(Constants.ACCOUNT_GET_URL + String.format("?id_klienta=%s", Preferences.readUID(this)));
+        downloader.execute(Constants.ACCOUNT_GET_URL + String.format("?id_klienta=%s", Preferences.readClientID(this)));
 
         // akcja przycisku cofnij
         back.setOnClickListener(view -> finish());

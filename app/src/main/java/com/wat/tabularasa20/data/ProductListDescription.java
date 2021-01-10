@@ -17,18 +17,20 @@ public class ProductListDescription {
     public String description;
     public String nick;
     public String city;
+    public String author;
     public FavouriteStare favourite;
 
     /**
      * Konstruktor struktury przechowującej opis książki
      */
-    public ProductListDescription (String name, int productID, FavouriteStare favoutite, String description, String nick, String city) {
+    public ProductListDescription (String name, int productID, FavouriteStare favoutite, String description, String nick, String city, String author) {
         this.name = name;
         this.productID = productID;
         this.favourite = favoutite;
         this.description = description;
         this.nick = nick;
         this.city = city;
+        this.author = author;
     }
 
     /**

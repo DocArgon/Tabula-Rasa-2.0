@@ -91,7 +91,7 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
                 adapter.setFavouriteChangeListener(this);
                 recyclerView.setAdapter(adapter);
             });
-            favouriteDownloader.execute(Constants.FAVOURITES_URL + String.format("?Id_klienta=%d", Preferences.readUID(ProductListActivity.this)));
+            favouriteDownloader.execute(Constants.FAVOURITES_URL + String.format("?Id_klienta=%d", Preferences.readClientID(ProductListActivity.this)));
             } catch (Exception e) {
                 System.out.println(e);
             }

@@ -4,14 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.core.content.res.ResourcesCompat;
-
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.res.Resources;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -83,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
             // Wysłanie zapytania czy dane logowania są poprawne
             // TODO przerobić zapytanie na hash
             if (!strname.isEmpty() && !strpass.isEmpty()) {
-                String strurl = Constants.LOGIN_CHECK_URL + String.format("?login=%s&haslo=%s", strname, strpass);
+                String strurl = Constants.LOGIN_CHECK_URL + String.format("?login=%s&haslo=%s", strname, MathUtil.sha(strpass));
                 downloader = new Downloader();
                 downloader.setOnResultListener(this::login);
                 downloader.execute(strurl);

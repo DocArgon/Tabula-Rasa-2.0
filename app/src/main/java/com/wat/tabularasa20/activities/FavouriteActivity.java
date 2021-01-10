@@ -63,7 +63,7 @@ public class FavouriteActivity extends AppCompatActivity implements ProductListA
                 // TODO Snackbar - lista ulubionych pusta
             }
         });
-        favouriteDownloader.execute(Constants.FAVOURITES_URL + String.format("?Id_klienta=%d", Preferences.readUID(FavouriteActivity.this)));
+        favouriteDownloader.execute(Constants.FAVOURITES_URL + String.format("?Id_klienta=%d", Preferences.readClientID(FavouriteActivity.this)));
 
         filter.addTextChangedListener(this);
 

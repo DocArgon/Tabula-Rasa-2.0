@@ -30,7 +30,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home_account);
 
         Intent incoming_intent = getIntent();
-        Preferences.saveUID(this, incoming_intent.getStringExtra("result"));
+        Preferences.saveClientID(this, incoming_intent.getStringExtra("result"));
 
         SecretTextView welcome = findViewById(R.id.homeAccountTextViewWelcome);
         Button editAccount = findViewById(R.id.homeAccountButtonEditInfo);
@@ -69,12 +69,13 @@ public class HomeActivity extends AppCompatActivity {
             assert result != null;
             result = Network.repairJson(result);
             JsonObject jsonObject = JsonParser.parseString(result).getAsJsonObject();
+            Preferences.saveAccountID(this, jsonObject.get("id_konta").getAsString());
             welcome.setIsVisible(false);
             welcome.setDuration(3500);
             welcome.setText(getString(R.string.hello_msg_params, jsonObject.get("Imie").getAsString()));
             welcome.show();
         });
-        downloader.execute(Constants.ACCOUNT_GET_URL + String.format("?id_klienta=%s", Preferences.readUID(this)));
+        downloader.execute(Constants.ACCOUNT_GET_URL + String.format("?id_klienta=%s", Preferences.readClientID(this)));
 
         // Akcja przycisku menu wyświetlenia listy produktów
         itemSearchBook.setOnClickListener(v -> {

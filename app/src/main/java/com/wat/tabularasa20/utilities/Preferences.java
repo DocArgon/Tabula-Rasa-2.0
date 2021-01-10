@@ -51,30 +51,58 @@ public class Preferences {
     }
 
     /**
-     * Metoda zapisująca identyfikator użytkownika
+     * Metoda zapisująca identyfikator klienta
      * @param uid identyfikator użytkownika jako <code>String</code>
      */
-    public static void saveUID (Context context, String uid) {
-        saveUID(context, Integer.parseInt(uid));
+    public static void saveClientID(Context context, String uid) {
+        saveClientID(context, Integer.parseInt(uid));
     }
 
     /**
-     * Metoda zapisująca identyfikator użytkownika
+     * Metoda zapisująca identyfikator klienta
      * @param uid identyfikator użytkownika jako <code>int</code>
      */
-    public static void saveUID (Context context, int uid) {
+    public static void saveClientID(Context context, int uid) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("UserID", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt("uid", uid);
+        editor.putInt("client_id", uid);
         editor.apply();
     }
 
     /**
-     * Metoda odczytująca zachowany identyfikator użytkownika
+     * Metoda odczytująca zachowany identyfikator klienta
      * @return identyfikator użytkownika
      */
-    public static int readUID (Context context) {
+    public static int readClientID(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("UserID", Context.MODE_PRIVATE);
-        return sharedPreferences.getInt("uid", -1);
+        return sharedPreferences.getInt("client_id", -1);
+    }
+
+    /**
+     * Metoda zapisująca identyfikator konta
+     * @param uid identyfikator użytkownika jako <code>String</code>
+     */
+    public static void saveAccountID(Context context, String uid) {
+        saveAccountID(context, Integer.parseInt(uid));
+    }
+
+    /**
+     * Metoda zapisująca identyfikator konta
+     * @param uid identyfikator użytkownika jako <code>int</code>
+     */
+    public static void saveAccountID(Context context, int uid) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("UserID", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("account_id", uid);
+        editor.apply();
+    }
+
+    /**
+     * Metoda odczytująca zachowany identyfikator konta
+     * @return identyfikator użytkownika
+     */
+    public static int readAccountID(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("UserID", Context.MODE_PRIVATE);
+        return sharedPreferences.getInt("account_id", -1);
     }
 }

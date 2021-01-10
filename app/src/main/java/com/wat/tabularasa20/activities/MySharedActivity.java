@@ -61,7 +61,7 @@ public class MySharedActivity extends AppCompatActivity implements ProductListAd
                 // TODO Snackbar - brak udostępnień
             }
         });
-        sharedDownloader.execute(Constants.FAVOURITES_URL + String.format("?Id_klienta=%d", Preferences.readUID(MySharedActivity.this)));
+        sharedDownloader.execute(Constants.FAVOURITES_URL + String.format("?Id_klienta=%d", Preferences.readClientID(MySharedActivity.this)));
 
         filter.addTextChangedListener(this);
 
