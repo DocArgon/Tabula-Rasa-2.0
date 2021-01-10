@@ -2,14 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/productsSearchStage1LayoutScreen"
+    android:id="@+id/productsBrowseLayoutScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/activities_bg"
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/productsSearchStage1ViewTitle"
+        android:id="@+id/productsBrowseViewTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#DDCBCB"
@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/productsSearchStage1ListLayoutMain"
+        android:id="@+id/productsBrowseListLayoutMain"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="40dp"
@@ -35,10 +35,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/productsSearchStage1ViewTitle">
+        app:layout_constraintTop_toBottomOf="@+id/productsBrowseViewTitle">
 
         <EditText
-            android:id="@+id/productsSearchStage1EditTextSearchText"
+            android:id="@+id/productsBrowseEditTextSearchText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -48,35 +48,35 @@
             android:background="#FFFFFF"
             android:hint="@string/title"
             android:inputType="textPersonName"
-            app:layout_constraintEnd_toStartOf="@+id/productsSearchStage1ImageButtonSort"
+            app:layout_constraintEnd_toStartOf="@+id/productsBrowseImageButtonSort"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
-            android:id="@+id/productsSearchStage1ImageButtonSort"
+            android:id="@+id/productsBrowseImageButtonSort"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
             android:contentDescription="@string/app_name"
-            app:layout_constraintBottom_toBottomOf="@+id/productsSearchStage1EditTextSearchText"
+            app:layout_constraintBottom_toBottomOf="@+id/productsBrowseEditTextSearchText"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/productsSearchStage1EditTextSearchText"
-            app:layout_constraintTop_toTopOf="@+id/productsSearchStage1EditTextSearchText"
+            app:layout_constraintStart_toEndOf="@+id/productsBrowseEditTextSearchText"
+            app:layout_constraintTop_toTopOf="@+id/productsBrowseEditTextSearchText"
             app:srcCompat="@android:drawable/arrow_down_float" />
 
         <TextView
-            android:id="@+id/productsSearchStage1TextViewDivider"
+            android:id="@+id/productsBrowseTextViewDivider"
             android:layout_width="match_parent"
             android:layout_height="5dp"
             android:layout_marginTop="10dp"
             android:background="#000000"
-            app:layout_constraintBottom_toTopOf="@+id/productsBrowseStage1RecyclerViewProductsList"
+            app:layout_constraintBottom_toTopOf="@+id/productsBrowseRecyclerViewProductsList"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/productsSearchStage1EditTextSearchText" />
+            app:layout_constraintTop_toBottomOf="@+id/productsBrowseEditTextSearchText" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/productsBrowseStage1RecyclerViewProductsList"
+            android:id="@+id/productsBrowseRecyclerViewProductsList"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginStart="20dp"
@@ -84,16 +84,17 @@
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="10dp"
             android:background="#FFFFFF"
-            app:layout_constraintBottom_toTopOf="@+id/productsSearchStage1ButtonBack"
+            app:layout_constraintBottom_toTopOf="@+id/productsBrowseButtonBack"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/productsSearchStage1TextViewDivider">
+            app:layout_constraintTop_toBottomOf="@+id/productsBrowseTextViewDivider">
 
         </androidx.recyclerview.widget.RecyclerView>
 
         <ImageButton
-            android:id="@+id/productsSearchStage1ButtonBack"
-            style="@style/Tabularasa.Button.Round.Colored"            android:layout_width="wrap_content"
+            android:id="@+id/productsBrowseButtonBack"
+            style="@style/Tabularasa.Button.Round.Colored"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginBottom="20dp"

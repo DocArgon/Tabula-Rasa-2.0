@@ -49,9 +49,10 @@ public class Downloader extends AsyncTask<Object, Void, String> {
             in.close();
             return sb.toString();
         } catch (Exception ignore) {
-            return ignore.toString();
+            System.out.println(ignore);
+            //return ignore.toString();
         }
-        //return null;
+        return null;
     }
 
     /**

@@ -24,11 +24,7 @@ import com.wat.tabularasa20.utilities.Network;
 import com.wat.tabularasa20.utilities.Preferences;
 import java.util.ArrayList;
 
-/**
- * Aktywność listy produktów
- * doczytać https://bignerdranch.github.io/expandable-recycler-view/
- */
-public class ProductListActivity extends AppCompatActivity implements ProductListAdapter.RowClickListener, TextWatcher, View.OnClickListener, ProductListAdapter.FavouriteChangeListener {
+public class ProductListCopyActivity extends AppCompatActivity implements ProductListAdapter.RowClickListener, TextWatcher, View.OnClickListener {
 
     ProductListAdapter adapter = null;
     RecyclerView recyclerView = null;
@@ -43,6 +39,9 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products_browse);
+
+        Intent inp = getIntent();
+        int id = inp.getIntExtra("book_id", ProductListDescription.DEFAULT_PRODUCY_ID);
 
         // Uzyskanie dostępu do elementów graficznych
         ImageButton back = findViewById(R.id.productsBrowseButtonBack);
@@ -60,43 +59,48 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
             // Utworzenie obiektu JSON z danych pobranych z internetu
             assert resultProducts != null;
             try {
-            resultProducts = Network.repairJson(resultProducts);
-            //Toast.makeText(ProductListActivity.this, resultProducts, Toast.LENGTH_LONG).show();
-            JsonObject productsJsonObject = JsonParser.parseString(resultProducts).getAsJsonObject();
+                resultProducts = Network.repairJson(resultProducts);
+                //Toast.makeText(ProductListActivity.this, resultProducts, Toast.LENGTH_LONG).show();
+                //JsonObject productsJsonObject = JsonParser.parseString(resultProducts).getAsJsonObject();
 
-            //String body = productsJsonObject.get("body").getAsString();
-            //JsonArray productsJsonArray = JsonParser.parseString(body).getAsJsonArray();
-            JsonArray productsJsonArray = productsJsonObject.get("body").getAsJsonArray();
+                //String body = productsJsonObject.get("body").getAsString();
+                //JsonArray productsJsonArray = JsonParser.parseString(body).getAsJsonArray();
+                JsonArray productsJsonArray = JsonParser.parseString(resultProducts).getAsJsonArray();
 
-            // Pobranie informacji o ulubionych
-            Downloader favouriteDownloader = new Downloader();
-            favouriteDownloader.setOnResultListener(resultFavourites -> {
-                assert resultFavourites != null;
-                resultFavourites = Network.repairJson(resultFavourites);
-                if (resultFavourites.equals("-1"))
-                    resultFavourites = "[]";
-                JsonArray favouritesJsonArray = JsonParser.parseString(resultFavourites).getAsJsonArray();
+                // Pobranie informacji o ulubionych
+                Downloader favouriteDownloader = new Downloader();
+                favouriteDownloader.setOnResultListener(resultFavourites -> {
+                    assert resultFavourites != null;
+                    resultFavourites = Network.repairJson(resultFavourites);
+                    if (resultFavourites.equals("-1"))
+                        resultFavourites = "[]";
+                    JsonArray favouritesJsonArray = JsonParser.parseString(resultFavourites).getAsJsonArray();
 
-                // przejście po wszystkich produktach ze sprawdzeniem czy ulubiony
-                productsJsonArray.forEach(productJsonElement -> {
-                    boolean contains = favouritesJsonArray.contains(productJsonElement);
-                    products.add(new ProductListDescription(
-                            productJsonElement.getAsJsonObject().get("Tytul").getAsString(),
-                            productJsonElement.getAsJsonObject().get("Id_ksiazki").getAsInt(),
-                            contains ? ProductListDescription.FavouriteStare.ON : ProductListDescription.FavouriteStare.OFF));
+                    // przejście po wszystkich produktach ze sprawdzeniem czy ulubiony
+                    productsJsonArray.forEach(productJsonElement -> {
+                        boolean contains = favouritesJsonArray.contains(productJsonElement);
+                        products.add(new ProductListDescription(
+                                productJsonElement.getAsJsonObject().get("Tytul").getAsString(),
+                                productJsonElement.getAsJsonObject().get("Id_ksiazki").getAsInt(),
+                                ProductListDescription.FavouriteStare.HIDDEN));
+
+                        Downloader detailsDownloader = new Downloader();
+                        detailsDownloader.setOnResultListener(result -> {
+                            // TODO przekazać do podaktywności
+                        });
+                        //detailsDownloader.execute();
+                    });
+
+                    adapter = new ProductListAdapter(ProductListCopyActivity.this, products);
+                    adapter.setRowClickListener(this);
+                    recyclerView.setAdapter(adapter);
                 });
-
-                adapter = new ProductListAdapter(ProductListActivity.this, products);
-                adapter.setRowClickListener(this);
-                adapter.setFavouriteChangeListener(this);
-                recyclerView.setAdapter(adapter);
-            });
-            favouriteDownloader.execute(Constants.FAVOURITES_URL + String.format("?Id_klienta=%d", Preferences.readUID(ProductListActivity.this)));
+                favouriteDownloader.execute(Constants.DETAILS_URL + String.format("?id_ksiazki=%d", -1));
             } catch (Exception e) {
                 System.out.println(e);
             }
         });
-        productDownloader.execute(Constants.BOOKS_GET_URL);
+        productDownloader.execute(Constants.DETAILS_URL + String.format("?id_ksiazki=%d", id));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -113,17 +117,9 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
 
         // TODO Przejść do wikoku wszystkich instancji zamiast detali
 
-        Intent i = new Intent(ProductListActivity.this, ProductListCopyActivity.class);
+        Intent i = new Intent(ProductListCopyActivity.this, ProductDetailsActivity.class);
         i.putExtra("book_id", adapter.getItem(position).productID);
         startActivity(i);
-    }
-
-    /**
-     * Akcja przycisku ulubionych
-     */
-    @Override
-    public void onFavouriteChange(View v, boolean isChecked, int position) {
-        Toast.makeText(this, "Dotknięto * przy " + adapter.getItem(position).name + ", ulubiony " + isChecked, Toast.LENGTH_SHORT).show();
     }
 
 
@@ -133,8 +129,8 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
     @Override
     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
         adapter = new ProductListAdapter(this,
-            ProductListAdapter.filter(charSequence.toString(), ProductListAdapter.sort(sortOrder, products)));
-        //adapter.setRowClickListener(this);
+                ProductListAdapter.filter(charSequence.toString(), ProductListAdapter.sort(sortOrder, products)));
+        adapter.setRowClickListener(this);
         recyclerView.setAdapter(adapter);
     }
 
@@ -145,12 +141,12 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
     public void onClick(View view) {
         sortOrder = sortOrder == ProductListAdapter.SortOrder.ASC ? ProductListAdapter.SortOrder.DESC : ProductListAdapter.SortOrder.ASC;
         ((ImageButton)view).setImageResource(
-            sortOrder == ProductListAdapter.SortOrder.ASC ? android.R.drawable.arrow_down_float : android.R.drawable.arrow_up_float);
+                sortOrder == ProductListAdapter.SortOrder.ASC ? android.R.drawable.arrow_down_float : android.R.drawable.arrow_up_float);
         ArrayList<ProductListDescription> filtered = new ArrayList<>(); // tylko obecnie pokazane elementy
         for (int i = 0; i < adapter.getItemCount(); i++)
             filtered.add(adapter.getItem(i));
         adapter = new ProductListAdapter(this, ProductListAdapter.sort(sortOrder, filtered));
-        //adapter.setRowClickListener(this);
+        adapter.setRowClickListener(this);
         recyclerView.setAdapter(adapter);
     }
 

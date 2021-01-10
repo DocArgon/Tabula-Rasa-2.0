@@ -85,8 +85,8 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this, "Echo " + result, Toast.LENGTH_LONG).show();
                 }
                 @Override
-                public void getError(String error, int code) {
-                    Toast.makeText(RegisterActivity.this, error + "\nkod " + code, Toast.LENGTH_LONG).show();
+                public void getError(String error) {
+                    Toast.makeText(RegisterActivity.this, error, Toast.LENGTH_LONG).show();
                 }
             });
             uploader.execute(this, Constants.REGISTER_URL, data);

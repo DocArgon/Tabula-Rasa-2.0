@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     EditText textPass = null;
     Button buttonLogin = null;
     Downloader downloader = new Downloader();
+    private static boolean splashShown = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +49,14 @@ public class MainActivity extends AppCompatActivity {
         // Wywołanie sprawdzenia uprawnień
         int permission = ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET);
         if (permission != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET},1234);
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET}, 1234);
+        }
+
+        // Pokazanie ekranu powitalnego -
+        // przykrycie ekranu logowanie gdy użytkownik ma zapisane dane logowania
+        if (!splashShown) {
+            splashShown = true;
+            startActivity(new Intent(this, SplashActivity.class));
         }
 
         // Uzyskanie dostępu do obiektów graficznych
@@ -69,8 +77,8 @@ public class MainActivity extends AppCompatActivity {
 
             // Sprawdzenie czy nie wykonywane jest właśnie zapytanie do bazy danych
             if (downloader.getStatus() == AsyncTask.Status.RUNNING) {
-            	return;
-			}
+                return;
+            }
 
             // Wysłanie zapytania czy dane logowania są poprawne
             // TODO przerobić zapytanie na hash
@@ -92,9 +100,6 @@ public class MainActivity extends AppCompatActivity {
             buttonLogin.performClick();
         }
 
-        // Pokazanie ekranu powitalnego -
-        // przykrycie ekranu logowanie gdy użytkownik ma zapisane dane logowania
-        startActivity(new Intent(this, SplashActivity.class));
     }
 
     /**

@@ -62,6 +62,8 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         String name = data.get(position).name;
         ProductListDescription.FavouriteStare favourite = data.get(position).favourite;
         String description = data.get(position).description;
+        String nick = data.get(position).nick;
+        String city = data.get(position).city;
 
         holder.nameTextView.setText(name);
         switch (favourite) {
@@ -75,6 +77,8 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
                 holder.favouriteCheckbox.setVisibility(View.GONE);
         }
         holder.descriptionTextView.setText(description);
+        holder.nickiTextView.setText(nick);
+        holder.cityTextView.setText(city);
     }
 
     /**
@@ -84,6 +88,8 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         TextView nameTextView;
         CheckBox favouriteCheckbox;
         TextView descriptionTextView;
+        TextView nickiTextView;
+        TextView cityTextView;
         View itemView;
 
         ViewHolder(View itemView) {
@@ -92,6 +98,8 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
             nameTextView = itemView.findViewById(R.id.recyclerviewProductListTextViewName);
             favouriteCheckbox = itemView.findViewById(R.id.recyclerviewProductListChceckboxFavourite);
             descriptionTextView = itemView.findViewById(R.id.recyclerviewProductListTextViewDescription);
+            nickiTextView = itemView.findViewById(R.id.recyclerviewProductListTextViewNick);
+            cityTextView = itemView.findViewById(R.id.recyclerviewProductListTextViewCity);
             itemView.setOnClickListener(this);
             //favouriteCheckbox.setOnCheckedChangeListener(this);
             favouriteCheckbox.setOnClickListener(this);
