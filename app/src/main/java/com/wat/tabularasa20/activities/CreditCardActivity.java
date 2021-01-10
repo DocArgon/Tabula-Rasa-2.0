@@ -44,7 +44,7 @@ public class CreditCardActivity extends AppCompatActivity {
             //ccv.setText(jsonObject.get("").getAsString());
             //date.setText(jsonObject.get("").getAsString());
         });
-        downloader.execute(Constants.ACCOUNT_GET_URL + String.format("?id_klienta=%s", Preferences.readUID(this)));
+        downloader.execute(Constants.ACCOUNT_GET_URL + String.format("?id_klienta=%s", Preferences.readClientID(this)));
 
         // Akcja przycisku modyfikacji
         edit.setOnClickListener(v -> {

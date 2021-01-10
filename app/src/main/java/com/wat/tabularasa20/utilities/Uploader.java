@@ -14,7 +14,7 @@ public class Uploader {
 
     public interface UploadActions {
         void getResult(String result);
-        void getError(String error, int code);
+        void getError(String error);
     }
 
     private UploadActions onResultListener = null;
@@ -38,7 +38,7 @@ public class Uploader {
                 },
                 error -> {
                     if (onResultListener != null)
-                        onResultListener.getError(error.getMessage(), error.networkResponse.statusCode);
+                        onResultListener.getError(error.getMessage());
                 });
             queue.add(jsonObjectRequest);
             queue.start();

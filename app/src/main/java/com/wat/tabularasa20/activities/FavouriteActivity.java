@@ -63,7 +63,7 @@ public class FavouriteActivity extends AppCompatActivity implements ProductListA
                 // TODO Snackbar - lista ulubionych pusta
             }
         });
-        favouriteDownloader.execute(Constants.FAVOURITES_URL + String.format("?Id_klienta=%d", Preferences.readUID(FavouriteActivity.this)));
+        favouriteDownloader.execute(Constants.FAVOURITES_URL + String.format("?Id_klienta=%d", Preferences.readClientID(FavouriteActivity.this)));
 
         filter.addTextChangedListener(this);
 
@@ -78,7 +78,7 @@ public class FavouriteActivity extends AppCompatActivity implements ProductListA
      */
     @Override
     public void onRowClick(View view, int position) {
-        Toast.makeText(this, "Dotknięto " + adapter.getItem(position).name + ", ulubiony " + adapter.getItem(position).favourite, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Dotknięto " + adapter.getItem(position).title + ", ulubiony " + adapter.getItem(position).favourite, Toast.LENGTH_SHORT).show();
     }
 
     /**

@@ -11,6 +11,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.wat.tabularasa20.R;
 import com.wat.tabularasa20.data.Constants;
+import com.wat.tabularasa20.utilities.MathUtil;
 import com.wat.tabularasa20.utilities.Uploader;
 
 /**
@@ -68,7 +69,7 @@ public class RegisterActivity extends AppCompatActivity {
             JsonObject jsonObject = new JsonObject();
             jsonObject.addProperty("login", login.getText().toString());
             jsonObject.addProperty("email", email.getText().toString());
-            jsonObject.addProperty("password", password.getText().toString());
+            jsonObject.addProperty("password", MathUtil.sha(password.getText().toString()));
             jsonObject.addProperty("name", name.getText().toString());
             jsonObject.addProperty("last_name", lname.getText().toString());
             jsonObject.addProperty("city", city.getText().toString());
@@ -82,11 +83,14 @@ public class RegisterActivity extends AppCompatActivity {
             uploader.setOnResultListener(new Uploader.UploadActions() {
                 @Override
                 public void getResult(String result) {
-                    Toast.makeText(RegisterActivity.this, "Echo " + result, Toast.LENGTH_LONG).show();
+                    //Toast.makeText(RegisterActivity.this, "Echo " + result, Toast.LENGTH_LONG).show();
                 }
                 @Override
-                public void getError(String error, int code) {
-                    Toast.makeText(RegisterActivity.this, error + "\nkod " + code, Toast.LENGTH_LONG).show();
+                public void getError(String error) {
+                    if (error.contains("Dodano"))
+                        Snackbar.make(edit, "Dodano użytkownika", Snackbar.LENGTH_LONG).show();
+                    else
+                        Snackbar.make(edit, "Coś poszło nie tak", Snackbar.LENGTH_LONG).show();
                 }
             });
             uploader.execute(this, Constants.REGISTER_URL, data);

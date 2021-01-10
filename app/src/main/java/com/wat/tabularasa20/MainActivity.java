@@ -4,14 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.core.content.res.ResourcesCompat;
-
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.res.Resources;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -39,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     EditText textPass = null;
     Button buttonLogin = null;
     Downloader downloader = new Downloader();
+    private static boolean splashShown = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +44,14 @@ public class MainActivity extends AppCompatActivity {
         // Wywołanie sprawdzenia uprawnień
         int permission = ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET);
         if (permission != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET},1234);
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET}, 1234);
+        }
+
+        // Pokazanie ekranu powitalnego -
+        // przykrycie ekranu logowanie gdy użytkownik ma zapisane dane logowania
+        if (!splashShown) {
+            splashShown = true;
+            startActivity(new Intent(this, SplashActivity.class));
         }
 
         // Uzyskanie dostępu do obiektów graficznych
@@ -69,13 +72,13 @@ public class MainActivity extends AppCompatActivity {
 
             // Sprawdzenie czy nie wykonywane jest właśnie zapytanie do bazy danych
             if (downloader.getStatus() == AsyncTask.Status.RUNNING) {
-            	return;
-			}
+                return;
+            }
 
             // Wysłanie zapytania czy dane logowania są poprawne
             // TODO przerobić zapytanie na hash
             if (!strname.isEmpty() && !strpass.isEmpty()) {
-                String strurl = Constants.LOGIN_CHECK_URL + String.format("?login=%s&haslo=%s", strname, strpass);
+                String strurl = Constants.LOGIN_CHECK_URL + String.format("?login=%s&haslo=%s", strname, MathUtil.sha(strpass));
                 downloader = new Downloader();
                 downloader.setOnResultListener(this::login);
                 downloader.execute(strurl);
@@ -92,9 +95,6 @@ public class MainActivity extends AppCompatActivity {
             buttonLogin.performClick();
         }
 
-        // Pokazanie ekranu powitalnego -
-        // przykrycie ekranu logowanie gdy użytkownik ma zapisane dane logowania
-        startActivity(new Intent(this, SplashActivity.class));
     }
 
     /**

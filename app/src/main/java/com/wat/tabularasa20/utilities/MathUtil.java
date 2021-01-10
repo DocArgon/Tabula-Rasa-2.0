@@ -1,6 +1,7 @@
 package com.wat.tabularasa20.utilities;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Base64;
 
 import java.io.ByteArrayOutputStream;
@@ -32,5 +33,10 @@ public class MathUtil {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         return Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT);
+    }
+
+    public static Bitmap fromBase64 (String base64) {
+        byte[] data = Base64.decode(base64, Base64.DEFAULT);
+        return BitmapFactory.decodeByteArray(data, 0, data.length);
     }
 }

@@ -11,52 +11,52 @@ public class ProductListDescription {
      * Domyślna wartość identyfikatora produktu
      */
     public static final int DEFAULT_PRODUCY_ID = -1;
+    public static final int DEFAULT_OWNER_ID = -1;
 
-    public int productID;
-    public String name;
-    public String description;
-    public FavouriteStare favourite;
+    public int productID = DEFAULT_PRODUCY_ID;
+    public int ownerID = DEFAULT_OWNER_ID;
+    public String title = "";
+    public String description = "";
+    public String nick = "";
+    public String city = "";
+    public String author = "";
+    public FavouriteStare favourite = FavouriteStare.HIDDEN;
 
     /**
      * Konstruktor struktury przechowującej opis książki
      */
-    public ProductListDescription (String name, int productID, FavouriteStare favoutite, String description) {
-        this.name = name;
+    public ProductListDescription (String title, int productID, FavouriteStare favoutite, String description, String nick, String city, String author, int ownerID) {
+        this.title = title;
         this.productID = productID;
         this.favourite = favoutite;
         this.description = description;
+        this.nick = nick;
+        this.city = city;
+        this.author = author;
+        this.ownerID = ownerID;
     }
 
     /**
      * Przaciążony konstruktor
      */
-    public ProductListDescription (String name, int productID, FavouriteStare favoutite) {
-        this.name = name;
+    public ProductListDescription (String title, int productID, FavouriteStare favoutite) {
+        this.title = title;
         this.productID = productID;
-
         this.favourite = favoutite;
-        this.description = "";
     }
 
     /**
      * Przaciążony konstruktor
      */
-    public ProductListDescription (String name, int productID) {
-        this.name = name;
+    public ProductListDescription (String title, int productID) {
+        this.title = title;
         this.productID = productID;
-
-        this.favourite = FavouriteStare.HIDDEN;
-        this.description = "";
     }
 
     /**
      * Przaciążony konstruktor
      */
-    public ProductListDescription (String name) {
-        this.name = name;
-
-        this.productID = DEFAULT_PRODUCY_ID;
-        this.favourite = FavouriteStare.HIDDEN;
-        this.description = "";
+    public ProductListDescription (String title) {
+        this.title = title;
     }
 }

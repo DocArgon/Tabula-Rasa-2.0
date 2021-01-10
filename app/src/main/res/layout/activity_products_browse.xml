@@ -9,7 +9,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/productsBrowseTextViewTitle"
+        android:id="@+id/productsBrowseViewTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#DDCBCB"
@@ -35,7 +35,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/productsBrowseTextViewTitle">
+        app:layout_constraintTop_toBottomOf="@+id/productsBrowseViewTitle">
 
         <EditText
             android:id="@+id/productsBrowseEditTextSearchText"
@@ -93,7 +93,8 @@
 
         <ImageButton
             android:id="@+id/productsBrowseButtonBack"
-            style="@style/Tabularasa.Button.Round.Colored"            android:layout_width="wrap_content"
+            style="@style/Tabularasa.Button.Round.Colored"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginBottom="20dp"
