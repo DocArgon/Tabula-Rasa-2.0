@@ -86,7 +86,8 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
                             contains ? ProductListDescription.FavouriteStare.ON : ProductListDescription.FavouriteStare.OFF,
                             "", "", "",
                             productJsonElement.getAsJsonObject().get("Autor").getAsString(),
-                            ProductListDescription.DEFAULT_OWNER_ID));
+                            ProductListDescription.DEFAULT_OWNER_ID,
+                            ""));
                 });
 
                 adapter = new ProductListAdapter(ProductListActivity.this, products);

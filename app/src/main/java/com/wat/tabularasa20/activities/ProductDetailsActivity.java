@@ -55,8 +55,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
             for (JsonElement productJsonElement : productsJsonArray) {
                 String bm = productJsonElement.getAsJsonObject().get("zdjecie").getAsString();
-
-                photo.setImageBitmap(MathUtil.fromBase64(bm));
+                if (bm != null && !bm.isEmpty())
+                    photo.setImageBitmap(MathUtil.fromBase64(bm));
                 title.setText(productJsonElement.getAsJsonObject().get("tytul").getAsString());
                 author.setText(productJsonElement.getAsJsonObject().get("autor").getAsString());
                 year.setText(productJsonElement.getAsJsonObject().get("rok_wydania").getAsString());
@@ -73,7 +73,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         }
 
         contact.setOnClickListener(view -> {
-            Intent i = new Intent(ProductDetailsActivity.this, ChatActivity.class);
+            Intent i = new Intent(ProductDetailsActivity.this, ChatNewActivity.class);
             i.putExtra("owner_id", owner_id);
             i.putExtra("book_id", book_id);
             startActivity(i);

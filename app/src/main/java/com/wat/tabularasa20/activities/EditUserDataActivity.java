@@ -1,5 +1,6 @@
 package com.wat.tabularasa20.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -13,6 +14,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.wat.tabularasa20.R;
 import com.wat.tabularasa20.data.Constants;
+import com.wat.tabularasa20.data.ProductListDescription;
 import com.wat.tabularasa20.utilities.Downloader;
 import com.wat.tabularasa20.utilities.Network;
 import com.wat.tabularasa20.utilities.Preferences;
@@ -22,6 +24,7 @@ import com.wat.tabularasa20.utilities.Preferences;
  */
 public class EditUserDataActivity extends AppCompatActivity {
 
+    @SuppressLint("DefaultLocale")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +65,7 @@ public class EditUserDataActivity extends AppCompatActivity {
             bday.setText(jsonObject.get("Data_urodzenia").getAsString());
             //jsonObject.get("Plec").getAsString() // brak pola tekstowego
         });
-        downloader.execute(Constants.ACCOUNT_GET_URL + String.format("?id_klienta=%s", Preferences.readClientID(this)));
+        downloader.execute(Constants.ACCOUNT_GET_URL + String.format("?id_klienta=%d&id_konta=%d", Preferences.readClientID(this), ProductListDescription.DEFAULT_OWNER_ID));
 
         // akcja przycisku cofnij
         back.setOnClickListener(view -> finish());

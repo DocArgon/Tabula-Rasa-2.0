@@ -51,7 +51,7 @@
     <string name="settinds">Ustawienia</string>
     <string name="my_shared_title">Moje udostępnione</string>
     <string name="product_detail_title">Sczegóły produktu</string>
-    <string name="premium_card_button">Premium - dane karty</string>
+    <string name="premium_card_button">Konto premium / płatności</string>
     <string name="credt_card_number">Nr karty kredytowej</string>
     <string name="ccv_code">Kod CCV</string>
     <string name="expiration_date">Data ważności</string>

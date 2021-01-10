@@ -1,5 +1,6 @@
 package com.wat.tabularasa20.activities;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,12 +13,14 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.wat.tabularasa20.R;
 import com.wat.tabularasa20.data.Constants;
+import com.wat.tabularasa20.data.ProductListDescription;
 import com.wat.tabularasa20.utilities.Downloader;
 import com.wat.tabularasa20.utilities.Network;
 import com.wat.tabularasa20.utilities.Preferences;
 
 public class CreditCardActivity extends AppCompatActivity {
 
+    @SuppressLint("DefaultLocale")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,10 +44,10 @@ public class CreditCardActivity extends AppCompatActivity {
             name.setText(jsonObject.get("Imie").getAsString());
             lname.setText(jsonObject.get("Nazwisko").getAsString());
             number.setText(jsonObject.get("Nr_karty").getAsString());
-            //ccv.setText(jsonObject.get("").getAsString());
-            //date.setText(jsonObject.get("").getAsString());
+            ccv.setText(jsonObject.get("ccv").getAsString());
+            date.setText(jsonObject.get("Data_waznosci").getAsString());
         });
-        downloader.execute(Constants.ACCOUNT_GET_URL + String.format("?id_klienta=%s", Preferences.readClientID(this)));
+        downloader.execute(Constants.ACCOUNT_GET_URL + String.format("?id_klienta=%d&id_konta=%d", Preferences.readClientID(this), ProductListDescription.DEFAULT_OWNER_ID));
 
         // Akcja przycisku modyfikacji
         edit.setOnClickListener(v -> {
@@ -62,9 +65,14 @@ public class CreditCardActivity extends AppCompatActivity {
             jsonObject.addProperty("Imie", name.getText().toString());
             jsonObject.addProperty("Nazwisko", lname.getText().toString());
             jsonObject.addProperty("Nr_karty", number.getText().toString());
-            //jsonObject.addProperty("", ccv.getText().toString());
-            //jsonObject.addProperty("", date.getText().toString());
+            jsonObject.addProperty("ccv", ccv.getText().toString());
+            jsonObject.addProperty("Data_waznosci", date.getText().toString());
             String data = gson.toJson(jsonObject);
+
+            // TODO wysłać dane
+            /*
+            Uploader ...
+            ///*/
             Toast.makeText(CreditCardActivity.this, data, Toast.LENGTH_LONG).show();
         });
 

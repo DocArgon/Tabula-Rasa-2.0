@@ -129,7 +129,7 @@ public class HomeActivity extends AppCompatActivity {
 
         // Przycisk czatu
         sendMessage.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeActivity.this, ChatActivity.class);
+            Intent intent = new Intent(HomeActivity.this, ChatNewActivity.class);
             startActivity(intent);
         });
 

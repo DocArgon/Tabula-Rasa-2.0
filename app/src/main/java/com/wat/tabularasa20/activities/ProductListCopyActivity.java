@@ -75,7 +75,8 @@ public class ProductListCopyActivity extends AppCompatActivity implements Produc
                             productJsonElement.getAsJsonObject().get("ulica").getAsString(), // nick
                             "",
                             "",
-                            productJsonElement.getAsJsonObject().get("id_konta").getAsInt()
+                            productJsonElement.getAsJsonObject().get("id_konta").getAsInt(),
+                            ""
                     ));
                 });
 

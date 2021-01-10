@@ -1,5 +1,7 @@
 package com.wat.tabularasa20.data;
 
+import android.graphics.Color;
+
 public class ProductListDescription {
 
     /**
@@ -20,12 +22,14 @@ public class ProductListDescription {
     public String nick = "";
     public String city = "";
     public String author = "";
+    public String helper = "";
     public FavouriteStare favourite = FavouriteStare.HIDDEN;
+    public int background = Color.TRANSPARENT;
 
     /**
      * Konstruktor struktury przechowującej opis książki
      */
-    public ProductListDescription (String title, int productID, FavouriteStare favoutite, String description, String nick, String city, String author, int ownerID) {
+    public ProductListDescription (String title, int productID, FavouriteStare favoutite, String description, String nick, String city, String author, int ownerID, String helper) {
         this.title = title;
         this.productID = productID;
         this.favourite = favoutite;
@@ -34,10 +38,11 @@ public class ProductListDescription {
         this.city = city;
         this.author = author;
         this.ownerID = ownerID;
+        this.helper = helper;
     }
 
     /**
-     * Przaciążony konstruktor
+     * Konstruktor ulubionych
      */
     public ProductListDescription (String title, int productID, FavouriteStare favoutite) {
         this.title = title;
@@ -46,17 +51,17 @@ public class ProductListDescription {
     }
 
     /**
-     * Przaciążony konstruktor
+     * Konstruktor wiadomości
      */
-    public ProductListDescription (String title, int productID) {
-        this.title = title;
-        this.productID = productID;
-    }
+    public ProductListDescription (String title, String helper) {
+        if (title != null)
+            this.title = title;
+        if (helper != null)
+            this.helper = helper;
 
-    /**
-     * Przaciążony konstruktor
-     */
-    public ProductListDescription (String title) {
-        this.title = title;
+        if (this.title.isEmpty())
+            background = Color.argb(120, 0, 200, 0);
+        else
+            background = Color.argb(120, 0, 0, 200);
     }
 }
