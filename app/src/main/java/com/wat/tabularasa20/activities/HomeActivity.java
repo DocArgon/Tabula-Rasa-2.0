@@ -1,5 +1,6 @@
 package com.wat.tabularasa20.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,7 @@ import com.special.ResideMenu.ResideMenuItem;
 import com.wat.tabularasa20.MainActivity;
 import com.wat.tabularasa20.R;
 import com.wat.tabularasa20.data.Constants;
+import com.wat.tabularasa20.data.ProductListDescription;
 import com.wat.tabularasa20.utilities.Downloader;
 import com.wat.tabularasa20.utilities.Network;
 import com.wat.tabularasa20.utilities.Preferences;
@@ -24,6 +26,7 @@ import com.wat.tabularasa20.utilities.Preferences;
  */
 public class HomeActivity extends AppCompatActivity {
 
+    @SuppressLint("DefaultLocale")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,7 +78,7 @@ public class HomeActivity extends AppCompatActivity {
             welcome.setText(getString(R.string.hello_msg_params, jsonObject.get("Imie").getAsString()));
             welcome.show();
         });
-        downloader.execute(Constants.ACCOUNT_GET_URL + String.format("?id_klienta=%s", Preferences.readClientID(this)));
+        downloader.execute(Constants.ACCOUNT_GET_URL + String.format("?id_klienta=%d&id_konta=%d", Preferences.readClientID(this), ProductListDescription.DEFAULT_OWNER_ID));
 
         // Akcja przycisku menu wyświetlenia listy produktów
         itemSearchBook.setOnClickListener(v -> {

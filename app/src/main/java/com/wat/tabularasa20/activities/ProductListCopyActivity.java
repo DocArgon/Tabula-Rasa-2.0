@@ -40,7 +40,7 @@ public class ProductListCopyActivity extends AppCompatActivity implements Produc
         setContentView(R.layout.activity_products_browse);
 
         Intent inp = getIntent();
-        int book_id = inp.getIntExtra("book_id", ProductListDescription.DEFAULT_PRODUCY_ID);
+        int book_id = inp.getIntExtra("book_id", ProductListDescription.DEFAULT_PRODUCT_ID);
 
         // Uzyskanie dostępu do elementów graficznych
         ImageButton back = findViewById(R.id.productsBrowseButtonBack);
@@ -68,22 +68,22 @@ public class ProductListCopyActivity extends AppCompatActivity implements Produc
 
                 productsJsonArray.forEach(productJsonElement -> {
                     products.add(new ProductListDescription(
-                            "Tytuł wydania", //productJsonElement.getAsJsonObject().get("Tytul").getAsString(),
-                            1, //productJsonElement.getAsJsonObject().get("Id_ksiazki").getAsInt(),
+                            productJsonElement.getAsJsonObject().get("miasto").getAsString(), // title
+                            book_id,
                             ProductListDescription.FavouriteStare.HIDDEN,
-                            "Opcjonalny opis",
-                            productJsonElement.getAsJsonObject().get("login").getAsString(), // -> Nick
-                            productJsonElement.getAsJsonObject().get("miasto").getAsString(),
-                            "autor", //productJsonElement.getAsJsonObject().get("author").getAsString()
-                            1
+                            productJsonElement.getAsJsonObject().get("login").getAsString(), // description
+                            productJsonElement.getAsJsonObject().get("ulica").getAsString(), // nick
+                            "",
+                            "",
+                            productJsonElement.getAsJsonObject().get("id_konta").getAsInt()
                     ));
                 });
 
                 adapter = new ProductListAdapter(ProductListCopyActivity.this, products);
                 adapter.setRowClickListener(this);
                 recyclerView.setAdapter(adapter);
-            } catch (Exception e) {
-                System.out.println(e);
+            } catch (Exception ignore) {
+
             }
         });
         productDownloader.execute(Constants.COPIES_URL + String.format("?id_ksiazki=%d", book_id));
@@ -105,6 +105,7 @@ public class ProductListCopyActivity extends AppCompatActivity implements Produc
 
         Intent i = new Intent(ProductListCopyActivity.this, ProductDetailsActivity.class);
         i.putExtra("book_id", adapter.getItem(position).productID);
+        i.putExtra("owner_id", adapter.getItem(position).ownerID);
         startActivity(i);
     }
 

@@ -62,8 +62,7 @@ public class ProductAddActivity extends AppCompatActivity {
         // Akcja przycisku dodaj
         add.setOnClickListener(v -> {
             // Sprawdzenie czy nie są puste wymagane pola
-            if (title.getText().toString().isEmpty() || author.getText().toString().isEmpty() ||
-                    publisher.getText().toString().isEmpty()) {
+            if (title.getText().toString().isEmpty() || author.getText().toString().isEmpty()) {
                 Snackbar.make(v, getString(R.string.fields_empty), Snackbar.LENGTH_LONG).show();
                 return;
             }

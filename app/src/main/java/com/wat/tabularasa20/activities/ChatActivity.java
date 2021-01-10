@@ -1,5 +1,6 @@
 package com.wat.tabularasa20.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
@@ -23,13 +24,15 @@ import com.wat.tabularasa20.utilities.Preferences;
  */
 public class ChatActivity extends AppCompatActivity {
 
+    @SuppressLint("DefaultLocale")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_messages_new);
 
         Intent inp = getIntent();
-        int id = inp.getIntExtra("user_id", -1);
+        int owner_id = inp.getIntExtra("owner_id", ProductListDescription.DEFAULT_OWNER_ID);
+        int book_id = inp.getIntExtra("book_id", ProductListDescription.DEFAULT_OWNER_ID);
 
         ImageButton back = findViewById(R.id.messagesNewButtonBack);
         TextView user = findViewById(R.id.messagesNewTextViewUsername);
@@ -45,12 +48,11 @@ public class ChatActivity extends AppCompatActivity {
             user.setText(getString(R.string.chat_with, name));
         });
 
-        if (id != -1) {
-            downloader.execute(Constants.ACCOUNT_GET_URL + String.format("?id_klienta=%s", id));
+        if (owner_id != ProductListDescription.DEFAULT_OWNER_ID) {
+            downloader.execute(Constants.ACCOUNT_GET_URL + String.format("?id_klienta=%d&id_konta=%d", ProductListDescription.DEFAULT_OWNER_ID , owner_id));
         } else {
             Toast.makeText(this, "Niepoprawny identyfikator użytkownika", Toast.LENGTH_SHORT).show();
         }
-
 
         back.setOnClickListener(v -> finish());
     }

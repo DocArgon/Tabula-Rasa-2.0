@@ -10,10 +10,10 @@ public class ProductListDescription {
     /**
      * Domyślna wartość identyfikatora produktu
      */
-    public static final int DEFAULT_PRODUCY_ID = -1;
+    public static final int DEFAULT_PRODUCT_ID = -1;
     public static final int DEFAULT_OWNER_ID = -1;
 
-    public int productID = DEFAULT_PRODUCY_ID;
+    public int productID = DEFAULT_PRODUCT_ID;
     public int ownerID = DEFAULT_OWNER_ID;
     public String title = "";
     public String description = "";

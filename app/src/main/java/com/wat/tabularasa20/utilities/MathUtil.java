@@ -32,11 +32,11 @@ public class MathUtil {
     public static String toBase64 (Bitmap bitmap) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-        return Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT);
+        return Base64.encodeToString(baos.toByteArray(), Base64.NO_WRAP);
     }
 
     public static Bitmap fromBase64 (String base64) {
-        byte[] data = Base64.decode(base64, Base64.DEFAULT);
+        byte[] data = Base64.decode(base64, Base64.NO_WRAP);
         return BitmapFactory.decodeByteArray(data, 0, data.length);
     }
 }
