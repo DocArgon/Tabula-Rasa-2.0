@@ -246,7 +246,7 @@
 
         <Button
             android:id="@+id/accessEditButtonGoCreditCard"
-            style="@style/Tabularasa.Button.Normal.Colored"
+            style="@style/Tabularasa.Button.Round.Colored"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
@@ -272,7 +272,7 @@
 
         <ImageButton
             android:id="@+id/accessEditButtonGoBack"
-            style="@style/Tabularasa.Button.Normal.Colored"
+            style="@style/Tabularasa.Button.Round.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
