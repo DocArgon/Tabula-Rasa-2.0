@@ -11,16 +11,16 @@ public final class Constants {
     // ?id_klienta=1
     public static final String ACCOUNT_GET_URL = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/klient";
 
-    //   wszystkie
+    //  brak
     public static final String BOOKS_GET_URL   = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/ksiazki";
 
     //  przyjmuje JSON
-    public static final String BOOK_ADD_URL    = "";
+    public static final String BOOK_ADD_URL    = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/ksiazki/dodaj";
 
     // ?id_klienta=1
     public static final String FAVOURITES_URL  = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/ulubione";
 
-    //   przyjmuje JSON
+    //  przyjmuje JSON
     public static final String REGISTER_URL    = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/rejestracja";
 
     // ?id_ksiazki=3
@@ -28,6 +28,9 @@ public final class Constants {
 
     // ?id_ksiazki=4&id_konta=20
     public static final String DETAILS_URL     = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/egzemplarze/szczegoly";
+
+    // ?id_konta=31
+    public static final String SHARED_URL     = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/ksiazki/udostepnione";
 
     // adres z kąd pobrano tło
     private static final String BG_URL         = "https://unsplash.com/photos/5LOhydOtTKU";

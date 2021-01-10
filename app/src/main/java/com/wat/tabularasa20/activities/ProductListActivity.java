@@ -83,7 +83,10 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
                     products.add(new ProductListDescription(
                             productJsonElement.getAsJsonObject().get("Tytul").getAsString(),
                             productJsonElement.getAsJsonObject().get("Id_ksiazki").getAsInt(),
-                            contains ? ProductListDescription.FavouriteStare.ON : ProductListDescription.FavouriteStare.OFF));
+                            contains ? ProductListDescription.FavouriteStare.ON : ProductListDescription.FavouriteStare.OFF,
+                            "", "", "",
+                            productJsonElement.getAsJsonObject().get("Autor").getAsString(),
+                            ProductListDescription.DEFAULT_OWNER_ID));
                 });
 
                 adapter = new ProductListAdapter(ProductListActivity.this, products);
@@ -123,7 +126,7 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
      */
     @Override
     public void onFavouriteChange(View v, boolean isChecked, int position) {
-        Toast.makeText(this, "Dotknięto * przy " + adapter.getItem(position).name + ", ulubiony " + isChecked, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Dotknięto * przy " + adapter.getItem(position).title + ", ulubiony " + isChecked, Toast.LENGTH_SHORT).show();
     }
 
 

@@ -7,7 +7,7 @@
     android:layout_height="70dp">
 
     <TextView
-        android:id="@+id/recyclerviewProductListTextViewName"
+        android:id="@+id/recyclerviewProductListTextViewTitle"
         android:layout_width="0dp"
         android:layout_height="21dp"
         android:layout_marginStart="20dp"
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:button="@drawable/favourite_checkbox"
-        app:layout_constraintBottom_toBottomOf="@+id/recyclerviewProductListTextViewName"
+        app:layout_constraintBottom_toBottomOf="@+id/recyclerviewProductListTextViewTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/recyclerviewProductListTextViewCity" />
 
@@ -33,15 +33,15 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/recyclerviewProductListTextViewName" />
+        app:layout_constraintStart_toStartOf="@+id/recyclerviewProductListTextViewTitle" />
 
     <TextView
         android:id="@+id/recyclerviewProductListTextViewNick"
         android:layout_width="0dp"
         android:layout_height="21dp"
         android:layout_marginStart="20dp"
-        app:layout_constraintStart_toEndOf="@+id/recyclerviewProductListTextViewName"
-        app:layout_constraintTop_toTopOf="@+id/recyclerviewProductListTextViewName" />
+        app:layout_constraintStart_toEndOf="@+id/recyclerviewProductListTextViewTitle"
+        app:layout_constraintTop_toTopOf="@+id/recyclerviewProductListTextViewTitle" />
 
     <TextView
         android:id="@+id/recyclerviewProductListTextViewCity"

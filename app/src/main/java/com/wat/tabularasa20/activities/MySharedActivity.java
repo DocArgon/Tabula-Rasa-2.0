@@ -76,7 +76,7 @@ public class MySharedActivity extends AppCompatActivity implements ProductListAd
      */
     @Override
     public void onRowClick(View view, int position) {
-        Toast.makeText(this, "Dotknięto " + adapter.getItem(position).name + ", ulubiony " + adapter.getItem(position).favourite, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Dotknięto " + adapter.getItem(position).title + ", ulubiony " + adapter.getItem(position).favourite, Toast.LENGTH_SHORT).show();
     }
 
     /**

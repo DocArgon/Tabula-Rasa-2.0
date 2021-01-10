@@ -90,11 +90,14 @@ public class ProductAddActivity extends AppCompatActivity {
             uploader.setOnResultListener(new Uploader.UploadActions() {
                 @Override
                 public void getResult(String result) {
-                    Toast.makeText(ProductAddActivity.this, "Echo " + result, Toast.LENGTH_LONG).show();
+                    //Toast.makeText(ProductAddActivity.this, "Echo " + result, Toast.LENGTH_LONG).show();
                 }
                 @Override
                 public void getError(String error) {
-                    Toast.makeText(ProductAddActivity.this, error, Toast.LENGTH_LONG).show();
+                    if (error.contains("Dodano"))
+                        Snackbar.make(add, "Dodano książkę", Snackbar.LENGTH_LONG).show();
+                    else
+                        Snackbar.make(add, "Coś poszło nie tak", Snackbar.LENGTH_LONG).show();
                 }
             });
             uploader.execute(this, Constants.BOOK_ADD_URL, data);

@@ -59,14 +59,14 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
      */
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        String name = data.get(position).name;
+        String title = data.get(position).title;
         ProductListDescription.FavouriteStare favourite = data.get(position).favourite;
         String description = data.get(position).description;
         String nick = data.get(position).nick;
         String city = data.get(position).city;
         String author = data.get(position).author;
 
-        holder.nameTextView.setText(name);
+        holder.titleTextView.setText(title);
         switch (favourite) {
             case ON:
                 holder.favouriteCheckbox.setChecked(true);
@@ -87,7 +87,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
      * Klasa obsługi widoku elementu listy
      */
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
-        TextView nameTextView;
+        TextView titleTextView;
         CheckBox favouriteCheckbox;
         TextView descriptionTextView;
         TextView nickiTextView;
@@ -98,7 +98,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         ViewHolder(View itemView) {
             super(itemView);
             this.itemView = itemView;
-            nameTextView = itemView.findViewById(R.id.recyclerviewProductListTextViewName);
+            titleTextView = itemView.findViewById(R.id.recyclerviewProductListTextViewTitle);
             favouriteCheckbox = itemView.findViewById(R.id.recyclerviewProductListChceckboxFavourite);
             descriptionTextView = itemView.findViewById(R.id.recyclerviewProductListTextViewDescription);
             nickiTextView = itemView.findViewById(R.id.recyclerviewProductListTextViewNick);
@@ -172,7 +172,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
      */
     public static ArrayList<ProductListDescription> filter (String descrFilter, List<ProductListDescription> data) {
         List<ProductListDescription> filtered = new ArrayList<>(data);
-        Predicate<ProductListDescription> predicate = product -> product.name.toLowerCase().contains(descrFilter.toLowerCase());
+        Predicate<ProductListDescription> predicate = product -> product.title.toLowerCase().contains(descrFilter.toLowerCase());
         return (ArrayList<ProductListDescription>) filtered.stream().filter(predicate).collect(Collectors.toList());
     }
 
@@ -184,7 +184,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
      */
     public static ArrayList<ProductListDescription> sort (SortOrder sortOrder, List<ProductListDescription> data) {
         ArrayList<ProductListDescription> sorted = new ArrayList<>(data);
-        sorted.sort((lhs, rhs) -> lhs.name.compareTo(rhs.name));
+        sorted.sort((lhs, rhs) -> lhs.title.compareTo(rhs.title));
         if (sortOrder == SortOrder.DESC)
             Collections.reverse(sorted);
         return sorted;

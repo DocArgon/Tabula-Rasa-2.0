@@ -40,7 +40,7 @@ public class ProductListCopyActivity extends AppCompatActivity implements Produc
         setContentView(R.layout.activity_products_browse);
 
         Intent inp = getIntent();
-        int id = inp.getIntExtra("book_id", ProductListDescription.DEFAULT_PRODUCY_ID);
+        int book_id = inp.getIntExtra("book_id", ProductListDescription.DEFAULT_PRODUCY_ID);
 
         // Uzyskanie dostępu do elementów graficznych
         ImageButton back = findViewById(R.id.productsBrowseButtonBack);
@@ -74,7 +74,8 @@ public class ProductListCopyActivity extends AppCompatActivity implements Produc
                             "Opcjonalny opis",
                             productJsonElement.getAsJsonObject().get("login").getAsString(), // -> Nick
                             productJsonElement.getAsJsonObject().get("miasto").getAsString(),
-                            "autor" //productJsonElement.getAsJsonObject().get("author").getAsString()
+                            "autor", //productJsonElement.getAsJsonObject().get("author").getAsString()
+                            1
                     ));
                 });
 
@@ -85,7 +86,7 @@ public class ProductListCopyActivity extends AppCompatActivity implements Produc
                 System.out.println(e);
             }
         });
-        productDownloader.execute(Constants.COPIES_URL + String.format("?id_ksiazki=%d", id));
+        productDownloader.execute(Constants.COPIES_URL + String.format("?id_ksiazki=%d", book_id));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
