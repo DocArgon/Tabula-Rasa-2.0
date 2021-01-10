@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.wat.tabularasa20.R;
@@ -21,6 +22,7 @@ import com.wat.tabularasa20.data.Constants;
 import com.wat.tabularasa20.data.ProductListAdapter;
 import com.wat.tabularasa20.data.ProductListDescription;
 import com.wat.tabularasa20.utilities.Downloader;
+import com.wat.tabularasa20.utilities.Network;
 import com.wat.tabularasa20.utilities.Preferences;
 import java.util.ArrayList;
 
@@ -59,15 +61,22 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
         productDownloader.setOnResultListener(resultProducts -> {
             // Utworzenie obiektu JSON z danych pobranych z internetu
             assert resultProducts != null;
+            try {
+            resultProducts = Network.repairJson(resultProducts);
             //Toast.makeText(ProductListActivity.this, resultProducts, Toast.LENGTH_LONG).show();
             JsonObject productsJsonObject = JsonParser.parseString(resultProducts).getAsJsonObject();
-            String body = productsJsonObject.get("body").getAsString();
-            JsonArray productsJsonArray = JsonParser.parseString(body).getAsJsonArray();
+
+            //String body = productsJsonObject.get("body").getAsString();
+            //JsonArray productsJsonArray = JsonParser.parseString(body).getAsJsonArray();
+            JsonArray productsJsonArray = productsJsonObject.get("body").getAsJsonArray();
 
             // Pobranie informacji o ulubionych
             Downloader favouriteDownloader = new Downloader();
             favouriteDownloader.setOnResultListener(resultFavourites -> {
                 assert resultFavourites != null;
+                resultFavourites = Network.repairJson(resultFavourites);
+                if (resultFavourites.equals("-1"))
+                    resultFavourites = "[]";
                 JsonArray favouritesJsonArray = JsonParser.parseString(resultFavourites).getAsJsonArray();
 
                 // przejście po wszystkich produktach ze sprawdzeniem czy ulubiony
@@ -91,6 +100,9 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
                 recyclerView.setAdapter(adapter);
             });
             favouriteDownloader.execute(Constants.FAVOURITES_URL + String.format("?Id_klienta=%d", Preferences.readUID(ProductListActivity.this)));
+            } catch (Exception e) {
+                System.out.println(e);
+            }
         });
         productDownloader.execute(Constants.BOOKS_GET_URL);
 

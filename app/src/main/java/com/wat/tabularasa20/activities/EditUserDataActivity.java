@@ -14,6 +14,7 @@ import com.google.gson.JsonParser;
 import com.wat.tabularasa20.R;
 import com.wat.tabularasa20.data.Constants;
 import com.wat.tabularasa20.utilities.Downloader;
+import com.wat.tabularasa20.utilities.Network;
 import com.wat.tabularasa20.utilities.Preferences;
 
 /**
@@ -50,6 +51,7 @@ public class EditUserDataActivity extends AppCompatActivity {
             passwd_rep.setText(credentials.password);
 
             assert result != null;
+            result = Network.repairJson(result);
             JsonObject jsonObject = JsonParser.parseString(result).getAsJsonObject();
             email.setText(jsonObject.get("e_mail").getAsString());
             name.setText(jsonObject.get("Imie").getAsString());

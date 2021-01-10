@@ -4,9 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
+
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -21,6 +26,7 @@ import com.wat.tabularasa20.activities.RegisterActivity;
 import com.wat.tabularasa20.activities.SplashActivity;
 import com.wat.tabularasa20.data.Constants;
 import com.wat.tabularasa20.utilities.Downloader;
+import com.wat.tabularasa20.utilities.MathUtil;
 import com.wat.tabularasa20.utilities.Network;
 import com.wat.tabularasa20.utilities.Preferences;
 
@@ -69,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
             // Wysłanie zapytania czy dane logowania są poprawne
             // TODO przerobić zapytanie na hash
             if (!strname.isEmpty() && !strpass.isEmpty()) {
-                String strurl = Constants.LOGIN_CHECK_URL + String.format("/?login=%s&haslo=%s", strname, strpass);
+                String strurl = Constants.LOGIN_CHECK_URL + String.format("?login=%s&haslo=%s", strname, strpass);
                 downloader = new Downloader();
                 downloader.setOnResultListener(this::login);
                 downloader.execute(strurl);
@@ -120,7 +126,8 @@ public class MainActivity extends AppCompatActivity {
      * @param result odpowiedź z bazy danych
      */
     private void login(String result) {
-        if (Integer.parseInt(result.replaceAll("\"", "")) < 0) {
+        result = Network.repairJson(result);
+        if (Integer.parseInt(result) < 0) {
             Snackbar.make(findViewById(R.id.accessLoginButtonLogin), "Nieprawidłowy login lub hasło", Snackbar.LENGTH_LONG).show();
             return;
         }
@@ -129,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
                 new Preferences.LoginCredentials(textName.getText(), textPass.getText()));
 
         Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-        intent.putExtra("result", result.replaceAll("\"", ""));
+        intent.putExtra("result", result);
         startActivity(intent);
         finish();
     }

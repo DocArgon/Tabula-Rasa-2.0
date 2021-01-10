@@ -16,6 +16,7 @@ import com.wat.tabularasa20.MainActivity;
 import com.wat.tabularasa20.R;
 import com.wat.tabularasa20.data.Constants;
 import com.wat.tabularasa20.utilities.Downloader;
+import com.wat.tabularasa20.utilities.Network;
 import com.wat.tabularasa20.utilities.Preferences;
 
 /**
@@ -66,6 +67,7 @@ public class HomeActivity extends AppCompatActivity {
         downloader.setOnResultListener(result -> {
             //Toast.makeText(HomeActivity.this, result, Toast.LENGTH_LONG).show();
             assert result != null;
+            result = Network.repairJson(result);
             JsonObject jsonObject = JsonParser.parseString(result).getAsJsonObject();
             welcome.setIsVisible(false);
             welcome.setDuration(3500);

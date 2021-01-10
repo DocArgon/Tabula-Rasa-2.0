@@ -15,4 +15,14 @@ public class Network {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         return connectivityManager != null && connectivityManager.getActiveNetworkInfo() != null;
     }
+
+    public static String repairJson (String json) {
+        String result = json.replaceAll("\\\\\"", "\"");  // \" -> "
+        result = result.replaceAll("\"\\[", "\\[").replaceAll("]\"", "]");
+        if (result.startsWith("\""))
+            result = result.substring(1);
+        if (result.endsWith("\""))
+            result = result.substring(0, result.length() - 1);
+        return result;
+    }
 }
