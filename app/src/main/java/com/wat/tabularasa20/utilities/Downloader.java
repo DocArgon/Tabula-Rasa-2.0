@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 
@@ -35,7 +36,9 @@ public class Downloader extends AsyncTask<Object, Void, String> {
             URL url = new URL((String) params[0]);
             //String passwdstring = "USERNAME:PASSWORD";
             URLConnection urlConnection = url.openConnection();
+            //((HttpURLConnection) urlConnection).setRequestMethod("POST");
             //urlConnection.setRequestProperty("Authorization", "Authorization: AWS4-HMAC-SHA256 Credential=AKIAIOSFODNN7EXAMPLE/20130524/us-east-1/s3/aws4_request, SignedHeaders=host;range;x-amz-date, Signature=fe5f80f77d5fa3beca038a248ff027d0445342fe2855ddc963176630326f1024");
+            int status = ((HttpURLConnection) urlConnection).getResponseCode();
             InputStream is = urlConnection.getInputStream();
 
             //InputStream is = url.openStream();
@@ -46,9 +49,9 @@ public class Downloader extends AsyncTask<Object, Void, String> {
             in.close();
             return sb.toString();
         } catch (Exception ignore) {
-            //return ignore.toString();
+            return ignore.toString();
         }
-        return null;
+        //return null;
     }
 
     /**

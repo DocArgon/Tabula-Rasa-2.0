@@ -13,6 +13,7 @@ import com.google.gson.JsonParser;
 import com.wat.tabularasa20.R;
 import com.wat.tabularasa20.data.Constants;
 import com.wat.tabularasa20.utilities.Downloader;
+import com.wat.tabularasa20.utilities.Network;
 import com.wat.tabularasa20.utilities.Preferences;
 
 public class CreditCardActivity extends AppCompatActivity {
@@ -35,6 +36,7 @@ public class CreditCardActivity extends AppCompatActivity {
         Downloader downloader = new Downloader();
         downloader.setOnResultListener(result -> {
             assert result != null;
+            result = Network.repairJson(result);
             JsonObject jsonObject = JsonParser.parseString(result).getAsJsonObject();
             name.setText(jsonObject.get("Imie").getAsString());
             lname.setText(jsonObject.get("Nazwisko").getAsString());

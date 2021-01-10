@@ -18,6 +18,7 @@ import com.wat.tabularasa20.data.Constants;
 import com.wat.tabularasa20.data.ProductListAdapter;
 import com.wat.tabularasa20.data.ProductListDescription;
 import com.wat.tabularasa20.utilities.Downloader;
+import com.wat.tabularasa20.utilities.Network;
 import com.wat.tabularasa20.utilities.Preferences;
 import java.util.ArrayList;
 
@@ -47,15 +48,20 @@ public class FavouriteActivity extends AppCompatActivity implements ProductListA
         // Pobranie informacji o ulubionych
         Downloader favouriteDownloader = new Downloader();
         favouriteDownloader.setOnResultListener(resultFavourites -> {
-            JsonArray favouritesJsonArray = JsonParser.parseString(resultFavourites).getAsJsonArray();
-            favouritesJsonArray.forEach(productJsonElement -> products.add(new ProductListDescription(
-                    productJsonElement.getAsJsonObject().get("Tytul").getAsString(),
-                    productJsonElement.getAsJsonObject().get("Id_ksiazki").getAsInt(),
-                    ProductListDescription.FavouriteStare.ON))); // Zawsze zapalona
+            resultFavourites = Network.repairJson(resultFavourites);
+            if (!resultFavourites.equals("-1")) {
+                JsonArray favouritesJsonArray = JsonParser.parseString(resultFavourites).getAsJsonArray();
+                favouritesJsonArray.forEach(productJsonElement -> products.add(new ProductListDescription(
+                        productJsonElement.getAsJsonObject().get("Tytul").getAsString(),
+                        productJsonElement.getAsJsonObject().get("Id_ksiazki").getAsInt(),
+                        ProductListDescription.FavouriteStare.ON))); // Zawsze zapalona
 
-            adapter = new ProductListAdapter(FavouriteActivity.this, products);
-            adapter.setRowClickListener(FavouriteActivity.this);
-            recyclerView.setAdapter(adapter);
+                adapter = new ProductListAdapter(FavouriteActivity.this, products);
+                adapter.setRowClickListener(FavouriteActivity.this);
+                recyclerView.setAdapter(adapter);
+            } else {
+                // TODO Snackbar - lista ulubionych pusta
+            }
         });
         favouriteDownloader.execute(Constants.FAVOURITES_URL + String.format("?Id_klienta=%d", Preferences.readUID(FavouriteActivity.this)));
 

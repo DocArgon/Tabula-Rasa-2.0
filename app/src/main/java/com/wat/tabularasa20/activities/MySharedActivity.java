@@ -18,6 +18,7 @@ import com.wat.tabularasa20.data.Constants;
 import com.wat.tabularasa20.data.ProductListAdapter;
 import com.wat.tabularasa20.data.ProductListDescription;
 import com.wat.tabularasa20.utilities.Downloader;
+import com.wat.tabularasa20.utilities.Network;
 import com.wat.tabularasa20.utilities.Preferences;
 import java.util.ArrayList;
 
@@ -45,15 +46,20 @@ public class MySharedActivity extends AppCompatActivity implements ProductListAd
         Downloader sharedDownloader = new Downloader();
         sharedDownloader.setOnResultListener(result -> {
             assert result != null;
-            JsonArray favouritesJsonArray = JsonParser.parseString(result).getAsJsonArray();
-            favouritesJsonArray.forEach(productJsonElement -> products.add(new ProductListDescription(
-                    productJsonElement.getAsJsonObject().get("Tytul").getAsString(),
-                    productJsonElement.getAsJsonObject().get("Id_ksiazki").getAsInt(),
-                    ProductListDescription.FavouriteStare.HIDDEN)) );
+            result = Network.repairJson(result);
+            if (!result.equals("-1")) {
+                JsonArray favouritesJsonArray = JsonParser.parseString(result).getAsJsonArray();
+                favouritesJsonArray.forEach(productJsonElement -> products.add(new ProductListDescription(
+                        productJsonElement.getAsJsonObject().get("Tytul").getAsString(),
+                        productJsonElement.getAsJsonObject().get("Id_ksiazki").getAsInt(),
+                        ProductListDescription.FavouriteStare.HIDDEN)));
 
-            adapter = new ProductListAdapter(MySharedActivity.this, products);
-            adapter.setRowClickListener(MySharedActivity.this);
-            recyclerView.setAdapter(adapter);
+                adapter = new ProductListAdapter(MySharedActivity.this, products);
+                adapter.setRowClickListener(MySharedActivity.this);
+                recyclerView.setAdapter(adapter);
+            } else {
+                // TODO Snackbar - brak udostępnień
+            }
         });
         sharedDownloader.execute(Constants.FAVOURITES_URL + String.format("?Id_klienta=%d", Preferences.readUID(MySharedActivity.this)));
 

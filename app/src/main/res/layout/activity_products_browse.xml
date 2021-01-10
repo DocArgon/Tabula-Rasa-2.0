@@ -93,8 +93,7 @@
 
         <ImageButton
             android:id="@+id/productsBrowseButtonBack"
-            style="@style/Tabularasa.Button.Normal.Colored"
-            android:layout_width="wrap_content"
+            style="@style/Tabularasa.Button.Round.Colored"            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginBottom="20dp"

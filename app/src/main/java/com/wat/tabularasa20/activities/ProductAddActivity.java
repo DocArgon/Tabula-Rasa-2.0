@@ -91,8 +91,8 @@ public class ProductAddActivity extends AppCompatActivity {
                     Toast.makeText(ProductAddActivity.this, "Echo " + result, Toast.LENGTH_LONG).show();
                 }
                 @Override
-                public void getError(String error) {
-                    Toast.makeText(ProductAddActivity.this, error, Toast.LENGTH_LONG).show();
+                public void getError(String error, int code) {
+                    Toast.makeText(ProductAddActivity.this, error + "\nkod " + code, Toast.LENGTH_LONG).show();
                 }
             });
             uploader.execute(this, Constants.BOOK_ADD_URL, data);
