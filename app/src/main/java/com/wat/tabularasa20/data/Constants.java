@@ -5,7 +5,7 @@ package com.wat.tabularasa20.data;
  */
 public final class Constants {
 
-    // ?login=BabackiA&kaslo=Babacki1
+    // ?login=BabackiA&haslo=Babacki1
     public static final String LOGIN_CHECK_URL = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/logowanie";
 
     // ?id_klienta=1&id_konta=-1
@@ -17,8 +17,14 @@ public final class Constants {
     //  przyjmuje JSON
     public static final String BOOK_ADD_URL    = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/ksiazki/dodaj";
 
-    // ?id_klienta=1
+    // ?id_konta=1
     public static final String FAVOURITES_URL  = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/ulubione";
+
+    // ?id_konta=21&id_ksiazki=37
+    public static final String FAVOURITES_ADD  = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/ulubione/dodaj";
+
+    // ?id_ksiazki=80&id_konta=85
+    public static final String FAVOURITES_REM = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/ulubione/usun";
 
     //  przyjmuje JSON
     public static final String REGISTER_URL    = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/rejestracja";

@@ -1,6 +1,7 @@
 package com.wat.tabularasa20.activities;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -25,7 +26,7 @@ import java.util.ArrayList;
 /**
  * Aktywność listy ulubionuch
  */
-public class FavouriteActivity extends AppCompatActivity implements ProductListAdapter.RowClickListener, TextWatcher {
+public class FavouriteActivity extends AppCompatActivity implements ProductListAdapter.RowClickListener, TextWatcher, ProductListAdapter.FavouriteChangeListener {
 
     ProductListAdapter adapter = null;
     RecyclerView recyclerView = null;
@@ -48,6 +49,7 @@ public class FavouriteActivity extends AppCompatActivity implements ProductListA
         // Pobranie informacji o ulubionych
         Downloader favouriteDownloader = new Downloader();
         favouriteDownloader.setOnResultListener(resultFavourites -> {
+            assert resultFavourites != null;
             resultFavourites = Network.repairJson(resultFavourites);
             if (!resultFavourites.equals("-1")) {
                 JsonArray favouritesJsonArray = JsonParser.parseString(resultFavourites).getAsJsonArray();
@@ -58,12 +60,13 @@ public class FavouriteActivity extends AppCompatActivity implements ProductListA
 
                 adapter = new ProductListAdapter(FavouriteActivity.this, products);
                 adapter.setRowClickListener(FavouriteActivity.this);
+                adapter.setFavouriteChangeListener(this);
                 recyclerView.setAdapter(adapter);
             } else {
                 // TODO Snackbar - lista ulubionych pusta
             }
         });
-        favouriteDownloader.execute(Constants.FAVOURITES_URL + String.format("?Id_klienta=%d", Preferences.readClientID(FavouriteActivity.this)));
+        favouriteDownloader.execute(Constants.FAVOURITES_URL + String.format("?id_konta=%d", Preferences.readAccountID(FavouriteActivity.this)));
 
         filter.addTextChangedListener(this);
 
@@ -78,7 +81,20 @@ public class FavouriteActivity extends AppCompatActivity implements ProductListA
      */
     @Override
     public void onRowClick(View view, int position) {
-        Toast.makeText(this, "Dotknięto " + adapter.getItem(position).title + ", ulubiony " + adapter.getItem(position).favourite, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Dotknięto " + adapter.getItem(position).title + ", ulubiony " + adapter.getItem(position).favourite, Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * Akcja przycisku ulubionych
+     */
+    @SuppressLint("DefaultLocale")
+    @Override
+    public void onFavouriteChange(View v, boolean isChecked, int position) {
+        Downloader favouriteRemover = new Downloader();
+        favouriteRemover.execute(Constants.FAVOURITES_REM + String.format("?id_ksiazki=%d&id_konta=%d", adapter.getItem(position).productID, Preferences.readAccountID(FavouriteActivity.this)));
+
+        startActivity(new Intent(this, this.getClass()));
+        finish();
     }
 
     /**

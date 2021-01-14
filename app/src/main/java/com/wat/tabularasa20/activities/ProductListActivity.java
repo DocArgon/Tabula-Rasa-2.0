@@ -8,7 +8,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -95,9 +95,9 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
                 adapter.setFavouriteChangeListener(this);
                 recyclerView.setAdapter(adapter);
             });
-            favouriteDownloader.execute(Constants.FAVOURITES_URL + String.format("?Id_klienta=%d", Preferences.readClientID(ProductListActivity.this)));
+            favouriteDownloader.execute(Constants.FAVOURITES_URL + String.format("?id_konta=%d", Preferences.readAccountID(ProductListActivity.this)));
             } catch (Exception e) {
-                System.out.println(e);
+                System.out.println(e.toString());
             }
         });
         productDownloader.execute(Constants.BOOKS_GET_URL);
@@ -125,9 +125,18 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
     /**
      * Akcja przycisku ulubionych
      */
+    @SuppressLint("DefaultLocale")
     @Override
     public void onFavouriteChange(View v, boolean isChecked, int position) {
-        Toast.makeText(this, "Dotknięto * przy " + adapter.getItem(position).title + ", ulubiony " + isChecked, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Dotknięto * przy " + adapter.getItem(position).title + ", ulubiony " + isChecked, Toast.LENGTH_SHORT).show();
+
+        if (isChecked) {
+            Downloader favouriteAdder = new Downloader();
+            favouriteAdder.execute(Constants.FAVOURITES_ADD + String.format("?id_ksiazki=%d&id_konta=%d", adapter.getItem(position).productID, Preferences.readAccountID(ProductListActivity.this)));
+        } else {
+            Downloader favouriteRemover = new Downloader();
+            favouriteRemover.execute(Constants.FAVOURITES_REM + String.format("?id_ksiazki=%d&id_konta=%d", adapter.getItem(position).productID, Preferences.readAccountID(ProductListActivity.this)));
+        }
     }
 
 

@@ -43,9 +43,12 @@ public class CreditCardActivity extends AppCompatActivity {
             JsonObject jsonObject = JsonParser.parseString(result).getAsJsonObject();
             name.setText(jsonObject.get("Imie").getAsString());
             lname.setText(jsonObject.get("Nazwisko").getAsString());
-            number.setText(jsonObject.get("Nr_karty").getAsString());
-            ccv.setText(jsonObject.get("ccv").getAsString());
-            date.setText(jsonObject.get("Data_waznosci").getAsString());
+            String nr = jsonObject.get("Nr_karty").getAsString();
+            number.setText(nr.equals("None") ? "" : nr);
+            String cc = jsonObject.get("ccv").getAsString();
+            ccv.setText(cc.equals("None") ? "" : cc);
+            String dt = jsonObject.get("Data_waznosci").getAsString();
+            date.setText(dt.equals("None") ? "" : dt);
         });
         downloader.execute(Constants.ACCOUNT_GET_URL + String.format("?id_klienta=%d&id_konta=%d", Preferences.readClientID(this), ProductListDescription.DEFAULT_OWNER_ID));
 

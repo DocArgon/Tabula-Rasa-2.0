@@ -78,8 +78,9 @@
 
 		<Button
 			android:id="@+id/homeAccountButtonMyMessages"
-			style="@style/Tabularasa.Button.Round.Colored"			android:layout_width="0dp"
-			android:layout_height="0dp"
+			style="@style/Tabularasa.Button.Round.Colored"
+			android:layout_width="0dp"
+			android:layout_height="10dp"
 			android:layout_marginStart="10dp"
 			android:layout_marginTop="10dp"
 			android:layout_marginEnd="10dp"
