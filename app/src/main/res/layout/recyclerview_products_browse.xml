@@ -1,70 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<HorizontalScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/recyclerviewProductListContainer"
+    android:id="@+id/recyclerviewProductListScrollView"
+    android:fillViewport="true"
+    android:fadeScrollbars="false"
     android:layout_width="match_parent"
     android:layout_height="70dp">
 
-    <TextView
-        android:id="@+id/recyclerviewProductListTextViewTitle"
-        android:layout_width="0dp"
-        android:layout_height="21dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="5dp"
-        android:textSize="17sp"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerviewProductListTextViewDescription"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <CheckBox
-        android:id="@+id/recyclerviewProductListChceckboxFavourite"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/recyclerviewProductListContainer"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:button="@drawable/favourite_checkbox"
-        app:layout_constraintBottom_toBottomOf="@+id/recyclerviewProductListTextViewTitle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/recyclerviewProductListTextViewCity" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/recyclerviewProductListTextViewDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/recyclerviewProductListTextViewTitle" />
+        <TextView
+            android:id="@+id/recyclerviewProductListTextViewTitle"
+            android:layout_width="0dp"
+            android:layout_height="21dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toTopOf="@+id/recyclerviewProductListTextViewDescription"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/recyclerviewProductListTextViewNick"
-        android:layout_width="0dp"
-        android:layout_height="21dp"
-        android:layout_marginStart="20dp"
-        app:layout_constraintStart_toEndOf="@+id/recyclerviewProductListTextViewTitle"
-        app:layout_constraintTop_toTopOf="@+id/recyclerviewProductListTextViewTitle" />
+        <CheckBox
+            android:id="@+id/recyclerviewProductListChceckboxFavourite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:button="@drawable/favourite_checkbox"
+            app:layout_constraintBottom_toBottomOf="@+id/recyclerviewProductListTextViewTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/recyclerviewProductListTextViewCity" />
 
-    <TextView
-        android:id="@+id/recyclerviewProductListTextViewCity"
-        android:layout_width="0dp"
-        android:layout_height="21dp"
-        android:layout_marginStart="20dp"
-        app:layout_constraintStart_toEndOf="@+id/recyclerviewProductListTextViewNick"
-        app:layout_constraintTop_toTopOf="@+id/recyclerviewProductListTextViewNick" />
+        <TextView
+            android:id="@+id/recyclerviewProductListTextViewDescription"
+            android:layout_width="0dp"
+            android:layout_height="21dp"
+            android:layout_marginStart="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/recyclerviewProductListTextViewAuthor"
+            app:layout_constraintStart_toEndOf="@+id/recyclerviewProductListTextViewAuthor" />
 
-    <TextView
-        android:id="@+id/recyclerviewProductListTextViewAuthor"
-        android:layout_width="0dp"
-        android:layout_height="21dp"
-        android:layout_marginStart="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/recyclerviewProductListTextViewDescription"
-        app:layout_constraintStart_toEndOf="@+id/recyclerviewProductListTextViewDescription" />
+        <TextView
+            android:id="@+id/recyclerviewProductListTextViewNick"
+            android:layout_width="0dp"
+            android:layout_height="21dp"
+            android:layout_marginStart="20dp"
+            app:layout_constraintStart_toEndOf="@+id/recyclerviewProductListTextViewTitle"
+            app:layout_constraintTop_toTopOf="@+id/recyclerviewProductListTextViewTitle" />
 
-    <TextView
-        android:id="@+id/recyclerviewProductListTextViewHelper"
-        android:layout_width="0dp"
-        android:layout_height="21dp"
-        android:layout_marginEnd="50dp"
-        android:textSize="17sp"
-        app:layout_constraintEnd_toStartOf="@+id/recyclerviewProductListChceckboxFavourite"
-        app:layout_constraintTop_toTopOf="@+id/recyclerviewProductListTextViewCity" />
+        <TextView
+            android:id="@+id/recyclerviewProductListTextViewCity"
+            android:layout_width="0dp"
+            android:layout_height="21dp"
+            android:layout_marginStart="20dp"
+            app:layout_constraintStart_toEndOf="@+id/recyclerviewProductListTextViewNick"
+            app:layout_constraintTop_toTopOf="@+id/recyclerviewProductListTextViewNick" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/recyclerviewProductListTextViewAuthor"
+            android:layout_width="0dp"
+            android:layout_height="21dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/recyclerviewProductListTextViewHelper"
+            android:layout_width="0dp"
+            android:layout_height="21dp"
+            android:layout_marginEnd="20dp"
+            android:textSize="17sp"
+            app:layout_constraintEnd_toStartOf="@+id/recyclerviewProductListChceckboxFavourite"
+            app:layout_constraintTop_toTopOf="@+id/recyclerviewProductListTextViewCity" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</HorizontalScrollView>

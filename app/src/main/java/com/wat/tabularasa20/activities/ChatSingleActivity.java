@@ -3,7 +3,6 @@ package com.wat.tabularasa20.activities;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -26,7 +25,7 @@ public class ChatSingleActivity extends AppCompatActivity {
 
     ProductListAdapter adapter = null;
     RecyclerView recyclerView = null;
-    ArrayList<ProductListDescription> products = null;
+    ArrayList<ProductListDescription> messages = null;
 
     @SuppressLint("DefaultLocale")
     @Override
@@ -44,7 +43,7 @@ public class ChatSingleActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.messagesSingleChatRecyclerViewMessagesList);
         Button send = findViewById(R.id.messagesSingleChatButtonMessageNew);
 
-        products = new ArrayList<>();
+        messages = new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Pobranie informacji o użytkowniku
@@ -64,10 +63,11 @@ public class ChatSingleActivity extends AppCompatActivity {
             JsonArray messageJsonArray = JsonParser.parseString(result).getAsJsonArray();
 
             messageJsonArray.forEach(messageJsonElement -> {
-                products.add(new ProductListDescription("Treść wiadomości 1", null));
+                // TODO zaimplemetować czat
+                messages.add(new ProductListDescription("Treść wiadomości 1", null));
             });
 
-            adapter = new ProductListAdapter(ChatSingleActivity.this, products);
+            adapter = new ProductListAdapter(ChatSingleActivity.this, messages);
             recyclerView.setAdapter(adapter);
         });
 
@@ -79,20 +79,21 @@ public class ChatSingleActivity extends AppCompatActivity {
 
         //chatDownloader.execute(Constants.DETAILS_URL + String.format("?id_ksiazki=%d&id_konta=%d", book_id, owner_id));
 
-        products.add(new ProductListDescription("Treść wiadomości 1", null));
-        products.add(new ProductListDescription(null, "Treść wiadomości 2"));
-        products.add(new ProductListDescription("Treść wiadomości 3", null));
-        adapter = new ProductListAdapter(ChatSingleActivity.this, products);
+        messages.add(new ProductListDescription("Treść wiadomości 1\nnowa linnia", null));
+        messages.add(new ProductListDescription(null, "Wiadomość 2"));
+        messages.add(new ProductListDescription("Treść wiadomości 3 jkauyhjvabfagyuwfbvakjvuaykvwd", null));
+        messages.add(new ProductListDescription(null, "Treść wiadomości 4 aboiavbwiuabwcahcwhuavwocv ahg"));
+        adapter = new ProductListAdapter(ChatSingleActivity.this, messages);
         recyclerView.setAdapter(adapter);
 
         send.setOnClickListener(v -> {
             // TODO wysłać wiadomość od bazy
-
+            Toast.makeText(this, "Wysyłanie", Toast.LENGTH_LONG).show();
         });
 
         delete.setOnClickListener(v -> {
             // TODO usunąć ten czat
-
+            Toast.makeText(this, "Usuwanie", Toast.LENGTH_LONG).show();
         });
 
         back.setOnClickListener(v -> finish());
