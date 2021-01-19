@@ -47,21 +47,8 @@
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/homeAccountTextViewTitle">
-
-		<Button
-			android:id="@+id/homeAccountButtonEditInfo"
-			style="@style/Tabularasa.Button.Round.Colored"
-			android:layout_width="0dp"
-			android:layout_height="0dp"
-			android:layout_marginStart="10dp"
-			android:layout_marginTop="15dp"
-			android:layout_marginEnd="10dp"
-			android:text="Jest po prawej na liście"
-			app:layout_constraintBottom_toTopOf="@+id/homeAccountButtonMyMessages"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toTopOf="parent" />
+		app:layout_constraintTop_toBottomOf="@+id/homeAccountTextViewTitle"
+		>
 
 		<!--
 		TO JEST WYMAGANE, ALE POTEM SIE DOROBI
@@ -77,97 +64,35 @@
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toBottomOf="@+id/editInfo" / -->
 
+		<TextView
+			android:id="@+id/homeAccountTextViewAppName"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="20dp"
+			android:layout_marginTop="20dp"
+			android:layout_marginEnd="20dp"
+			android:text="@strings/app_name"
+			android:textSize="72sp"
+			app:layout_constraintBottom_toTopOf="@id/homeAccountButtonRecommendMeBook"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintVertical_chainStyle="packed"
+			/>
+
 		<Button
-			android:id="@+id/homeAccountButtonMyMessages"
+			android:id="@+id/homeAccountButtonRecommendMeBook"
 			style="@style/Tabularasa.Button.Round.Colored"
 			android:layout_width="0dp"
-			android:layout_height="10dp"
-			android:layout_marginStart="10dp"
-			android:layout_marginTop="10dp"
-			android:layout_marginEnd="10dp"
-			android:text="@string/write_message"
-			app:layout_constraintBottom_toTopOf="@+id/homeAccountButtonMySharedBooks"
+			android:layout_height="80dp"
+			android:layout_marginStart="40dp"
+			android:layout_marginTop="40dp"
+			android:layout_marginEnd="40dp"
+			android:text="@string/recommend_me"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/homeAccountButtonEditInfo" />
-
-		<Button
-			android:id="@+id/homeAccountButtonMySharedBooks"
-			style="@style/Tabularasa.Button.Round.Colored"			android:layout_width="0dp"
-			android:layout_height="0dp"
-			android:layout_marginStart="10dp"
-			android:layout_marginTop="10dp"
-			android:layout_marginEnd="10dp"
-			android:text="@string/my_products"
-			app:layout_constraintBottom_toTopOf="@+id/homeAccountButtonMyFavouriteBooks"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/homeAccountButtonMyMessages" />
-
-		<Button
-			android:id="@+id/homeAccountButtonMyFavouriteBooks"
-			style="@style/Tabularasa.Button.Round.Colored"			android:layout_width="0dp"
-			android:layout_height="0dp"
-			android:layout_marginStart="10dp"
-			android:layout_marginTop="10dp"
-			android:layout_marginEnd="10dp"
-			android:text="@string/my_favourites"
-			app:layout_constraintBottom_toTopOf="@+id/homeAccountButtonAddNewBook"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/homeAccountButtonMySharedBooks" />
-
-		<Button
-			android:id="@+id/homeAccountButtonAddNewBook"
-			style="@style/Tabularasa.Button.Round.Colored"			android:layout_width="0dp"
-			android:layout_height="0dp"
-			android:layout_marginStart="10dp"
-			android:layout_marginTop="10dp"
-			android:layout_marginEnd="10dp"
-			android:text="@string/add_book"
-			app:layout_constraintBottom_toTopOf="@+id/homeAccountButtonSearchForBook"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/homeAccountButtonMyFavouriteBooks" />
-
-		<Button
-			android:id="@+id/homeAccountButtonSearchForBook"
-			style="@style/Tabularasa.Button.Round.Colored"			android:layout_width="0dp"
-			android:layout_height="0dp"
-			android:layout_marginStart="10dp"
-			android:layout_marginTop="10dp"
-			android:layout_marginEnd="10dp"
-			android:layout_marginBottom="30dp"
-			android:text="@string/search_book"
-			app:layout_constraintBottom_toTopOf="@+id/homeAccountButtonLogout"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/homeAccountButtonAddNewBook" />
-
-		<Button
-			android:id="@+id/homeAccountButtonLogout"
-			style="@style/Tabularasa.Button.Round.Colored"
-			android:layout_width="0dp"
-			android:layout_height="30dp"
-			android:layout_marginStart="20dp"
-			android:layout_marginEnd="20dp"
-			android:layout_marginBottom="10dp"
-			android:text="@string/logout"
-			app:layout_constraintBottom_toBottomOf="parent"
-			app:layout_constraintEnd_toStartOf="@+id/homeAccountButtonClose"
-			app:layout_constraintStart_toStartOf="parent" />
-
-		<Button
-			android:id="@+id/homeAccountButtonClose"
-			android:layout_width="0dp"
-			android:layout_height="1dp"
-			android:layout_marginStart="20dp"
-			android:layout_marginEnd="20dp"
-			android:text="@string/close"
-			app:layout_constraintBottom_toBottomOf="@+id/homeAccountButtonLogout"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toEndOf="@+id/homeAccountButtonLogout"
-			app:layout_constraintTop_toTopOf="@+id/homeAccountButtonLogout" />
+			app:layout_constraintTop_toBottomOf="@+id/homeAccountTextViewAppName"
+			/>
 
 	</androidx.constraintlayout.widget.ConstraintLayout>
 

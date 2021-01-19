@@ -45,7 +45,7 @@ public class HomeActivity extends AppCompatActivity {
         Button sharedBooks = findViewById(R.id.homeAccountButtonMySharedBooks);
         Button favourites = findViewById(R.id.homeAccountButtonMyFavouriteBooks);
         Button addBook = findViewById(R.id.homeAccountButtonAddNewBook);
-        Button sendMessage = findViewById(R.id.homeAccountButtonMyMessages);
+        Button sendMessage = findViewById(R.id.homeAccountButtonRecommendMeBook);
         Button searchBook = findViewById(R.id.homeAccountButtonSearchForBook);
 
         Button logout = findViewById(R.id.homeAccountButtonLogout);
