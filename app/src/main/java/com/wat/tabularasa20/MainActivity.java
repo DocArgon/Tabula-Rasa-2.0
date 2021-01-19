@@ -76,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
             // Wysłanie zapytania czy dane logowania są poprawne
-            // TODO przerobić zapytanie na hash
             if (!strname.isEmpty() && !strpass.isEmpty()) {
                 String strurl = Constants.LOGIN_CHECK_URL + String.format("?login=%s&haslo=%s", strname, MathUtil.sha(strpass));
                 downloader = new Downloader();
@@ -122,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Metoda sprawdzająca odpowiedź z bazy danych i przehodząca do ekranu domoweho użytkownika
+     * Metoda sprawdzająca odpowiedź z bazy danych i przechodząca do ekranu domowego użytkownika
      * @param result odpowiedź z bazy danych
      */
     private void login(String result) {

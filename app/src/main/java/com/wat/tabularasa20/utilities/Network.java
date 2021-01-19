@@ -1,6 +1,5 @@
 package com.wat.tabularasa20.utilities;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.ConnectivityManager;
 
@@ -18,7 +17,7 @@ public class Network {
 
     public static String repairJson (String json) {
         String result = json.replaceAll("\\\\\"", "\"");  // \" -> "
-        result = result.replaceAll("\"\\[", "\\[").replaceAll("]\"", "]");
+        result = result.replaceAll("\"\\[", "\\[").replaceAll("]\"", "]"); // "[ ]" -> [ ]
         if (result.startsWith("\""))
             result = result.substring(1);
         if (result.endsWith("\""))

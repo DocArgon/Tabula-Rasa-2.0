@@ -38,14 +38,15 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/creditCardTextViewTitle"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.0"
+        >
 
         <EditText
             android:id="@+id/creditCardEditTextFirstName"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
             android:autofillHints=""
             android:background="#FFFFFF"
@@ -54,13 +55,13 @@
             android:inputType="textPersonName"
             app:layout_constraintBottom_toTopOf="@+id/creditCardEditTextLastName"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
         <EditText
             android:id="@+id/creditCardEditTextLastName"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
@@ -72,13 +73,13 @@
             android:inputType="textPersonName"
             app:layout_constraintBottom_toTopOf="@+id/creditCardEditTextCardNumber"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/creditCardEditTextFirstName" />
+            app:layout_constraintTop_toBottomOf="@+id/creditCardEditTextFirstName"
+            />
 
         <EditText
             android:id="@+id/creditCardEditTextCardNumber"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
@@ -90,13 +91,13 @@
             android:inputType="numberSigned"
             app:layout_constraintBottom_toTopOf="@+id/creditCardEditTextCcvCode"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/creditCardEditTextLastName" />
+            app:layout_constraintTop_toBottomOf="@+id/creditCardEditTextLastName"
+            />
 
         <EditText
             android:id="@+id/creditCardEditTextCcvCode"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
@@ -108,53 +109,120 @@
             android:inputType="phone"
             app:layout_constraintBottom_toTopOf="@+id/creditCardEditTextExpirationDate"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/creditCardEditTextCardNumber" />
+            app:layout_constraintTop_toBottomOf="@+id/creditCardEditTextCardNumber"
+            />
 
         <EditText
             android:id="@+id/creditCardEditTextExpirationDate"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
+            android:layout_marginBottom="50dp"
             android:autofillHints=""
             android:background="#FFFFFF"
             android:ems="10"
             android:hint="@string/expiration_date"
             android:inputType="date"
+            app:layout_constraintBottom_toTopOf="@+id/creditCardEditTextViewPremiumEndDate"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/creditCardEditTextCcvCode" />
 
-        <Button
-            android:id="@+id/creditCardButtonUpdateSend"
-            style="@style/Tabularasa.Button.Round.Colored"
-            android:layout_width="0dp"
+        <TextView
+            android:id="@+id/creditCardEditTextViewPrice"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginEnd="30dp"
-            android:text="@string/save_changes"
-            app:layout_constraintBottom_toBottomOf="@+id/creditCardButtonBack"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/creditCardButtonBack" />
-
-        <ImageButton
-            android:id="@+id/creditCardButtonBack"
-            style="@style/Tabularasa.Button.Round.Colored"            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
-            android:src="@drawable/abc_vector_test"
-            android:text="@string/go_back"
+            android:text="Cena konta - 10zł/30dni"
+            app:layout_constraintBottom_toTopOf="@+id/creditCardEditSubscriptionButtons"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/creditCardEditTextViewPremiumEndDate"
+            android:layout_width="match_parent"
+            android:layout_height="3px"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:text="Konto ważne do ..."
+            app:layout_constraintBottom_toTopOf="@+id/creditCardEditTextViewPrice"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/creditCardEditSubscriptionButtons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="30dp"
+            app:layout_constraintBottom_toTopOf="@id/creditCardEditBottomButtons"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <Button
+                android:id="@+id/creditCardEditSubscriptionButtonAbort"
+                style="@style/Tabularasa.Button.Round.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Anuluj subskrypcję"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/creditCardEditSubscriptionButtonBuy"
+                style="@style/Tabularasa.Button.Round.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kup"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/creditCardEditBottomButtons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/creditCardButtonUpdateSend"
-            app:layout_constraintStart_toStartOf="parent"
-            android:contentDescription="@string/app_name" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" >
+
+            <ImageButton
+                android:id="@+id/creditCardButtonBack"
+                style="@style/Tabularasa.Button.Round.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/abc_vector_test"
+                android:text="@string/go_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/creditCardButtonUpdateSend"
+                style="@style/Tabularasa.Button.Round.Colored"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/save_changes"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

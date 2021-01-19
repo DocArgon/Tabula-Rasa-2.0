@@ -20,6 +20,7 @@ import com.wat.tabularasa20.data.ProductListAdapter;
 import com.wat.tabularasa20.data.ProductListDescription;
 import com.wat.tabularasa20.utilities.Downloader;
 import com.wat.tabularasa20.utilities.Network;
+import com.wat.tabularasa20.utilities.Preferences;
 
 import java.util.ArrayList;
 
@@ -66,17 +67,22 @@ public class ProductListCopyActivity extends AppCompatActivity implements Produc
                 //JsonArray productsJsonArray = JsonParser.parseString(body).getAsJsonArray();
                 JsonArray productsJsonArray = JsonParser.parseString(resultProducts).getAsJsonArray();
 
+                int moje_id = Preferences.readAccountID(ProductListCopyActivity.this);
+
                 productsJsonArray.forEach(productJsonElement -> {
-                    products.add(new ProductListDescription(
-                            productJsonElement.getAsJsonObject().get("miasto").getAsString(), // title
-                            book_id,
-                            ProductListDescription.FavouriteStare.HIDDEN,
-                            productJsonElement.getAsJsonObject().get("login").getAsString(), // description
-                            productJsonElement.getAsJsonObject().get("ulica").getAsString(), // nick
-                            "",
-                            "",
-                            productJsonElement.getAsJsonObject().get("id_konta").getAsInt()
-                    ));
+                    int id_konta = productJsonElement.getAsJsonObject().get("id_konta").getAsInt();
+                    if (id_konta != moje_id)
+                        products.add(new ProductListDescription(
+                                productJsonElement.getAsJsonObject().get("miasto").getAsString(), // title
+                                book_id,
+                                ProductListDescription.FavouriteStare.HIDDEN,
+                                productJsonElement.getAsJsonObject().get("login").getAsString(), // description
+                                productJsonElement.getAsJsonObject().get("ulica").getAsString(), // nick
+                                "",
+                                "",
+                                id_konta,
+                                ""
+                        ));
                 });
 
                 adapter = new ProductListAdapter(ProductListCopyActivity.this, products);

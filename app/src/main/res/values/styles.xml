@@ -1,5 +1,5 @@
 <resources>
-    <!-- Styl wszystkich ekranów aplikacji poza 2 poniższymi -->
+    <!-- Styl wszystkich ekranów aplikacji poza poniższymi -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -7,6 +7,8 @@
         <!-- item name="android:background">@drawable/background</item -->
         <item name="android:windowAnimationStyle">@style/AppAnimations</item>
     </style>
+    <!-- Styl ekranu pomocy -->
+    <style name="AppTheme.Help" parent="@android:style/Theme.Holo.Dialog" />
     <!-- Styl ekranu logowania -->
     <style name="AppTheme.Login" parent="Theme.AppCompat.Light.DarkActionBar" />
     <!-- Styl ekranu powitalnego -->

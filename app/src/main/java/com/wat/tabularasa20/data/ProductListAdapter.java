@@ -8,6 +8,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import com.wat.tabularasa20.R;
 import java.util.ArrayList;
@@ -65,6 +66,8 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         String nick = data.get(position).nick;
         String city = data.get(position).city;
         String author = data.get(position).author;
+        String helper = data.get(position).helper;
+        int background = data.get(position).background;
 
         holder.titleTextView.setText(title);
         switch (favourite) {
@@ -81,6 +84,8 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         holder.nickiTextView.setText(nick);
         holder.cityTextView.setText(city);
         holder.authorTextView.setText(author);
+        holder.helperTextView.setText(helper);
+        holder.layout.setBackgroundColor(background);
     }
 
     /**
@@ -93,18 +98,23 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         TextView nickiTextView;
         TextView cityTextView;
         TextView authorTextView;
+        TextView helperTextView;
+        ConstraintLayout layout;
         View itemView;
 
         ViewHolder(View itemView) {
             super(itemView);
             this.itemView = itemView;
+            layout = itemView.findViewById(R.id.recyclerviewProductListContainer);
             titleTextView = itemView.findViewById(R.id.recyclerviewProductListTextViewTitle);
             favouriteCheckbox = itemView.findViewById(R.id.recyclerviewProductListChceckboxFavourite);
             descriptionTextView = itemView.findViewById(R.id.recyclerviewProductListTextViewDescription);
             nickiTextView = itemView.findViewById(R.id.recyclerviewProductListTextViewNick);
             cityTextView = itemView.findViewById(R.id.recyclerviewProductListTextViewCity);
             authorTextView = itemView.findViewById(R.id.recyclerviewProductListTextViewAuthor);
+            helperTextView = itemView.findViewById(R.id.recyclerviewProductListTextViewHelper);
             itemView.setOnClickListener(this);
+            layout.setOnClickListener(this);
             //favouriteCheckbox.setOnCheckedChangeListener(this);
             favouriteCheckbox.setOnClickListener(this);
         }
@@ -114,7 +124,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
          */
         @Override
         public void onClick(View view) {
-            if (rowClickListener != null && view.getId() == itemView.getId())
+            if (rowClickListener != null && (view.getId() == itemView.getId() || view.getId() == layout.getId()))
                 rowClickListener.onRowClick(view, getAdapterPosition());
             if (favouriteChangeListener != null && view.getId() == favouriteCheckbox.getId())
                 favouriteChangeListener.onFavouriteChange(view, ((CheckBox)view).isChecked(), getAdapterPosition());

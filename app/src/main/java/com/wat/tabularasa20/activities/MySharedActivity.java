@@ -7,7 +7,6 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -61,7 +60,7 @@ public class MySharedActivity extends AppCompatActivity implements ProductListAd
                 // TODO Snackbar - brak udostępnień
             }
         });
-        sharedDownloader.execute(Constants.FAVOURITES_URL + String.format("?Id_klienta=%d", Preferences.readClientID(MySharedActivity.this)));
+        sharedDownloader.execute(Constants.SHARED_URL + String.format("?id_konta=%d", Preferences.readAccountID(MySharedActivity.this)));
 
         filter.addTextChangedListener(this);
 
@@ -76,7 +75,7 @@ public class MySharedActivity extends AppCompatActivity implements ProductListAd
      */
     @Override
     public void onRowClick(View view, int position) {
-        Toast.makeText(this, "Dotknięto " + adapter.getItem(position).title + ", ulubiony " + adapter.getItem(position).favourite, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Dotknięto " + adapter.getItem(position).title + ", ulubiony " + adapter.getItem(position).favourite, Toast.LENGTH_SHORT).show();
     }
 
     /**

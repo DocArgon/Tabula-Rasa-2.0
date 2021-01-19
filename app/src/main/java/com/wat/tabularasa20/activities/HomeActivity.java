@@ -21,6 +21,9 @@ import com.wat.tabularasa20.utilities.Downloader;
 import com.wat.tabularasa20.utilities.Network;
 import com.wat.tabularasa20.utilities.Preferences;
 
+import java.util.Iterator;
+import java.util.Set;
+
 /**
  * Aktywność ekranu głównego aplikacji
  */
@@ -32,19 +35,28 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_account);
 
+        if (!Preferences.readHelpState(this)) {
+            Preferences.saveHelpState(this);
+            startActivity(new Intent(this, HelpActivity.class));
+        }
+
         Intent incoming_intent = getIntent();
         Preferences.saveClientID(this, incoming_intent.getStringExtra("result"));
 
         SecretTextView welcome = findViewById(R.id.homeAccountTextViewWelcome);
+        /*
         Button editAccount = findViewById(R.id.homeAccountButtonEditInfo);
         Button sharedBooks = findViewById(R.id.homeAccountButtonMySharedBooks);
         Button favourites = findViewById(R.id.homeAccountButtonMyFavouriteBooks);
         Button addBook = findViewById(R.id.homeAccountButtonAddNewBook);
-        Button sendMessage = findViewById(R.id.homeAccountButtonMyMessages);
+        //*/
+        Button sendMessage = findViewById(R.id.homeAccountButtonRecommendMeBook);
+        /*
         Button searchBook = findViewById(R.id.homeAccountButtonSearchForBook);
 
         Button logout = findViewById(R.id.homeAccountButtonLogout);
         Button close = findViewById(R.id.homeAccountButtonClose);
+        //*/
         FloatingActionButton fab = findViewById(R.id.homeAccountFloatingButtonClose);
 
         ResideMenu resideMenu = new ResideMenu(this);
@@ -93,17 +105,15 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         itemOpenChats.setOnClickListener(v -> Toast.makeText(HomeActivity.this, "3", Toast.LENGTH_SHORT).show());
-        itemSettings.setOnClickListener(v -> Toast.makeText(HomeActivity.this, "4", Toast.LENGTH_SHORT).show());
 
-        // Przycisk wyloguj
-        logout.setOnClickListener(v -> {
-            Preferences.saveCredentials(HomeActivity.this, new Preferences.LoginCredentials("", ""));
-            Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+        // Akcja przycisku menu ustawień
+        itemSettings.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
             startActivity(intent);
-            finish();
         });
 
         // TODO usunąć
+        /*
         // Edycja danych konta
         editAccount.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, EditUserDataActivity.class);
@@ -126,13 +136,14 @@ public class HomeActivity extends AppCompatActivity {
             Intent intent = new Intent(HomeActivity.this, FavouriteActivity.class);
             startActivity(intent);
         });
-
+        //*/
         // Przycisk czatu
         sendMessage.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeActivity.this, ChatActivity.class);
+            Intent intent = new Intent(HomeActivity.this, ChatNewActivity.class);
             startActivity(intent);
         });
 
+        /*
         // TODO usunąć
         // Przycisk szukaj książki
         searchBook.setOnClickListener(v -> {
@@ -143,8 +154,10 @@ public class HomeActivity extends AppCompatActivity {
         // przycisk zamknij
         // TODO usunąć statyczny, zoztawić pływający
         close.setOnClickListener(v -> finishAndRemoveTask());
+        //*/
         fab.setOnClickListener(v   -> finishAndRemoveTask());
     }
+
 
     @Override
     protected void onStart() {

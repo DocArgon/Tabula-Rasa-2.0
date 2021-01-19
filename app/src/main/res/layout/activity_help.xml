@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:scrollbarSize="6sp"
+	android:fadeScrollbars="false">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical">
+
+		<TextView
+			android:id="@+id/helpTextView"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:textAlignment="center"
+			android:textColor="@color/cardview_light_background"
+			android:textSize="15.5sp"
+			android:text="@string/help_text"/>
+
+		<ImageButton
+			android:id="@+id/helpButtonBack"
+			style="@style/Tabularasa.Button.Round.Colored"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="30dp"
+			android:layout_marginTop="15dp"
+			android:layout_marginBottom="15dp"
+			android:contentDescription="@string/app_name"
+			android:src="@drawable/abc_vector_test"
+			android:text="@string/go_back"/>
+
+	</LinearLayout>
+</ScrollView>
