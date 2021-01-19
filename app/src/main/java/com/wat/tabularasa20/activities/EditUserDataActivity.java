@@ -7,6 +7,7 @@ import android.os.CountDownTimer;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.snackbar.Snackbar;
@@ -44,8 +45,8 @@ public class EditUserDataActivity extends AppCompatActivity {
         EditText lname = findViewById(R.id.accessEditEditTextLastName);
         EditText city = findViewById(R.id.accessEditEditTextCity);
         EditText street = findViewById(R.id.accessEditEditTextStreet);
-        EditText phone = findViewById(R.id.accessEditEditTextCardNumber);
-        EditText bday = findViewById(R.id.accessEditEditTextExpirationDate);
+        TextView phone = findViewById(R.id.accessEditEditTextPhoneNumber);
+        TextView bday = findViewById(R.id.accessEditTextViewBirthDate);
 
         // Pobranie informacji o użytkowniku
         Downloader downloader = new Downloader();
