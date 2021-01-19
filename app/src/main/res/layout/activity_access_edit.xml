@@ -146,28 +146,11 @@
             android:ems="10"
             android:hint="@string/surename"
             android:inputType="none"
-            app:layout_constraintBottom_toTopOf="@+id/accessEditSpinnerSex"
+            app:layout_constraintBottom_toTopOf="@id/accessEditEditTextCity"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/accessEditEditTextFirstName"
-            />
-
-        <Spinner
-            android:id="@+id/accessEditSpinnerSex"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="10dp"
-            android:background="@color/cardview_light_background"
-            android:backgroundTint="#FFFFFF"
-            app:layout_constraintBottom_toTopOf="@+id/accessEditEditTextCity"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/accessEditEditTextLastName"
             />
 
         <EditText
@@ -175,6 +158,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
             android:autofillHints=""
             android:background="#FFFFFF"
@@ -185,7 +169,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/accessEditSpinnerSex"
+            app:layout_constraintTop_toBottomOf="@+id/accessEditEditTextLastName"
             />
 
         <EditText
@@ -200,7 +184,7 @@
             android:ems="10"
             android:hint="@string/street"
             android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@id/accessEditEditTextCardNumber"
+            app:layout_constraintBottom_toTopOf="@id/accessEditEditTextPhoneNumber"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -208,7 +192,7 @@
             />
 
         <EditText
-            android:id="@+id/accessEditEditTextCardNumber"
+            android:id="@+id/accessEditEditTextPhoneNumber"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -219,15 +203,33 @@
             android:ems="10"
             android:hint="@string/phone"
             android:inputType="phone"
-            app:layout_constraintBottom_toTopOf="@+id/accessEditEditTextExpirationDate"
+            app:layout_constraintBottom_toTopOf="@+id/accessEditTextViewSex"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/accessEditEditTextStreet"
             />
 
-        <EditText
-            android:id="@+id/accessEditEditTextExpirationDate"
+        <TextView
+            android:id="@+id/accessEditTextViewSex"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:autofillHints=""
+            android:background="#FFFFFF"
+            android:ems="10"
+            android:text="@string/sex"
+            android:textAllCaps="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/accessEditEditTextPhoneNumber"
+            />
+
+        <TextView
+            android:id="@+id/accessEditTextViewBirthDate"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -241,7 +243,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/accessEditEditTextCardNumber"
+            app:layout_constraintTop_toBottomOf="@id/accessEditTextViewSex"
             />
 
         <Button
@@ -295,7 +297,7 @@
             android:textOn="Kobieta"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/accessEditEditTextExpirationDate" />
+            app:layout_constraintTop_toBottomOf="@+id/accessEditEditTextBirthDate" />
 
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/switch2"

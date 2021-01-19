@@ -64,12 +64,18 @@ public class HomeActivity extends AppCompatActivity {
         resideMenu.attachToActivity(this);
 
         ResideMenuItem itemSearchBook  = new ResideMenuItem(this, android.R.drawable.ic_menu_search, getString(R.string.search_book));
+        ResideMenuItem itemAddBook     = new ResideMenuItem(this, android.R.drawable.ic_menu_add, getString(R.string.add_book));
+        ResideMenuItem itemMyShared    = new ResideMenuItem(this, android.R.drawable.ic_menu_set_as, getString(R.string.my_shared_title));
+        ResideMenuItem itemFavourites  = new ResideMenuItem(this, android.R.drawable.star_big_on, getString(R.string.favourites));
         ResideMenuItem itemEditProfile = new ResideMenuItem(this, android.R.drawable.ic_menu_edit, getString(R.string.edit_account_data));
         ResideMenuItem itemOpenChats   = new ResideMenuItem(this, android.R.drawable.stat_notify_chat, getString(R.string.conversations));
         ResideMenuItem itemSettings    = new ResideMenuItem(this, android.R.drawable.ic_menu_preferences, getString(R.string.settinds));
 
         resideMenu.addMenuItem(itemSearchBook,  ResideMenu.DIRECTION_LEFT);
-        resideMenu.addMenuItem(itemOpenChats,   ResideMenu.DIRECTION_LEFT);
+        resideMenu.addMenuItem(itemAddBook,     ResideMenu.DIRECTION_LEFT);
+        resideMenu.addMenuItem(itemMyShared,    ResideMenu.DIRECTION_LEFT);
+        resideMenu.addMenuItem(itemFavourites,  ResideMenu.DIRECTION_LEFT);
+        resideMenu.addMenuItem(itemOpenChats,   ResideMenu.DIRECTION_RIGHT);
         resideMenu.addMenuItem(itemEditProfile, ResideMenu.DIRECTION_RIGHT);
         resideMenu.addMenuItem(itemSettings,    ResideMenu.DIRECTION_RIGHT);
 
@@ -112,49 +118,30 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        // TODO usunąć
-        /*
-        // Edycja danych konta
-        editAccount.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeActivity.this, EditUserDataActivity.class);
-            startActivity(intent);
-        });
-
-        sharedBooks.setOnClickListener(view -> {
+        itemMyShared.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, MySharedActivity.class);
             startActivity(intent);
         });
 
-        // Przycisk dodaj książkę
-        addBook.setOnClickListener(v -> {
+        itemAddBook.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, ProductAddActivity.class);
             startActivity(intent);
         });
 
-        // Przycisk ulubionych
-        favourites.setOnClickListener(v -> {
+        itemFavourites.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, FavouriteActivity.class);
             startActivity(intent);
         });
-        //*/
+
+
+        // TODO zmienić na POLEć MI COś
         // Przycisk czatu
         sendMessage.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, ChatNewActivity.class);
             startActivity(intent);
         });
 
-        /*
-        // TODO usunąć
-        // Przycisk szukaj książki
-        searchBook.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeActivity.this, ProductListActivity.class);
-            startActivity(intent);
-        });
 
-        // przycisk zamknij
-        // TODO usunąć statyczny, zoztawić pływający
-        close.setOnClickListener(v -> finishAndRemoveTask());
-        //*/
         fab.setOnClickListener(v   -> finishAndRemoveTask());
     }
 
