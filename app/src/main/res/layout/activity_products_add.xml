@@ -28,16 +28,17 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="40dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="20dp"
         android:background="#F3EDED"
         android:fadingEdge="horizontal|vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/productsAddTextViewTitle">
+        app:layout_constraintTop_toBottomOf="@+id/productsAddTextViewTitle"
+        >
 
         <ImageView
             android:id="@+id/productDetailsImageViewCover"
@@ -53,7 +54,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/add_photo" />
+            app:srcCompat="@drawable/add_photo"
+            />
 
         <EditText
             android:id="@+id/productsAddEditTextTitle"
@@ -72,7 +74,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/productDetailsImageViewCover"
-            app:layout_constraintVertical_chainStyle="packed" />
+            app:layout_constraintVertical_chainStyle="packed"
+            />
 
         <EditText
             android:id="@+id/productsAddEditTextAuthor"
@@ -90,7 +93,8 @@
             app:layout_constraintBottom_toTopOf="@+id/productsAddEditTextYear"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/productsAddEditTextTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/productsAddEditTextTitle"
+            />
 
         <EditText
             android:id="@+id/productsAddEditTextYear"
@@ -108,7 +112,8 @@
             app:layout_constraintBottom_toTopOf="@+id/productsAddEditTextPublisher"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/productsAddEditTextAuthor" />
+            app:layout_constraintTop_toBottomOf="@+id/productsAddEditTextAuthor"
+            />
 
         <EditText
             android:id="@+id/productsAddEditTextPublisher"
@@ -126,7 +131,8 @@
             app:layout_constraintBottom_toTopOf="@+id/productsAddEditTextGenre"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/productsAddEditTextYear" />
+            app:layout_constraintTop_toBottomOf="@+id/productsAddEditTextYear"
+            />
 
         <EditText
             android:id="@+id/productsAddEditTextGenre"
@@ -144,7 +150,8 @@
             app:layout_constraintBottom_toTopOf="@+id/productsAddEditTextAdditionalInfo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/productsAddEditTextPublisher" />
+            app:layout_constraintTop_toBottomOf="@+id/productsAddEditTextPublisher"
+            />
 
         <EditText
             android:id="@+id/productsAddEditTextAdditionalInfo"
@@ -163,7 +170,8 @@
             app:layout_constraintBottom_toTopOf="@+id/productsAddButtonBack"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/productsAddEditTextGenre" />
+            app:layout_constraintTop_toBottomOf="@+id/productsAddEditTextGenre"
+            />
 
         <ImageButton
             android:id="@+id/productsAddButtonBack"
@@ -178,7 +186,8 @@
             android:text="@string/go_back"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/productsAddButtonSendForm"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            />
 
         <Button
             android:id="@+id/productsAddButtonSendForm"
@@ -191,7 +200,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/productsAddButtonBack"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/productsAddButtonBack"
-            app:layout_constraintTop_toTopOf="@+id/productsAddButtonBack" />
+            app:layout_constraintTop_toTopOf="@+id/productsAddButtonBack"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
