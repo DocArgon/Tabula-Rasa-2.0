@@ -79,7 +79,7 @@ public class ChatSingleActivity extends AppCompatActivity {
 
         //chatDownloader.execute(Constants.DETAILS_URL + String.format("?id_ksiazki=%d&id_konta=%d", book_id, owner_id));
 
-        messages.add(new ProductListDescription("Treść wiadomości 1\nnowa linnia", null));
+        messages.add(new ProductListDescription("Treść wiadomości 1", null));
         messages.add(new ProductListDescription(null, "Wiadomość 2"));
         messages.add(new ProductListDescription("Treść wiadomości 3 jkauyhjvabfagyuwfbvakjvuaykvwd", null));
         messages.add(new ProductListDescription(null, "Treść wiadomości 4 aboiavbwiuabwcahcwhuavwocv ahg"));
