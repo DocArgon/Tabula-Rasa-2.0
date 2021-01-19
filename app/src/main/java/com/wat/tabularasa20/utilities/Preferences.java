@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.Editable;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
@@ -50,7 +52,14 @@ public class Preferences {
         }
         @Override
         public int compareTo(@NonNull ChatInfo ci) {
+            if (equals(ci)) return 0;
             return toString().compareTo(ci.toString());
+        }
+        @Override
+        public boolean equals(@Nullable Object o) {
+            if (this == o) return true;
+            if (!(o instanceof ChatInfo)) return false;
+            return withID == ((ChatInfo)o).withID;
         }
     }
 

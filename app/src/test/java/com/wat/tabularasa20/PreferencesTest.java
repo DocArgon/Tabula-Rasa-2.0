@@ -1,17 +1,10 @@
 package com.wat.tabularasa20;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.SharedPreferences;
-
-import com.wat.tabularasa20.utilities.Network;
 import com.wat.tabularasa20.utilities.Preferences;
-
 import org.junit.Test;
 import org.mockito.Mockito;
-
 import static com.wat.tabularasa20.utilities.Preferences.*;
-
 
 public class PreferencesTest {
 

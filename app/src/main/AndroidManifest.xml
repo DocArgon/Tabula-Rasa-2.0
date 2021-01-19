@@ -73,6 +73,9 @@
             android:name=".activities.RegisterActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".activities.SettingsActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".activities.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Splash"/>

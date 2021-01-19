@@ -76,6 +76,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
             Intent i = new Intent(ProductDetailsActivity.this, ChatNewActivity.class);
             i.putExtra("owner_id", owner_id);
             i.putExtra("book_id", book_id);
+            i.putExtra("first", true);
             startActivity(i);
         });
 

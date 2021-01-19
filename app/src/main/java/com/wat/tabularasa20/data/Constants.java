@@ -8,14 +8,26 @@ public final class Constants {
     // ?login=BabackiA&haslo=Babacki1
     public static final String LOGIN_CHECK_URL = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/logowanie";
 
+    //  przyjmuje JSON
+    public static final String REGISTER_URL    = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/rejestracja";
+
     // ?id_klienta=1&id_konta=-1
     public static final String ACCOUNT_GET_URL = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/klient";
 
     //  przyjmuje JSON
     public static final String ACCOUNT_EDIT    = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/klient/edytuj";
 
+    // ?id_konta=2137
+    public static final String PREMIUM_BUY     = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/klient/premium/kup";
+
+    // ?id_konta=2137
+    public static final String PREMIUM_CANCEL  = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/klient/premium/anuluj";
+
     //  przyjmuje JSON
     public static final String CARD_DATA_EDIT  = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/karta";
+
+    // ?id_konta=2137
+    public static final String CARD_DATA_REM   = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/karta/usun";
 
     //  brak
     public static final String BOOKS_GET_URL   = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/ksiazki";
@@ -32,9 +44,6 @@ public final class Constants {
     // ?id_ksiazki=80&id_konta=85
     public static final String FAVOURITES_REM  = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/ulubione/usun";
 
-    //  przyjmuje JSON
-    public static final String REGISTER_URL    = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/rejestracja";
-
     // ?id_ksiazki=3
     public static final String COPIES_URL      = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/egzemplarze";
 
@@ -46,6 +55,12 @@ public final class Constants {
 
     // ?id_konta=12&id_ksiazki=21
     public static final String SHARED_REM      = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/ksiazki/udostepnione/usun";
+
+    // ?id_konta1=21&id_konta2=37
+    public static final String CONVERSATION    = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/konwersacje/wiadomosci";
+
+    // przyjmuje JSON
+    public static final String MESSAGES        = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/konwersacje/wiadomosci/wyslij";
 
     // adres z kąd pobrano tło
     private static final String BG_URL         = "https://unsplash.com/photos/5LOhydOtTKU";

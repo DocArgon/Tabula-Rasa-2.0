@@ -1,21 +1,12 @@
 package com.wat.tabularasa20;
 
-import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-
 import com.wat.tabularasa20.utilities.MathUtil;
-import com.wat.tabularasa20.utilities.Network;
-
 import org.junit.Test;
 import org.mockito.Mockito;
-
-import java.io.ByteArrayOutputStream;
 import java.security.MessageDigest;
 import java.util.Base64;
-
-import static com.wat.tabularasa20.utilities.MathUtil.sha;
-
 
 public class MathUtilTest {
 

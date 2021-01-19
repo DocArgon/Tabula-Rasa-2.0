@@ -76,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
             // Wysłanie zapytania czy dane logowania są poprawne
-            // TODO przerobić zapytanie na hash
             if (!strname.isEmpty() && !strpass.isEmpty()) {
                 String strurl = Constants.LOGIN_CHECK_URL + String.format("?login=%s&haslo=%s", strname, MathUtil.sha(strpass));
                 downloader = new Downloader();
