@@ -1,6 +1,8 @@
 package com.wat.tabularasa20.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -83,14 +85,19 @@ public class RegisterActivity extends AppCompatActivity {
             uploader.setOnResultListener(new Uploader.UploadActions() {
                 @Override
                 public void getResult(String result) {
-                    //Toast.makeText(RegisterActivity.this, "Echo " + result, Toast.LENGTH_LONG).show();
+                    Snackbar.make(edit, "Zarejestrowano użytkownika", Snackbar.LENGTH_LONG).show();
+                    new CountDownTimer(3000, 3000) {
+                        @Override
+                        public void onTick(long millisUntilFinished) {}
+                        @Override
+                        public void onFinish() {
+                            finish();
+                        }
+                    }.start();
                 }
                 @Override
                 public void getError(String error) {
-                    if (error.contains("Dodano"))
-                        Snackbar.make(edit, "Dodano użytkownika", Snackbar.LENGTH_LONG).show();
-                    else
-                        Snackbar.make(edit, "Coś poszło nie tak", Snackbar.LENGTH_LONG).show();
+                    Snackbar.make(edit, "Coś poszło nie tak", Snackbar.LENGTH_LONG).show();
                 }
             });
             uploader.execute(this, Constants.REGISTER_URL, data);

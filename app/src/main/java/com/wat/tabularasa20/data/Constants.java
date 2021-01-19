@@ -11,6 +11,12 @@ public final class Constants {
     // ?id_klienta=1&id_konta=-1
     public static final String ACCOUNT_GET_URL = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/klient";
 
+    //  przyjmuje JSON
+    public static final String ACCOUNT_EDIT    = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/klient/edytuj";
+
+    //  przyjmuje JSON
+    public static final String CARD_DATA_EDIT  = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/karta";
+
     //  brak
     public static final String BOOKS_GET_URL   = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/ksiazki";
 

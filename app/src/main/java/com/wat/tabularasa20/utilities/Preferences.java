@@ -30,7 +30,7 @@ public class Preferences {
     /**
      * Struktura przechowująca dane czatu
      */
-    public static class ChatInfo implements Comparable {
+    public static class ChatInfo implements Comparable<ChatInfo> {
         public int withID, aboutID, msgCount;
         public ChatInfo(int withID, int aboutID, int msgCount) {
             this.withID = withID;
@@ -49,8 +49,8 @@ public class Preferences {
             return "" + withID + "-" + aboutID + "-" + msgCount;
         }
         @Override
-        public int compareTo(@NonNull Object o) {
-            return toString().compareTo(o.toString());
+        public int compareTo(@NonNull ChatInfo ci) {
+            return toString().compareTo(ci.toString());
         }
     }
 
@@ -137,6 +137,9 @@ public class Preferences {
         return sharedPreferences.getInt("account_id", -1);
     }
 
+    /**
+     * Metoda zapisuje <code>Set</code> informacji o konwersacjach
+     */
     public static void saveChatInfo (@NonNull Context context, @NonNull Set<ChatInfo> infos) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("ChatData", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -147,6 +150,9 @@ public class Preferences {
         editor.apply();
     }
 
+    /**
+     * Metoda odczytuje <code>Set</code> informacji o konwersacjach
+     */
     @NonNull
     public static Set<ChatInfo> readChatInfo(@NonNull Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("ChatData", Context.MODE_PRIVATE);
@@ -154,5 +160,23 @@ public class Preferences {
         for (String s : Objects.requireNonNull(sharedPreferences.getStringSet("chats", null)))
             ts.add(new ChatInfo(s));
         return ts;
+    }
+
+    /**
+     * Metoda zapisuje informację czy pokazano okno pomocy
+     */
+    public static void saveHelpState(@NonNull Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("HelpState", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("shown", true);
+        editor.apply();
+    }
+
+    /**
+     * Metoda odczytuje informację czy pokazano okno pomocy
+     */
+    public static boolean readHelpState(@NonNull Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("HelpState", Context.MODE_PRIVATE);
+        return sharedPreferences.getBoolean("shown", false);
     }
 }

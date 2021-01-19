@@ -1,56 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools"
-	android:id="@+id/helpLayoutScreen"
+<ScrollView
+	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	tools:context=".MainActivity">
+	android:scrollbarSize="6sp"
+	android:fadeScrollbars="false">
 
-	<TextView
-		android:id="@+id/helpTextViewTitle"
+	<LinearLayout
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:background="#DDCBCB"
-		android:paddingBottom="5dp"
-		android:singleLine="false"
-		android:text="@string/edit_help_title"
-		android:textAlignment="center"
-		android:textSize="30sp"
-		android:textStyle="bold"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent"
-		/>
-
-	<androidx.constraintlayout.widget.ConstraintLayout
-		android:id="@+id/helpListLayoutMain"
-		android:layout_width="0dp"
-		android:layout_height="0dp"
-		android:layout_marginStart="40dp"
-		android:layout_marginTop="20dp"
-		android:layout_marginEnd="40dp"
-		android:layout_marginBottom="20dp"
-		android:background="#F3EDED"
-		android:fadingEdge="horizontal|vertical"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintHorizontal_bias="1.0"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/helpTextViewTitle"
-		app:layout_constraintVertical_bias="0.0"
-		>
+		android:orientation="vertical">
 
 		<TextView
 			android:id="@+id/helpTextView"
-			android:layout_width="wrap_content"
+			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:text="FAQ"
-			app:layout_constraintBottom_toTopOf="@+id/helpButtonBack"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toTopOf="parent"
-			/>
+			android:layout_gravity="center_horizontal"
+			android:textAlignment="center"
+			android:textColor="@color/cardview_light_background"
+			android:textSize="15.5sp"
+			android:text="@string/help_text"/>
 
 		<ImageButton
 			android:id="@+id/helpButtonBack"
@@ -58,14 +27,11 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_marginStart="30dp"
-			android:layout_marginBottom="20dp"
+			android:layout_marginTop="15dp"
+			android:layout_marginBottom="15dp"
 			android:contentDescription="@string/app_name"
 			android:src="@drawable/abc_vector_test"
-			android:text="@string/go_back"
-			app:layout_constraintBottom_toBottomOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			/>
+			android:text="@string/go_back"/>
 
-	</androidx.constraintlayout.widget.ConstraintLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+	</LinearLayout>
+</ScrollView>

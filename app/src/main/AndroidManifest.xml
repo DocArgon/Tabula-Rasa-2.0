@@ -49,7 +49,8 @@
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name=".activities.HelpActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Help" />
         <activity
             android:name=".activities.HomeActivity"
             android:screenOrientation="portrait" />

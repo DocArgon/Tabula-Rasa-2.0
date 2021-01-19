@@ -51,12 +51,13 @@
 
 		<Button
 			android:id="@+id/homeAccountButtonEditInfo"
-			style="@style/Tabularasa.Button.Round.Colored"			android:layout_width="0dp"
+			style="@style/Tabularasa.Button.Round.Colored"
+			android:layout_width="0dp"
 			android:layout_height="0dp"
 			android:layout_marginStart="10dp"
 			android:layout_marginTop="15dp"
 			android:layout_marginEnd="10dp"
-			android:text="@string/edit_account_data"
+			android:text="Jest po prawej na liście"
 			app:layout_constraintBottom_toTopOf="@+id/homeAccountButtonMyMessages"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"

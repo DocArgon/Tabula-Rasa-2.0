@@ -32,6 +32,11 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_account);
 
+        if (!Preferences.readHelpState(this)) {
+            Preferences.saveHelpState(this);
+            startActivity(new Intent(this, HelpActivity.class));
+        }
+
         Intent incoming_intent = getIntent();
         Preferences.saveClientID(this, incoming_intent.getStringExtra("result"));
 
@@ -145,6 +150,7 @@ public class HomeActivity extends AppCompatActivity {
         close.setOnClickListener(v -> finishAndRemoveTask());
         fab.setOnClickListener(v   -> finishAndRemoveTask());
     }
+
 
     @Override
     protected void onStart() {

@@ -1,7 +1,9 @@
 package com.wat.tabularasa20.activities;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -17,6 +19,7 @@ import com.wat.tabularasa20.data.ProductListDescription;
 import com.wat.tabularasa20.utilities.Downloader;
 import com.wat.tabularasa20.utilities.Network;
 import com.wat.tabularasa20.utilities.Preferences;
+import com.wat.tabularasa20.utilities.Uploader;
 
 public class CreditCardActivity extends AppCompatActivity {
 
@@ -65,18 +68,36 @@ public class CreditCardActivity extends AppCompatActivity {
             // Utworzenie obiektu JSON
             Gson gson = new Gson();
             JsonObject jsonObject = new JsonObject();
-            jsonObject.addProperty("Imie", name.getText().toString());
-            jsonObject.addProperty("Nazwisko", lname.getText().toString());
+            //jsonObject.addProperty("Imie", name.getText().toString());
+            //jsonObject.addProperty("Nazwisko", lname.getText().toString());
+            jsonObject.addProperty("Id_konta", Preferences.readAccountID(this));
             jsonObject.addProperty("Nr_karty", number.getText().toString());
-            jsonObject.addProperty("ccv", ccv.getText().toString());
+            jsonObject.addProperty("Ccv", ccv.getText().toString());
             jsonObject.addProperty("Data_waznosci", date.getText().toString());
             String data = gson.toJson(jsonObject);
 
-            // TODO wysłać dane
-            /*
-            Uploader ...
-            ///*/
-            Toast.makeText(CreditCardActivity.this, data, Toast.LENGTH_LONG).show();
+            Uploader uploader = new Uploader();
+            uploader.setOnResultListener(new Uploader.UploadActions() {
+                @Override
+                public void getResult(String result) {
+                    Snackbar.make(edit, "Zmieniono dane", Snackbar.LENGTH_LONG).show();
+                    new CountDownTimer(3000, 3000) {
+                        @Override
+                        public void onTick(long millisUntilFinished) {}
+                        @Override
+                        public void onFinish() {
+                            startActivity(new Intent(CreditCardActivity.this, CreditCardActivity.class));
+                            overridePendingTransition(0, 0);
+                            finish();
+                        }
+                    }.start();
+                }
+                @Override
+                public void getError(String error) {
+                    Snackbar.make(edit, "Coś poszło nie tak", Snackbar.LENGTH_LONG).show();
+                }
+            });
+            uploader.execute(this, Constants.CARD_DATA_EDIT, data);
         });
 
         back.setOnClickListener(v -> finish());
