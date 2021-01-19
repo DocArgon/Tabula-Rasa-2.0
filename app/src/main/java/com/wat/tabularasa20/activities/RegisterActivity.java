@@ -3,9 +3,11 @@ package com.wat.tabularasa20.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.snackbar.Snackbar;
@@ -29,6 +31,7 @@ public class RegisterActivity extends AppCompatActivity {
         // Uzyskanie dostępu do graficznych elementów widoku
         Button edit = findViewById(R.id.accessRegisterButtonSendForm);
         CheckBox confirm = findViewById(R.id.accessRegisterCheckoxTermsOfService);
+        Spinner sex_lst = findViewById(R.id.accessRegisterSpinnerSex);
         EditText login = findViewById(R.id.accessRegisterEditTextLogin);
         EditText email = findViewById(R.id.accessRegisterEditTextEmail);
         EditText password = findViewById(R.id.accessRegisterEditTextPassword);
@@ -39,6 +42,11 @@ public class RegisterActivity extends AppCompatActivity {
         EditText street = findViewById(R.id.accessRegisterEditTextStreet);
         EditText phone = findViewById(R.id.accessRegisterEditTextPhoneNumber);
         EditText bday = findViewById(R.id.accessRegisterEditTextBirthDate);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,
+                getResources().getStringArray(R.array.sex));
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sex_lst.setAdapter(adapter);
 
         // Akcja przycisku edycji danych
         edit.setOnClickListener(v -> {
@@ -74,6 +82,7 @@ public class RegisterActivity extends AppCompatActivity {
             jsonObject.addProperty("password", MathUtil.sha(password.getText().toString()));
             jsonObject.addProperty("name", name.getText().toString());
             jsonObject.addProperty("last_name", lname.getText().toString());
+            jsonObject.addProperty("gender", sex_lst.getSelectedItem().toString());
             jsonObject.addProperty("city", city.getText().toString());
             jsonObject.addProperty("street", street.getText().toString());
             jsonObject.addProperty("phone", phone.getText().toString());
@@ -87,8 +96,7 @@ public class RegisterActivity extends AppCompatActivity {
                 public void getResult(String result) {
                     Snackbar.make(edit, "Zarejestrowano użytkownika", Snackbar.LENGTH_LONG).show();
                     new CountDownTimer(3000, 3000) {
-                        @Override
-                        public void onTick(long millisUntilFinished) {}
+                        @Override public void onTick(long millisUntilFinished) {}
                         @Override
                         public void onFinish() {
                             finish();

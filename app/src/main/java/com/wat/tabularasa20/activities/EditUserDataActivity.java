@@ -115,8 +115,7 @@ public class EditUserDataActivity extends AppCompatActivity {
                 public void getResult(String result) {
                     Snackbar.make(edit, "Zmieniono dane", Snackbar.LENGTH_LONG).show();
                     new CountDownTimer(3000, 3000) {
-                        @Override
-                        public void onTick(long millisUntilFinished) {}
+                        @Override public void onTick(long millisUntilFinished) {}
                         @Override
                         public void onFinish() {
                             startActivity(new Intent(EditUserDataActivity.this, EditUserDataActivity.class));

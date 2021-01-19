@@ -70,4 +70,9 @@
     <string name="edit_help_title">Wprowadzenie</string>
     <string name="help_text">Drogi użytkowniku, \nzanim rozpoczniesz korzystanie z aplikacji przeczytaj to wprowadzenie. \n\n\nAplikacja przeznaczona jest do ułatwienia wymiany książek między miłaśnikami czytania. \nPamiętaj, aby wymienić się z innym użytkownikiem musisz posiadać książkę na wymianę. \n\nPrzesuwając ekran główny w prawo i lewo otwiera się menu pozwalające na nawigację w inne obaszary aplikacji. \n\nDo Twojej dyspozycji jest opcja umożliwiająca pokazanie propozycji, tj. "polecanych" książek bazująca na liście ulubionych.</string>
 
+    <string-array name="sex">
+        <item name="male">Mężczyzna</item>
+        <item name="female">Kobieta</item>
+        <item name="other">Inna</item>
+    </string-array>
 </resources>
