@@ -10,7 +10,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class MathUtil {
 
-    public static String sha(final String str) {
+    public static String sha(String str) {
         try {
             MessageDigest digest = java.security.MessageDigest.getInstance("SHA-256");
             digest.update(str.getBytes());

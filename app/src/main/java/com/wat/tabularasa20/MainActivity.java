@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Metoda sprawdzająca odpowiedź z bazy danych i przehodząca do ekranu domoweho użytkownika
+     * Metoda sprawdzająca odpowiedź z bazy danych i przechodząca do ekranu domowego użytkownika
      * @param result odpowiedź z bazy danych
      */
     private void login(String result) {

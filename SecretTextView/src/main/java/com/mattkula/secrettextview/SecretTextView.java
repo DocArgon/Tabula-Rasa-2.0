@@ -11,7 +11,7 @@ import android.widget.TextView;
 /**
  * Created by matt on 5/27/14.
  */
-public class SecretTextView extends TextView {
+public class SecretTextView extends androidx.appcompat.widget.AppCompatTextView {
     private String mTextString;
     private SpannableString mSpannableString;
 
