@@ -23,6 +23,10 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         void onRowClick(View view, int position);
     }
 
+    public interface RowLongClickListener {
+        void onRowLongClick(View view, int position);
+    }
+
     public interface FavouriteChangeListener {
         void onFavouriteChange(View v, boolean isChecked, int position);
     }
@@ -30,6 +34,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     private ArrayList<ProductListDescription> data;
     private LayoutInflater inflater;
     private RowClickListener rowClickListener = null;
+    private RowLongClickListener rowLongClickListener = null;
     private FavouriteChangeListener favouriteChangeListener = null;
 
     /**
@@ -91,7 +96,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     /**
      * Klasa obsługi widoku elementu listy
      */
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, CompoundButton.OnCheckedChangeListener, View.OnLongClickListener {
         TextView titleTextView;
         CheckBox favouriteCheckbox;
         TextView descriptionTextView;
@@ -115,6 +120,8 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
             helperTextView = itemView.findViewById(R.id.recyclerviewProductListTextViewHelper);
             itemView.setOnClickListener(this);
             layout.setOnClickListener(this);
+            itemView.setOnLongClickListener(this);
+            layout.setOnLongClickListener(this);
             //favouriteCheckbox.setOnCheckedChangeListener(this);
             favouriteCheckbox.setOnClickListener(this);
         }
@@ -131,15 +138,23 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         }
 
         /**
+         * Akcja elementu listy na przytrzymanie
+         */
+        @Override
+        public boolean onLongClick(View view) {
+            if (rowLongClickListener != null && (view.getId() == itemView.getId() || view.getId() == layout.getId()))
+                rowLongClickListener.onRowLongClick(view, getAdapterPosition());
+            return false;
+        }
+
+        /**
          * Akcja przycisku ulubionych
          * nieużywane ale zostanie gdyby była potrzeba wrócić do tej metody
          */
-        //*
         @Override
         public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
             if (favouriteChangeListener != null) favouriteChangeListener.onFavouriteChange(compoundButton, b, getAdapterPosition());
         }
-        //*/
     }
 
     /**
@@ -160,10 +175,17 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     }
 
     /**
-     * Metoda ustawiająca listener elementu listy
+     * Metoda ustawiająca listener elementu listy na dotknięcie
      */
     public void setRowClickListener(RowClickListener itemClickListener) {
         this.rowClickListener = itemClickListener;
+    }
+
+    /**
+     * Metoda ustawiająca listener elementu listy na przytrzymanie
+     */
+    public void setRowLongClickListener(RowLongClickListener itemLongClickListener) {
+        this.rowLongClickListener = itemLongClickListener;
     }
 
     /**

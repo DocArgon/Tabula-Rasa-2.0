@@ -56,11 +56,14 @@ public final class Constants {
     // ?id_konta=12&id_ksiazki=21
     public static final String SHARED_REM      = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/ksiazki/udostepnione/usun";
 
+    // ?id_konta=21
+    public static final String CONVERSATIONS   = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/konwersacje";
+
     // ?id_konta1=21&id_konta2=37
-    public static final String CONVERSATION    = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/konwersacje/wiadomosci";
+    public static final String MESSAGES        = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/konwersacje/wiadomosci";
 
     // przyjmuje JSON
-    public static final String MESSAGES        = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/konwersacje/wiadomosci/wyslij";
+    public static final String MESSAGE_SEND    = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/konwersacje/wiadomosci/wyslij";
 
     // adres z kąd pobrano tło
     private static final String BG_URL         = "https://unsplash.com/photos/5LOhydOtTKU";

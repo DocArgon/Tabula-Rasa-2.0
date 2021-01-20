@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/settingsTextViewLogout"
+        android:id="@+id/settingsButtonLogout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -17,12 +17,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/settingsTextViewBack"
+        android:id="@+id/settingsButtonBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:text="back"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/settingsTextViewLogout" />
+        app:layout_constraintTop_toBottomOf="@+id/settingsButtonLogout" />
 </androidx.constraintlayout.widget.ConstraintLayout>

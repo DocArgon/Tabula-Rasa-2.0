@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mattkula.secrettextview.SecretTextView;
@@ -16,11 +17,14 @@ import com.special.ResideMenu.ResideMenuItem;
 import com.wat.tabularasa20.MainActivity;
 import com.wat.tabularasa20.R;
 import com.wat.tabularasa20.data.Constants;
+import com.wat.tabularasa20.data.ProductListAdapter;
 import com.wat.tabularasa20.data.ProductListDescription;
 import com.wat.tabularasa20.utilities.Downloader;
+import com.wat.tabularasa20.utilities.MathUtil;
 import com.wat.tabularasa20.utilities.Network;
 import com.wat.tabularasa20.utilities.Preferences;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -44,19 +48,7 @@ public class HomeActivity extends AppCompatActivity {
         Preferences.saveClientID(this, incoming_intent.getStringExtra("result"));
 
         SecretTextView welcome = findViewById(R.id.homeAccountTextViewWelcome);
-        /*
-        Button editAccount = findViewById(R.id.homeAccountButtonEditInfo);
-        Button sharedBooks = findViewById(R.id.homeAccountButtonMySharedBooks);
-        Button favourites = findViewById(R.id.homeAccountButtonMyFavouriteBooks);
-        Button addBook = findViewById(R.id.homeAccountButtonAddNewBook);
-        //*/
         Button sendMessage = findViewById(R.id.homeAccountButtonRecommendMeBook);
-        /*
-        Button searchBook = findViewById(R.id.homeAccountButtonSearchForBook);
-
-        Button logout = findViewById(R.id.homeAccountButtonLogout);
-        Button close = findViewById(R.id.homeAccountButtonClose);
-        //*/
         FloatingActionButton fab = findViewById(R.id.homeAccountFloatingButtonClose);
 
         ResideMenu resideMenu = new ResideMenu(this);
@@ -86,7 +78,6 @@ public class HomeActivity extends AppCompatActivity {
         // Pobranie informacji o kliencie
         Downloader downloader = new Downloader();
         downloader.setOnResultListener(result -> {
-            //Toast.makeText(HomeActivity.this, result, Toast.LENGTH_LONG).show();
             assert result != null;
             result = Network.repairJson(result);
             JsonObject jsonObject = JsonParser.parseString(result).getAsJsonObject();
@@ -110,7 +101,11 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        itemOpenChats.setOnClickListener(v -> Toast.makeText(HomeActivity.this, "3", Toast.LENGTH_SHORT).show());
+        // Akcja przycisku czatów
+        itemOpenChats.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, ChatAllActivity.class);
+            startActivity(intent);
+        });
 
         // Akcja przycisku menu ustawień
         itemSettings.setOnClickListener(v -> {
@@ -118,29 +113,26 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        // Akcja przycisku moich udostępnionych
         itemMyShared.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, MySharedActivity.class);
             startActivity(intent);
         });
 
+        // Akcja przycisku dodaj książkę
         itemAddBook.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, ProductAddActivity.class);
             startActivity(intent);
         });
 
+        // Akcja przycisku ulubione
         itemFavourites.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, FavouriteActivity.class);
             startActivity(intent);
         });
 
-
-        // TODO zmienić na POLEć MI COś
-        // Przycisk czatu
-        sendMessage.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeActivity.this, ChatNewActivity.class);
-            startActivity(intent);
-        });
-
+        // POLEć MI COś
+        sendMessage.setOnClickListener(v -> readMyPreferences());
 
         fab.setOnClickListener(v   -> finishAndRemoveTask());
     }
@@ -150,5 +142,52 @@ public class HomeActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE);
+    }
+
+    @SuppressLint("DefaultLocale")
+    private void readMyPreferences () {
+        ArrayList<ProductListDescription> products = new ArrayList<>();
+
+        Downloader favouriteDownloader = new Downloader();
+        favouriteDownloader.setOnResultListener(resultFavourites -> {
+            System.out.println(resultFavourites);
+        });
+        favouriteDownloader.execute(Constants.FAVOURITES_URL + String.format("?id_konta=%d", Preferences.readAccountID(HomeActivity.this)));
+
+        /*
+        Downloader productDownloader = new Downloader();
+        productDownloader.setOnResultListener(resultProducts -> {
+            assert resultProducts != null;
+            try {
+                resultProducts = Network.repairJson(resultProducts);
+                JsonObject productsJsonObject = JsonParser.parseString(resultProducts).getAsJsonObject();
+                JsonArray productsJsonArray = productsJsonObject.get("body").getAsJsonArray();
+
+                Downloader sharedDownloader = new Downloader();
+                sharedDownloader.setOnResultListener(resultFavourites -> {
+                    assert resultFavourites != null;
+                    resultFavourites = Network.repairJson(resultFavourites);
+                    if (resultFavourites.equals("-1"))
+                        resultFavourites = "[]";
+                    JsonArray favouritesJsonArray = JsonParser.parseString(resultFavourites).getAsJsonArray();
+
+                    productsJsonArray.forEach(productJsonElement -> {
+                        boolean contains = favouritesJsonArray.contains(productJsonElement);
+                        products.add(new ProductListDescription(
+                                "",
+                                productJsonElement.getAsJsonObject().get("Id_ksiazki").getAsInt(),
+                                ProductListDescription.FavouriteStare.HIDDEN,
+                                "", "", "", "",
+                                productJsonElement.getAsJsonObject().get("Autor").getAsInt(),
+                                ""));
+                    });
+                });
+                sharedDownloader.execute(Constants.SHARED_URL + String.format("?id_konta=%d", Preferences.readAccountID(HomeActivity.this)));
+            } catch (Exception e) {
+                System.out.println(e.toString());
+            }
+        });
+        productDownloader.execute(Constants.BOOKS_GET_URL);
+        //*/
     }
 }

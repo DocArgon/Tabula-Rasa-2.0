@@ -19,6 +19,9 @@ import com.wat.tabularasa20.data.Constants;
 import com.wat.tabularasa20.data.ProductListAdapter;
 import com.wat.tabularasa20.data.ProductListDescription;
 import com.wat.tabularasa20.utilities.Downloader;
+import com.wat.tabularasa20.utilities.MathUtil;
+import com.wat.tabularasa20.utilities.Preferences;
+
 import java.util.ArrayList;
 
 public class ChatSingleActivity extends AppCompatActivity {
@@ -61,34 +64,31 @@ public class ChatSingleActivity extends AppCompatActivity {
             // Utworzenie obiektu JSON z danych pobranych z internetu
             assert result != null;
             JsonArray messageJsonArray = JsonParser.parseString(result).getAsJsonArray();
+            int account = Preferences.readAccountID(ChatSingleActivity.this);
 
             messageJsonArray.forEach(messageJsonElement -> {
-                // TODO zaimplemetować czat
-                messages.add(new ProductListDescription("Treść wiadomości 1", null));
+                int sender = messageJsonElement.getAsJsonObject().get("Id_wysylajacego").getAsInt();
+                String msg = messageJsonElement.getAsJsonObject().get("Tresc").getAsString();
+                if (sender != account)
+                    messages.add(new ProductListDescription(MathUtil.fromBase64(msg), null));
+                else
+                    messages.add(new ProductListDescription(null, MathUtil.fromBase64(msg)));
             });
 
             adapter = new ProductListAdapter(ChatSingleActivity.this, messages);
             recyclerView.setAdapter(adapter);
         });
 
-        if (owner_id != ProductListDescription.DEFAULT_OWNER_ID) {
-            userDownloader.execute(Constants.ACCOUNT_GET_URL + String.format("?id_klienta=%d&id_konta=%d", ProductListDescription.DEFAULT_OWNER_ID , owner_id));
-        } else {
-            Toast.makeText(this, "Niepoprawny identyfikator użytkownika", Toast.LENGTH_SHORT).show();
-        }
+        userDownloader.execute(Constants.ACCOUNT_GET_URL + String.format("?id_klienta=%d&id_konta=%d", ProductListDescription.DEFAULT_OWNER_ID , owner_id));
 
-        //chatDownloader.execute(Constants.DETAILS_URL + String.format("?id_ksiazki=%d&id_konta=%d", book_id, owner_id));
-
-        messages.add(new ProductListDescription("Treść wiadomości 1", null));
-        messages.add(new ProductListDescription(null, "Wiadomość 2"));
-        messages.add(new ProductListDescription("Treść wiadomości 3 jkauyhjvabfagyuwfbvakjvuaykvwd", null));
-        messages.add(new ProductListDescription(null, "Treść wiadomości 4 aboiavbwiuabwcahcwhuavwocv ahg"));
-        adapter = new ProductListAdapter(ChatSingleActivity.this, messages);
-        recyclerView.setAdapter(adapter);
+        chatDownloader.execute(Constants.MESSAGES + String.format("?id_konta1=%d&id_konta2=%d", Preferences.readAccountID(this), owner_id));
 
         send.setOnClickListener(v -> {
-            // TODO wysłać wiadomość od bazy
-            Toast.makeText(this, "Wysyłanie", Toast.LENGTH_LONG).show();
+            Intent i = new Intent(ChatSingleActivity.this, ChatNewActivity.class);
+            i.putExtra("book_id", book_id);
+            i.putExtra("owner_id", owner_id);
+            startActivity(i);
+            finish();
         });
 
         delete.setOnClickListener(v -> {

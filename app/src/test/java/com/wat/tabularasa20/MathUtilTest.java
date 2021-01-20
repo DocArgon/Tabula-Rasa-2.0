@@ -17,7 +17,7 @@ public class MathUtilTest {
         Base64 b64 = Mockito.mock(Base64.class);
 //        ByteArrayOutputStream baos = Mockito.mock(ByteArrayOutputStream.class);
 
-        mathUtil.toBase64(btmp);
+        mathUtil.bitmapToBase64(btmp);
     }
 
     @Test
@@ -25,7 +25,7 @@ public class MathUtilTest {
         MathUtil mathUtil = Mockito.mock(MathUtil.class);
         Base64 b64 = Mockito.mock(Base64.class);
         BitmapFactory bmpfc = Mockito.mock(BitmapFactory.class);
-        mathUtil.fromBase64("test");
+        mathUtil.bitmapFromBase64("test");
     }
 
     @Test

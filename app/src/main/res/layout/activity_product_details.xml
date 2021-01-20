@@ -28,16 +28,17 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="40dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="20dp"
         android:background="#F3EDED"
         android:fadingEdge="horizontal|vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/productsDetailsTextViewActivityTitle">
+        app:layout_constraintTop_toBottomOf="@+id/productsDetailsTextViewActivityTitle"
+        >
 
         <ImageView
             android:id="@+id/productsDetailsImageViewCover"
@@ -53,7 +54,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/missing_photo" />
+            app:srcCompat="@drawable/missing_photo"
+            />
 
         <TextView
             android:id="@+id/productsDetailsTextViewTitle"
@@ -89,7 +91,8 @@
             app:layout_constraintBottom_toTopOf="@+id/productsDetailsTextViewYear"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/productsDetailsTextViewTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/productsDetailsTextViewTitle"
+            />
 
         <TextView
             android:id="@+id/productsDetailsTextViewYear"
@@ -106,7 +109,8 @@
             app:layout_constraintBottom_toTopOf="@+id/productsDetailsTextViewPublisher"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/productsDetailsTextViewAuthor" />
+            app:layout_constraintTop_toBottomOf="@+id/productsDetailsTextViewAuthor"
+            />
 
         <TextView
             android:id="@+id/productsDetailsTextViewPublisher"
@@ -123,7 +127,8 @@
             app:layout_constraintBottom_toTopOf="@+id/productsDetailsTextViewGenre"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/productsDetailsTextViewYear" />
+            app:layout_constraintTop_toBottomOf="@+id/productsDetailsTextViewYear"
+            />
 
         <TextView
             android:id="@+id/productsDetailsTextViewGenre"
@@ -159,11 +164,13 @@
             app:layout_constraintBottom_toTopOf="@+id/productsDetailsButtonBack"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/productsDetailsTextViewGenre" />
+            app:layout_constraintTop_toBottomOf="@+id/productsDetailsTextViewGenre"
+            />
 
         <ImageButton
             android:id="@+id/productsDetailsButtonBack"
-            style="@style/Tabularasa.Button.Round.Colored"            android:layout_width="wrap_content"
+            style="@style/Tabularasa.Button.Round.Colored"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
@@ -173,7 +180,8 @@
             android:text="@string/go_back"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/productsDetailsButtonSendForm"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            />
 
         <Button
             android:id="@+id/productsDetailsButtonSendForm"
@@ -186,7 +194,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/productsDetailsButtonBack"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/productsDetailsButtonBack"
-            app:layout_constraintTop_toTopOf="@+id/productsDetailsButtonBack" />
+            app:layout_constraintTop_toTopOf="@+id/productsDetailsButtonBack"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -3,6 +3,7 @@ package com.wat.tabularasa20.activities;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -18,6 +19,7 @@ import com.wat.tabularasa20.data.ProductListDescription;
 import com.wat.tabularasa20.utilities.Downloader;
 import com.wat.tabularasa20.utilities.MathUtil;
 import com.wat.tabularasa20.utilities.Network;
+import com.wat.tabularasa20.utilities.Preferences;
 
 public class ProductDetailsActivity extends AppCompatActivity {
 
@@ -41,6 +43,9 @@ public class ProductDetailsActivity extends AppCompatActivity {
         TextView genre = findViewById(R.id.productsDetailsTextViewGenre);
         TextView info = findViewById(R.id.productsDetailsTextViewAdditionalInfo);
 
+        if (owner_id == Preferences.readAccountID(this))
+            contact.setVisibility(View.GONE);
+
         Downloader productDownloader = new Downloader();
         productDownloader.setOnResultListener(resultProducts -> {
             // Utworzenie obiektu JSON z danych pobranych z internetu
@@ -56,7 +61,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
             for (JsonElement productJsonElement : productsJsonArray) {
                 String bm = productJsonElement.getAsJsonObject().get("zdjecie").getAsString();
                 if (bm != null && !bm.isEmpty())
-                    photo.setImageBitmap(MathUtil.fromBase64(bm));
+                    photo.setImageBitmap(MathUtil.bitmapFromBase64(bm));
                 title.setText(productJsonElement.getAsJsonObject().get("tytul").getAsString());
                 author.setText(productJsonElement.getAsJsonObject().get("autor").getAsString());
                 year.setText(productJsonElement.getAsJsonObject().get("rok_wydania").getAsString());

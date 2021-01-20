@@ -32,6 +32,10 @@
             android:name=".activities.ProductAddActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".activities.ChatAllActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
             android:name=".activities.ChatNewActivity"
             android:screenOrientation="portrait" />
         <activity
