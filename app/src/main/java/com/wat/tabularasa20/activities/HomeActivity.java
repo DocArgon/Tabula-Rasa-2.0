@@ -3,9 +3,12 @@ package com.wat.tabularasa20.activities;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.JsonArray;
@@ -14,19 +17,13 @@ import com.google.gson.JsonParser;
 import com.mattkula.secrettextview.SecretTextView;
 import com.special.ResideMenu.ResideMenu;
 import com.special.ResideMenu.ResideMenuItem;
-import com.wat.tabularasa20.MainActivity;
 import com.wat.tabularasa20.R;
 import com.wat.tabularasa20.data.Constants;
-import com.wat.tabularasa20.data.ProductListAdapter;
 import com.wat.tabularasa20.data.ProductListDescription;
 import com.wat.tabularasa20.utilities.Downloader;
-import com.wat.tabularasa20.utilities.MathUtil;
 import com.wat.tabularasa20.utilities.Network;
 import com.wat.tabularasa20.utilities.Preferences;
-
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Set;
 
 /**
  * Aktywność ekranu głównego aplikacji
@@ -147,14 +144,7 @@ public class HomeActivity extends AppCompatActivity {
     @SuppressLint("DefaultLocale")
     private void readMyPreferences () {
         ArrayList<ProductListDescription> products = new ArrayList<>();
-
-        Downloader favouriteDownloader = new Downloader();
-        favouriteDownloader.setOnResultListener(resultFavourites -> {
-            System.out.println(resultFavourites);
-        });
-        favouriteDownloader.execute(Constants.FAVOURITES_URL + String.format("?id_konta=%d", Preferences.readAccountID(HomeActivity.this)));
-
-        /*
+        //*
         Downloader productDownloader = new Downloader();
         productDownloader.setOnResultListener(resultProducts -> {
             assert resultProducts != null;
@@ -187,7 +177,20 @@ public class HomeActivity extends AppCompatActivity {
                 System.out.println(e.toString());
             }
         });
-        productDownloader.execute(Constants.BOOKS_GET_URL);
-        //*/
+
+        Downloader favouriteDownloader = new Downloader();
+        favouriteDownloader.setOnResultListener(resultFavourites -> {
+            assert resultFavourites != null;
+            resultFavourites = Network.repairJson(resultFavourites);
+            if (resultFavourites.equals("-1")) {
+                Toast toast = Toast.makeText(this, "Lista ulubionych jest pusta, nie możemy niczego polecić", Toast.LENGTH_SHORT);
+                TextView v = toast.getView().findViewById(android.R.id.message);
+                if (v != null) v.setGravity(Gravity.CENTER);
+                toast.show();
+            } else {
+                productDownloader.execute(Constants.BOOKS_GET_URL);
+            }
+        });
+        favouriteDownloader.execute(Constants.FAVOURITES_URL + String.format("?id_konta=%d", Preferences.readAccountID(HomeActivity.this)));
     }
 }

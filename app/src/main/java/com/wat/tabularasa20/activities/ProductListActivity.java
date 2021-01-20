@@ -43,6 +43,7 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products_browse);
+        setTheme(false ? R.style.AppTheme : R.style.AppTheme_DifferentBG);
 
         // Uzyskanie dostępu do elementów graficznych
         ImageButton back = findViewById(R.id.productsBrowseButtonBack);
