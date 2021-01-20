@@ -1,6 +1,5 @@
 package com.wat.tabularasa20.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.widget.ArrayAdapter;
@@ -8,13 +7,13 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.wat.tabularasa20.R;
 import com.wat.tabularasa20.data.Constants;
+import com.wat.tabularasa20.utilities.ActivityUtil;
 import com.wat.tabularasa20.utilities.MathUtil;
 import com.wat.tabularasa20.utilities.Uploader;
 
@@ -25,6 +24,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ActivityUtil.changeTheme(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_access_register);
 

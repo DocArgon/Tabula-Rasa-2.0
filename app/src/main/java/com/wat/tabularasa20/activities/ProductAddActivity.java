@@ -5,22 +5,20 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.wat.tabularasa20.R;
 import com.wat.tabularasa20.data.Constants;
+import com.wat.tabularasa20.utilities.ActivityUtil;
 import com.wat.tabularasa20.utilities.MathUtil;
 import com.wat.tabularasa20.utilities.Preferences;
 import com.wat.tabularasa20.utilities.Uploader;
-
 import java.util.Objects;
 
 /**
@@ -35,6 +33,7 @@ public class ProductAddActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ActivityUtil.changeTheme(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products_add);
 
@@ -53,6 +52,7 @@ public class ProductAddActivity extends AppCompatActivity {
 
         photo.setOnClickListener(view -> {
             /*
+            // Aparat
             Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             cameraIntent.putExtra(new Date().toString().replace(" ", "_"), true);
             startActivityForResult(cameraIntent, CAMERA_REQUEST);
@@ -93,13 +93,7 @@ public class ProductAddActivity extends AppCompatActivity {
                 @Override
                 public void getResult(String result) {
                     Snackbar.make(add, "Dodano książkę", Snackbar.LENGTH_LONG).show();
-                    new CountDownTimer(3000, 3000) {
-                        @Override public void onTick(long millisUntilFinished) {}
-                        @Override
-                        public void onFinish() {
-                            finish();
-                        }
-                    }.start();
+                    ActivityUtil.refreshActivity(ProductAddActivity.this);
                 }
                 @Override
                 public void getError(String error) {
@@ -110,6 +104,7 @@ public class ProductAddActivity extends AppCompatActivity {
         });
     }
 
+    // Wczytanie zdjęcia/obrazu do pamięci
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

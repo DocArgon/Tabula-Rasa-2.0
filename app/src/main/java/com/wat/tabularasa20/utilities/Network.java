@@ -3,6 +3,11 @@ package com.wat.tabularasa20.utilities;
 import android.content.Context;
 import android.net.ConnectivityManager;
 
+import androidx.annotation.NonNull;
+
+/**
+ * Klasa pomocnica zawierająca metody związane z obsługą sieci
+ */
 public class Network {
 
     /**
@@ -10,12 +15,15 @@ public class Network {
      * @return informacja czy urządzenie ma dostęp do internetu
      */
     @SuppressWarnings("deprecation") // to celowe! nie używamy Android >= 10 w którym ta metoda zostanie uznana za przestarzałą
-    public static boolean isDeviceConnected (Context context) {
+    public static boolean isDeviceConnected (@NonNull Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         return connectivityManager != null && connectivityManager.getActiveNetworkInfo() != null;
     }
 
-    public static String repairJson (String json) {
+    /**
+     * Metoda "naprawiająca" niepoprawne JSONy
+     */
+    public static String repairJson (@NonNull String json) {
         String result = json.replaceAll("\\\\\"", "\"");  // \" -> "
         result = result.replaceAll("\"\\[", "\\[").replaceAll("]\"", "]"); // "[ ]" -> [ ]
         result = result.replaceAll("\\\\\\\\", "\\\\"); // \\ -> \

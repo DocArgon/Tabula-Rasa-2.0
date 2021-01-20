@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.JsonArray;
@@ -69,10 +68,6 @@ public class HomeActivity extends AppCompatActivity {
         resideMenu.addMenuItem(itemOpenChats,   ResideMenu.DIRECTION_RIGHT);
         resideMenu.addMenuItem(itemEditProfile, ResideMenu.DIRECTION_RIGHT);
         resideMenu.addMenuItem(itemSettings,    ResideMenu.DIRECTION_RIGHT);
-
-        //ScrollView svl = findViewById(com.special.ResideMenu.R.id.sv_left_menu);
-        //ScrollView svr = findViewById(com.special.ResideMenu.R.id.sv_right_menu);
-        //Toast.makeText(HomeActivity.this, svr.getLayoutParams().width, Toast.LENGTH_LONG).show();
 
         // Pobranie informacji o kliencie
         Downloader downloader = new Downloader();
@@ -137,6 +132,9 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Rozszerzenie aplikacji na pełny ekran
+     */
     @Override
     protected void onStart() {
         super.onStart();

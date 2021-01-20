@@ -17,16 +17,28 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+/**
+ * Adapter elementu listy
+ */
 public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.ViewHolder> {
 
+    /**
+     * Interfejs do utworzenia akcji dotknięcia
+     */
     public interface RowClickListener {
         void onRowClick(View view, int position);
     }
 
+    /**
+     * Interfejs do utworzenia akcji przytrzymania
+     */
     public interface RowLongClickListener {
         void onRowLongClick(View view, int position);
     }
 
+    /**
+     * Interfejs do utworzenia akcji dotknięcia gwiazdki ulubionych
+     */
     public interface FavouriteChangeListener {
         void onFavouriteChange(View v, boolean isChecked, int position);
     }

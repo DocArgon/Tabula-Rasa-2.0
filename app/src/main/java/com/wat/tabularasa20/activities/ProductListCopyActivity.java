@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,12 +18,15 @@ import com.wat.tabularasa20.R;
 import com.wat.tabularasa20.data.Constants;
 import com.wat.tabularasa20.data.ProductListAdapter;
 import com.wat.tabularasa20.data.ProductListDescription;
+import com.wat.tabularasa20.utilities.ActivityUtil;
 import com.wat.tabularasa20.utilities.Downloader;
 import com.wat.tabularasa20.utilities.Network;
 import com.wat.tabularasa20.utilities.Preferences;
-
 import java.util.ArrayList;
 
+/**
+ * Aktywność egzemplarzy książek
+ */
 public class ProductListCopyActivity extends AppCompatActivity implements ProductListAdapter.RowClickListener, TextWatcher, View.OnClickListener {
 
     ProductListAdapter adapter = null;
@@ -38,6 +40,7 @@ public class ProductListCopyActivity extends AppCompatActivity implements Produc
     @SuppressLint("DefaultLocale")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ActivityUtil.changeTheme(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products_browse);
 
@@ -111,16 +114,11 @@ public class ProductListCopyActivity extends AppCompatActivity implements Produc
      */
     @Override
     public void onRowClick(View view, int position) {
-        //Toast.makeText(this, "Dotknięto " + adapter.getItem(position).name + ", ulubiony " + adapter.getItem(position).favourite, Toast.LENGTH_SHORT).show();
-
-        // TODO Przejść do wikoku wszystkich instancji zamiast detali
-
         Intent i = new Intent(ProductListCopyActivity.this, ProductDetailsActivity.class);
         i.putExtra("book_id", adapter.getItem(position).productID);
         i.putExtra("owner_id", adapter.getItem(position).ownerID);
         startActivity(i);
     }
-
 
     /**
      * Akcja pola filtrowania

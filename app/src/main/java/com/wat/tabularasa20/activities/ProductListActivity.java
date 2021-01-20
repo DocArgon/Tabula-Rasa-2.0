@@ -8,7 +8,6 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,6 +18,7 @@ import com.wat.tabularasa20.R;
 import com.wat.tabularasa20.data.Constants;
 import com.wat.tabularasa20.data.ProductListAdapter;
 import com.wat.tabularasa20.data.ProductListDescription;
+import com.wat.tabularasa20.utilities.ActivityUtil;
 import com.wat.tabularasa20.utilities.Downloader;
 import com.wat.tabularasa20.utilities.Network;
 import com.wat.tabularasa20.utilities.Preferences;
@@ -41,6 +41,7 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
     @SuppressLint("DefaultLocale")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ActivityUtil.changeTheme(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products_browse);
 
@@ -64,11 +65,7 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
             assert resultProducts != null;
             try {
             resultProducts = Network.repairJson(resultProducts);
-            //Toast.makeText(ProductListActivity.this, resultProducts, Toast.LENGTH_LONG).show();
             JsonObject productsJsonObject = JsonParser.parseString(resultProducts).getAsJsonObject();
-
-            //String body = productsJsonObject.get("body").getAsString();
-            //JsonArray productsJsonArray = JsonParser.parseString(body).getAsJsonArray();
             JsonArray productsJsonArray = productsJsonObject.get("body").getAsJsonArray();
 
             // Pobranie informacji o ulubionych
@@ -110,6 +107,7 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        // Definicja akcji przycisku sortowania i pola filtrowania
         filter.addTextChangedListener(this);
         sort.setOnClickListener(this);
     }
@@ -140,7 +138,6 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
         }
     }
 
-
     /**
      * Akcja pola filtrowania
      */
@@ -148,7 +145,7 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
         adapter = new ProductListAdapter(this,
             ProductListAdapter.filter(charSequence.toString(), ProductListAdapter.sort(sortOrder, products)));
-        //adapter.setRowClickListener(this);
+        adapter.setRowClickListener(this);
         recyclerView.setAdapter(adapter);
     }
 
@@ -164,7 +161,7 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
         for (int i = 0; i < adapter.getItemCount(); i++)
             filtered.add(adapter.getItem(i));
         adapter = new ProductListAdapter(this, ProductListAdapter.sort(sortOrder, filtered));
-        //adapter.setRowClickListener(this);
+        adapter.setRowClickListener(this);
         recyclerView.setAdapter(adapter);
     }
 

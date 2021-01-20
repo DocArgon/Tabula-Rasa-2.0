@@ -3,12 +3,10 @@ package com.wat.tabularasa20.activities;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
@@ -32,6 +30,7 @@ public class EditUserDataActivity extends AppCompatActivity {
     @SuppressLint("DefaultLocale")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ActivityUtil.changeTheme(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_access_edit);
 
@@ -108,8 +107,6 @@ public class EditUserDataActivity extends AppCompatActivity {
             jsonObject.addProperty("Miasto", city.getText().toString());
             jsonObject.addProperty("Ulica", street.getText().toString());
             jsonObject.addProperty("Nr_telefonu", phone.getText().toString());
-            // jsonObject.addProperty("birthday", bday.getText().toString()); nie modyfikowalne
-            // plec niemodyfikowalna
             String data = gson.toJson(jsonObject);
 
 
@@ -119,17 +116,6 @@ public class EditUserDataActivity extends AppCompatActivity {
                 public void getResult(String result) {
                     Snackbar.make(edit, "Zmieniono dane", Snackbar.LENGTH_LONG).show();
                     ActivityUtil.refreshActivity(EditUserDataActivity.this);
-                    /*
-                    new CountDownTimer(3000, 3000) {
-                        @Override public void onTick(long millisUntilFinished) {}
-                        @Override
-                        public void onFinish() {
-                            startActivity(new Intent(EditUserDataActivity.this, EditUserDataActivity.class));
-                            overridePendingTransition(0, 0);
-                            finish();
-                        }
-                    }.start();
-                    //*/
                 }
                 @Override
                 public void getError(String error) {

@@ -76,6 +76,10 @@
     <string name="background_change">Zmień tło</string>
     <string name="first_message">Witam, interesuje mnie wymiana za pozycję "%1$s", w zamian mogę zaoferować </string>
     <string name="help_text">Drogi użytkowniku, \nzanim rozpoczniesz korzystanie z aplikacji przeczytaj to wprowadzenie. \n\n\nAplikacja przeznaczona jest do ułatwienia wymiany książek między miłaśnikami czytania. \nPamiętaj, aby wymienić się z innym użytkownikiem musisz posiadać książkę na wymianę. \n\nPrzesuwając ekran główny w prawo i lewo otwiera się menu pozwalające na nawigację w inne obaszary aplikacji. \n\nDo Twojej dyspozycji jest opcja umożliwiająca pokazanie propozycji, tj. "polecanych" książek bazująca na liście ulubionych.</string>
+    <string name="buy">Kup</string>
+    <string name="subscription_cancel">Anuluj subskrypcję</string>
+    <string name="account_valid_date">Konto ważne do ...</string>
+    <string name="premium_price">Cena konta - 10zł/30dni</string>
 
     <string-array name="sex">
         <item name="male">Mężczyzna</item>

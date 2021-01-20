@@ -8,12 +8,10 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
@@ -21,11 +19,15 @@ import com.wat.tabularasa20.R;
 import com.wat.tabularasa20.data.Constants;
 import com.wat.tabularasa20.data.ProductListAdapter;
 import com.wat.tabularasa20.data.ProductListDescription;
+import com.wat.tabularasa20.utilities.ActivityUtil;
 import com.wat.tabularasa20.utilities.Downloader;
 import com.wat.tabularasa20.utilities.Network;
 import com.wat.tabularasa20.utilities.Preferences;
 import java.util.ArrayList;
 
+/**
+ * Aktywność udostępnionych egzemplarzy
+ */
 public class MySharedActivity extends AppCompatActivity implements ProductListAdapter.RowClickListener, TextWatcher, ProductListAdapter.RowLongClickListener {
 
     ProductListAdapter adapter = null;
@@ -35,6 +37,7 @@ public class MySharedActivity extends AppCompatActivity implements ProductListAd
     @SuppressLint("DefaultLocale")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ActivityUtil.changeTheme(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products_my_shared);
 

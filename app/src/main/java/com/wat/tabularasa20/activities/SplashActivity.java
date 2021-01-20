@@ -25,6 +25,7 @@ public class SplashActivity extends AppCompatActivity {
         secretTextView.setDuration(interval);
         secretTextView.setText(getString(R.string.hello_msg));
 
+        // Przełącznik czasowy animacji
         new CountDownTimer(2 * interval + 100, interval) {
             @Override
             public void onTick(long millisUntilFinished) {

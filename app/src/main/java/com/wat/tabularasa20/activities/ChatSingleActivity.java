@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,12 +17,15 @@ import com.wat.tabularasa20.R;
 import com.wat.tabularasa20.data.Constants;
 import com.wat.tabularasa20.data.ProductListAdapter;
 import com.wat.tabularasa20.data.ProductListDescription;
+import com.wat.tabularasa20.utilities.ActivityUtil;
 import com.wat.tabularasa20.utilities.Downloader;
 import com.wat.tabularasa20.utilities.MathUtil;
 import com.wat.tabularasa20.utilities.Preferences;
-
 import java.util.ArrayList;
 
+/**
+ * Aktywność pojedynczego czatu
+ */
 public class ChatSingleActivity extends AppCompatActivity {
 
     ProductListAdapter adapter = null;
@@ -33,6 +35,7 @@ public class ChatSingleActivity extends AppCompatActivity {
     @SuppressLint("DefaultLocale")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ActivityUtil.changeTheme(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_messages_single_chat);
 
@@ -83,6 +86,7 @@ public class ChatSingleActivity extends AppCompatActivity {
 
         chatDownloader.execute(Constants.MESSAGES + String.format("?id_konta1=%d&id_konta2=%d", Preferences.readAccountID(this), owner_id));
 
+        // Akcja przycisku wysyłania wiadomości
         send.setOnClickListener(v -> {
             Intent i = new Intent(ChatSingleActivity.this, ChatNewActivity.class);
             i.putExtra("book_id", book_id);
@@ -91,9 +95,12 @@ public class ChatSingleActivity extends AppCompatActivity {
             finish();
         });
 
+        // Zakończ konwersację
         delete.setOnClickListener(v -> {
-            // TODO usunąć ten czat
-            Toast.makeText(this, "Usuwanie", Toast.LENGTH_LONG).show();
+            // TODO pokazać ekran potwierdzenia wymiany
+            Downloader removeDownloader = new Downloader();
+            removeDownloader.execute(Constants.MESSAGE_REMOVE + String.format("?id_konta1=%d&id_konta2=%d", Preferences.readAccountID(this), owner_id));
+            finish();
         });
 
         back.setOnClickListener(v -> finish());

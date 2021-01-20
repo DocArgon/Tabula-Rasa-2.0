@@ -12,6 +12,9 @@ import org.json.JSONObject;
  */
 public class Uploader {
 
+    /**
+     * Interfejs wumagany do utworzenia akcji na koniec wysyłania
+     */
     public interface UploadActions {
         void getResult(String result);
         void getError(String error);
@@ -19,6 +22,9 @@ public class Uploader {
 
     private UploadActions onResultListener = null;
 
+    /**
+     * Setter akcji na koniec wysyłania
+     */
     public void setOnResultListener (UploadActions onResultListener) {
         this.onResultListener = onResultListener;
     }

@@ -14,6 +14,9 @@ import java.net.URLConnection;
  */
 public class Downloader extends AsyncTask<Object, Void, String> {
 
+    /**
+     * Interfejs potrzebny do utworzenia akcji na zakończenie pobierania
+     */
     public interface DownloadActions {
         void getResult(@Nullable String result);
     }
@@ -21,6 +24,9 @@ public class Downloader extends AsyncTask<Object, Void, String> {
     private DownloadActions onResultListener = null;
     private String response = null;
 
+    /**
+     * Setter akcji pobierania
+     */
     public void setOnResultListener (DownloadActions onResultListener) {
         this.onResultListener = onResultListener;
     }
@@ -34,7 +40,6 @@ public class Downloader extends AsyncTask<Object, Void, String> {
         try {
             StringBuilder sb = new StringBuilder();
             URL url = new URL((String) params[0]);
-            //String passwdstring = "USERNAME:PASSWORD";
             URLConnection urlConnection = url.openConnection();
             //((HttpURLConnection) urlConnection).setRequestMethod("POST");
             //urlConnection.setRequestProperty("Authorization", "Authorization: AWS4-HMAC-SHA256 Credential=AKIAIOSFODNN7EXAMPLE/20130524/us-east-1/s3/aws4_request, SignedHeaders=host;range;x-amz-date, Signature=fe5f80f77d5fa3beca038a248ff027d0445342fe2855ddc963176630326f1024");

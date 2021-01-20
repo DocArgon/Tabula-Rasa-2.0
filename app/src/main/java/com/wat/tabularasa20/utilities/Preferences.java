@@ -1,11 +1,11 @@
 package com.wat.tabularasa20.utilities;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.Editable;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
@@ -192,11 +192,12 @@ public class Preferences {
     /**
      * Metoda zapisuje informację o stylach
      */
+    @SuppressLint("ApplySharedPref")
     public static void saveTheme (@NonNull Context context, boolean theme) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("Settings", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean("theme", theme);
-        editor.apply();
+        editor.commit();
     }
 
     /**

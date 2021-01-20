@@ -9,17 +9,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.wat.tabularasa20.R;
 import com.wat.tabularasa20.data.Constants;
 import com.wat.tabularasa20.data.ProductListAdapter;
 import com.wat.tabularasa20.data.ProductListDescription;
+import com.wat.tabularasa20.utilities.ActivityUtil;
 import com.wat.tabularasa20.utilities.Downloader;
 import com.wat.tabularasa20.utilities.Network;
 import com.wat.tabularasa20.utilities.Preferences;
 import java.util.ArrayList;
 
+/**
+ * Aktywność listy wszystkich aktywnych czatów
+ */
 public class ChatAllActivity extends AppCompatActivity implements ProductListAdapter.RowClickListener {
 
     ProductListAdapter adapter = null;
@@ -29,6 +32,7 @@ public class ChatAllActivity extends AppCompatActivity implements ProductListAda
     @SuppressLint("DefaultLocale")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ActivityUtil.changeTheme(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_messages_browse);
 

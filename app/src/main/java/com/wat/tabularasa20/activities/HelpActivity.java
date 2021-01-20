@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.widget.ImageButton;
 import com.wat.tabularasa20.R;
 
+/**
+ * Aktywność okna pomocy
+ */
 public class HelpActivity extends Activity {
 
     @Override

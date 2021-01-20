@@ -16,16 +16,21 @@ import com.google.gson.JsonParser;
 import com.wat.tabularasa20.R;
 import com.wat.tabularasa20.data.Constants;
 import com.wat.tabularasa20.data.ProductListDescription;
+import com.wat.tabularasa20.utilities.ActivityUtil;
 import com.wat.tabularasa20.utilities.Downloader;
 import com.wat.tabularasa20.utilities.MathUtil;
 import com.wat.tabularasa20.utilities.Network;
 import com.wat.tabularasa20.utilities.Preferences;
 
+/**
+ * Aktywność szczegułów książek
+ */
 public class ProductDetailsActivity extends AppCompatActivity {
 
     @SuppressLint("DefaultLocale")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ActivityUtil.changeTheme(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_details);
 
@@ -48,14 +53,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
         Downloader productDownloader = new Downloader();
         productDownloader.setOnResultListener(resultProducts -> {
-            // Utworzenie obiektu JSON z danych pobranych z internetu
-            //Toast.makeText(ProductListActivity.this, result, Toast.LENGTH_LONG).show();
             assert resultProducts != null;
             resultProducts = Network.repairJson(resultProducts);
-            //Toast.makeText(ProductDetailsActivity.this, resultProducts, Toast.LENGTH_LONG).show();
-            //JsonObject productsJsonObject = JsonParser.parseString(resultProducts).getAsJsonObject();
-            //String body = productsJsonObject.get("body").getAsString();
-            //JsonArray productsJsonArray = JsonParser.parseString(body).getAsJsonArray();
             JsonArray productsJsonArray = JsonParser.parseString(resultProducts).getAsJsonArray();
 
             for (JsonElement productJsonElement : productsJsonArray) {
@@ -77,6 +76,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
             Toast.makeText(this, "Nieprawidłowy identyfikator", Toast.LENGTH_LONG).show();
         }
 
+        // Akcja przycisku rozpoczęca rozmowy
         contact.setOnClickListener(view -> {
             Intent i = new Intent(ProductDetailsActivity.this, ChatNewActivity.class);
             i.putExtra("owner_id", owner_id);
@@ -85,6 +85,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
             startActivity(i);
         });
 
+        // Akcja przycisku wstecz
         back.setOnClickListener(view -> finish());
     }
 }

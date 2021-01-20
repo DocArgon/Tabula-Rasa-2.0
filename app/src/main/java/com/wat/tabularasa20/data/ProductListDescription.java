@@ -2,6 +2,9 @@ package com.wat.tabularasa20.data;
 
 import android.graphics.Color;
 
+/**
+ * Klasa-stryktura przechowująca wartości elementów listy
+ */
 public class ProductListDescription {
 
     /**

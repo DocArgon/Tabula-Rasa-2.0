@@ -9,9 +9,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -20,13 +18,11 @@ import com.google.gson.JsonParser;
 import com.wat.tabularasa20.R;
 import com.wat.tabularasa20.data.Constants;
 import com.wat.tabularasa20.data.ProductListDescription;
+import com.wat.tabularasa20.utilities.ActivityUtil;
 import com.wat.tabularasa20.utilities.Downloader;
 import com.wat.tabularasa20.utilities.MathUtil;
 import com.wat.tabularasa20.utilities.Preferences;
 import com.wat.tabularasa20.utilities.Uploader;
-
-import java.util.Iterator;
-import java.util.Set;
 
 /**
  * Aktywność pisania nowej wiadomości
@@ -36,6 +32,7 @@ public class ChatNewActivity extends AppCompatActivity {
     @SuppressLint("DefaultLocale")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ActivityUtil.changeTheme(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_messages_new);
 
@@ -67,7 +64,6 @@ public class ChatNewActivity extends AppCompatActivity {
             JsonArray productsJsonArray = JsonParser.parseString(result).getAsJsonArray();
             String name = productsJsonArray.get(0).getAsJsonObject().get("tytul").getAsString();
 
-            // TODO przenieść do strings.xml
             message.setText(getResources().getString(R.string.first_message, name));
             message.setSelection(message.getText().length());
         });
@@ -81,6 +77,7 @@ public class ChatNewActivity extends AppCompatActivity {
         if (first_message)
             bookDownloader.execute(Constants.DETAILS_URL + String.format("?id_ksiazki=%d&id_konta=%d", book_id, owner_id));
 
+        // Akcja przycisku wysyłania wiadomości
         send.setOnClickListener(v -> {
             String msg = message.getText().toString();
             if (msg.isEmpty())
@@ -94,6 +91,7 @@ public class ChatNewActivity extends AppCompatActivity {
             jsonObject.addProperty("Tresc", MathUtil.toBase64(msg));
             String data = gson.toJson(jsonObject);
 
+            // Wysłanie informacji do bazy danych
             Uploader uploader = new Uploader();
             uploader.setOnResultListener(new Uploader.UploadActions() {
                 @Override
@@ -135,7 +133,7 @@ public class ChatNewActivity extends AppCompatActivity {
             uploader.execute(this, Constants.MESSAGE_SEND, data);
         });
 
-
+        // Akcja przycisku cofnij
         back.setOnClickListener(v -> {
             if (!first_message) {
                 Intent i = new Intent(ChatNewActivity.this, ChatSingleActivity.class);

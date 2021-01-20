@@ -131,8 +131,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        Preferences.saveCredentials(MainActivity.this,
-                new Preferences.LoginCredentials(textName.getText(), textPass.getText()));
+        Preferences.saveCredentials(MainActivity.this, new Preferences.LoginCredentials(textName.getText(), textPass.getText()));
 
         Intent intent = new Intent(MainActivity.this, HomeActivity.class);
         intent.putExtra("result", result);
