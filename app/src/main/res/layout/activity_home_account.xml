@@ -15,7 +15,7 @@
 		android:background="@drawable/title_bar"
 		android:paddingBottom="5dp"
 		android:singleLine="false"
-		android:text="@string/my_account"
+		android:text=""
 		android:textAlignment="center"
 		android:textColor="#E0E0E0"
 		android:textSize="30sp"
