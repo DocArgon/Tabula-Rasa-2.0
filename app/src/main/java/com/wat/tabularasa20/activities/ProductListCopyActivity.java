@@ -8,6 +8,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -42,12 +43,17 @@ public class ProductListCopyActivity extends AppCompatActivity implements Produc
 
         Intent inp = getIntent();
         int book_id = inp.getIntExtra("book_id", ProductListDescription.DEFAULT_PRODUCT_ID);
+        String book_name = inp.getStringExtra("book_name");
 
         // Uzyskanie dostępu do elementów graficznych
+        TextView title = findViewById(R.id.productsBrowseViewTitle);
         ImageButton back = findViewById(R.id.productsBrowseButtonBack);
         EditText filter = findViewById(R.id.productsBrowseEditTextSearchText);
         ImageButton sort = findViewById(R.id.productsBrowseImageButtonSort);
         recyclerView = findViewById(R.id.productsBrowseRecyclerViewProductsList);
+
+        title.setText(book_name);
+        filter.setHint(getResources().getString(R.string.city));
 
         back.setOnClickListener(v -> finish());
 

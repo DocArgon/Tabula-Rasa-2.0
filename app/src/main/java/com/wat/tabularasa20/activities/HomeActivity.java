@@ -171,6 +171,8 @@ public class HomeActivity extends AppCompatActivity {
                                 productJsonElement.getAsJsonObject().get("Autor").getAsInt(),
                                 ""));
                     });
+
+                    System.out.println(products);
                 });
                 sharedDownloader.execute(Constants.SHARED_URL + String.format("?id_konta=%d", Preferences.readAccountID(HomeActivity.this)));
             } catch (Exception e) {

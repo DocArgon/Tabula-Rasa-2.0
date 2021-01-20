@@ -114,12 +114,9 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
      */
     @Override
     public void onRowClick(View view, int position) {
-        //Toast.makeText(this, "Dotknięto " + adapter.getItem(position).name + ", ulubiony " + adapter.getItem(position).favourite, Toast.LENGTH_SHORT).show();
-
-        // TODO Przejść do wikoku wszystkich instancji zamiast detali
-
         Intent i = new Intent(ProductListActivity.this, ProductListCopyActivity.class);
         i.putExtra("book_id", adapter.getItem(position).productID);
+        i.putExtra("book_name", adapter.getItem(position).title);
         startActivity(i);
     }
 
@@ -129,8 +126,6 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
     @SuppressLint("DefaultLocale")
     @Override
     public void onFavouriteChange(View v, boolean isChecked, int position) {
-        //Toast.makeText(this, "Dotknięto * przy " + adapter.getItem(position).title + ", ulubiony " + isChecked, Toast.LENGTH_SHORT).show();
-
         if (isChecked) {
             Downloader favouriteAdder = new Downloader();
             favouriteAdder.execute(Constants.FAVOURITES_ADD + String.format("?id_ksiazki=%d&id_konta=%d", adapter.getItem(position).productID, Preferences.readAccountID(ProductListActivity.this)));

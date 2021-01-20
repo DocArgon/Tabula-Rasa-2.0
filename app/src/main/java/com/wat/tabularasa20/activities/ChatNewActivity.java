@@ -137,10 +137,12 @@ public class ChatNewActivity extends AppCompatActivity {
 
 
         back.setOnClickListener(v -> {
-            Intent i = new Intent(ChatNewActivity.this, ChatSingleActivity.class);
-            i.putExtra("owner_id", owner_id);
-            i.putExtra("book_id", book_id);
-            startActivity(i);
+            if (!first_message) {
+                Intent i = new Intent(ChatNewActivity.this, ChatSingleActivity.class);
+                i.putExtra("owner_id", owner_id);
+                i.putExtra("book_id", book_id);
+                startActivity(i);
+            }
             finish();
         });
     }
