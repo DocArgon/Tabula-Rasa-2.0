@@ -61,7 +61,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
             for (JsonElement productJsonElement : productsJsonArray) {
                 String bm = productJsonElement.getAsJsonObject().get("zdjecie").getAsString();
                 if (bm != null && !bm.isEmpty())
-                    photo.setImageBitmap(MathUtil.fromBase64(bm));
+                    photo.setImageBitmap(MathUtil.bitmapFromBase64(bm));
                 title.setText(productJsonElement.getAsJsonObject().get("tytul").getAsString());
                 author.setText(productJsonElement.getAsJsonObject().get("autor").getAsString());
                 year.setText(productJsonElement.getAsJsonObject().get("rok_wydania").getAsString());

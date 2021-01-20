@@ -21,6 +21,7 @@ import com.wat.tabularasa20.R;
 import com.wat.tabularasa20.data.Constants;
 import com.wat.tabularasa20.data.ProductListDescription;
 import com.wat.tabularasa20.utilities.Downloader;
+import com.wat.tabularasa20.utilities.MathUtil;
 import com.wat.tabularasa20.utilities.Preferences;
 import com.wat.tabularasa20.utilities.Uploader;
 
@@ -67,7 +68,7 @@ public class ChatNewActivity extends AppCompatActivity {
             String name = productsJsonArray.get(0).getAsJsonObject().get("tytul").getAsString();
 
             // TODO przenieść do strings.xml
-            message.setText("Witam, interesuje mnie wymiana za pozycję \"" + name + "\", w zamian mogę zaoferować ");
+            message.setText(getResources().getString(R.string.first_message, name));
             message.setSelection(message.getText().length());
         });
 
@@ -90,7 +91,7 @@ public class ChatNewActivity extends AppCompatActivity {
             jsonObject.addProperty("Id_ksiazki", book_id);
             jsonObject.addProperty("Id_wysylajacego", Preferences.readAccountID(ChatNewActivity.this));
             jsonObject.addProperty("Id_odbierajacego", owner_id);
-            jsonObject.addProperty("Tresc", msg);
+            jsonObject.addProperty("Tresc", MathUtil.toBase64(msg));
             String data = gson.toJson(jsonObject);
 
             Uploader uploader = new Uploader();
@@ -102,6 +103,8 @@ public class ChatNewActivity extends AppCompatActivity {
                         @Override public void onTick(long millisUntilFinished) {}
                         @Override
                         public void onFinish() {
+                            // TODO dorobić zliczanie
+                            /*
                             Set<Preferences.ChatInfo> chats = Preferences.readChatInfo(ChatNewActivity.this);
                             Preferences.ChatInfo template = new Preferences.ChatInfo(20, 3, 0);
                             if (!chats.contains(template)) {
@@ -114,6 +117,7 @@ public class ChatNewActivity extends AppCompatActivity {
                                 }
                             }
                             Preferences.saveChatInfo(ChatNewActivity.this, chats);
+                            //*/
 
                             Intent i = new Intent(ChatNewActivity.this, ChatSingleActivity.class);
                             i.putExtra("owner_id", owner_id);
@@ -131,6 +135,13 @@ public class ChatNewActivity extends AppCompatActivity {
             uploader.execute(this, Constants.MESSAGE_SEND, data);
         });
 
-        back.setOnClickListener(v -> finish());
+
+        back.setOnClickListener(v -> {
+            Intent i = new Intent(ChatNewActivity.this, ChatSingleActivity.class);
+            i.putExtra("owner_id", owner_id);
+            i.putExtra("book_id", book_id);
+            startActivity(i);
+            finish();
+        });
     }
 }
