@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -20,10 +19,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.wat.tabularasa20.R;
 import com.wat.tabularasa20.data.Constants;
-import com.wat.tabularasa20.data.ProductListAdapter;
 import com.wat.tabularasa20.data.ProductListDescription;
 import com.wat.tabularasa20.utilities.Downloader;
-import com.wat.tabularasa20.utilities.MathUtil;
 import com.wat.tabularasa20.utilities.Preferences;
 import com.wat.tabularasa20.utilities.Uploader;
 
@@ -131,7 +128,7 @@ public class ChatNewActivity extends AppCompatActivity {
                     Snackbar.make(message, "Coś poszło nie tak", Snackbar.LENGTH_LONG).show();
                 }
             });
-            uploader.execute(this, Constants.MESSAGES, data);
+            uploader.execute(this, Constants.MESSAGE_SEND, data);
         });
 
         back.setOnClickListener(v -> finish());

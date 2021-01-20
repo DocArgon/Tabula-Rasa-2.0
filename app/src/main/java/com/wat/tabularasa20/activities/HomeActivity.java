@@ -86,7 +86,6 @@ public class HomeActivity extends AppCompatActivity {
         // Pobranie informacji o kliencie
         Downloader downloader = new Downloader();
         downloader.setOnResultListener(result -> {
-            //Toast.makeText(HomeActivity.this, result, Toast.LENGTH_LONG).show();
             assert result != null;
             result = Network.repairJson(result);
             JsonObject jsonObject = JsonParser.parseString(result).getAsJsonObject();
@@ -110,7 +109,10 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        itemOpenChats.setOnClickListener(v -> Toast.makeText(HomeActivity.this, "3", Toast.LENGTH_SHORT).show());
+        itemOpenChats.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, ChatAllActivity.class);
+            startActivity(intent);
+        });
 
         // Akcja przycisku menu ustawień
         itemSettings.setOnClickListener(v -> {

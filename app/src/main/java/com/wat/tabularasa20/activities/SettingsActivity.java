@@ -16,7 +16,8 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        Button logout = findViewById(R.id.settingsTextViewLogout);
+        Button logout = findViewById(R.id.settingsButtonLogout);
+        Button back = findViewById(R.id.settingsButtonBack);
 
         logout.setOnClickListener(v -> {
             Preferences.saveCredentials(SettingsActivity.this, new Preferences.LoginCredentials("", ""));
@@ -25,5 +26,7 @@ public class SettingsActivity extends AppCompatActivity {
             startActivity(intent);
             finishAffinity();
         });
+
+        back.setOnClickListener(v -> finish());
     }
 }

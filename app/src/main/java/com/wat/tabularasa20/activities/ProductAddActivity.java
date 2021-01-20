@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -19,6 +20,8 @@ import com.wat.tabularasa20.data.Constants;
 import com.wat.tabularasa20.utilities.MathUtil;
 import com.wat.tabularasa20.utilities.Preferences;
 import com.wat.tabularasa20.utilities.Uploader;
+
+import java.util.Objects;
 
 /**
  * Aktywność dodawania nowej książki
@@ -89,14 +92,18 @@ public class ProductAddActivity extends AppCompatActivity {
             uploader.setOnResultListener(new Uploader.UploadActions() {
                 @Override
                 public void getResult(String result) {
-                    //Toast.makeText(ProductAddActivity.this, "Echo " + result, Toast.LENGTH_LONG).show();
+                    Snackbar.make(add, "Dodano książkę", Snackbar.LENGTH_LONG).show();
+                    new CountDownTimer(3000, 3000) {
+                        @Override public void onTick(long millisUntilFinished) {}
+                        @Override
+                        public void onFinish() {
+                            finish();
+                        }
+                    }.start();
                 }
                 @Override
                 public void getError(String error) {
-                    if (error.contains("Dodano"))
-                        Snackbar.make(add, "Dodano książkę", Snackbar.LENGTH_LONG).show();
-                    else
-                        Snackbar.make(add, "Coś poszło nie tak", Snackbar.LENGTH_LONG).show();
+                    Snackbar.make(add, "Coś poszło nie tak", Snackbar.LENGTH_LONG).show();
                 }
             });
             uploader.execute(this, Constants.BOOK_ADD_URL, data);
@@ -107,7 +114,7 @@ public class ProductAddActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {
-            bitmap = (Bitmap) data.getExtras().get("data");
+            bitmap = (Bitmap) Objects.requireNonNull(data.getExtras()).get("data");
             photo.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
         }
         if (requestCode == GALLERY_REQUEST && resultCode == RESULT_OK) {
