@@ -1,7 +1,6 @@
 package com.wat.tabularasa20.activities;
 
 import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -10,7 +9,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -40,7 +38,7 @@ public class MySharedActivity extends AppCompatActivity implements ProductListAd
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products_my_shared);
 
-        ImageButton back = findViewById(R.id.productsMySharedButtonBack);
+        ImageButton back = findViewById(R.id.settingsButtonBack);
         EditText filter = findViewById(R.id.productsMySharedEditTextSearchText);
         recyclerView = findViewById(R.id.productsMySharedRecyclerViewProductList);
 
