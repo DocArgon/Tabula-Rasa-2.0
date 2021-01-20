@@ -38,7 +38,7 @@ public class MySharedActivity extends AppCompatActivity implements ProductListAd
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products_my_shared);
 
-        ImageButton back = findViewById(R.id.settingsButtonBack);
+        ImageButton back = findViewById(R.id.productsMySharedButtonBack);
         EditText filter = findViewById(R.id.productsMySharedEditTextSearchText);
         recyclerView = findViewById(R.id.productsMySharedRecyclerViewProductList);
 

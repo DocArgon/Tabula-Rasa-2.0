@@ -17,6 +17,7 @@ import com.google.gson.JsonParser;
 import com.wat.tabularasa20.R;
 import com.wat.tabularasa20.data.Constants;
 import com.wat.tabularasa20.data.ProductListDescription;
+import com.wat.tabularasa20.utilities.ActivityUtil;
 import com.wat.tabularasa20.utilities.Downloader;
 import com.wat.tabularasa20.utilities.MathUtil;
 import com.wat.tabularasa20.utilities.Network;
@@ -117,6 +118,8 @@ public class EditUserDataActivity extends AppCompatActivity {
                 @Override
                 public void getResult(String result) {
                     Snackbar.make(edit, "Zmieniono dane", Snackbar.LENGTH_LONG).show();
+                    ActivityUtil.refreshActivity(EditUserDataActivity.this);
+                    /*
                     new CountDownTimer(3000, 3000) {
                         @Override public void onTick(long millisUntilFinished) {}
                         @Override
@@ -126,6 +129,7 @@ public class EditUserDataActivity extends AppCompatActivity {
                             finish();
                         }
                     }.start();
+                    //*/
                 }
                 @Override
                 public void getError(String error) {

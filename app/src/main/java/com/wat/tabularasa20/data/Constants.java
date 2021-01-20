@@ -65,6 +65,9 @@ public final class Constants {
     // przyjmuje JSON
     public static final String MESSAGE_SEND    = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/konwersacje/wiadomosci/wyslij";
 
+    // ?id_konta1=21&id_konta2=37
+    public static final String MESSAGE_REMOVE  = "https://082c4syy0k.execute-api.eu-west-1.amazonaws.com/v1/konwersacje/wiadomosci/usun";
+
     // adres z kąd pobrano tło
     private static final String BG_URL         = "https://unsplash.com/photos/5LOhydOtTKU";
 

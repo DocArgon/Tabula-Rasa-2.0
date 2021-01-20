@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mattkula.secrettextview.SecretTextView;
@@ -24,6 +25,7 @@ import com.wat.tabularasa20.utilities.Downloader;
 import com.wat.tabularasa20.utilities.Network;
 import com.wat.tabularasa20.utilities.Preferences;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Aktywność ekranu głównego aplikacji
@@ -143,8 +145,6 @@ public class HomeActivity extends AppCompatActivity {
 
     @SuppressLint("DefaultLocale")
     private void readMyPreferences () {
-        ArrayList<ProductListDescription> products = new ArrayList<>();
-        //*
         Downloader productDownloader = new Downloader();
         productDownloader.setOnResultListener(resultProducts -> {
             assert resultProducts != null;
@@ -159,20 +159,28 @@ public class HomeActivity extends AppCompatActivity {
                     resultFavourites = Network.repairJson(resultFavourites);
                     if (resultFavourites.equals("-1"))
                         resultFavourites = "[]";
-                    JsonArray favouritesJsonArray = JsonParser.parseString(resultFavourites).getAsJsonArray();
+                    JsonArray sharedJsonArray = JsonParser.parseString(resultFavourites).getAsJsonArray();
 
-                    productsJsonArray.forEach(productJsonElement -> {
-                        boolean contains = favouritesJsonArray.contains(productJsonElement);
-                        products.add(new ProductListDescription(
-                                "",
-                                productJsonElement.getAsJsonObject().get("Id_ksiazki").getAsInt(),
-                                ProductListDescription.FavouriteStare.HIDDEN,
-                                "", "", "", "",
-                                productJsonElement.getAsJsonObject().get("Autor").getAsInt(),
-                                ""));
-                    });
+                    ArrayList<String> titles = new ArrayList<>();
 
-                    System.out.println(products);
+                    for (JsonElement books : productsJsonArray) {
+                        boolean contains = false;
+                        String title = books.getAsJsonObject().get("Tytul").getAsString();
+                        int book_id = books.getAsJsonObject().get("Id_ksiazki").getAsInt();
+                        for (JsonElement shared : sharedJsonArray) {
+                            int shared_id = shared.getAsJsonObject().get("Id_ksiazki").getAsInt();
+                            if (book_id == shared_id) {
+                                contains = true;
+                                break;
+                            }
+                        }
+                        if (!contains)
+                            titles.add(title);
+                    }
+
+                    Intent i = new Intent(HomeActivity.this, ProductListActivity.class);
+                    i.putExtra("book_name", titles.get(new Random().nextInt(titles.size())));
+                    startActivity(i);
                 });
                 sharedDownloader.execute(Constants.SHARED_URL + String.format("?id_konta=%d", Preferences.readAccountID(HomeActivity.this)));
             } catch (Exception e) {

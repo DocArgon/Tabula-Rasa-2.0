@@ -9,7 +9,7 @@
         <item name="android:windowAnimationStyle">@style/AppAnimations</item>
     </style>
     <style name="AppTheme.DifferentBG" parent="AppTheme">
-        <item name="android:windowBackground">@drawable/missing_photo</item>
+        <item name="android:windowBackground">@drawable/activities_bg2</item>
     </style>
     <!-- Styl ekranu pomocy -->
     <style name="AppTheme.Help" parent="@android:style/Theme.Holo.Dialog" />

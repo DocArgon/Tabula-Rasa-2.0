@@ -43,7 +43,9 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products_browse);
-        setTheme(false ? R.style.AppTheme : R.style.AppTheme_DifferentBG);
+
+        Intent inp = getIntent();
+        String book_name = inp.getStringExtra("book_name");
 
         // Uzyskanie dostępu do elementów graficznych
         ImageButton back = findViewById(R.id.productsBrowseButtonBack);
@@ -95,6 +97,9 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
                 adapter.setRowClickListener(this);
                 adapter.setFavouriteChangeListener(this);
                 recyclerView.setAdapter(adapter);
+
+                if (book_name != null)
+                    filter.setText(book_name);
             });
             favouriteDownloader.execute(Constants.FAVOURITES_URL + String.format("?id_konta=%d", Preferences.readAccountID(ProductListActivity.this)));
             } catch (Exception e) {

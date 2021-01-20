@@ -1,23 +1,35 @@
 package com.wat.tabularasa20.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ToggleButton;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.wat.tabularasa20.MainActivity;
 import com.wat.tabularasa20.R;
+import com.wat.tabularasa20.utilities.ActivityUtil;
 import com.wat.tabularasa20.utilities.Preferences;
 
 public class SettingsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ActivityUtil.changeTheme(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
         Button logout = findViewById(R.id.settingsButtonLogout);
-        Button back = findViewById(R.id.settingsButtonBack);
+        ImageButton back = findViewById(R.id.settingsButtonBack);
+        ToggleButton theme = findViewById(R.id.settingsToggleButton);
+
+        theme.setOnClickListener(v -> {
+            Preferences.saveTheme(SettingsActivity.this, theme.isChecked());
+            ActivityUtil.refreshActivity(SettingsActivity.this);
+        });
 
         logout.setOnClickListener(v -> {
             Preferences.saveCredentials(SettingsActivity.this, new Preferences.LoginCredentials("", ""));

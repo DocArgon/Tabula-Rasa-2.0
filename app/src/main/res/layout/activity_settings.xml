@@ -45,7 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="50dp"
             android:layout_marginEnd="40dp"
             android:layout_marginBottom="40dp"
             android:background="#FFFFFF"
@@ -54,37 +54,36 @@
             app:layout_constraintBottom_toTopOf="@+id/settingsToggleButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ToggleButton
             android:id="@+id/settingsToggleButton"
             style="@style/Tabularasa.Button.Round.Colored"
+            android:layout_width="0dp"
             android:layout_height="80dp"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="40dp"
             android:textOff="@string/theme1"
             android:textOn="@string/theme2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/settingsTextView"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/settingsTextView" />
 
         <Button
             android:id="@+id/settingsButtonLogout"
             style="@style/Tabularasa.Button.Round.Colored"
+            android:layout_width="0dp"
             android:layout_height="80dp"
             android:layout_marginStart="40dp"
             android:layout_marginEnd="40dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="40dp"
             android:text="@string/logout"
             app:layout_constraintBottom_toTopOf="@+id/settingsButtonBack"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <ImageButton
             android:id="@+id/settingsButtonBack"

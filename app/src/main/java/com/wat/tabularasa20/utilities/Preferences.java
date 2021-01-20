@@ -163,7 +163,7 @@ public class Preferences {
      * Metoda odczytuje <code>Set</code> informacji o konwersacjach
      */
     @NonNull
-    public static Set<ChatInfo> readChatInfo(@NonNull Context context) {
+    public static Set<ChatInfo> readChatInfo (@NonNull Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("ChatData", Context.MODE_PRIVATE);
         TreeSet<ChatInfo> ts = new TreeSet<>();
         for (String s : Objects.requireNonNull(sharedPreferences.getStringSet("chats", null)))
@@ -174,7 +174,7 @@ public class Preferences {
     /**
      * Metoda zapisuje informację czy pokazano okno pomocy
      */
-    public static void saveHelpState(@NonNull Context context) {
+    public static void saveHelpState (@NonNull Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("HelpState", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean("shown", true);
@@ -184,8 +184,26 @@ public class Preferences {
     /**
      * Metoda odczytuje informację czy pokazano okno pomocy
      */
-    public static boolean readHelpState(@NonNull Context context) {
+    public static boolean readHelpState (@NonNull Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("HelpState", Context.MODE_PRIVATE);
         return sharedPreferences.getBoolean("shown", false);
+    }
+
+    /**
+     * Metoda zapisuje informację o stylach
+     */
+    public static void saveTheme (@NonNull Context context, boolean theme) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("Settings", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("theme", theme);
+        editor.apply();
+    }
+
+    /**
+     * Metoda odczytuje informację o stylach
+     */
+    public static boolean readTheme (@NonNull Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("Settings", Context.MODE_PRIVATE);
+        return sharedPreferences.getBoolean("theme", false);
     }
 }
