@@ -32,8 +32,8 @@ public class CreditCardActivity extends AppCompatActivity {
         ImageButton back = findViewById(R.id.creditCardButtonBack);
         Button edit = findViewById(R.id.creditCardButtonUpdateSend);
 
-        EditText name = findViewById(R.id.creditCardEditTextFirstName);
-        EditText lname = findViewById(R.id.creditCardEditTextLastName);
+//        EditText name = findViewById(R.id.creditCardEditTextFirstName);
+//        EditText lname = findViewById(R.id.creditCardEditTextLastName);
         EditText number = findViewById(R.id.creditCardEditTextCardNumber);
         EditText ccv = findViewById(R.id.creditCardEditTextCcvCode);
         EditText date = findViewById(R.id.creditCardEditTextExpirationDate);
@@ -44,8 +44,8 @@ public class CreditCardActivity extends AppCompatActivity {
             assert result != null;
             result = Network.repairJson(result);
             JsonObject jsonObject = JsonParser.parseString(result).getAsJsonObject();
-            name.setText(jsonObject.get("Imie").getAsString());
-            lname.setText(jsonObject.get("Nazwisko").getAsString());
+//            name.setText(jsonObject.get("Imie").getAsString());
+//            lname.setText(jsonObject.get("Nazwisko").getAsString());
             String nr = jsonObject.get("Nr_karty").getAsString();
             number.setText(nr.equals("None") ? "" : nr);
             String cc = jsonObject.get("ccv").getAsString();
@@ -58,7 +58,7 @@ public class CreditCardActivity extends AppCompatActivity {
         // Akcja przycisku modyfikacji
         edit.setOnClickListener(v -> {
             // Sprawdzenie czy pola nie są puste
-            if (name.getText().toString().isEmpty() || lname.getText().toString().isEmpty() ||
+            if (/*name.getText().toString().isEmpty() || lname.getText().toString().isEmpty() ||*/
                     number.getText().toString().isEmpty() || ccv.getText().toString().isEmpty() ||
                     date.getText().toString().isEmpty()) {
                 Snackbar.make(v, getString(R.string.fields_empty), Snackbar.LENGTH_LONG).show();
