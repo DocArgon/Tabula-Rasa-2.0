@@ -46,6 +46,7 @@ public class EditUserDataActivity extends AppCompatActivity {
         EditText city = findViewById(R.id.accessEditEditTextCity);
         EditText street = findViewById(R.id.accessEditEditTextStreet);
         TextView phone = findViewById(R.id.accessEditEditTextPhoneNumber);
+        TextView sex = findViewById(R.id.accessEditTextViewSex);
         TextView bday = findViewById(R.id.accessEditTextViewBirthDate);
 
         // Pobranie informacji o użytkowniku
@@ -66,6 +67,7 @@ public class EditUserDataActivity extends AppCompatActivity {
             city.setText(jsonObject.get("Miasto").getAsString());
             street.setText(jsonObject.get("Ulica").getAsString());
             phone.setText(jsonObject.get("Nr_telefonu").getAsString());
+            sex.setText(jsonObject.get("Plec").getAsString());
             bday.setText(jsonObject.get("Data_urodzenia").getAsString());
         });
         downloader.execute(Constants.ACCOUNT_GET_URL + String.format("?id_klienta=%d&id_konta=%d", Preferences.readClientID(this), ProductListDescription.DEFAULT_OWNER_ID));

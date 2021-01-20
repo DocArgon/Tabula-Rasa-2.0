@@ -18,6 +18,7 @@ public class Network {
     public static String repairJson (String json) {
         String result = json.replaceAll("\\\\\"", "\"");  // \" -> "
         result = result.replaceAll("\"\\[", "\\[").replaceAll("]\"", "]"); // "[ ]" -> [ ]
+        result = result.replaceAll("\\\\\\\\", "\\\\"); // \\ -> \
         if (result.startsWith("\""))
             result = result.substring(1);
         if (result.endsWith("\""))
