@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
      * Metoda sprawdzająca odpowiedź z bazy danych i przechodząca do ekranu domowego użytkownika
      * @param result odpowiedź z bazy danych
      */
-    private void login(String result) {
+    protected void login(String result) {
         result = Network.repairJson(result);
         if (Integer.parseInt(result) < 0) {
             Snackbar.make(findViewById(R.id.accessLoginButtonLogin), "Nieprawidłowy login lub hasło", Snackbar.LENGTH_LONG).show();

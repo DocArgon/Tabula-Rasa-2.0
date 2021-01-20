@@ -14,7 +14,7 @@ public class NetworkTest {
     public void repairJsonTest() {
         Network network = Mockito.mock(Network.class);
         network.repairJson(jsonBroken1);
-        network.repairJson(jsonBroken2);
+        Network.repairJson(jsonBroken2);
     }
 
     @Test
